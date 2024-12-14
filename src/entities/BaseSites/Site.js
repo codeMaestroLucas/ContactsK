@@ -128,9 +128,9 @@ class Site {
   /**
    * Function used to extract the name from the Email address if the name wasn't
    * found.
-   * 
+   *
    * The name will be identified with "*****" to further analisys
-   * 
+   *
    * @param {string} email.
    * @return {string} name from the extracted email.
    */
@@ -163,9 +163,9 @@ class Site {
     const planilha = new Planilha();
 
     email = email.toLowerCase()
-    .replace("mailto:", "")
-    .replace("mailto", "")
-    .trim();
+      .replace("mailto:", "")
+      .replace("mailto", "")
+      .trim();
 
     planilha.addContact(
       new Lawyer(name, country, email).returnTreatData(firmName)

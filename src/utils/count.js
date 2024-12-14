@@ -7,7 +7,7 @@ const path = require('path');
  */
 function getTimesUsed() {
   return new Promise((resolve, reject) => {
-    const countFile = path.join(__dirname, 'count.txt');
+    const countFile = path.join(__dirname, '..', '..', 'public', 'count.txt');
 
     fs.readFile(countFile, 'utf8', (err, data) => {
       if (err && err.code !== 'ENOENT') {

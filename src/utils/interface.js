@@ -11,9 +11,10 @@ async function getRandomLawFirm() {
   const reportsFile = new Reports();
   reportsFile.eraseLastReport();
 
-  const planilha = new Sheet();
-  const emptyRowsStart = planilha.countEmptyRows();
-  planilha.fillEmptyColumns();
+  const sheet = new Sheet();
+  sheet.eraseLastSheet();
+  const emptyRowsStart = sheet.rowsToFill;
+  sheet.fillEmptyColumns();
 
   const lawFirms = await Promise.all(constructFirms());
   const lawFirmsLen = lawFirms.length;
@@ -27,7 +28,7 @@ async function getRandomLawFirm() {
   const indexsOfProcessedFirms = new Set();
 
   try {
-    while (planilha.countEmptyRows() > 0) {
+    while (sheet.rowsToFill > 0) {
       // Filter out firms that have already been processed
       var firms = lawFirms.filter(
         (_, index) => !indexsOfProcessedFirms.has(index)
@@ -49,7 +50,7 @@ async function getRandomLawFirm() {
     }
 
     // After finishing all the rows, log the result
-    if (planilha.countEmptyRows() === 0) {
+    if (sheet.countEmptyRows() === 0) {
       console.log("All the empty rows were filled. Stopping the search process...");
     } else {
       console.log("All firms have been processed.");

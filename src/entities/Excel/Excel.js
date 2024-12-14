@@ -5,6 +5,7 @@ class Excel {
         this.filePath = filePath;
         this.workbook = xlsx.readFile(filePath);
         this.ws = this.workbook.Sheets[this.workbook.SheetNames[0]];
+        this._rowsToFill = 50;
     }
 
     /**

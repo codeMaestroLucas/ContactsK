@@ -4,13 +4,15 @@ const xlsx = require("xlsx");
 
 
 class Sheet extends Excel {
-  constructor(filePath = "src/baseFiles/excel/Sheet.xlsx", _rowsToFill = 50) {
+  constructor(filePath = "src/baseFiles/excel/Sheet.xlsx") {
     super(filePath);
     this._lastCountry = null;
     this._lastFirm = null;
-    this._rowsToFill = _rowsToFill;
     this._rowsFilled = new Set();
-    
+  }
+
+  get rowsToFill() {
+    return this._rowsToFill;
   }
 
   /**
@@ -62,39 +64,34 @@ class Sheet extends Excel {
     xlsx.writeFile(this.workbook, this.filePath);
   }
 
+  
   /**
-   * Counts the number of empty rows in the Excel sheet.
+   * Erases all data from the specified rows in the Excel sheet.
    *
    * This function iterates through the rows of an Excel sheet, starting from
-   * the second row (skipping the header row). It checks if all cells in a row
-   * are empty (i.e., undefined, null, or empty string) and decrements the count
-   * of empty rows if a row is not empty.
+   * the second row (skipping the header row), and clears the content of all
+   * cells in each row.
    *
-   * @param {number} rowsToFill - The total number of rows to check.
-   * Defaults is this._rowsToFill value.
-   * @returns {number} - The number of empty rows remaining after checking the
-   * specified number of rows.
+   * @param {number} rowsToErase - The total number of rows to erase.
+   * Defaults to this._rowsToFill value.
    */
-  countEmptyRows(rowsToFill = this._rowsToFill) {
-    let emptyRowsLeft = rowsToFill;
-  
-    // Iterate from row 2 to rowsToFill + 1 (accounting for header row)
-    for (let row = 2; row <= rowsToFill + 1; row++) {
-      const currentRow = this.ws[`B${row}`];
-  
-      // Check if column B (index 1) is empty
-      const isEmpty =
-        !currentRow || // Cell doesn't exist
-        !currentRow.v || // Cell value is undefined/null
-        currentRow.v === ""; // Cell is an empty string
-  
-      if (!isEmpty) {
-        emptyRowsLeft--;
-      }
+  eraseLastSheet() {
+    const workSheet = this.workbook.Sheets[this.workbook.SheetNames[0]];
+
+    for (let row = 2; row <= this._rowsToFill + 2; row++) {
+
+      workSheet[`A${ row }`] = { v: "" };
+      workSheet[`B${ row }`] = { v: "" };
+      workSheet[`C${ row }`] = { v: "" };
+      workSheet[`D${ row }`] = { v: "" };
+      workSheet[`E${ row }`] = { v: "" };
+      workSheet[`F${ row }`] = { v: "" };
+      workSheet[`G${ row }`] = { v: "" };
+
+      this.saveSheet();
     }
-  
-    return emptyRowsLeft;
   }
+
   
 
   addContact({ firstName, nameTreated, firmNameTreated, countryTreated, emailTreated }) {
@@ -125,6 +122,7 @@ class Sheet extends Excel {
 
       this.lastCountry = countryTreated;
       this.lastFirm = firmNameTreated;
+      this._rowsToFill --;
     } catch (err) {
       console.error("Error while adding contact:", err);
     }
@@ -144,7 +142,7 @@ class Sheet extends Excel {
     try {
       const workSheet = this.workbook.Sheets[this.workbook.SheetNames[0]];
 
-      for (let row = 2; row <= this._rowsToFill + 1; row++) {
+      for (let row = 2; row <= this._rowsToFill + 2; row++) {
         const colB = workSheet[`B${row}`]?.v;
 
         if (!colB) {

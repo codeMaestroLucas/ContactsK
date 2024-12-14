@@ -1,8 +1,10 @@
-const { exec } = require("child_process");
+const getTimesUsed = require("./src/utils/count");
+const main = require("./src/main");
+
+
+const spawn = require('cross-spawn');
 const express = require("express");
 const path = require("path");
-
-const getTimesUsed = require("./src/utils/count");
 
 const app = express();
 
@@ -17,40 +19,74 @@ const server = app.listen(PORT, async () => {
   open(`http://localhost:${PORT}`);
 });
 
-// Serve static files (including HTML and CSS)
+
 app.use(express.static(path.join(__dirname, "public")));
+
 
 app.post("/search", async (req, res) => {
   try {
-    // Get the commit message by calling the asynchronous getTimesUsed function
+
+    await main();
+
     const commitMessage = await getTimesUsed();
 
-    // Define the git commands
     const commands = [
       "git add .",
-      `git commit -m "${commitMessage}"`,
+      `git commit -m "${ commitMessage }"`,
       "git push -u origin main",
     ];
-
-    // Execute each command sequentially
-    exec(commands.join(" && "), (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error executing command: ${error.message}`);
-        return res.status(500).send(`Error: ${error.message}`);
-      }
-      if (stderr) {
-        console.error(`Command stderr: ${stderr}`);
-        return res.status(500).send(`Stderr: ${stderr}`);
-      }
-
-      console.log(`Command stdout: ${stdout}`);
-      res.send(stdout); // Send the output back to the client
+    
+    const child = spawn('bash', ['-c', commands.join(' && ')], {
+      stdio: 'inherit', // Ensure the output is shown in the terminal
     });
+
+    child.on('close', (code) => {
+      if (code === 0) {
+        res.send('Commands executed successfully');
+      } else {
+        res.status(500).send(`Error: Command execution failed with code ${code}`);
+      }
+    });
+
+    child.on('error', (error) => {
+      console.error(`Error executing command: ${error.message}`);
+      res.status(500).send(`Error: ${error.message}`);
+    });
+
   } catch (err) {
     console.error(err);
     res.status(500).send(err);
   }
 });
+
+
+app.post("/update", async (req, res) => {
+  try {
+    const command = "git pull origin main";
+    
+    const child = spawn('bash', ['-c', command], {
+      stdio: 'inherit',
+    });
+
+    child.on('close', (code) => {
+      if (code === 0) {
+        res.send('Commands executed successfully');
+      } else {
+        res.status(500).send(`Error: Command execution failed with code ${code}`);
+      }
+    });
+
+    child.on('error', (error) => {
+      console.error(`Error executing command: ${error.message}`);
+      res.status(500).send(`Error: ${error.message}`);
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+});
+
 
 // Endpoint to shut down the server
 app.post("/shutdown", (req, res) => {
@@ -61,3 +97,4 @@ app.post("/shutdown", (req, res) => {
     process.exit(0);
   });
 });
+

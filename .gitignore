@@ -1,7 +1,7 @@
 node_modules/
 
 # *.txt
-src/baseFiles/excel/Sheet.xlsx
+# src/baseFiles/excel/Sheet.xlsx
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
