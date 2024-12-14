@@ -1,8 +1,8 @@
 const getTimesUsed = require("./src/utils/count");
 const main = require("./src/main");
 
-
-const spawn = require('cross-spawn');
+const spawn = require("child_process").spawn;
+const os = require("os");
 const express = require("express");
 const path = require("path");
 
@@ -23,39 +23,43 @@ const server = app.listen(PORT, async () => {
 app.use(express.static(path.join(__dirname, "public")));
 
 
+function runCommand(command, res) {
+  const shell = os.platform() === "win32" ? "cmd.exe" : "bash";
+  const shellArgs = os.platform() === "win32" ? ["/c", command] : ["-c", command];
+
+  const child = spawn(shell, shellArgs, {
+    stdio: "inherit", // Ensure the output is shown in the terminal
+  });
+
+  child.on("close", (code) => {
+    if (code === 0) {
+      res.send("Commands executed successfully");
+    } else {
+      res.status(500).send(`Error: Command execution failed with code ${code}`);
+    }
+  });
+
+  child.on("error", (error) => {
+    console.error(`Error executing command: ${error.message}`);
+    res.status(500).send(`Error: ${error.message}`);
+  });
+}
+
 app.post("/search", async (req, res) => {
   try {
-
     await main();
 
     const commitMessage = await getTimesUsed();
-
     const commands = [
       "git add .",
-      `git commit -m "${ commitMessage }"`,
+      `git commit -m \"${commitMessage}\"`,
       "git push -u origin main",
-    ];
-    
-    const child = spawn('bash', ['-c', commands.join(' && ')], {
-      stdio: 'inherit', // Ensure the output is shown in the terminal
-    });
+    ].join(" && ");
 
-    child.on('close', (code) => {
-      if (code === 0) {
-        res.send('Commands executed successfully');
-      } else {
-        res.status(500).send(`Error: Command execution failed with code ${code}`);
-      }
-    });
-
-    child.on('error', (error) => {
-      console.error(`Error executing command: ${error.message}`);
-      res.status(500).send(`Error: ${error.message}`);
-    });
-
+    runCommand(commands, res);
   } catch (err) {
     console.error(err);
-    res.status(500).send(err);
+    res.status(500).send(err.message);
   }
 });
 
@@ -63,27 +67,10 @@ app.post("/search", async (req, res) => {
 app.post("/update", async (req, res) => {
   try {
     const command = "git pull origin main";
-    
-    const child = spawn('bash', ['-c', command], {
-      stdio: 'inherit',
-    });
-
-    child.on('close', (code) => {
-      if (code === 0) {
-        res.send('Commands executed successfully');
-      } else {
-        res.status(500).send(`Error: Command execution failed with code ${code}`);
-      }
-    });
-
-    child.on('error', (error) => {
-      console.error(`Error executing command: ${error.message}`);
-      res.status(500).send(`Error: ${error.message}`);
-    });
-
+    runCommand(command, res);
   } catch (err) {
     console.error(err);
-    res.status(500).send(err);
+    res.status(500).send(err.message);
   }
 });
 
@@ -97,4 +84,3 @@ app.post("/shutdown", (req, res) => {
     process.exit(0);
   });
 });
-
