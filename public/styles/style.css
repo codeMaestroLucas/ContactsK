@@ -1,0 +1,122 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #F0F8FF;
+}
+
+.main {
+    background-color: #F0F8FF;
+    border: 2px solid rgba(164, 164, 163, 0.54);
+    border-radius: 4px;
+
+    height: 60vh;
+    width: 50vw;
+
+    margin-bottom: 10%;
+    padding: 10px 40px;
+
+    box-shadow: 4px 4px 8px 1px #4343431f;
+}
+
+.main .title {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+}
+
+.main .btnsDiv {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+
+.main .btnsDiv .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    gap: 7px;
+
+    width: 100%;
+    height: 40%;
+
+    border-radius: 10px;
+
+    transition: 0.2s ease-in-out;
+
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.main .btnsDiv .btn:hover {
+    margin-bottom: 5px;
+}
+
+.main .btnsDiv .btn.search {
+    background-color: rgba(60, 234, 44, 0.544);
+}
+
+.main .btnsDiv .btn.search:hover {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    background-color: rgba(60, 234, 44, 0.873);
+    box-shadow: inset 0px 1px 20px 4px #84f197b8;
+}
+
+.main .btnsDiv .btn i {
+    font-size: 1.2rem;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+
+@keyframes bounce {
+    0% {
+        transform: rotate(0deg);
+    }
+    30% {
+        transform: rotate(40deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+
+}
+
+
+.main .btnsDiv .btn.search:hover i {
+    font-size: 1.5rem;
+    animation: bounce 1s linear infinite;
+}
+
+.main .btnsDiv .btn.update {
+    background-color: #7ceaeca5;
+}
+
+
+.main .btnsDiv .btn.update:hover {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    background-color: #7ceaec;
+    box-shadow: inset 0px 1px 20px 4px #90e4e5;
+}
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.main .btnsDiv .btn.update:hover i {
+    animation: rotate 3s linear infinite;
+}
