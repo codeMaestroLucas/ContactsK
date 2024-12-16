@@ -12,7 +12,7 @@ async function getRandomLawFirm() {
   reportsFile.eraseLastReport();
 
   const sheet = new Sheet();
-  // sheet.eraseLastSheet();
+  sheet.eraseLastSheet();
   const emptyRowsStart = sheet.rowsToFill;
   sheet.fillEmptyColumns();
 

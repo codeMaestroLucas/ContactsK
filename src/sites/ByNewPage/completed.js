@@ -8,7 +8,8 @@ const ByNewPage = {
     "LexCaribbean", "MyersFletcherAndGordon", "GÖRG", "PaviaAndAnsaldo", "DGKV",
     "KeystoneLaw", "ALGoodbody", "ZeposAndYannopoulos", "EBN", "Borenius",
     "Grandall", "MishconKaras", "Legance", "Fischer", "GittiAndPartnersLawFirm",
-    "GornitzkyAndCo", "LonganLaw", "TCLawFirm",
+    "GornitzkyAndCo", "LonganLaw", "TCLawFirm", "HuiyeLaw", "PortolanoCavallo",
+    "BrigrardUrrutia", "Horten", "Ellex",
     // "",
   ],
 };
