@@ -11,17 +11,13 @@ class Sheet extends Excel {
     this._rowsFilled = new Set();
   }
 
-  get rowsToFill() {
-    return this._rowsToFill;
-  }
-
   /**
    * Function used to Set & Get a random number in the range of [ 2 - 52 ]
    * @returns {number} random number
     */
   setGetNewRowNumber() {
     const MIN = 2;
-    const MAX = this._rowsToFill + MIN;
+    const MAX = this.rowsToFill + MIN;
   
     const workSheet = this.workbook.Sheets[this.workbook.SheetNames[0]];
     const availableRows = [];
@@ -78,7 +74,7 @@ class Sheet extends Excel {
   eraseLastSheet() {
     const workSheet = this.workbook.Sheets[this.workbook.SheetNames[0]];
 
-    for (let row = 2; row <= this._rowsToFill + 2; row++) {
+    for (let row = 2; row <= this.rowsToFill + 2; row++) {
 
       workSheet[`A${ row }`] = { v: "" };
       workSheet[`B${ row }`] = { v: "" };
@@ -122,7 +118,6 @@ class Sheet extends Excel {
 
       this.lastCountry = countryTreated;
       this.lastFirm = firmNameTreated;
-      this._rowsToFill --;
     } catch (err) {
       console.error("Error while adding contact:", err);
     }
@@ -142,7 +137,7 @@ class Sheet extends Excel {
     try {
       const workSheet = this.workbook.Sheets[this.workbook.SheetNames[0]];
 
-      for (let row = 2; row <= this._rowsToFill + 2; row++) {
+      for (let row = 2; row <= this.rowsToFill + 2; row++) {
         const colB = workSheet[`B${row}`]?.v;
 
         if (!colB) {

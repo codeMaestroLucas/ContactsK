@@ -19,9 +19,9 @@ class Lawyer {
   #treatLawyerName(name) {
     // Remove punctuation (.,) , (*) and convert name to lowercase
     name = name
-      .replace(/\./g, "")
-      .replace(/,/g, "")
-      .replace(/\*/g, "")
+      .replace(/\./g, " ")
+      .replace(/,/g, " ")
+      .replace(/\*/g, " ")
       .toLowerCase();
   
     const abbreviations = [

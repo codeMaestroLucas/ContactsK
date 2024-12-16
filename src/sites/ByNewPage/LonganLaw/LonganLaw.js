@@ -3,25 +3,26 @@ let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
 
-class MyersFletcherAndGordon extends ByNewPage {
+class LonganLaw extends ByNewPage {
   constructor(
-    name = "Myers Fletcher And Gordon",
-    link = "https://myersfletcher.com/attorneys/?_sft_position=partner",
-    totalPages = 1,
+    name = "Longan Law",
+    link = "https://www.longanlaw.com/en/professionals/?vs=&vr=0&vp=4&vf=0&vx=0",
+    totalPages = 15,
     maxLawyersForSite = 1
   ) {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
-
   async accessPage(index) {
-    await super.accessPage(index);
+    const otherUrl = `https://www.longanlaw.com/en/professionals/page/${ index + 1 }/?vs&vr=0&vp=4&vf=0&vx=0`;
+    await super.accessPage(index, otherUrl);
   }
+
 
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(
-        By.className("custom-link")
+        By.className("-inner")
       ), 100000
     );
   }
@@ -30,38 +31,39 @@ class MyersFletcherAndGordon extends ByNewPage {
   async openNewTab(lawyer) {
     const link = await lawyer
       .getAttribute("href");
+
     await super.openNewTab(link);
   }
 
 
   async #getName() {
     return await driver
-      .findElement(By.className("wp-block-post-title has-text-color has-blue-color has-x-large-font-size"))
+      .findElement(By.className("professional-detail-title"))
+      .findElement(By.css("h1"))
       .getText();
   }
 
-  
-  async #getEmail() {
-    const elements = await driver
-      .findElements(By.className("contact-dropdown-item"))
 
-    for (let element of elements) {
-      const href = await element
-        .findElement(By.css("a"))
-        .getAttribute("href");
+  async #getEmail() {
+    const socials = await driver
+      .findElement(By.className("professional-detail-focus"))
+      .findElement(By.className("professional-detail-contact"))
+      .findElements(By.css("a"));
+
+    for (let social of socials) {
+      const href = await social.getAttribute("href");
       if (href.includes("mailto:")) return href;
     }
   }
 
-
+  
   async getLawyer(lawyer) {
     return {
       name: await this.#getName(),
       email: await this.#getEmail(),
-      country: "Jamaica",
+      country: "China",
     };
   }
-
 }
 
-module.exports = MyersFletcherAndGordon;
+module.exports = LonganLaw;

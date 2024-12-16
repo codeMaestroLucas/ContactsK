@@ -11,8 +11,8 @@ const ByPage = {
 
   OneforIteraction: [  // 38
     "LEXLogmannsstofa", "DSKLegal", "MeitarLawOffices", "HSAAdvocates", "ALMTLegal",
-    "FoxAndMandal", "MZMLegal", "Matheson", "ByrneWallace", "SprusonAndFerguson",
-    "MasonHayesAndCurran", "AronTadmorLevy", "KRBLawFirm", "JSA", "Pedersoli",
+    "FoxAndMandal", "Matheson", "ByrneWallace", "SprusonAndFerguson",
+    "AronTadmorLevy", "KRBLawFirm", "JSA", "Pedersoli",
     "HavelPartners", "DahlLaw", "HillDickinson", "HowseWilliams", "DillonEustace",
     "CFNLaw", "HannesSnellman", "Krogerus", "KromannReumert", "DittmarAndIndrenius",
     "Deacons", "LatamLex", "ConsortiumLegal", "CareyOlsen", "GuantaoLawFirm",
@@ -20,6 +20,7 @@ const ByPage = {
     "HankunLaw", "VeritasLegal", "HiggsAndJohnson",
     // "",
     // "KODLyons" // Doesn't have more lawyers
+    // "MZMLegal",
   ],
 };
 

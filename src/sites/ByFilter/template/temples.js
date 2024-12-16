@@ -53,7 +53,6 @@ class Template extends ByFilter {
         By.className("")
       ), 100000
     );
-    console.log(lawyers.length);
     return lawyers;
   }
 

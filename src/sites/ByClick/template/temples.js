@@ -31,7 +31,6 @@ class Template extends ByClicking {
         By.className("")
       ), 100000
     );
-    console.log(lawyers.length);
     return lawyers;
   }
 

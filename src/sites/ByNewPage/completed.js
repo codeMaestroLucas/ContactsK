@@ -6,7 +6,9 @@ const ByNewPage = {
 
   OneforIteraction: [  // 7
     "LexCaribbean", "MyersFletcherAndGordon", "GÖRG", "PaviaAndAnsaldo", "DGKV",
-    "KeystoneLaw", "ALGoodbody", "ZeposAndYannopoulos", "GittiAndPartnersLawFirm", "Borenius",
+    "KeystoneLaw", "ALGoodbody", "ZeposAndYannopoulos", "EBN", "Borenius",
+    "Grandall", "MishconKaras", "Legance", "Fischer", "GittiAndPartnersLawFirm",
+    "GornitzkyAndCo", "LonganLaw", "TCLawFirm",
     // "",
   ],
 };

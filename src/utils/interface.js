@@ -12,7 +12,7 @@ async function getRandomLawFirm() {
   reportsFile.eraseLastReport();
 
   const sheet = new Sheet();
-  sheet.eraseLastSheet();
+  // sheet.eraseLastSheet();
   const emptyRowsStart = sheet.rowsToFill;
   sheet.fillEmptyColumns();
 
@@ -28,7 +28,8 @@ async function getRandomLawFirm() {
   const indexsOfProcessedFirms = new Set();
 
   try {
-    while (sheet.rowsToFill > 0) {
+    let iteration = emptyRowsStart;
+    while (iteration > 0) {
       // Filter out firms that have already been processed
       var firms = lawFirms.filter(
         (_, index) => !indexsOfProcessedFirms.has(index)
@@ -41,7 +42,7 @@ async function getRandomLawFirm() {
       const originalIndex = lawFirms.indexOf(firmToSearch);
 
       try {
-        await processFirm(firmToSearch, originalIndex, indexsOfProcessedFirms, reportsFile);
+        iteration -= await processFirm(firmToSearch, originalIndex, indexsOfProcessedFirms, reportsFile);
 
       } catch (error) {
         console.log("Failed to process the firm " + firmToSearch.name);
@@ -62,8 +63,8 @@ async function getRandomLawFirm() {
   } finally {
     driver.quit();
 
-    const planilha = new Sheet();
-    const emptyRowsFinal = planilha.countEmptyRows();
+    const sheet = new Sheet();
+    const emptyRowsFinal = sheet.rowsToFill;
 
     const timeEnd = performance.now();
 

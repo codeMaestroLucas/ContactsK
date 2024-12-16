@@ -8,9 +8,13 @@ async function main() {
 }
 
 
-// main().catch((error) => {
-//     console.error('Error in main:', error);
-// });
+if (require.main === module) {
+    
+    main().catch((error) => {
+        console.error('Error in main:', error);
+    });
+    
+}
 
 
 module.exports = main;

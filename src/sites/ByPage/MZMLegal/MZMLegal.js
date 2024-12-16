@@ -19,15 +19,17 @@ class MZMLegal extends ByPage {
     try {
       const addBtn = await driver.wait(
         until.elementLocated(By.id("wt-cli-accept-all-btn")
-      ), 5000
+      ), 2000
       );
       await addBtn.click();
     } catch (e) {}
   }
 
   async getLawyersInPage() {
-    const allLawyers = await driver.wait(until.elementsLocated(
-      By.className("d-flex g-0 flex-column rounded text-center teamItem"))
+    const allLawyers = await driver.wait(
+      until.elementsLocated(
+        By.className("d-flex g-0 flex-column rounded text-center teamItem")
+      ), 60000
     );
     return allLawyers.slice(0, 12);
   }
@@ -35,15 +37,18 @@ class MZMLegal extends ByPage {
 
   async #getName(lawyer) {
     return await lawyer
-      .findElement(By.css(".col.py-4.position-relative h2"))
+      .findElement(By.className("teamItemName textGold text-uppercase"))
       .getText();
   }
 
+
   async #getEmail(lawyer) {
     return await lawyer
-      .findElement(By.css("div > a[href^='mailto:']"))
+      .findElement(By.className("col-auto pb-4"))
+      .findElement(By.css('a[href^="mailto:"]')) // Fixed CSS selector
       .getAttribute("href");
   }
+  
 
 
   async getLawyer(lawyer) {

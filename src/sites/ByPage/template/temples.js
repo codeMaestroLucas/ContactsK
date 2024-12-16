@@ -32,7 +32,6 @@ class Template extends ByPage {
         By.className("")
       ), 100000
     );
-    console.log(lawyers.length);
     return lawyers;
   }
 

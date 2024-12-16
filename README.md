@@ -38,3 +38,8 @@ project, such as data processing, file handling, or web scraping.
 ---
 
 ---
+# fix
+
+The stop condition didnt work well
+
+MasonHayesAndCurran - stop working, sometimes it works, others not.

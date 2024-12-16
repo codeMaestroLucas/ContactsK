@@ -5,24 +5,32 @@ let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
 
-class Template extends ByNewPage {
+class Chiomenti extends ByNewPage {
   constructor(
-    name = "Template",
-    link = "https://www.example.com/",
+    name = "Chiomenti",
+    link = "https://www.chiomenti.net/en/professionals/our-professionals/",
     totalPages = 1,
     maxLawyersForSite = 1
   ) {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
-  /**
-   * 
-   */
 
   async accessPage(index) {
-    const otherUrl = ``;
-    await super.accessPage(index, otherUrl);
-    try {} catch (e) {}
+    if (index === 0) {
+      await super.accessPage(index);
+
+      await driver
+        .findElement(By.id("CybotCookiebotDialogBodyButtonAccept"))
+        .click();
+    } else {
+      let button = await driver.findElement(By.className("practitioners-list-show-more-button"));
+      await driver.wait(until.elementIsVisible(button), 5000);
+      await driver.wait(until.elementIsEnabled(button), 5000);
+      await button.click();
+      
+    }
+    await super.rollDown(2, 0.5);
   }
 
 
@@ -83,11 +91,13 @@ class Template extends ByNewPage {
   }
 }
 
-module.exports = Template;
+module.exports = Chiomenti;
 
 async function main() {
-  t = new Template();
+  t = new Chiomenti();
   await t.accessPage(0);
+  await t.accessPage(1);
+  await t.accessPage(2);
   // await t.searchForLawyers();
 }
 

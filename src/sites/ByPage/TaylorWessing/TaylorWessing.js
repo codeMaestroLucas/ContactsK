@@ -8,22 +8,32 @@ class TaylorWessing extends ByPage {
   constructor(
     name = "Taylor Wessing",
     link = "https://www.taylorwessing.com/en/people?page=1#people-listing",
-    totalPages = 1,
+    totalPages = 33,
   ) {
     super(name, link, totalPages);
   }
 
   async accessPage(index) {
-    const otherUrl = `https://www.taylorwessing.com/en/people?page=${ index + 1 }#people-listing`;
+    const otherUrl = `https://www.taylorwessing.com/en/people?role=84587aa0-6bf5-4213-9543-57ad20a63c2c&page=${ index + 1 }#people-listing`;
     await super.accessPage(index, otherUrl);
   }
 
   async getLawyersInPage() {
-    return await driver.wait(
+    const lawyers = await driver.wait(
       until.elementsLocated(
         By.className("team-members__item--content team-members__item--card equal-height-item person__description")
       ), 100000
     );
+
+    let partners = [];
+    for (let lawyer of lawyers) {
+      const role = (await lawyer
+        .findElement(By.className('team-members__item--title person__description-title'))
+        .getText()
+      ).toLowerCase();
+      if (role.includes('partner')) partners.push(lawyer);
+    }
+    return partners;
   }
 
   async #getName(lawyer) {

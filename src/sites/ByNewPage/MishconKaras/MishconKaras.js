@@ -3,36 +3,36 @@ let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
 
-class ZeposAndYannopoulos extends ByNewPage {
+class MishconKaras extends ByNewPage {
   constructor(
-    name = "Zepos And Yannopoulos",
-    // link = "https://www.zeya.com/our-people", // In the 1st page page all the lawyers were already added
-    link = "https://www.zeya.com/our-people?page=1",
-    totalPages = 11,
+    name = "Mishcon Karas",
+    link = "https://www.mishconkaras.com.hk/people",
+    totalPages = 1,
     maxLawyersForSite = 1
   ) {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
-    const otherUrl = `https://www.zeya.com/our-people?page=${ index + 1 }`;
-    await super.accessPage(index, otherUrl);
+    await super.accessPage(index);
   }
 
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
       until.elementsLocated(
-        By.className("card person-card")
+        By.className("card_person__col")
       ), 100000
     );
 
     let partners = [];
     for (let lawyer of lawyers) {
       const role = (await lawyer
-        .findElement(By.css("p.person-position"))
+        .findElement(By.css("a"))
+        .findElement(By.className("card-person__subheading"))
         .getAttribute("outerHTML")
-        ).toLowerCase();
+      ).toLowerCase();
 
       if (role.includes("partner")) partners.push(lawyer);
     }
@@ -42,7 +42,6 @@ class ZeposAndYannopoulos extends ByNewPage {
   
   async openNewTab(lawyer) {
     const link = await lawyer
-      .findElement(By.className("has-text-centered"))
       .findElement(By.css("a"))
       .getAttribute("href");
 
@@ -52,28 +51,35 @@ class ZeposAndYannopoulos extends ByNewPage {
 
   async #getName() {
     return await driver
-      .findElement(By.className("page-title"))
+      .findElement(By.id("sh-herTtl"))
       .getText();
   }
 
 
   async #getEmail() {
     return await driver
-      .findElement(By.className("card person-card match-height"))
-      .findElement(By.className("email"))
-      .findElement(By.css("a"))
+      .findElement(By.id("ctl00_ctl00_MainPlaceHolder_AsidePlaceHolder_ctl00_dvContactInfo"))
+      .findElement(By.className("col-12 col-xs-12"))
+      .findElement(By.css("ul > li:last-child > a"))
       .getAttribute("href");
   }
+
 
   
   async getLawyer(lawyer) {
     return {
       name: await this.#getName(),
       email: await this.#getEmail(),
-      country: "Greece",
+      country: "Hong Kong",
     };
   }
-
 }
 
-module.exports = ZeposAndYannopoulos;
+module.exports = MishconKaras;
+
+async function main() {
+  t = new MishconKaras();
+  await t.searchForLawyers();
+}
+
+main();

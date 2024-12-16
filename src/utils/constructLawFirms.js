@@ -59,8 +59,8 @@ async function withRetry(operation, retries = 2) {
  * @param {number} index - The index of the law firm in the array.
  * @param {Set<number>} processedFirms - A set tracking the indices of firms
  * that have been successfully processed.
- * @returns {Promise<void>} A Promise resolving when the firm is successfully
- * processed.
+ * @returns {number} The quantity of lawyers that have been registred for that
+ * firm.
  * @throws {Error} If the firm's search operation fails after retries.
  */
 async function processFirm(firm, firmIndex, processedFirms, reportsFile) {
@@ -77,6 +77,8 @@ async function processFirm(firm, firmIndex, processedFirms, reportsFile) {
   console.log("=".repeat(100) + "\n\n");
   const timeEnd = performance.now();
   generateIndividualReport(firm.name, timeInit, timeEnd, firm.lawyersRegistered, reportsFile);
+
+  return firm.lawyersRegistered;
 }
 
 /**

@@ -29,7 +29,7 @@ class SimmonsAndSimmons extends ByNewPage {
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(
-        By.className("contact-card contact-card--offset-top contact-card-offset--16-9 contact-card--background-image")
+        By.className("contact-card")
       ), 10000
     );
   }
@@ -69,9 +69,8 @@ class SimmonsAndSimmons extends ByNewPage {
         ), 10000
       );
       return (await emailElement
-        .findElement(By.css("a"))
-        .getAttribute("href"))
-        .replace("mailto:", "");
+        .findElement(By.css ("a"))
+        .getAttribute("href"));
   
     } catch (error) {}
   }

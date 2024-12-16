@@ -14,7 +14,9 @@ class Walkers extends ByPage {
   }
 
   async accessPage(index) {
-    super.accessPage(index, `https://www.walkersglobal.com/en/People?position=Partner&page=${index + 1}`);
+    const otherUrl = `https://www.walkersglobal.com/en/People?position=Partner&page=${ index + 1 }`;
+    super.accessPage(index, otherUrl);
+    await new Promise(resolve => setTimeout(resolve, 500));
   }
 
   async getLawyersInPage() {

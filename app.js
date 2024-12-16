@@ -13,10 +13,10 @@ app.use(express.static(path.join(__dirname, "public")));
 // Start the server
 const PORT = 3000;
 const server = app.listen(PORT, async () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+  console.log(`Server is running at http://localhost:${ PORT }`);
 
   const { default: open } = await import("open");
-  open(`http://localhost:${PORT}`);
+  open(`http://localhost:${ PORT }`);
 });
 
 
@@ -40,8 +40,8 @@ function runCommand(command, res) {
   });
 
   child.on("error", (error) => {
-    console.error(`Error executing command: ${error.message}`);
-    res.status(500).send(`Error: ${error.message}`);
+    console.error(`Error executing command: ${ error.message }`);
+    res.status(500).send(`Error: ${ error.message }`);
   });
 }
 
@@ -52,7 +52,7 @@ app.post("/search", async (req, res) => {
     const commitMessage = await getTimesUsed();
     const commands = [
       "git add .",
-      `git commit -m \"${commitMessage}\"`,
+      `git commit -m \"${ commitMessage }\"`,
       "git push -u origin main",
     ].join(" && ");
 
