@@ -21,6 +21,7 @@ class CareyOlsen extends ByPage {
       ), 1500
       );
       await addBtn.click();
+      await super.rollDown(1, 0.5);
     } catch (e) {}
   }
 

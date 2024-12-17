@@ -10,7 +10,7 @@ class Sorainen extends ByNewPage {
     name = "Sorainen",
     link = "https://www.sorainen.com/people/?s_role=board&action=sorainenfilter",
     totalPages = 1,
-    maxLawyersForSite = 100
+    maxLawyersForSite = 1
   ) {
     super(name, link, totalPages, maxLawyersForSite);
   }
@@ -93,11 +93,3 @@ class Sorainen extends ByNewPage {
 }
 
 module.exports = Sorainen;
-
-async function main() {
-  t = new Sorainen();
-  await t.searchForLawyers();
-
-}
-
-main();

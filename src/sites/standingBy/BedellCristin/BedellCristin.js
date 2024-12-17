@@ -89,10 +89,3 @@ class BedellCristin extends ByPage {
 
 module.exports = BedellCristin;
 
-async function main() {
-  t = new BedellCristin();
-  t.accessPage(0);
-  // t.searchForLawyers();
-}
-
-main();

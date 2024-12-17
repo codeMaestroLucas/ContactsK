@@ -81,11 +81,3 @@ class Kennedys extends ByPage {
 }
 
 module.exports = Kennedys;
-
-async function main() {
-  t = new Kennedys();
-  t.accessPage(0);
-  // t.searchForLawyers();
-}
-
-main();

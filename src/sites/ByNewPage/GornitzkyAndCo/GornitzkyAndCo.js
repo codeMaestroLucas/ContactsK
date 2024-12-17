@@ -8,7 +8,7 @@ class GornitzkyAndCo extends ByNewPage {
     name = "Gornitzky And Co",
     link = "https://www.gornitzky.com/attorneys/?letter=&member=&practice=&role=8#pageContent",
     totalPages = 1,
-    maxLawyersForSite = 200
+    maxLawyersForSite = 1
   ) {
     super(name, link, totalPages, maxLawyersForSite);
   }
@@ -68,10 +68,3 @@ class GornitzkyAndCo extends ByNewPage {
 }
 
 module.exports = GornitzkyAndCo;
-
-async function main() {
-  t = new GornitzkyAndCo();
-  await t.searchForLawyers();
-}
-
-main();

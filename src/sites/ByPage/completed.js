@@ -10,7 +10,7 @@ const ByPage = {
   ],
 
   OneforIteraction: [  // 38
-    "LEXLogmannsstofa", "DSKLegal", "MeitarLawOffices", "HSAAdvocates", "ALMTLegal",
+    "LEXLogmannsstofa", "DSKLegal", "MeitarLawOffices", "ALMTLegal",
     "FoxAndMandal", "Matheson", "ByrneWallace", "SprusonAndFerguson",
     "AronTadmorLevy", "KRBLawFirm", "JSA", "Pedersoli",
     "HavelPartners", "DahlLaw", "HillDickinson", "HowseWilliams", "DillonEustace",
@@ -21,6 +21,7 @@ const ByPage = {
     // "",
     // "KODLyons" // Doesn't have more lawyers
     // "MZMLegal",
+    // "HSAAdvocates",
   ],
 };
 

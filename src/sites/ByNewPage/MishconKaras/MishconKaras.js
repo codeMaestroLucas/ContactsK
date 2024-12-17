@@ -77,9 +77,3 @@ class MishconKaras extends ByNewPage {
 
 module.exports = MishconKaras;
 
-async function main() {
-  t = new MishconKaras();
-  await t.searchForLawyers();
-}
-
-main();
