@@ -1,15 +1,8 @@
 [
   {
-    "name": "Tilleke & Gibbins",
-    "link": "https://www.tilleke.com/professionals/"
-  },
-  {
-    "name": "Pearl Cohen",
-    "link": "https://www.pearlcohen.com/our-team/?letter=&scroll=1&team_member_title=&role_id=16&location_id=0&practice_id=0&industry_id=0"
-  },
-  {
-    "name": "Fangda Partners",
-    "link": "https://www.fangdalaw.com/team/"
+    "name": "TillekeAndGibbins",
+    "link": "https://www.tilleke.com/professionals/",
+    "Note": "Driver outdated, dont kown how to fix this, standing by"
   },
   {
     "name": "Bird & Bird",
@@ -17,29 +10,9 @@
     "Note": "New page + Filter"
   },
   {
-    "name": "Borenius",
-    "link": "https://www.borenius.com/people/"
-  },
-  {
-    "name": "Delcade",
-    "link": "https://www.delcade.com/equipe/?gad_source=1&gclid=Cj0KCQiA6Ou5BhCrARIsAPoTxrDzHrrn326exIX-cw0ADr1tZZA0H5KbFadTlQHO_x3BiHfnqJIRPHoaAk8FEALw_wcB"
-  },
-  {
-    "name": "Mourant",
-    "link": "https://www.mourant.com/people/"
-  },
-  {
-    "name": "Meyer-Köring",
-    "link": "https://www.meyer-koering.de/team/"
-  },
-  {
     "name": "Noerr",
     "link": "https://www.noerr.com/en/professionals?p-fc-roles=Partner",
     "Note": "New page + Filter"
-  },
-  {
-    "name": "Zeya",
-    "link": "https://www.zeya.com/our-people?page=1"
   },
   {
     "name": "Kennedys",
@@ -47,48 +20,20 @@
     "Note": "New page + Filter"
   },
   {
-    "name": "Tanner DeWitt",
-    "link": "https://www.tannerdewitt.com/our-people/"
-  },
-  {
-    "name": "Tanner De Witt",
-    "link": "https://www.tannerdewitt.com/our-people/"
-  },
-  {
-    "name": "Szecskay",
-    "link": "https://szecskay.com/team/"
-  },
-  {
     "name": "IndusLaw",
     "link": "https://induslaw.com/people/"
   },
   {
-    "name": "Samvad Partners",
-    "link": "https://www.samvadpartners.com/our-people"
-  },
-  {
-    "name": "Remfry & Sagar",
-    "link": "https://www.remfry.com/our-team/"
+    "name": "SamvadPartners",
+    "link": ""
   },
   {
     "name": "Assegaf Hamzah & Partners",
     "link": "https://www.ahp.id/members/"
   },
   {
-    "name": "Arthur Cox",
-    "link": "https://www.arthurcox.com/people/?term=&attr2=Partner/"
-  },
-  {
-    "name": "Beauchamps",
-    "link": "https://www.beauchamps.ie/our-people"
-  },
-  {
     "name": "Cains",
     "link": "https://www.cains.com/people/"
-  },
-  {
-    "name": "Barnea & Co.",
-    "link": "https://barlaw.co.il/the-team"
   },
   {
     "name": "Carnelutti Law Firm",

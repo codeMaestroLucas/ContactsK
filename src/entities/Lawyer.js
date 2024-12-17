@@ -21,7 +21,7 @@ class Lawyer {
     name = name
       .replace(/\./g, " ")
       .replace(/,/g, " ")
-      .replace(/\*/g, " ")
+      // .replace(/\*/g, " ")  //! To identify the GetNameByEmail function
       .toLowerCase();
   
     const abbreviations = [

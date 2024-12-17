@@ -135,19 +135,37 @@ class Site {
    * @return {string} name from the extracted email.
    */
   getNameFromEmail(email) {
+    // Regex to extract the part before '@'
     const emailRegex = /^([\w.-]+)@/;
-    const match = email.replace("mailto:", "")
-                  replace("mailto", "")
-                  .toLowerCase()
-                  .trim()
-                  .match(emailRegex);
     let name = "";
+    
+    try {
+      const sanitizedEmail = email.replace(/mailto:/i, "").trim().toLowerCase();
+      const match = sanitizedEmail.match(emailRegex);
   
-    if (match) {
-      name = match[1].replace(/-/g, ' ').split('.').join(' ').trim();
-    }
+      if (match) {
+        name = match[1]
+          .replace(/-/g, " ")
+          .split(".")
+          .join(" ")
+          .trim();
 
-    // To identify that the name was made with this function
+      } else {
+        throw new Error("Invalid email format or no match found.");
+      }
+      
+    } catch (error) {
+      const fallbackMatch = email.replace(/mailto:/i, "").trim().toLowerCase().match(/^([^@]+)/);
+      if (fallbackMatch) {
+        name = fallbackMatch[1]
+          .replace(/-/g, " ")
+          .split(".")
+          .join(" ")
+          .trim()
+        }
+    }
+  
+    // To identify that the name was generated from this function
     return name + " *****";
   }
 
