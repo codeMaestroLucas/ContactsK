@@ -1,8 +1,6 @@
 const getTimesUsed = require("./src/utils/count");
 const main = require("./src/main");
 
-const spawn = require("child_process").spawn;
-const os = require("os");
 const express = require("express");
 const path = require("path");
 
@@ -23,30 +21,13 @@ const server = app.listen(PORT, async () => {
 app.use(express.static(path.join(__dirname, "public")));
 
 
+/**
+ * Function used to execute a command in the CLI
+ * @param {string} command to be executed
+ */
 function runCommand(command) {
-    // const shell = os.platform() === "win32" ? "cmd.exe" : "bash";
-    // const shellArgs = os.platform() === "win32" ? ["/c", command] : ["-c", command];
-
-    // const child = spawn(shell, shellArgs, {
-    //   stdio: "inherit",
-    // });
-    
-    const execSync = require('child_process').execSync;
-    // import { execSync } from 'child_process';  // replace ^ if using ES modules
-    
-    const output = execSync(command, { encoding: 'utf-8' });  // the default is 'buffer'
-
-    // child.on("close", (code) => {
-    //   if (code === 0) {
-    //     resolve(); // Resolve when the command succeeds
-    //   } else {
-    //     reject(new Error(`Command failed with code ${code}`)); // Reject on failure
-    //   }
-    // });
-
-    // child.on("error", (error) => {
-    //   reject(error); // Reject on error
-    // });
+  const execSync = require('child_process').execSync;
+  execSync(command, { encoding: 'utf-8' });
 }
 
 
@@ -66,6 +47,8 @@ app.post("/search", async (req, res) => {
 
       } catch (err) {
         console.error(`Error executing command: ${command}`, err);
+        console.log("\tExecuting GIT RESET");
+
         await runCommand("git reset");
         return res.status(500).json({ alert: `Error: ${err.message}` });
       }
@@ -84,7 +67,6 @@ app.post("/update", async (req, res) => {
   try {
     const command = "git pull origin main";
 
-    // Execute the command and handle the result
     exec(command, (error, stdout, stderr) => {
       if (error) {
         console.error(`Error: ${error.message}`);
@@ -92,18 +74,12 @@ app.post("/update", async (req, res) => {
         return;
       }
 
-      // if (stderr) {
-      //   console.warn(`Warning: ${stderr}`);
-      //   res.status(400).send({ alert: "Warning detected during pull operation.", details: stderr });
-      //   return;
-      // }
-
       if (stdout.includes("Already up to date.")) {
         console.log(stdout);
-        res.status(200).send({ alert: "Repository is already up to date." });
+        res.status(200).send({ alert: "Files are already up to date." });
 
       } else if (stdout.includes("Updating")) {
-        res.status(200).send({ alert: "Repository successfully updated.", details: stdout });
+        res.status(200).send({ alert: "Files successfully updated.", details: stdout });
 
       } else {
         res.status(200).send({ alert: "Unexpected output from git pull.", details: stdout });
@@ -114,6 +90,7 @@ app.post("/update", async (req, res) => {
     res.status(500).send({ alert: "An unexpected error occurred.", details: err.message });
   }
 });
+
 
 // POST endpoint to shut down the server
 app.post("/shutdown", (req, res) => {
