@@ -56,7 +56,7 @@ app.post("/search", async (req, res) => {
     const commands = [
       "git add .",
       `git commit -m ${sanitizedCommitMessage}`,
-      "git push -u origin main"
+      "git push -u origin main --force"
     ];
 
     // Loop through each command and run it separately
