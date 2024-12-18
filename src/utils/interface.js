@@ -27,8 +27,8 @@ async function getRandomLawFirm() {
 
   const indexsOfProcessedFirms = new Set();
 
+  let iteration = emptyRowsStart;
   try {
-    let iteration = emptyRowsStart;
     while (iteration >= 0) {
       // Filter out firms that have already been processed
       var firms = lawFirms.filter(
@@ -53,6 +53,7 @@ async function getRandomLawFirm() {
     // After finishing all the rows, log the result
     if (sheet.rowsToFill === 0) {
       console.log("All the empty rows were filled. Stopping the search process...");
+      
     } else {
       console.log("All firms have been processed.");
     }

@@ -1,18 +1,18 @@
 const ByNewPage = {
   XforIteraction: [    // 5
     "SimmonsAndSimmons", "Ecija", "AsafoAndCo", "CobaltLegal", "Mourant",
-    "ArthurCox",
+    "ArthurCox", "BirdAndBird",
     // "",
   ],
 
-  OneforIteraction: [  // 24
+  OneforIteraction: [  // 34
     "LexCaribbean", "MyersFletcherAndGordon", "GÖRG", "PaviaAndAnsaldo", "DGKV",
     "KeystoneLaw", "ALGoodbody", "ZeposAndYannopoulos", "EBN", "Borenius",
     "Grandall", "MishconKaras", "Legance", "Fischer", "GittiAndPartnersLawFirm",
     "GornitzkyAndCo", "LonganLaw", "TCLawFirm", "HuiyeLaw", "PortolanoCavallo",
     "BrigrardUrrutia", "Horten", "Ellex", "Poulschmith", "PearlCohen",
     "FangdaPartners", "MeyerKöring", "TannerDeWitt", "Szecskay", "RemfryAndSagar",
-    "Beauchamps", "BarneaAndCo", "SamvadPartners",
+    "Beauchamps", "BarneaAndCo", "SamvadPartners", "Noerr",
     // "",
   ],
 };

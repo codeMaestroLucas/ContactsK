@@ -10,7 +10,6 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
 
-// Start the server
 const PORT = 3000;
 const server = app.listen(PORT, async () => {
   console.log(`Server is running at http://localhost:${ PORT }`);
@@ -47,6 +46,8 @@ function runCommand(command, res) {
 
 app.post("/search", async (req, res) => {
   try {
+    res.status(200).send({ alert: "Starting the search. Don't close the window." });
+
     await main();
 
     const commitMessage = await getTimesUsed();
@@ -64,13 +65,40 @@ app.post("/search", async (req, res) => {
 });
 
 
+const { exec } = require("child_process");
+
 app.post("/update", async (req, res) => {
   try {
     const command = "git pull origin main";
-    runCommand(command, res);
+
+    // Execute the command and handle the result
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error: ${error.message}`);
+        res.status(500).send({ alert: "Error while pulling the repository.", details: error.message });
+        return;
+      }
+
+      if (stderr) {
+        console.warn(`Warning: ${stderr}`);
+        res.status(400).send({ alert: "Warning detected during pull operation.", details: stderr });
+        return;
+      }
+
+      if (stdout.includes("Already up to date.")) {
+        res.status(200).send({ alert: "Repository is already up to date." });
+
+      } else if (stdout.includes("Updating")) {
+        res.status(200).send({ alert: "Repository successfully updated.", details: stdout });
+
+      } else {
+        res.status(200).send({ alert: "Unexpected output from git pull.", details: stdout });
+      }
+      
+    });
   } catch (err) {
     console.error(err);
-    res.status(500).send(err.message);
+    res.status(500).send({ alert: "An unexpected error occurred.", details: err.message });
   }
 });
 
