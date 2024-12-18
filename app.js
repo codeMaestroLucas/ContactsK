@@ -32,6 +32,8 @@ function runCommand(command) {
 
 
 app.post("/search", async (req, res) => {
+  await main();
+
   try {
     const commitMessage = await getTimesUsed();
 

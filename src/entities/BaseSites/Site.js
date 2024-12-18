@@ -29,7 +29,7 @@ class Site {
  *
  * This method uses the WebDriver's `wait` function to repeatedly evaluate the
  * `document.readyState` property until it is `'complete'`, indicating that the
- * page has fully loaded. The maximum wait time is 60 seconds.
+ * page has fully loaded. The maximum wait time is 3min.
  *
  * @async
  * @returns {Promise<void>} Resolves once the page has fully loaded or the
@@ -42,7 +42,7 @@ class Site {
     await driver.wait(async function() {
       const readyState = await driver.executeScript('return document.readyState');
       return readyState === 'complete';
-    }, 60000); // Waits up to 60 seconds for the page to be fully loaded
+    }, 180000); // Waits up to 3min for the page to be fully loaded
   }
   
 

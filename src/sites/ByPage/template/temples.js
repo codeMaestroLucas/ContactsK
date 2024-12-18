@@ -39,6 +39,7 @@ class Template extends ByPage {
   async #getName(lawyer) {
     const nameElement = await lawyer
       .findElement(By.className(""))
+      .getText();
 
     
     return nameElement
@@ -48,6 +49,7 @@ class Template extends ByPage {
   async #getEmail(lawyer) {
     const emailElement = await lawyer
       .findElement(By.className(""))
+      .getAttribute("href");
 
 
     return emailElement
@@ -57,6 +59,7 @@ class Template extends ByPage {
   async #getDDD(lawyer) {
     const dddElement = await lawyer
       .findElement(By.className(""))
+      .getAttribute("href");
       
     return dddElement
   }
@@ -76,7 +79,7 @@ module.exports = Template;
 
 async function main() {
   t = new Template();
-  t.accessPage(0);
+  // t.accessPage(0);
   t.searchForLawyers();
 }
 

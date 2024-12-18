@@ -4,6 +4,8 @@ let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
 
+
+// Couldnt click in the right button. tried all the selectors
 class GRATAInternational extends ByPage {
   constructor(
     name = "GRATA International",

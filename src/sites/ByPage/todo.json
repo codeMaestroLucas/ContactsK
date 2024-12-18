@@ -4,14 +4,6 @@
         "link": ""
     },
     {
-        "name": "Dechert LLP",
-        "link": "https://www.dechert.com/people-search.html?cq=29#position=Partner"
-    },
-    {
-        "name": "Morgan, Lewis & Bockius LLP",
-        "link": "https://www.morganlewis.com/our-people"
-    },
-    {
         "name": "Holland & Knight",
         "link": "https://www.hklaw.com/en/professionals?level=9ad6fc29-4f0a-41f6-8376-00ff78aa09e2&office=66402548-5b18-4c1b-a862-c1b810f0baf6"
     },
@@ -19,5 +11,9 @@
         "name": "Rimon",
         "link": "https://www.rimonlaw.com/team/",
         "Notes" : "Study if is a valid - a lot of US lawyers"
+    },
+    {
+        "name": "",
+        "link": ""
     }
 ]
