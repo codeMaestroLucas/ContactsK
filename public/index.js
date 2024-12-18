@@ -14,7 +14,7 @@ searchBtn.addEventListener("click", async () => {
 
     if (response.ok) {
       const result = await response.json();
-      alert(result.alert + "\n\nSearch completed successfully.");
+      alert(result.alert + "\nSearch completed successfully.");
 
     } else {
       alert("An error occurred while starting the search.");
@@ -34,7 +34,7 @@ updateBtn.addEventListener("click", async () => {
 
     if (response.ok) {
       const result = await response.json();
-      alert(result.alert + "\n\nUpdate completed successfully.");
+      alert(result.alert + "\nUpdate completed successfully.");
       if (result.details) {
         console.log(result.details);
         // Optionally log the details for debugging
@@ -42,7 +42,7 @@ updateBtn.addEventListener("click", async () => {
     } else {
       alert("An error occurred while checking for updates.");
     }
-    
+
   } catch (error) {
     alert("An unexpected error occurred.");
     console.error(error);

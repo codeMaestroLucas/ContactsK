@@ -46,14 +46,14 @@ function runCommand(command) {
   });
 }
 
+
 app.post("/search", async (req, res) => {
   try {
-    const commitMessage = getTimesUsed();
-    const sanitizedCommitMessage = JSON.stringify(commitMessage);
+    const commitMessage = await getTimesUsed();
 
     const commands = [
       "git add .",
-      `git commit -m ${sanitizedCommitMessage}`,
+      `git commit -m "${commitMessage}"`,
       "git push -u origin main --force"
     ];
 
@@ -64,19 +64,19 @@ app.post("/search", async (req, res) => {
       } catch (err) {
         console.error(`Error executing command: ${command}`, err);
         await runCommand("git reset");
-        return res.status(500).send(`Error: ${err.message}`);
+        return res.status(500).json({ alert: `Error: ${err.message}` });
       }
     }
 
-    res.status(200).send("Commands executed successfully");
+    res.status(200).json({ alert: "Commands executed successfully" });
     
   } catch (err) {
     console.error(err);
-    res.status(500).send(`Error: ${err.message}`);
+    res.status(500).json({ alert: "An unexpected error occurred.", details: err.message });
   }
 });
 
-// POST endpoint for update
+
 app.post("/update", async (req, res) => {
   try {
     const command = "git pull origin main";
@@ -89,16 +89,18 @@ app.post("/update", async (req, res) => {
         return;
       }
 
-      if (stderr) {
-        console.warn(`Warning: ${stderr}`);
-        res.status(400).send({ alert: "Warning detected during pull operation.", details: stderr });
-        return;
-      }
+      // if (stderr) {
+      //   console.warn(`Warning: ${stderr}`);
+      //   res.status(400).send({ alert: "Warning detected during pull operation.", details: stderr });
+      //   return;
+      // }
 
       if (stdout.includes("Already up to date.")) {
         res.status(200).send({ alert: "Repository is already up to date." });
+
       } else if (stdout.includes("Updating")) {
         res.status(200).send({ alert: "Repository successfully updated.", details: stdout });
+
       } else {
         res.status(200).send({ alert: "Unexpected output from git pull.", details: stdout });
       }
