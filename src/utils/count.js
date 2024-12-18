@@ -24,7 +24,7 @@ function getTimesUsed() {
           return reject('Error writing to the count file');
         }
 
-        resolve(`${X}rd time using it`);
+        resolve(`${X}º time using it`);
       });
     });
   });

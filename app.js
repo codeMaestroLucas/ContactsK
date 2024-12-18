@@ -22,28 +22,31 @@ const server = app.listen(PORT, async () => {
 
 app.use(express.static(path.join(__dirname, "public")));
 
-// Modify the runCommand function to support Promises
+
 function runCommand(command) {
-  return new Promise((resolve, reject) => {
-    const shell = os.platform() === "win32" ? "cmd.exe" : "bash";
-    const shellArgs = os.platform() === "win32" ? ["/c", command] : ["-c", command];
+    // const shell = os.platform() === "win32" ? "cmd.exe" : "bash";
+    // const shellArgs = os.platform() === "win32" ? ["/c", command] : ["-c", command];
 
-    const child = spawn(shell, shellArgs, {
-      stdio: "inherit",
-    });
+    // const child = spawn(shell, shellArgs, {
+    //   stdio: "inherit",
+    // });
+    
+    const execSync = require('child_process').execSync;
+    // import { execSync } from 'child_process';  // replace ^ if using ES modules
+    
+    const output = execSync(command, { encoding: 'utf-8' });  // the default is 'buffer'
 
-    child.on("close", (code) => {
-      if (code === 0) {
-        resolve(); // Resolve when the command succeeds
-      } else {
-        reject(new Error(`Command failed with code ${code}`)); // Reject on failure
-      }
-    });
+    // child.on("close", (code) => {
+    //   if (code === 0) {
+    //     resolve(); // Resolve when the command succeeds
+    //   } else {
+    //     reject(new Error(`Command failed with code ${code}`)); // Reject on failure
+    //   }
+    // });
 
-    child.on("error", (error) => {
-      reject(error); // Reject on error
-    });
-  });
+    // child.on("error", (error) => {
+    //   reject(error); // Reject on error
+    // });
 }
 
 
@@ -53,7 +56,7 @@ app.post("/search", async (req, res) => {
 
     const commands = [
       "git add .",
-      `git commit -m "${commitMessage}"`,
+      `git commit -m "${ commitMessage }"`,
       "git push -u origin main --force"
     ];
 
@@ -96,6 +99,7 @@ app.post("/update", async (req, res) => {
       // }
 
       if (stdout.includes("Already up to date.")) {
+        console.log(stdout);
         res.status(200).send({ alert: "Repository is already up to date." });
 
       } else if (stdout.includes("Updating")) {

@@ -34,11 +34,13 @@ updateBtn.addEventListener("click", async () => {
 
     if (response.ok) {
       const result = await response.json();
-      alert(result.alert + "\nUpdate completed successfully.");
+      alert(result.alert);
+
       if (result.details) {
         console.log(result.details);
         // Optionally log the details for debugging
       }
+      
     } else {
       alert("An error occurred while checking for updates.");
     }
