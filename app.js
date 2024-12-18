@@ -46,32 +46,30 @@ function runCommand(command) {
   });
 }
 
-// POST endpoint for search (assuming you want to run the git commands here)
 app.post("/search", async (req, res) => {
   try {
     const commitMessage = getTimesUsed();
     const sanitizedCommitMessage = JSON.stringify(commitMessage);
 
-    // Define the individual commands
     const commands = [
       "git add .",
       `git commit -m ${sanitizedCommitMessage}`,
       "git push -u origin main --force"
     ];
-    // Just a test
 
-    // Loop through each command and run it separately
     for (const command of commands) {
       try {
         await runCommand(command);
+
       } catch (err) {
         console.error(`Error executing command: ${command}`, err);
-        await runCommand("git reset"); // Reset if there's an error
+        await runCommand("git reset");
         return res.status(500).send(`Error: ${err.message}`);
       }
     }
 
-    res.send("Commands executed successfully");
+    res.status(200).send("Commands executed successfully");
+    
   } catch (err) {
     console.error(err);
     res.status(500).send(`Error: ${err.message}`);
