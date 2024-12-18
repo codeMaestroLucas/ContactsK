@@ -6,67 +6,78 @@ const os = require("os");
 const express = require("express");
 const path = require("path");
 
+const { exec } = require("child_process");
+
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
 
 const PORT = 3000;
 const server = app.listen(PORT, async () => {
-  console.log(`Server is running at http://localhost:${ PORT }`);
+  console.log(`Server is running at http://localhost:${PORT}`);
 
   const { default: open } = await import("open");
-  open(`http://localhost:${ PORT }`);
+  open(`http://localhost:${PORT}`);
 });
-
 
 app.use(express.static(path.join(__dirname, "public")));
 
+// Modify the runCommand function to support Promises
+function runCommand(command) {
+  return new Promise((resolve, reject) => {
+    const shell = os.platform() === "win32" ? "cmd.exe" : "bash";
+    const shellArgs = os.platform() === "win32" ? ["/c", command] : ["-c", command];
 
-function runCommand(command, res) {
-  const shell = os.platform() === "win32" ? "cmd.exe" : "bash";
-  const shellArgs = os.platform() === "win32" ? ["/c", command] : ["-c", command];
+    const child = spawn(shell, shellArgs, {
+      stdio: "inherit",
+    });
 
-  const child = spawn(shell, shellArgs, {
-    stdio: "inherit", // Ensure the output is shown in the terminal
-  });
+    child.on("close", (code) => {
+      if (code === 0) {
+        resolve(); // Resolve when the command succeeds
+      } else {
+        reject(new Error(`Command failed with code ${code}`)); // Reject on failure
+      }
+    });
 
-  child.on("close", (code) => {
-    if (code === 0) {
-      res.send("Commands executed successfully");
-    } else {
-      res.status(500).send(`Error: Command execution failed with code ${code}`);
-    }
-  });
-
-  child.on("error", (error) => {
-    console.error(`Error executing command: ${ error.message }`);
-    res.status(500).send(`Error: ${ error.message }`);
+    child.on("error", (error) => {
+      reject(error); // Reject on error
+    });
   });
 }
 
+// POST endpoint for search (assuming you want to run the git commands here)
 app.post("/search", async (req, res) => {
   try {
-    res.status(200).send({ alert: "Starting the search. Don't close the window." });
+    const commitMessage = getTimesUsed();
+    const sanitizedCommitMessage = JSON.stringify(commitMessage);
 
-    await main();
-
-    const commitMessage = await getTimesUsed();
+    // Define the individual commands
     const commands = [
       "git add .",
-      `git commit -m \"${ commitMessage }\"`,
-      "git push -u origin main",
-    ].join(" && ");
+      `git commit -m ${sanitizedCommitMessage}`,
+      "git push -u origin main"
+    ];
 
-    runCommand(commands, res);
+    // Loop through each command and run it separately
+    for (const command of commands) {
+      try {
+        await runCommand(command);
+      } catch (err) {
+        console.error(`Error executing command: ${command}`, err);
+        await runCommand("git reset"); // Reset if there's an error
+        return res.status(500).send(`Error: ${err.message}`);
+      }
+    }
+
+    res.send("Commands executed successfully");
   } catch (err) {
     console.error(err);
-    res.status(500).send(err.message);
+    res.status(500).send(`Error: ${err.message}`);
   }
 });
 
-
-const { exec } = require("child_process");
-
+// POST endpoint for update
 app.post("/update", async (req, res) => {
   try {
     const command = "git pull origin main";
@@ -87,14 +98,11 @@ app.post("/update", async (req, res) => {
 
       if (stdout.includes("Already up to date.")) {
         res.status(200).send({ alert: "Repository is already up to date." });
-
       } else if (stdout.includes("Updating")) {
         res.status(200).send({ alert: "Repository successfully updated.", details: stdout });
-
       } else {
         res.status(200).send({ alert: "Unexpected output from git pull.", details: stdout });
       }
-      
     });
   } catch (err) {
     console.error(err);
@@ -102,8 +110,7 @@ app.post("/update", async (req, res) => {
   }
 });
 
-
-// Endpoint to shut down the server
+// POST endpoint to shut down the server
 app.post("/shutdown", (req, res) => {
   console.log("Shutting down the server...");
   res.send("Server is shutting down...");

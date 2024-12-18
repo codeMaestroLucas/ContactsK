@@ -1,5 +1,9 @@
 [
   {
+    "name": "",
+    "link": ""
+  },
+  {
     "name": "TillekeAndGibbins",
     "link": "https://www.tilleke.com/professionals/",
     "Note": "Driver outdated, dont kown how to fix this, standing by"
@@ -14,8 +18,7 @@
     "link": "https://induslaw.com/people/"
   },
   {
-    "name": "Carnelutti Law Firm",
-    "link": "https://www.carnelutti.com/people/",
-    "Note": "Has a MODAL that might be an issue"
+    "name": "",
+    "link": ""
   }
 ]

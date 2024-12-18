@@ -95,6 +95,37 @@ class Site {
     return role.includes("partner");
   }
 
+  
+/**
+ * Filters lawyers from the provided list based on their role, returning only partners.
+ *
+ * @param {WebElement[]} lawyersInPage - Array of WebElements representing lawyers on the page.
+ * @param {By[]} webRole - Array of locators for the role element within a lawyer element.
+ * @param {boolean} byText - If true, uses `getText()`; otherwise, uses `getAttribute('outerHTML')`. Default is true.
+ * @returns {Promise<WebElement[]>} Array of WebElements representing partners.
+ */
+  async filterPartnersInPage(lawyersInPage, webRole, byText = true) {
+    let partners = [];
+
+    for (let lawyer of lawyersInPage) {
+      // Starts with lawyer to overwrite further on with the locators
+      let element = lawyer;
+
+      for (const locator of webRole) {
+        element = await element.findElement(locator);
+      }
+
+      const role = (byText) ?
+        (await element.getText()).toLowerCase().trim()
+          :
+        (await element.getAttribute("outerHTML")).toLowerCase().trim();
+      
+      if (role.includes("partner")) partners.push(lawyer);
+    }
+
+    return partners;
+  }
+
   /**
    * Function used to get the Lawyer information from the site
    */
