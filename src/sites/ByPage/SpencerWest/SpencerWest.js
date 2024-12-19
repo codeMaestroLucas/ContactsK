@@ -66,9 +66,3 @@ class SpencerWest extends ByPage {
 }
 
 module.exports = SpencerWest;
-async function main() {
-  t = new SpencerWest();
-  t.searchForLawyers();
-}
-
-main();
