@@ -17,47 +17,44 @@ class SpencerWest extends ByPage {
 
 
   async accessPage(index) {
-    await super.accessPage(index, `${ this._link }page/${ index + 1 }`);
+    const otherLink = `${ this._link }page/${ index + 1 }`
+    await super.accessPage(index, otherLink);
   }
 
  
   async getLawyersInPage() {
-    return await driver.wait(
+    const lawyers = await driver.wait(
       until.elementsLocated(By.className("person-card__wrapper")),
       20000
     );
+    
+    const webRole = [
+      By.className("person-card__job-description"),
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
-  /**
-   * Function used to get the Email & DDD from the socialLink HTML bar
-   * @param {*} socialLinks Element HTML
-   * @returns the valid values for email & ddd or null if they don't exist
-   */
-  async #getSocialMidia(socialLinks) {
+
+  async #getSocials(lawyer) {
     let email;
     let ddd;
 
-    for (let c = 0 ; c < socialLinks.length ; c++) {
-        const href = (await socialLinks[c].getAttribute('href')).toLowerCase().trim();
+    const socials = await lawyer.findElements(By.className("social-link"));
 
-        if (href.includes("mailto:")) {
-          email = href;
+    for (let social of socials) {
+        const href = (await social.getAttribute('href')).toLowerCase().trim();
 
-        } else if (href.includes("tel:")) {
-          ddd = href;
-        }
+        if (href.includes("mailto:")) email = href;
+        else if (href.includes("tel:")) ddd = href;
 
+        if (email && ddd) break;
     }
 
     return { email, ddd };
   }
 
   async getLawyer(lawyer) {
-    const isPartner = this.isPartner(lawyer, "person-card__job-description");
-    if (!isPartner) return "Not Partner";
-
-    const socialLinks = await lawyer.findElements({ className: "social-link" });
-    const { ddd, email } = await this.#getSocialMidia(socialLinks);
+    const { ddd, email } = await this.#getSocials(lawyer);
 
     return {
       name: await lawyer.findElement(By.className("person-card__name")).getText(),
@@ -69,3 +66,9 @@ class SpencerWest extends ByPage {
 }
 
 module.exports = SpencerWest;
+async function main() {
+  t = new SpencerWest();
+  t.searchForLawyers();
+}
+
+main();

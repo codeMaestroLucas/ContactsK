@@ -5,7 +5,7 @@ const Site = require("./Site")
 
 class ByFilter extends Site {
   constructor(name, link, totalPages, maxLawyersForSite) {
-
+  
     super(name, link, totalPages, maxLawyersForSite);
 
     const sanitizedPath = name.trim().replace(/\s+/g, "");

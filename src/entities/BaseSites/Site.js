@@ -1,203 +1,107 @@
 const { registerEmailOfMonth } = require("../../utils/emailsOfTheMonth");
-const { driver } = require("../../config/driverConfig");
+const makeValidations = require("../../utils/makeValidations");
 const Planilha = require("../Excel/Sheet");
+const BaseSite = require("./BaseSite");
 const Lawyer = require("../Lawyer");
 
-const { By, Key } = require("selenium-webdriver");
 
-
-class Site {
-  /**
-   * @param {string} name
-   * @param {string} link
-   * @param {number} totalPages
-   * @param {number} maxLawyersForSite
-   */
-  constructor(name, link, totalPages, maxLawyersForSite = 1) {
-    this._name = name;
-    this._link = link;
-    this._totalPages = totalPages;
-    this._maxLawyersForSite = maxLawyersForSite;
-    this._lastCountries = new Set();
-    this._lawyersRegistered = 0;
+class Site extends BaseSite{
+  constructor(name, link, totalPages, maxLawyersForSite) {
+    super(name, link, totalPages, maxLawyersForSite);
   }
 
-  get name() {
-    return this._name
-  }
-
-  get lawyersRegistered() {
-    return this._lawyersRegistered
-  }
-
-/**
- * Waits for the current page to fully load by checking the `document.readyState`.
- *
- * This method uses the WebDriver's `wait` function to repeatedly evaluate the
- * `document.readyState` property until it is `'complete'`, indicating that the
- * page has fully loaded. The maximum wait time is 3min.
- *
- * @async
- * @returns {Promise<void>} Resolves once the page has fully loaded or the
- * timeout is reached.
- *
- * @throws {Error} If the page does not load within the 60-second timeout.
- *
- */
-  async waitForPageToLoad() {
-    await driver.wait(async function() {
-      const readyState = await driver.executeScript('return document.readyState');
-      return readyState === 'complete';
-    }, 180000); // Waits up to 3min for the page to be fully loaded
-  }
-  
 
   /**
-   * Function used to switch the pages in the site.
-   * @param {number} index of the current iteration
-   * @param {string} otherUrl to be switched. This URL contains the index inside
-   *  of it so it iterates through the index.
-   */
-  async accessPage(index, otherUrl= "") {
-    const url = index === 0 ? this._link : otherUrl;
-    await driver.get(url);
-    await this.waitForPageToLoad();
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second
-  }
-
-  /**
-   * Function used to get the lawyers in the current page
+   * Function used to get the lawyers in the current page.
+   * @returns {WebElement[]} array of all the lawyers in the current page
    */
   async getLawyersInPage() {}
 
-  /**
-   * Function used to roll down the page so more lawyers can be found
-   * @param {number} timesToRollDown
-   * @param {number} sleepTime in seconds
-   */
-  async rollDown(timesToRollDown, sleepTime) {
-    for (let c = 0; c < timesToRollDown; c++) {
-      await new Promise((resolve) => setTimeout(resolve, (sleepTime * 1000)));
-      const actions = driver.actions();
-      await actions
-        .keyDown(Key.CONTROL)
-        .sendKeys(Key.END)
-        .keyUp(Key.CONTROL)
-        .perform();
-    }
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-  }
-
-  /**
-   * Function to get the Job Function of an Lawyer and return if it's a Partner
-   * or not.
-   * @param {*} lawyer object
-   * @param {string} classPath for the object
-   * @returns {boolean} true if it's a Partner else false
-   */
-  async isPartner(lawyer, classPath) {
-    const role = (await lawyer.findElement(
-        By.className(classPath)).getText()).trim().toLowerCase();
-    return role.includes("partner");
-  }
-
-  
-/**
- * Filters lawyers from the provided list based on their role, returning only partners.
- *
- * @param {WebElement[]} lawyersInPage - Array of WebElements representing lawyers on the page.
- * @param {By[]} webRole - Array of locators for the role element within a lawyer element.
- * @param {boolean} byText - If true, uses `getText()`; otherwise, uses `getAttribute('outerHTML')`. Default is true.
- * @returns {Promise<WebElement[]>} Array of WebElements representing partners.
- */
-  async filterPartnersInPage(lawyersInPage, webRole, byText = true) {
-    let partners = [];
-
-    for (let lawyer of lawyersInPage) {
-      // Starts with lawyer to overwrite further on with the locators
-      let element = lawyer;
-
-      for (const locator of webRole) {
-        element = await element.findElement(locator);
-      }
-
-      const role = (byText) ?
-        (await element.getText()).toLowerCase().trim()
-          :
-        (await element.getAttribute("outerHTML")).toLowerCase().trim();
-      
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
-  }
 
   /**
    * Function used to get the Lawyer information from the site
+   * @param {WebElement}
    */
   async getLawyer(lawyer) {}
 
-  /**
-   * Searches for lawyers across multiple web pages and registers them if they meet validation criteria.
-   *
-   * This asynchronous function iterates through a specified number of pages to find lawyers. It accesses each page,
-   * retrieves lawyer details, and performs validation checks. Lawyers who pass the validation are registered.
-   *
-   * The function stops searching if it finds 5 lawyers from the same country or if a page has no lawyers listed.
-   *
-   * @param {number} numberOfIterations - The number of pages to iterate over and search for lawyers.
-   *
-   */
-  async searchForLawyers() {}
-
 
   /**
-   * Function that uses a regex to extract just the content of an HTML tag
-   */
-  getContentFromTag(tag) {
-    const regex = />([^<>]+)</;
-
-    const match = tag.match(regex);
-    return match ? match[1] : null;
-  }
-
-
-  /**
-   * Function used to extract the name from the Email address if the name wasn't
-   * found.
+   * Searches for lawyers across multiple web pages and registers them if they
+   * meet validation criteria.
    *
-   * The name will be identified with "*****" to further analisys
+   * This asynchronous function iterates through a specified number of pages to
+   * find lawyers. It accesses each page, retrieves lawyer details, and performs
+   * validation checks. Lawyers who pass the validation are registered.
    *
-   * @param {string} email.
-   * @return {string} name from the extracted email.
    */
-  getNameFromEmail(email) {
-    // Regex to extract the part before '@'
-    const emailRegex = /^([\w.-]+)@/;
-    let name = "";
-    
-    try {
-      const sanitizedEmail = email.replace(/mailto:/i, "").trim().toLowerCase();
-      const match = sanitizedEmail.match(emailRegex);
-  
-      if (match) {
-        name = match[1]
-          .replace(/-/g, " ").split(".").join(" ").trim();
+  async *searchForLawyers() {
+    for (let i = 0; i < this._totalPages; i++) {
+      console.log(`${ this._totalPages }) ${ i } - - - - Page ${ i + 1 }`);
 
-      } else {
-        throw new Error("Invalid email format or no match found.");
+      await this.accessPage(i);
+
+      const lawyersInPage = await this.getLawyersInPage();
+
+      if (!lawyersInPage || lawyersInPage.length <= 0) {
+        console.log(
+          `No search results found on page ${ i + 1 } of the firm ${ this._name }`
+        );
+        continue; // Skip this page
       }
-      
-    } catch (error) {
-      const fallbackMatch = email.replace(/mailto:/i, "").trim().toLowerCase().match(/^([^@]+)/);
-      if (fallbackMatch) {
-        name = fallbackMatch[1]
-          .replace(/-/g, " ").split(".").join(" ").trim()
-        }
-    }
+
+      for (let [index, lawyer] of lawyersInPage.entries()) {
+        try {
+
+          let { isPartner, lawyerDetails } = yield lawyer;
+
+          if (!isPartner) {
+            console.log("Not Partner");
+            continue; // Skip this lawyer
+          }
   
-    // To identify that the name was generated from this function
-    return name + " *****";
+
+          if ( !lawyerDetails || !lawyerDetails.country || !lawyerDetails.email ) {
+            console.log(`Error reading ${ index + 1 }th lawyer at the page ${ i + 1 } of the firm ${ this._name }.\nSkipping...`);
+            console.log("  Name: " + lawyerDetails.name);
+            console.log("  Email: " + lawyerDetails.email);
+            console.log("  Country: " + lawyerDetails.country);
+            continue;
+          }
+
+          let { name = "", country, email } = lawyerDetails;
+
+          if (email && !name) {
+            name = this.getNameFromEmail(email);
+          }
+
+          let canRegister = makeValidations(
+            name, country, email,
+            this._lastCountries, this.emailsOfMonthPath, this.emailsToAvoidPath
+          );
+          if (!canRegister) continue;
+
+          this.registerLawyer(
+            name, country, email,
+            this._name, this.emailsOfMonthPath
+          );
+
+          if (this._lawyersRegistered === this._maxLawyersForSite) {
+            console.log(`No more than ${ this._maxLawyersForSite } lawyer need for the firm ${ this._name }.`);
+            return;
+          }
+
+          yield ;
+
+        } catch (e) {
+          console.log(`Error reading ${ index + 1 }th lawyer at the page ${ i + 1 } of the firm ${ this._name }\nError: ${ e }...`);
+          continue;
+
+        } finally {
+          yield ;
+          
+        }
+      }
+    }
   }
 
 
