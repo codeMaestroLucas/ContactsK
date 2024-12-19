@@ -28,17 +28,11 @@ class Ellex extends ByNewPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("person-item__content"))
-        .findElement(By.className("person-item__info"))
-        .getText()
-      ).toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return partners;
+    const webRole = [
+      By.className("person-item__content"),
+      By.className("person-item__info")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
   

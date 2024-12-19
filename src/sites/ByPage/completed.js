@@ -1,11 +1,11 @@
 const ByPage = {
-  XforIteraction: [    // 25
+  XforIteraction: [    // 27
     "Conyers", "SpencerWest", "Walkers", "ApplebyGlobal", "WhiteAndCase",
     "GideLoyretteNouel", "CollasCrill", "WolfTheiss", "AlTamimi",
     "LathamAndWatkins", "Harneys", "CareyOlsen", "BNT",  "Kinstellar",
     "Schoenherr", "HFW", "TaylorWessing", "PaulHastings", "WatsonFarleyAndWilliams",
     "WinstonAndStrawn", "BonelliErede", "Ashurst", "ArnoldAndPorter", "Pulegal",
-    "DechertLLP",
+    "DechertLLP", "JonesDay", "CampbellsLegal",
     // "",
     // "Akin" // - Pass this to Filter
   ],

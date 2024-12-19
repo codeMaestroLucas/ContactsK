@@ -26,8 +26,9 @@ class Schoenherr extends ByPage {
       ), 100000
     );
 
-    const webRole = [By.className("people-card-occupation")];
-    
+    const webRole = [
+      By.className("people-card-occupation")
+    ];
     return await super.filterPartnersInPage(lawyers, webRole, false);
   }
   
@@ -58,6 +59,8 @@ class Schoenherr extends ByPage {
 
       if (result.includes("@schoenherr")) email = result;
       else if (result.includes("+")) ddd = result;
+
+      if (email && ddd) break;
     }
 
     return { email, ddd };

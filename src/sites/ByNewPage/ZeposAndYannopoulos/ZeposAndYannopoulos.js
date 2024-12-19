@@ -27,16 +27,10 @@ class ZeposAndYannopoulos extends ByNewPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.css("p.person-position"))
-        .getAttribute("outerHTML")
-        ).toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return partners;
+    const webRole = [
+      By.css("p.person-position")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
   

@@ -38,4 +38,11 @@ project, such as data processing, file handling, or web scraping.
 ---
 
 ---
-# fix
+# Ideas
+1. Create an Details.txt - the name can change - file for each Site to display the last page that a lawyer
+was found - just for the sites that have more than one page.
+
+# Working on
+MorganLewisAndBockiusLLP
+
+# Fix

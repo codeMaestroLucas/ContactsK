@@ -50,6 +50,8 @@ class SprusonAndFerguson extends ByPage {
 
       if (href.includes("mailto:")) email = href;
       else if (href.includes("tel:")) ddd = href;
+
+      if (email && ddd) break;
     }
 
     return { email, ddd };

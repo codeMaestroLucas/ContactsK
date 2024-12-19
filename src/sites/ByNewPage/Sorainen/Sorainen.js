@@ -34,10 +34,9 @@ class Sorainen extends ByNewPage {
 
   async getLawyersInPage() {
     await new Promise(resolve => setTimeout(resolve, 500));
-    const lawyers = await driver
+    return await driver
       .findElement(By.id("sorainen_posts_wrap"))
       .findElements(By.css("li > a"));
-    return lawyers;
   }
 
   
@@ -50,12 +49,9 @@ class Sorainen extends ByNewPage {
 
 
   async #getName(lawyer) {
-    const nameElement = await lawyer
+    return await lawyer
       .findElement(By.className("personHeader__name"))
       .getText();
-
-    
-    return nameElement
   }
 
 

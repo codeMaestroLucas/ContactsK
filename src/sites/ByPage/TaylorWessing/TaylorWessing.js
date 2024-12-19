@@ -25,15 +25,10 @@ class TaylorWessing extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className('team-members__item--title person__description-title'))
-        .getText()
-      ).toLowerCase();
-      if (role.includes('partner')) partners.push(lawyer);
-    }
-    return partners;
+    const webRole = [
+      By.className('team-members__item--title person__description-title')
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
   async #getName(lawyer) {
@@ -82,3 +77,4 @@ class TaylorWessing extends ByPage {
 }
 
 module.exports = TaylorWessing;
+// TODO: Test this 

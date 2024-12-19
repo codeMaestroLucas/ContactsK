@@ -31,15 +31,10 @@ class VeritasLegal extends ByPage {
       ),60000
     );
   
-    let partners = [];
-    for (const lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("staff-entry-position entry-position wpex-text-sm wpex-text-3 wpex-leading-snug wpex-mb-5"))
-        .getText()).toLowerCase();
-      if (role.includes("partner")) partners.push(lawyer);
-
-    }
-    return partners;
+    const webRole = [
+      By.className("staff-entry-position entry-position wpex-text-sm wpex-text-3 wpex-leading-snug wpex-mb-5")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
   
 

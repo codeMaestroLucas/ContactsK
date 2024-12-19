@@ -48,6 +48,8 @@ class NjordLaw extends ByPage {
 
       if (href.includes("mailto:")) email = href;
       else if (href.includes("tel:")) ddd = href.replace("tel:%28%2B", "");
+
+      if (email && ddd) break;
     }
 
     return { email, ddd };

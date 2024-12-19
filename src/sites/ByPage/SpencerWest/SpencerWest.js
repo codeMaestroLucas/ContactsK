@@ -61,7 +61,6 @@ class SpencerWest extends ByPage {
       email: email,
       country: getCountryByDDD(ddd)
     };
-
   }
 }
 

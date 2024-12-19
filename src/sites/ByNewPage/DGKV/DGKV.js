@@ -55,7 +55,6 @@ class DGKV extends ByNewPage {
     }
   }
 
-
   
   async getLawyer(lawyer) {
     return {

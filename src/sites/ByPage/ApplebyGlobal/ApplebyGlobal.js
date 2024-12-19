@@ -27,20 +27,12 @@ class ApplebyGlobal extends ByPage {
       ), 60000 // This site loads Slowly
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(
-          By.className(
-            "u-font-size-12 u-font-weight-normal u-uppercase u-letter-spacing-supersmall u-margin-bottom-10"
-          )
-        )
-        .getText()
-      ).toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return partners;
+    const webRole = [
+      By.className(
+        "u-font-size-12 u-font-weight-normal u-uppercase u-letter-spacing-supersmall u-margin-bottom-10"
+      )
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
   async #getName(lawyer) {
@@ -75,6 +67,8 @@ class ApplebyGlobal extends ByPage {
       } else if (href.startsWith("tel:+")) {
         ddd = href;
       }
+
+      if (email && ddd) break;
     }
   
     return { email, ddd };

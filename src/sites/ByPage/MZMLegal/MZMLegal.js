@@ -26,12 +26,12 @@ class MZMLegal extends ByPage {
   }
 
   async getLawyersInPage() {
-    const allLawyers = await driver.wait(
+    const lawyers = await driver.wait(
       until.elementsLocated(
         By.className("d-flex g-0 flex-column rounded text-center teamItem")
       ), 60000
     );
-    return allLawyers.slice(0, 12);
+    return lawyers.slice(0, 12);
   }
 
 
@@ -45,7 +45,7 @@ class MZMLegal extends ByPage {
   async #getEmail(lawyer) {
     return await lawyer
       .findElement(By.className("col-auto pb-4"))
-      .findElement(By.css('a[href^="mailto:"]')) // Fixed CSS selector
+      .findElement(By.css('a[href^="mailto:"]'))
       .getAttribute("href");
   }
   

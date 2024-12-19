@@ -18,7 +18,6 @@ class ArthurCox extends ByNewPage {
   async accessPage(index) {
     const otherUrl = `https://www.arthurcox.com/people/?term=&offset=${ index + 1 }&attr2=Partner/#search-section`;
     await super.accessPage(index, otherUrl);
-    try {} catch (e) {}
   }
 
 
@@ -83,4 +82,3 @@ class ArthurCox extends ByNewPage {
 }
 
 module.exports = ArthurCox;
-

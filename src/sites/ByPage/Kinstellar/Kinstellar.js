@@ -29,10 +29,9 @@ class Kinstellar extends ByPage {
   }
 
   async getLawyersInPage() {
-    const lawyers = await driver.wait(
+    return await driver.wait(
       until.elementsLocated(By.className("row table_row"))
     );
-    return lawyers;
   }
 
   async #getName(lawyer) {
@@ -57,9 +56,11 @@ class Kinstellar extends ByPage {
       const href = await social.getAttribute("href");
 
       if (href.includes("tel:")) ddd = href;
-      else if (href.includes("@kinstellar.com"))email = href;
+      else if (href.includes("@kinstellar.com")) email = href;
 
+      if (email && ddd) break;
     }
+    
     return { email, ddd };
   }
 

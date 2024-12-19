@@ -69,7 +69,6 @@ class Noerr extends ByNewPage {
   
   async getLawyer(lawyer) {
     const details = await driver.findElement(By.className("MuiContainer-root MuiContainer-maxWidthXl css-vvmory"));
-
     const { email, ddd } = await this.#getSocials(details)
 
     return {

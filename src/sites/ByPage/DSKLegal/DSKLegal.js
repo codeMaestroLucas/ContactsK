@@ -30,20 +30,21 @@ class DSKLegal extends ByPage {
       until.elementLocated(By.id("locnameres"))
     );
   
-    const div = await divResults.findElement(By.className("row"));
+    const items = await divResults
+      .findElement(By.className("row"))
+      .findElements(By.css("ul > li"));
   
-    let items = await div.findElements(By.css("ul > li"));
-    let validItems = [];
+    let partners = [];
     
     for (let item of items) {
       try {
         await item.findElement(By.className("team-detail"));
-        validItems.push(item);
+        partners.push(item);
         
       } catch (e) {}
     }
   
-    return validItems;
+    return partners;
   }
   
   async #getName(lawyer) {

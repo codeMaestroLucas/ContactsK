@@ -30,10 +30,10 @@ class Conyers extends ByPage {
 
   async getLawyer(lawyer) {
     return {
-      name: await lawyer.findElement({ className: "title h8" }).getText(),
-      country: await lawyer.findElement({ className: "light h14" }).getText(),
+      name: await lawyer.findElement(By.className("title h8")).getText(),
+      country: await lawyer.findElement(By.className("light h14")).getText(),
       email: await lawyer
-        .findElement({ className: "email light-weight" })
+        .findElement(By.className("email light-weight"))
         .getText(),
     };
   }

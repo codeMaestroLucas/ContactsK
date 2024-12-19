@@ -75,7 +75,7 @@ class BaseSite {
   /**
    * Function used to roll down the page so more lawyers can be found
    * @param {number} timesToRollDown
-   * @param {number} sleepTime in seconds
+   * @param {number} sleepTime **in seconds**
    */
   async rollDown(timesToRollDown, sleepTime) {
     for (let c = 0; c < timesToRollDown; c++) {
@@ -104,18 +104,23 @@ class BaseSite {
     let partners = [];
 
     for (let lawyer of lawyersInPage) {
-      // Starts with lawyer to overwrite further on with the locators
-      let element = lawyer;
+      try {
+        // Starts with lawyer to overwrite further on with the locators
+        let element = lawyer;
+  
+        for (const locator of webRole) {
+          element = await element.findElement(locator);
+        }
+  
+        const role = byText
+          ? (await element.getText()).toLowerCase().trim()
+          : (await element.getAttribute("outerHTML")).replace(/[\n\t]/g, "").toLowerCase().trim();
+  
+        if (role.includes("partner")) partners.push(lawyer);
 
-      for (const locator of webRole) {
-        element = await element.findElement(locator);
+      } catch (error) {
+        continue;
       }
-
-      const role = byText
-        ? (await element.getText()).toLowerCase().trim()
-        : (await element.getAttribute("outerHTML")).toLowerCase().trim();
-
-      if (role.includes("partner")) partners.push(lawyer);
     }
 
     return partners;
@@ -124,6 +129,7 @@ class BaseSite {
 
   /**
    * Function that uses a regex to extract just the content of an HTML tag
+   * @param {string} tag
    */
   getContentFromTag(tag) {
     const regex = />([^<>]+)</;

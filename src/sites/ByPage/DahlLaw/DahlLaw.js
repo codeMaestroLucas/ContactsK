@@ -30,17 +30,10 @@ class DahlLaw extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("employeecard__jobtitle"))
-        .getText())
-        .toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.className("employeecard__jobtitle")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
   async #getName(lawyer) {

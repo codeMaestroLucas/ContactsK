@@ -63,7 +63,10 @@ class Beauchamps extends ByNewPage {
 
   
   async getLawyer(lawyer) {
-    const details = await driver.findElement(By.className("green-card__inner"));
+    const details = await driver.wait(
+      until.elementLocated(By.className("green-card__inner"))
+    );
+
     return {
       name: await this.#getName(details),
       email: await this.#getEmail(details),

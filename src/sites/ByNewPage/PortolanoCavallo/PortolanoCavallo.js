@@ -26,17 +26,11 @@ class PortolanoCavallo extends ByNewPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("app-text"))
-        .findElement(By.className("app-role"))
-        .getText()
-      ).toLowerCase();
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.className("app-text"),
+      By.className("app-role")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
   

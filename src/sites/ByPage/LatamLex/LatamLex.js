@@ -23,19 +23,10 @@ class LatamLex extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const html = await lawyer
-        .findElement(By.css('p[style*="text-transform:uppercase"]'))
-        .getAttribute("outerHTML");
-
-      const regex = />([^<]+)<\/p>/;
-
-      const match = html.match(regex);
-      const role = match[1].trim().toLowerCase();
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return partners;
+    const webRole = [
+      By.css('p[style*="text-transform:uppercase"]')
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
   async #getName(lawyer) {
@@ -53,7 +44,7 @@ class LatamLex extends ByPage {
     return this.getContentFromTag(html);
   }
 
-  async #getDDD(lawyer) {
+  async #getCountry(lawyer) {
     const dddElement = await lawyer
       .findElement(By.css("a"))
       .findElement(By.className("nombreEquipo"))
@@ -69,7 +60,7 @@ class LatamLex extends ByPage {
     return {
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: await this.#getDDD(lawyer),
+      country: await this.#getCountry(lawyer),
     };
   }
 }

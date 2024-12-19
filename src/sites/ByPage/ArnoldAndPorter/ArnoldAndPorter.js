@@ -16,7 +16,6 @@ class ArnoldAndPorter extends ByPage {
 
   async accessPage(index) {
     await super.accessPage(index);
-    try {} catch (e) {}
   }
 
   async getLawyersInPage() {

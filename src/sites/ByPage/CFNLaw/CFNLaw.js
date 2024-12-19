@@ -26,11 +26,15 @@ class CFNLaw extends ByPage {
       ), 100000
     );
 
+    const webRole = [
+      By.className("col-lg-4 col-md-6"),
+      By.css("h4")
+    ];
     let partners = [];
     for (let lawyer of lawyers) {
       const role = await lawyer
-        .findElement(By.className("col-lg-4 col-md-6"))
-        .findElement(By.css("h4"))
+        .findElement()
+        .findElement()
         .getText();
 
       if (role.toLowerCase().includes("partner")) {

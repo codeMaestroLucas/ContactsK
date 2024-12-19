@@ -24,15 +24,11 @@ class KODLyons extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("entry-title fusion-post-title"))
-        .findElement(By.css("a"))
-        .getText()).toLowerCase().trim();
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return partners
+    const webRole = [
+      By.className("entry-title fusion-post-title"),
+      By.css("a")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
 
@@ -41,19 +37,8 @@ class KODLyons extends ByPage {
       .findElement(By.className("entry-title fusion-post-title"))
       .findElement(By.css("a"))
       .getAttribute("outerHTML");
-    
-    const regex = /<a[^>]*>([^,]+),\s*([^<]+)<\/a>/i;
-    const match = html.match(regex);
-
-    let name;
-    let role;
-
-    if (match) {
-      name = match[1].toLowerCase().trim();
-      role = match[2].toLowerCase().trim();
-    }
   
-    return { name, role };
+    return await super.getContentFromTag(html).split(",")[0];
   }
  
 
@@ -73,12 +58,8 @@ class KODLyons extends ByPage {
   }
   
   async getLawyer(lawyer) {
-    const { name, role } = await this.#getName(lawyer);
-  
-    if (!role.includes("partner")) return "Not Partner";
-  
     return {
-      name: name,
+      name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
       country: "Ireland"
     };

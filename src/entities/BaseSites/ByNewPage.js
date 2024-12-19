@@ -18,10 +18,7 @@ class ByNewPage extends Site {
     ensureFileExists(this.emailsToAvoidPath);
   }
 
-  /**
-   * Function used to open a new page and switch into her for getting the lawyer data
-   * @param {strin} link to be opened in a new tab
-   */
+
   /**
    * Function used to open a new page and switch to it for getting the lawyer data
    *
@@ -46,6 +43,7 @@ class ByNewPage extends Site {
     await driver.wait(until.elementLocated(By.css("body")), 5000);
   }
 
+
   /**
    * Function used to close the current tab
    */
@@ -64,9 +62,11 @@ class ByNewPage extends Site {
     }
   }
 
+
   async searchForLawyers() {
     for (let i = 0; i < this._totalPages; i++) {
-      console.log(`${ this._totalPages }) ${ i } - - - - Page ${ i + 1 }`);
+      console.log(`Page ${ i + 1 } - - - - - - - - - - ( ${ this._totalPages } )`);
+
 
       await this.accessPage(i);
 
@@ -83,7 +83,7 @@ class ByNewPage extends Site {
         try {
           await this.openNewTab(lawyer);
           const windows = await driver.getAllWindowHandles();
-          if (windows.length < 2) continue;
+          if (windows.length < 2) continue ;
 
           
           const lawyerDetails = await this.getLawyer();

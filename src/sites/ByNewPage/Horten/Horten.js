@@ -49,7 +49,7 @@ class Horten extends ByNewPage {
 
 
   async #getEmail(lawyer) {
-    const email = (await driver
+    const email = (await lawyer
       .findElement(By.className("email"))
       .getText()
     ).replace("E-mail:", "").trim();

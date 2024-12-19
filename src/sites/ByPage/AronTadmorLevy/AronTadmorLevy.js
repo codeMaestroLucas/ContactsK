@@ -15,7 +15,6 @@ class AronTadmorLevy extends ByPage {
 
   async accessPage(index) {
     await super.accessPage(index);
-    try {} catch (e) {}
   }
 
   async getLawyersInPage() {
@@ -25,18 +24,12 @@ class AronTadmorLevy extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = await lawyer
-          .findElement(By.css("a"))
-          .findElement(By.className("person-info"))
-          .findElement(By.className("thm-title position-title"))
-          .getText();
-
-      if (role.toLowerCase().includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.css("a"),
+      By.className("person-info"),
+      By.className("thm-title position-title")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
   async #getName(lawyer) {

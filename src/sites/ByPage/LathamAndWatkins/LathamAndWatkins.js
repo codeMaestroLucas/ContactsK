@@ -57,6 +57,8 @@ class LathamAndWatkins extends ByPage {
 
       if (span.includes("@lw.com")) email = span;
       else if (span.includes("+")) ddd = span;
+
+      if (email && ddd) break;
     }
 
     return { email, ddd }

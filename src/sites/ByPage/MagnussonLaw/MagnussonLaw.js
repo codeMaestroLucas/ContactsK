@@ -36,16 +36,10 @@ class MagnussonLaw extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("text-small font-weight-normal mb-1"))
-        .getText())
-        .toLowerCase();
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.className("text-small font-weight-normal mb-1")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
   async #getName(lawyer) {
@@ -65,6 +59,8 @@ class MagnussonLaw extends ByPage {
 
       if (href.includes("mailto:")) email = href;
       else if (href.includes("tel:")) ddd = href;
+
+      if (email && ddd) break;
     }
 
     return { email, ddd };

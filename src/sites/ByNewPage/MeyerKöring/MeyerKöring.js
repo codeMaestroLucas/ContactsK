@@ -27,21 +27,12 @@ class MeyerKöring extends ByNewPage {
       ), 100000
     );
 
-    let lawyers = await div
+    const webRole = [
+      By.className("anwalt__position")
+    ];
+    const lawyers = await div
         .findElements(By.css("div.card a.card-img-overlay.d-flex.flex-column.justify-content-between"));
-    let partners  = [];
-    for (let lawyer of lawyers) {
-        try {
-            const role = (await lawyer
-              .findElement(By.className("anwalt__position"))
-              .getAttribute("outerHTML")
-            ).toLowerCase();
-      
-            if (role.includes("partner")) partners.push(lawyer);
-        } catch (error) {}
-    }
-
-    return partners;
+    return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
   
@@ -70,6 +61,7 @@ class MeyerKöring extends ByNewPage {
   async getLawyer(lawyer) {
     const details = await driver
       .findElement(By.className("col-md-6 d-flex col__cv"));
+
     return {
       name: await this.#getName(details),
       email: await this.#getEmail(details),

@@ -45,6 +45,8 @@ class HankunLaw extends ByPage {
       const href = await social.getText();
       if (href.includes("@hankunlaw.com")) email = href;
       else if (href.includes("+")) ddd = href;
+
+      if (email && ddd) break;
     }
 
     return { email, ddd };

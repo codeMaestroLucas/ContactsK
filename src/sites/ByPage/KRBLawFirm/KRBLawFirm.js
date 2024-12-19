@@ -20,25 +20,16 @@ class KRBLawFirm extends ByPage {
   async getLawyersInPage() {
     await driver.wait(until.elementsLocated(By.className("row")));
 
-    const staffContainer = await driver
+    const lawyers = await driver
       .findElement(By.id("staff-div"))
-      .findElement(By.className("container max-width-none"));
+      .findElement(By.className("container max-width-none"))
+      .findElements(By.className("text-center"));
 
-    const lawyers = await staffContainer.findElements(By.className("text-center"));
-
-    const roleRegex = /Partner/i;
-
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const roleText = await lawyer
-        .findElement(By.css("div:nth-of-type(2)"))
-        .findElement(By.className("font-size-22px"))
-        .getText();
-
-      if (roleRegex.test(roleText)) partners.push(lawyer);
-    }
-
-    return partners;
+    const wbeRole = [
+      By.css("div:nth-of-type(2)"),
+      By.className("font-size-22px")
+    ];
+    return await super.filterPartnersInPage(lawyers, wbeRole, true);
   }
 
   async #getName(lawyer) {

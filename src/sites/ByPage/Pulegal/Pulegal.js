@@ -14,6 +14,7 @@ class Pulegal extends ByPage {
 
   async accessPage(index) {
     await super.accessPage(index);
+    await super.rollDown(1, 2);
   }
   
 
@@ -35,12 +36,11 @@ class Pulegal extends ByPage {
       )
       .findElements(By.css("div > div > div > h2 > a"))
 
-    let fullname = "";
-    for (let name of nameElement) {
-      fullname += await name.getText() + " " ;
-    }
-    
+    let fullname = (await Promise.all(
+      nameElement.map(async (el) => await el.getText()))
+    ).join(" ");
     return fullname;
+
   }
 
   async #getEmail(lawyer) {
@@ -58,7 +58,7 @@ class Pulegal extends ByPage {
       .findElement(By.className("elementor-heading-title elementor-size-default"))
       .findElement(By.css("span"))
       .getAttribute("outerHTML");
-    return await this.getContentFromTag(html);
+    return await super.getContentFromTag(html);
   }
 
   async getLawyer(lawyer) {

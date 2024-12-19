@@ -39,13 +39,11 @@ class LEXLogmannsstofa extends ByPage {
 
 
   async getLawyer(lawyer) {
-    const nameDiv = await lawyer.findElement(
-      By.className("descr")
-    );
+    const details = await lawyer.findElement(By.className("descr"));
 
     return {
-      name: await this.#getName(nameDiv),
-      email: await this.#getEmail(nameDiv),
+      name: await this.#getName(details),
+      email: await this.#getEmail(details),
       country: "Iceland",
     };
   }

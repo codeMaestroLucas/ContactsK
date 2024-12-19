@@ -1,4 +1,3 @@
-const { getCountryByDDD } = require("../../../utils/getNationality");
 const ByPage = require("../../../entities/BaseSites/ByPage");
 let { driver } = require("../../../config/driverConfig");
 
@@ -10,7 +9,7 @@ class MorganLewisAndBockiusLLP extends ByPage {
     link = "https://www.morganlewis.com/our-people",
     totalPages = 14,
   ) {
-    super(name, link, totalPages, 500);
+    super(name, link, totalPages);
 
     this._citiesMap = {
       "Abu Dhabi": "Uthe AE",

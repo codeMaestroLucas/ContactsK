@@ -3,6 +3,7 @@ const ByPage = require("../../../entities/BaseSites/ByPage");
 let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
+const { Name } = require("selenium-webdriver/lib/command");
 
 class CollasCrill extends ByPage {
   constructor(
@@ -18,34 +19,27 @@ class CollasCrill extends ByPage {
   }
 
   async getLawyersInPage() {
-    const partnersDiv = await driver.wait(
-      until.elementLocated(
-        By.id("people-list")
+    const t = await driver.wait(
+      until.elementsLocated(
+        By.className("overlay-contents")
       ), 100000
     );
-    const partners = await partnersDiv.findElements(By.css("li"));
-    return partners;
+    return t;
   }
 
   async #getName(lawyer) {
-    const nameDivs = await lawyer.findElements(By.className("name"));
+    const nameDivs = await lawyer
+      .findElement(By.css("a"))
+      .findElement(By.className("name name-desktop"))
+      .getText();
 
-    if (nameDivs.length === 0) {
-      return "";
-    }
-
-    let nameTxt = await nameDivs[0].getText();
-    nameTxt = nameTxt.trim();
-    if (nameTxt === "") {
-      nameTxt = await nameDivs[1].getText();
-    }
-
-    return nameTxt;
+    return nameDivs;
   }
 
   async #getSocials(lawyer) {
-    const socialsDiv = await lawyer.findElement(By.className("icons"));
-    const socials = await socialsDiv.findElements(By.css("a"));
+    const socials = await lawyer
+      .findElement(By.className("icons"))
+      .findElements(By.css("a"));
 
     let email;
     let ddd;
@@ -54,9 +48,8 @@ class CollasCrill extends ByPage {
       const href = await social.getAttribute("href");
 
       if (href.includes("mailto:")) {
-        email = href.replace("mailto:", "");
-        // Need to replace the email so the name doesn't conflict when it's not
-        // found in the name function
+        email = href;
+
       } else if (href.includes("tel:")) {
         ddd = href;
 
@@ -64,6 +57,8 @@ class CollasCrill extends ByPage {
           ddd = ddd.replace("00", "");
         }
       }
+
+      if (email && ddd) break;
     }
 
     return { email, ddd };
@@ -71,18 +66,9 @@ class CollasCrill extends ByPage {
 
   async getLawyer(lawyer) {
     const { email, ddd } = await this.#getSocials(lawyer);
-    let name = await this.#getName(lawyer);
-
-    if (!name && email) {
-      // Somehow i can't get all the NAMES from the lawyers
-      const emailNamePart = email.split("@")[0]; // Get the part before '@'
-      name = emailNamePart
-        .split(".") // Split by '.' if present
-        .join(" "); // Join the parts with a space
-    }
 
     return {
-      name: name,
+      name: await this.#getName(lawyer),
       email: email,
       country: getCountryByDDD(ddd),
     };

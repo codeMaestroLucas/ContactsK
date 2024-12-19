@@ -52,6 +52,7 @@ class TCLawFirm extends ByNewPage {
       .findElement(By.className("member-left"))
       .findElement(By.className("pl-0"))
       .findElements(By.css("li"))
+      
     for (let social of socials) {
       const text = (await social.getText()).toLowerCase();
       if (text.includes("@tclawfirm")) return text.replace("email:", "");

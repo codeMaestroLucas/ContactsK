@@ -23,18 +23,11 @@ class LexCaribbean extends ByNewPage {
       100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (
-        await lawyer
-          .findElement(By.className("team-card__position"))
-          .findElement(By.className("retreattag"))
-          .getText()
-      ).toLowerCase();
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.className("team-card__position"),
+      By.className("retreattag")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
   async openNewTab(lawyer) {

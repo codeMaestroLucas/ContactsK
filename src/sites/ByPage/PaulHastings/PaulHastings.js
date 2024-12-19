@@ -31,11 +31,11 @@ class PaulHastings extends ByPage {
     const html = await lawyer
       .findElement(By.css("h2"))
       .getAttribute("outerHTML");
-    return this.getContentFromTag(html);
+    return await super.getContentFromTag(html);
   }
 
   async #getSocials(lawyer) {
-    const ancors = await lawyer
+    const socials = await lawyer
       .findElements(
         By.className("styles__StyledBaseA-sc-1h7u3so-1 eRSSFd text-sm hover:text-[#B4A06E] hover:underline break-all")
       )
@@ -43,11 +43,13 @@ class PaulHastings extends ByPage {
     let email;
     let ddd;
 
-    for (let a of ancors) {
-      const href = await a.getAttribute("href");
+    for (let social of socials) {
+      const href = await social.getAttribute("href");
 
       if (href.includes("mailto:")) email = href;
       else if (href.includes("tel:")) ddd = href;
+
+      if (email && ddd) break;
     }
 
     return { email, ddd };

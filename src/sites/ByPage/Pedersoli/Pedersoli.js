@@ -33,7 +33,7 @@ class Pedersoli extends ByPage {
       .findElement(By.className("linkTitolo"))
       .getAttribute("outerHTML");
 
-    return this.getContentFromTag(html);
+    return await super.getContentFromTag(html);
   }
 
 
@@ -43,7 +43,7 @@ class Pedersoli extends ByPage {
 
     for (let social of socials) {
       const html = await social.getAttribute("outerHTML");
-      const href = this.getContentFromTag(html);
+      const href = await super.getContentFromTag(html);
 
       if (href.includes("pglex.it")) return href;
     }

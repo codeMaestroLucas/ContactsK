@@ -32,16 +32,10 @@ class CareyOlsen extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("position-location"))
-        .getText()
-      ).toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer)
-    }
-    return partners
+    const webRole = [
+      By.className("position-location")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
   async #getName(lawyer) {

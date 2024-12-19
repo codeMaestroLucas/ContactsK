@@ -51,6 +51,8 @@ class Akin extends ByPage {
       } else if (href.includes("mailto:")) {
         email = href;
       }
+
+      if (email && ddd) break;
       
     }
     return { email, ddd };

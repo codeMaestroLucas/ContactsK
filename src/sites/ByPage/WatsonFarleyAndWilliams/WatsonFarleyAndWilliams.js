@@ -16,8 +16,6 @@ class WatsonFarleyAndWilliams extends ByPage {
   async accessPage(index) {
     const otherUrl = `${ this._link }&sf_paged=${ index + 1 }`;
     await super.accessPage(index, otherUrl);
-    try {
-    } catch (e) {}
   }
 
   async getLawyersInPage() {
@@ -33,7 +31,7 @@ class WatsonFarleyAndWilliams extends ByPage {
       .findElement(By.className("h3_styler"))
       .findElement(By.css("a"))
       .getAttribute("outerHTML");
-    return this.getContentFromTag(html);
+    return await super.getContentFromTag(html);
   }
 
   async #getEmail(lawyer) {

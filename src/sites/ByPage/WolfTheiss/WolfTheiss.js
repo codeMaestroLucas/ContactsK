@@ -25,15 +25,10 @@ class WolfTheiss extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const partnerDiv = await lawyer.findElements(By.className("card__detail"));
-      const role = (await partnerDiv[0].getText()).toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners
+    const webRole = [
+      By.css(".card__detail:first-child")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
   async #getName(lawyer) {
@@ -43,20 +38,22 @@ class WolfTheiss extends ByPage {
   }
 
   async #getSocials(lawyer) {
-    const divSocials = await lawyer.findElements(
+    const socials = await lawyer.findElements(
       By.className("card__contact-item")
     );
 
     let email;
     let ddd;
 
-    for (let social of divSocials) {
+    for (let social of socials) {
       let span = await social
         .findElement(By.css("span"))
         .getText();
 
       if (span.includes("@wolftheiss.com")) email = span;
       else if (span.includes("+")) ddd = span;
+
+      if (email && ddd) break;
     }
 
     return { email, ddd }

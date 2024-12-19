@@ -36,22 +36,12 @@ class AsafoAndCo extends ByNewPage {
       100000
     );
 
-    let partners = [];
-    let role = '';
-    for (let lawyer of lawyers) {
-      const html = await lawyer
-        .findElement(By.className("meta"))
-        .findElement(By.className("position"))
-        .getAttribute("outerHTML");
-
-      const regex = /<span class="poste">\s*(.*?)\s*<\/span>/;
-      const match = html.match(regex);
-
-      if (match) role = match[1].trim().toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return partners;
+    const webRole = [
+      By.className("meta"),
+      By.className("position"),
+      By.css("span.poste")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
   async openNewTab(lawyer) {

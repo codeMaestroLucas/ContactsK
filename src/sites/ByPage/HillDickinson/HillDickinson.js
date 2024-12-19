@@ -50,6 +50,8 @@ class HillDickinson extends ByPage {
       else if (href.includes("tel:")) {
         ddd = href.replace("tel:%2B", "");  // Remove so it doesn`t interfere in the DDD
       }
+
+      if (email && ddd) break;
     }
 
     return { email, ddd }

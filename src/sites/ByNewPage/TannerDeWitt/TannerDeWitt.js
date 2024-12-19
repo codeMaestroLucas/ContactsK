@@ -8,7 +8,7 @@ class TannerDeWitt extends ByNewPage {
     name = "Tanner DeWitt",
     link = "https://www.tannerdewitt.com/our-people/",
     totalPages = 1,
-    maxLawyersForSite = 100
+    maxLawyersForSite = 1
   ) {
     super(name, link, totalPages, maxLawyersForSite);
   }
@@ -26,17 +26,10 @@ class TannerDeWitt extends ByNewPage {
       ), 100000
     );
 
-  let partners = [];
-  for (let lawyer of lawyers) {
-    const role = (await lawyer
-        .findElement(By.css("span > em"))
-        .getText()
-      ).toLowerCase();
-    if (role.includes("partner")) partners.push(lawyer);
-    
-  }
-
-    return partners;
+    const webRole = [
+      By.css("span > em")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
   

@@ -24,20 +24,12 @@ class PaviaAndAnsaldo extends ByNewPage {
       until.elementsLocated(By.className("exp-arrow  extp-exlink")),
       100000
     );
-    let partners = [];
 
-    for (let lawyer of lawyers) {
-      const role = (
-        await lawyer
-          .findElement(By.className("tpstyle-6-info"))
-          .findElement(By.css("h5"))
-          .getText()
-          ).toLowerCase().trim();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.className("tpstyle-6-info"),
+      By.css("h5")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
 

@@ -26,17 +26,11 @@ class MishconKaras extends ByNewPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.css("a"))
-        .findElement(By.className("card-person__subheading"))
-        .getAttribute("outerHTML")
-      ).toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return partners;
+    const webRole = [
+      By.css("a"),
+      By.className("card-person__subheading")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
   
@@ -76,4 +70,3 @@ class MishconKaras extends ByNewPage {
 }
 
 module.exports = MishconKaras;
-

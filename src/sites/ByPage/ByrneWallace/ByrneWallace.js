@@ -24,16 +24,10 @@ class ByrneWallace extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const html = await lawyer
-        .findElement(By.className("sol-category"))
-        .getAttribute("outerHTML");
-      const role = (this.getContentFromTag(html)).toLowerCase();
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.className("sol-category")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
   async #getName(lawyer) {
