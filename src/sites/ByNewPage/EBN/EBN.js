@@ -42,11 +42,9 @@ class EBN extends ByNewPage {
 
 
   async #getName(lawyer) {
-    const names = (await lawyer
+    return await lawyer
       .findElement(By.css("h1"))
-      .getText()).split(" ");
-
-    return names[1] + " " + names[0];
+      .getText();
   }
 
 

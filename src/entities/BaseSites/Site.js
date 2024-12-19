@@ -7,6 +7,12 @@ const { By, Key } = require("selenium-webdriver");
 
 
 class Site {
+  /**
+   * @param {string} name
+   * @param {string} link
+   * @param {number} totalPages
+   * @param {number} maxLawyersForSite
+   */
   constructor(name, link, totalPages, maxLawyersForSite = 1) {
     this._name = name;
     this._link = link;
@@ -176,10 +182,7 @@ class Site {
   
       if (match) {
         name = match[1]
-          .replace(/-/g, " ")
-          .split(".")
-          .join(" ")
-          .trim();
+          .replace(/-/g, " ").split(".").join(" ").trim();
 
       } else {
         throw new Error("Invalid email format or no match found.");
@@ -189,10 +192,7 @@ class Site {
       const fallbackMatch = email.replace(/mailto:/i, "").trim().toLowerCase().match(/^([^@]+)/);
       if (fallbackMatch) {
         name = fallbackMatch[1]
-          .replace(/-/g, " ")
-          .split(".")
-          .join(" ")
-          .trim()
+          .replace(/-/g, " ").split(".").join(" ").trim()
         }
     }
   

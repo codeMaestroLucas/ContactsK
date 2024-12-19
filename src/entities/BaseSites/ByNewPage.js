@@ -83,7 +83,7 @@ class ByNewPage extends Site {
         try {
           await this.openNewTab(lawyer);
           const windows = await driver.getAllWindowHandles();
-          if (windows.length < 2) continue ;
+          if (windows.length < 2) continue;
 
           
           const lawyerDetails = await this.getLawyer();

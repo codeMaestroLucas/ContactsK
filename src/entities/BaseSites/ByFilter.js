@@ -1,14 +1,10 @@
-const Site = require("./Site");
+const ensureFileExists = require("../../utils/ensureFileExists");
+const makeValidations = require("../../utils/makeValidations");
+const Site = require("./Site")
 
-var filterValues = [
-    { country: "", value: "" },
-    { country: "", value: "" },
-    { country: "", value: "" },
-    { country: "", value: "" },
-    ];
 
 class ByFilter extends Site {
-  constructor(name, link, totalPages, maxLawyersForSite = 1) {
+  constructor(name, link, totalPages, maxLawyersForSite) {
 
     super(name, link, totalPages, maxLawyersForSite);
 
@@ -19,24 +15,20 @@ class ByFilter extends Site {
     ensureFileExists(this.emailsOfMonthPath);
     ensureFileExists(this.emailsToAvoidPath);
 
-    this._currentPage = 0;
+    this._filterOptions = [
+      { "" : "" },
+      { "" : "" },
+    ];
+
+    this._currentCountry = "";
   }
 
-
-  async accessPage() {
-    const actualValue = filterValues[this._currentPage].value;
-    const otherUrl = ``;
-    await super.accessPage(this._currentPage, otherUrl);
-    try {
-    } catch (e) {}
-  }
 
   async searchForLawyers() {
-    let lawyersRegistered = 0;
     for (let i = 0; i < this._totalPages; i++) {
       console.log(`${ this._totalPages }) ${ i } - - - - Page ${ i + 1 }`);
 
-      await this.accessPage();
+      await this.accessPage(i);
 
       const lawyersInPage = await this.getLawyersInPage();
 
@@ -83,7 +75,7 @@ class ByFilter extends Site {
             this._name, this.emailsOfMonthPath
           );
 
-          lawyersRegistered++;
+          // GET A NEW VALUE FOR THE SEARCH FILTER
 
           if (lawyersRegistered === this._maxLawyersForSite) {
             console.log(
@@ -91,9 +83,6 @@ class ByFilter extends Site {
             );
             return;
           }
-
-          this._currentPage++;
-
 
         } catch (e) {
           console.log(

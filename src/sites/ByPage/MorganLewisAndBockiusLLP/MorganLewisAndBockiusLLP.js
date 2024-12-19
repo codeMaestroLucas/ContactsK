@@ -8,64 +8,89 @@ class MorganLewisAndBockiusLLP extends ByPage {
   constructor(
     name = "Morgan Lewis And Bockius LLP",
     link = "https://www.morganlewis.com/our-people",
-    totalPages = 1,
+    totalPages = 14,
   ) {
     super(name, link, totalPages, 500);
+
+    this._citiesMap = {
+      "Abu Dhabi": "Uthe AE",
+      "Almaty": "Kazakhstan",
+      "Astana": "Kazakhstan",
+      "Beijing": "China",
+      "Brussels": "Belgium",
+      "Dubai": "the UAE",
+      "Frankfurt": "Germany",
+      "Hong Kong": "China",
+      "London": "England",
+      "Munich": "Germany",
+      "Paris": "France",
+      "Shanghai": "China",
+      "Singapore": "Singapore",
+      "Tokyo": "Japan"
+    };
+
+    this._currentCountry = ""
   }
 
   async #clickPartnerOpt() {
-    const actions = driver.actions();
-    //! The hover prevents the click from the block
-
     const roleOpt = await driver.wait(
-      until.elementLocated(By.className("c-es__show-more-people")), 10000
-    )
-    await roleOpt.click();
-
+      until.elementLocated(By.className("c-es__show-more-people")),
+      10000
+    );
+    
+    // Scroll to the element and ensure visibility
+    await driver.executeScript("arguments[0].scrollIntoView(true);", roleOpt);
+    await driver.executeScript("arguments[0].click();", roleOpt);
+  
     const positionOpt = await driver
       .findElement(By.id('ulpositionInputPeople'))
       .findElement(By.className('stylish-select-left'))
       .findElement(By.className('stylish-select-right styledSelect'));
-
-
-    // await actions.move({ origin: positionOpt }).perform();
-
-    // await new Promise(resolve => setTimeout(resolve, 2000));
-    // await positionOpt.click();
-    
-
-    const ulElement = await driver.findElement(By.css('ul.listing'));
-    await driver.executeScript("arguments[0].style.display = 'block';", ulElement);
-
-    const partnerOpt = await ulElement.findElement(By.css('li:nth-child(3)'))
-    console.log(await partnerOpt.getAttribute("outerHTML"))
-
-    await actions.move({ origin: partnerOpt }).perform();
-
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    await partnerOpt.click();
-
-  }
-
-  async #selectContries() {
-    const cities = [
-      "Abu Dhabi", "Almaty", "Astana", "Beijing", "Brussels", "Century City",
-      "Dubai", "Frankfurt", "Hartford", "Hong Kong", "London", "Munich",
-      "Paris", "Shanghai", "Singapore", "Silicon Valley", "Tokyo"
-    ];
   
-
-    const contrySelector = await driver
-      .findElement(By.xpath('//*[@id="contentWrapper"]/div/div[2]/div/div[2]/div[4]/div[3]/div/div/ul/li[1]/div'));
-    await contrySelector.click();
-
-    for (const city of cities) {
-      await contrySelector
-        .findElement(By.xpath(`//*[text()="${city}"]`))
-        .click();
-    }
+    // Scroll to position selector
+    await driver.executeScript("arguments[0].scrollIntoView(true);", positionOpt);
+    await driver.executeScript("arguments[0].click();", positionOpt);
+  
+    const ulElement = await driver.findElement(By.css('ul.listing'));
+    // Force display of the dropdown
+    await driver.executeScript("arguments[0].style.display = 'block';", ulElement);
+  
+    const partnerOpt = await ulElement.findElement(By.css('li:nth-child(2)'));
+  
+    // Scroll and click the partner option
+    await driver.executeScript("arguments[0].scrollIntoView(true);", partnerOpt);
+    await driver.executeScript("arguments[0].click();", partnerOpt);
   }
 
+
+  async #selectRandomCountry() {
+    const contryOpt = await driver
+      .findElement(By.id('ullocationInputPeople'))
+      .findElement(By.className('stylish-select-left'))
+      .findElement(By.className('stylish-select-right styledSelect'));
+  
+    await driver.executeScript("arguments[0].click();", contryOpt);
+  
+    const ulElement = await driver.wait(
+      until.elementLocated(
+        By.xpath('//*[@id="ullocationInputPeople"]/ul')
+        ), 5000
+      );
+  
+    await driver.executeScript("arguments[0].style.display = 'block';", ulElement);
+  
+    const cityKeys = Object.keys(this._citiesMap);
+    const randomCity = cityKeys[Math.floor(Math.random() * cityKeys.length)];
+
+    this._currentCountry = this._citiesMap[randomCity];
+  
+    const cityOption = await ulElement.findElement(
+      By.xpath(`.//li[contains(text(), "${randomCity}")]`)
+    );
+    await driver.executeScript("arguments[0].click();", cityOption);
+  }
+
+  
   async accessPage(index) {
     if (index === 0) {
       await super.accessPage(index);
@@ -73,24 +98,34 @@ class MorganLewisAndBockiusLLP extends ByPage {
       await driver.findElement(By.id("onetrust-accept-btn-handler")).click();
 
       await this.#clickPartnerOpt();
-
-      await this.#selectContries();
-
-
-    } else {
-      try {
-        await driver
-          .findElement(By.className("c-pagination"))
-          .findElement(By.className("c-pagination__list-item"))
-          .findElement(By.css("a.c-pagination__link.js-pagination-link.next"))
-          .click();
-      } catch (e) {}
     }
+
+    await this.#selectRandomCountry();
+
+    // Click on search btn
+    await driver
+      .findElement(By.className("btn btn-default js-button-search"))
+      .click();
+
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    // } else {
+    //   let nextButton = await driver.wait(
+    //     until.elementLocated(By.css('li.c-pagination__list-item a.c-pagination__link.next')),
+    //     10000
+    //   );
+  
+    //   await driver.executeScript("arguments[0].scrollIntoView(true);", nextButton);
+  
+    //   await driver.wait(until.elementIsVisible(nextButton), 10000);
+  
+    //   await nextButton.click();
+    // }
   }
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
-      until.elementsLocated(By.className("")),
+      until.elementsLocated(By.className("c-content_team__card-details")),
       100000
     );
     return lawyers;
@@ -116,20 +151,11 @@ class MorganLewisAndBockiusLLP extends ByPage {
     return emailElement;
   }
 
-  async #getDDD(lawyer) {
-    const dddElement = await lawyer
-      .findElement(By.className("c-content_team__card-info"))
-      .findElement(By.className("c-content-team__number"))
-      .getAttribute("outerHTML");
-
-    return dddElement;
-  }
-
   async getLawyer(lawyer) {
     return {
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      country: this._currentCountry,
     };
   }
 }
@@ -138,8 +164,7 @@ module.exports = MorganLewisAndBockiusLLP;
 
 async function main() {
   t = new MorganLewisAndBockiusLLP();
-  t.accessPage(0);
-  // t.searchForLawyers();
+  t.searchForLawyers();
 }
 
 main();

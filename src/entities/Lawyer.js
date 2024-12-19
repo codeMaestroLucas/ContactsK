@@ -14,9 +14,13 @@ class Lawyer {
   /**
    * This function is used to treat a Lawyer name removing all the abreviations
    * and returning the name
-   * @param {string} name treated
+   * @param {string} name
+   * @returns {string} name treated
    */
   #treatLawyerName(name) {
+    // Normalize accents and remove diacritics -> to deal with accents words
+    name = name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
     // Remove punctuation (.,) , (*) and convert name to lowercase
     name = name
       .replace(/\./g, " ")
@@ -54,7 +58,7 @@ class Lawyer {
 
   if (nameToReturn.length < 2) nameToReturn = splitName[1];
 
-  return nameToReturn
+  return nameToReturn;
 }
 
   /**

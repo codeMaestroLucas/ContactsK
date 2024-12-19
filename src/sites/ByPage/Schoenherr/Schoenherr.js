@@ -16,14 +16,19 @@ class Schoenherr extends ByPage {
 
   async accessPage(index) {
     await super.accessPage(index);
+    await super.rollDown(1, 2);
   }
 
   async getLawyersInPage() {
-    return await driver.wait(
+    const lawyers =  await driver.wait(
       until.elementsLocated(
         By.className("people-card")
       ), 100000
     );
+
+    const webRole = [By.className("people-card-occupation")];
+    
+    return await super.filterPartnersInPage(lawyers, webRole, false);
   }
   
   async #getName(lawyer) {
