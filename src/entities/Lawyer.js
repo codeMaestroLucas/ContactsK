@@ -11,6 +11,7 @@ class Lawyer {
   get country() { return this._country }
   get email() { return this._email }
 
+
   /**
    * This function is used to treat a Lawyer name removing all the abreviations
    * and returning the name
@@ -21,7 +22,7 @@ class Lawyer {
     // Normalize accents and remove diacritics -> to deal with accents words
     name = name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-    // Remove punctuation (.,) , (*) and convert name to lowercase
+    // Remove punctuation (.,) and convert name to lowercase
     name = name
       .replace(/\./g, " ")
       .replace(/,/g, " ")

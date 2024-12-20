@@ -1,65 +1,54 @@
 const ensureFileExists = require("../../utils/ensureFileExists");
 const makeValidations = require("../../utils/makeValidations");
+const ByNewPage = require("../../entities/BaseSites/ByNewPage");
 let { driver } = require("../../config/driverConfig");
-const Site = require("./Site");
-
-const { until, By } = require("selenium-webdriver");
 
 
-class ByNewPage extends Site {
+class ByFilterNP extends ByNewPage {
   constructor(name, link, totalPages, maxLawyersForSite) {
     super(name, link, totalPages, maxLawyersForSite);
 
     const sanitizedPath = name.trim().replace(/\s+/g, "");
-    this.emailsOfMonthPath = `./src/sites/ByNewPage/${ sanitizedPath }/${ sanitizedPath }.txt`;
-    this.emailsToAvoidPath = `./src/sites/ByNewPage/${ sanitizedPath }/emailsToAvoid.txt`;
+    this.emailsOfMonthPath = `./src/sites/ByFilter/${ sanitizedPath }/${ sanitizedPath }.txt`;
+    this.emailsToAvoidPath = `./src/sites/ByFilter/${ sanitizedPath }/emailsToAvoid.txt`;
 
     ensureFileExists(this.emailsOfMonthPath);
     ensureFileExists(this.emailsToAvoidPath);
-  }
-
-
-  /**
-   * Function used to open a new page and switch to it for getting the lawyer data
-   *
-   * If the link is an empty string that lawyer will be ignored
-   * @param {string} link - The URL to be opened in a new tab
-   */
-  async openNewTab(link) {
-    if (link.trim() === "" || !link) {
-      return;
+    
+    this._filterOptions = {
+      "": "",
+      "": "",
     };
 
-    // Open a new tab and navigate to the link
-    await driver.switchTo().newWindow('tab');
-    await driver.get(link);
-  
-    await this.waitForPageToLoad();
-  
-    // Switch to the newly opened tab
-    //* This make possible for the driver interact with the new window
-    const windows = await driver.getAllWindowHandles();
-    await driver.switchTo().window(windows[windows.length - 1]);
-    await driver.wait(until.elementLocated(By.css("body")), 5000);
+    this._currentCountry = "";
+    this._totalPages = new Set(Object.values(this._filterOptions)).size;
+    this._usedCountries = new Set();
+    this._totalPages = new Set(Object.values(this._filterOptions)).size;
+    // The set avoid that a Contry that have more than one city registred to be
+    // called again
   }
 
-
   /**
-   * Function used to close the current tab
+   * Function used to get a random country based in the length of the filterOptions.
+   *
+   * Also sets the current country.
    */
-  async closeTab() {
-    // Get all window handles before closing the tab
-    const windows = await driver.getAllWindowHandles();
-    try {
-      // Close the current tab
-      await driver.close();
+  async #selectRandomCountry() {
+    const cityKeys = Object.keys(this._filterOptions);
+    const availableCities = cityKeys.filter(
+      city => !this._usedCountries.has(this._filterOptions[city])
+    );
 
-      // After closing, switch to the last opened tab (or any other tab you need)
-      await driver.switchTo().window(windows[windows.length - 2]);
-      
-    } catch (error) {
-      await driver.switchTo().window(windows[windows.length - 1]);
+    if (availableCities.length === 0) {
+      return "No more countries to search."
     }
+
+    const randomCity = availableCities[Math.floor(Math.random() * availableCities.length)];
+    const selectedCountry = this._filterOptions[randomCity];
+
+    this._usedCountries.add(selectedCountry);
+
+    this._currentCountry = selectedCountry;
   }
 
 
@@ -68,6 +57,9 @@ class ByNewPage extends Site {
       console.log(`Page ${ i + 1 } - - - - - - - - - - ( ${ this._totalPages } )`);
 
       await this.accessPage(i);
+
+      const awnser = await this.#selectRandomCountry();
+      if (awnser === "No more countries to search.") return;
 
       const lawyersInPage = await this.getLawyersInPage();
 
@@ -120,6 +112,9 @@ class ByNewPage extends Site {
             console.log(`No more than ${ this._maxLawyersForSite } lawyer need for the firm ${ this._name }.`);
             return;
           }
+
+          break; // Just one lawyer will be registred for that country.
+
         } catch (e) {
           console.log(`Error reading ${ index + 1 }th lawyer at the page ${ i + 1 } of the firm ${ this._name }\nError: ${ e }...`);
           continue;
@@ -133,4 +128,4 @@ class ByNewPage extends Site {
   }
 }
 
-module.exports = ByNewPage;
+module.exports = ByFilterNP;

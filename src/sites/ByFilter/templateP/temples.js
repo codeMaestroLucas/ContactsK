@@ -1,33 +1,11 @@
 const { getCountryByDDD } = require("../../../utils/getNationality");
-
-const ByFilter = require("../../../entities/BaseSites/ByFilter");
+const ByFilterP = require("../../../entities/BaseSites/ByFilterP");
 let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
 
 
-let countries = [
-  "Africa", "Australia", "Belgium", "Burundi", "Canada", "China", "France",
-  "Germany", "Greece", "Hong%20Kong%20SAR", "India", "Indonesia", "Israel",
-  "Italy", "Japan", "Kenya", "Korea", "Luxembourg", "Netherlands",
-  "Monaco", "Morocco", "Pakistan", "Poland", "Singapore", "South%20Africa",
-  "Thailand", "Türkiye", "Uganda", "United%20Kingdom",
-  "Papua%20New%20Guinea",
-  "Latin%20America,Brazil", "Latin%20America,Mexico",
-  "Marshall%20Islands", "Middle%20East",
-];
-
-/** COUNTRIES-IN-SITE - TO-BE-REGISTERED
- * Hong%20Kong%20SAR - Hong Kong
- * Latin%20America,Brazil - Brazil
- * Latin%20America,Mexico - Mexico
- * United%20Kingdom - South Korea
- * Türkiye - Turkey
- * Middle%20East,Dubai - the UAE
- */
-
-
-class Template extends ByFilter {
+class Template extends ByFilterP {
   constructor(
     name = "Template",
     link = "https://www.example.com/",
@@ -35,8 +13,28 @@ class Template extends ByFilter {
     maxLawyersForSite = 1
   ) {
     super(name, link, totalPages, maxLawyersForSite);
+    
+    this._filterOptions = {
+      "": "",
+      "": "",
+    };
   }
 
+
+  /**
+   * @returns {boolean} true for SKIP the country and false to search in the contry
+   */
+  #selectRandomCountry() {
+    const { randomCity, selectedCountry } = super.selectRandomCountry();
+    if (selectedCountry === "No more countries to search.") {
+      return true;
+    }
+
+
+    return true;
+  }
+  
+  
   /**
    * 
    */
@@ -47,6 +45,7 @@ class Template extends ByFilter {
     try {} catch (e) {}
   }
 
+
   async getLawyersInPage() {
     const lawyers = await driver.wait(
       until.elementsLocated(
@@ -56,28 +55,35 @@ class Template extends ByFilter {
     return lawyers;
   }
 
+
   async #getName(lawyer) {
     const nameElement = await lawyer
       .findElement(By.className(""))
+      .getText();
 
     
     return nameElement
   }
 
+
   async #getEmail(lawyer) {
     const emailElement = await lawyer
       .findElement(By.className(""))
+      .getAttribute("href");
 
 
     return emailElement
   }
 
+  
   async #getDDD(lawyer) {
     const dddElement = await lawyer
       .findElement(By.className(""))
+      .getAttribute("href");
       
     return dddElement
   }
+
 
   async getLawyer(lawyer) {
     return {
@@ -93,8 +99,8 @@ module.exports = Template;
 
 async function main() {
   t = new Template();
-  t.accessPage(0);
-  // t.searchForLawyers();
+  // t.accessPage(0);
+  t.searchForLawyers();
 }
 
 main();

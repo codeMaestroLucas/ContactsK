@@ -14,7 +14,7 @@ class BaseSite {
    * @param {number} totalPages
    * @param {number} maxLawyersForSite
    */
-  constructor(name, link, totalPages, maxLawyersForSite = 1) {
+  constructor(name, link, totalPages = 1, maxLawyersForSite = 1) {
     this._name = name;
     this._link = link;
     this._totalPages = totalPages;
@@ -95,7 +95,7 @@ class BaseSite {
   /**
    * Filters lawyers from the provided list based on their role, returning only partners.
    *
-   * @param {WebElement[]} lawyersInPage - Array of WebElements representing lawyers on the page.
+   * @param {WebElement[]} lawyersInPage - Array of WebElements representing all lawyers on the page.
    * @param {By[]} webRole - Array of locators for the role element within a lawyer element.
    * @param {boolean} byText - If true, uses `getText()`; otherwise, uses `getAttribute('outerHTML')`. Default is true.
    * @returns {Promise<WebElement[]>} Array of WebElements representing partners.

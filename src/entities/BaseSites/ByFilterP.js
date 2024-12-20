@@ -1,27 +1,72 @@
 const ensureFileExists = require("../../utils/ensureFileExists");
 const makeValidations = require("../../utils/makeValidations");
-const Site = require("./Site")
+const ByPage = require("../../entities/BaseSites/ByPage");
 
 
-class ByPage extends Site {
+class ByFilterP extends ByPage {
   constructor(name, link, totalPages, maxLawyersForSite) {
-
     super(name, link, totalPages, maxLawyersForSite);
 
     const sanitizedPath = name.trim().replace(/\s+/g, "");
-    this.emailsOfMonthPath = `./src/sites/ByPage/${ sanitizedPath }/${ sanitizedPath }.txt`;
-    this.emailsToAvoidPath = `./src/sites/ByPage/${ sanitizedPath }/emailsToAvoid.txt`;
+    this.emailsOfMonthPath = `./src/sites/ByFilter/${ sanitizedPath }/${ sanitizedPath }.txt`;
+    this.emailsToAvoidPath = `./src/sites/ByFilter/${ sanitizedPath }/emailsToAvoid.txt`;
 
     ensureFileExists(this.emailsOfMonthPath);
     ensureFileExists(this.emailsToAvoidPath);
+    
+    this._filterOptions = {
+      "": "",
+      "": "",
+    };
+
+    this._currentCountry = "";
+    this._usedCountries = new Set();
+    this._totalPages = new Set(Object.values(this._filterOptions)).size;
+    // The set avoid that a Contry that have more than one city registred to be
+    // called again
   }
-  
+
+
+  /**
+   * Function used to get a random city and its country that hasn't been chosen
+   * based on the length of the filterOptions.
+   *
+   * Also sets the current country.
+   * @returns {object} An object with the city and country or a stop message.
+   * - key: city      || message key
+   * - value: country || error message
+   */
+  selectRandomCountry() {
+    const cityKeys = Object.keys(this._filterOptions);
+    const availableCities = cityKeys.filter(
+      city => !this._usedCountries.has(this._filterOptions[city])
+    );
+
+    if (availableCities.length === 0) {
+      return { message: "No more countries to search." };
+    }
+
+    const randomCity = availableCities[Math.floor(Math.random() * availableCities.length)];
+    const selectedCountry =  this._filterOptions[randomCity];
+
+    this._usedCountries.add(selectedCountry);
+    this._currentCountry = selectedCountry;
+
+    return { randomCity, selectedCountry };
+  }
+
 
   async searchForLawyers() {
     for (let i = 0 ; i < this._totalPages ; i++) {
       console.log(`Page ${ i + 1 } - - - - - - - - - - ( ${ this._totalPages } )`);
 
       await this.accessPage(i);
+
+      const skipContry = await this.selectRandomCountry();
+      if (skipContry) {
+        console.log("Skyping contry " + this._currentCountry);
+        continue;
+      };
 
       const lawyersInPage = await this.getLawyersInPage();
 
@@ -75,6 +120,8 @@ class ByPage extends Site {
             return;
           }
 
+          break; // Just one lawyer will be registred for that country.
+
         } catch (e) {
           console.log(
             `Error reading ${ index  + 1 }th lawyer at the page ${ i + 1 } of the firm ${ this._name }.\nError: ${ e }...`
@@ -87,4 +134,4 @@ class ByPage extends Site {
   }
 }
 
-module.exports = ByPage;
+module.exports = ByFilterP;

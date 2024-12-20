@@ -5,7 +5,7 @@ const ByPage = {
     "LathamAndWatkins", "Harneys", "CareyOlsen", "BNT",  "Kinstellar",
     "Schoenherr", "HFW", "TaylorWessing", "PaulHastings", "WatsonFarleyAndWilliams",
     "WinstonAndStrawn", "BonelliErede", "Ashurst", "ArnoldAndPorter", "Pulegal",
-    "DechertLLP", "JonesDay", "CampbellsLegal",
+    "DechertLLP", "JonesDay", "CampbellsLegal", "GiambroneInternationalLawFirm",
     // "",
     // "Akin" // - Pass this to Filter
   ],

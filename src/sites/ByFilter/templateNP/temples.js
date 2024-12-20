@@ -1,22 +1,42 @@
 const { getCountryByDDD } = require("../../../utils/getNationality");
-const ByClicking = require("../../../entities/BaseSites/ByClicking");
+const ByFilterNP = require("../../../entities/BaseSites/ByFilterNP");
 let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
 
-class GiambroneInternationalLawFirm extends ByPage {
+
+class Template extends ByFilterNP {
   constructor(
-    name = "Giambrone International Law Firm",
-    link = "https://www.giambronelaw.com/site/people/senior-lawyers/",
+    name = "Template",
+    link = "https://www.example.com/",
     totalPages = 1,
     maxLawyersForSite = 1
   ) {
     super(name, link, totalPages, maxLawyersForSite);
+    
+    this._filterOptions = {
+      "": "",
+      "": "",
+    };
   }
 
+
   /**
-   * https://www.giambronelaw.com/site/people/senior-lawyers/
-   * https://www.giambronelaw.com/site/people/senior-lawyers/
+   * @returns {boolean} true for SKIP the country and false to search in the contry
+   */
+  #selectRandomCountry() {
+    const { randomCity, selectedCountry } = super.selectRandomCountry();
+    if (selectedCountry === "No more countries to search.") {
+      return true;
+    }
+
+
+    return true;
+  }
+  
+  
+  /**
+   * 
    */
 
   async accessPage(index) {
@@ -25,34 +45,54 @@ class GiambroneInternationalLawFirm extends ByPage {
     try {} catch (e) {}
   }
 
+
   async getLawyersInPage() {
-    const lawyers = await driver.wait(until.elementsLocated(By.className("")));
-    console.log(lawyers.length);
+    const lawyers = await driver.wait(
+      until.elementsLocated(
+        By.className("")
+      ), 100000
+    );
     return lawyers;
   }
+
+  
+  async openNewTab(lawyer) {
+    const link = await lawyer
+      .findElement(By.css(""))
+      .getAttribute("href");
+
+    await super.openNewTab(link);
+  }
+  
 
   async #getName(lawyer) {
     const nameElement = await lawyer
       .findElement(By.className(""))
+      .getText();
 
     
     return nameElement
   }
 
+
   async #getEmail(lawyer) {
     const emailElement = await lawyer
       .findElement(By.className(""))
+      .getAttribute("href");
 
 
     return emailElement
   }
 
+  
   async #getDDD(lawyer) {
     const dddElement = await lawyer
       .findElement(By.className(""))
+      .getAttribute("href");
       
     return dddElement
   }
+
 
   async getLawyer(lawyer) {
     return {
@@ -64,12 +104,12 @@ class GiambroneInternationalLawFirm extends ByPage {
 
 }
 
-module.exports = GiambroneInternationalLawFirm;
+module.exports = Template;
 
 async function main() {
-  t = new GiambroneInternationalLawFirm();
-  t.accessPage(0);
-  // t.searchForLawyers();
+  t = new Template();
+  // t.accessPage(0);
+  t.searchForLawyers();
 }
 
 main();

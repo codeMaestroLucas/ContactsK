@@ -4,7 +4,7 @@ const BaseSite = require("./BaseSite");
 const Lawyer = require("../Lawyer");
 
 
-class Site extends BaseSite{
+class Site extends BaseSite {
   constructor(name, link, totalPages, maxLawyersForSite) {
     super(name, link, totalPages, maxLawyersForSite);
   }
