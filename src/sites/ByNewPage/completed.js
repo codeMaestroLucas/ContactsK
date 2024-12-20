@@ -1,7 +1,7 @@
 const ByNewPage = {
   XforIteraction: [    // 5
     "SimmonsAndSimmons", "Ecija", "AsafoAndCo", "CobaltLegal", "Mourant",
-    "ArthurCox", "BirdAndBird",
+    "ArthurCox", "BirdAndBird", "Dentons",
     // "",
   ],
 
@@ -13,6 +13,7 @@ const ByNewPage = {
     "BrigrardUrrutia", "Horten", "Ellex", "Poulschmith", "PearlCohen",
     "FangdaPartners", "MeyerKöring", "TannerDeWitt", "Szecskay", "RemfryAndSagar",
     "Beauchamps", "BarneaAndCo", "SamvadPartners", "Noerr", "CarneluttiLawFirm",
+    "DBHLawyers", "DWFoxTuckerLawyers",
     // "",
   ],
 };
