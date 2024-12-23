@@ -1,6 +1,7 @@
 const ensureFileExists = require("../../utils/ensureFileExists");
 const makeValidations = require("../../utils/makeValidations");
 let { driver } = require("../../config/driverConfig");
+const Lawyer = require("../Lawyer");
 const Site = require("./Site");
 
 const { until, By } = require("selenium-webdriver");
@@ -90,31 +91,36 @@ class ByNewPage extends Site {
             console.log("Not Partner");
             continue;
           }
-
-          if ( !lawyerDetails || !lawyerDetails.country || !lawyerDetails.email ) {
-            console.log(`Error reading ${ index + 1 }th lawyer at the page ${ i + 1 } of the firm ${ this._name }.\nSkipping...`);
+      
+          if (!lawyerDetails || lawyerDetails.link || lawyerDetails.email) {
+            console.log(
+              `Error reading ${ index + 1 }th lawyer at the page ${ i + 1 } of the firm ${ this._name }.\nSkipping...`
+            );
+            console.log("  Link: " + lawyerDetails.link);
             console.log("  Name: " + lawyerDetails.name);
             console.log("  Email: " + lawyerDetails.email);
+            console.log("  Phone: " + lawyerDetails.phone);
             console.log("  Country: " + lawyerDetails.country);
             continue;
           }
 
-          let { name = "", country, email } = lawyerDetails;
+          let { link, name = "", email, phone, country } = lawyerDetails;
 
           if (email && !name) {
             name = this.getNameFromEmail(email);
           }
 
+          const lawyerToRegister = new Lawyer(link, name, email, phone, this._name, country);
+
           let canRegister = makeValidations(
-            name, country, email,
-            this._lastCountries, this.emailsOfMonthPath, this.emailsToAvoidPath
+            lawyerToRegister,
+            this._lastCountries,
+            this.emailsOfMonthPath, this.emailsToAvoidPath
           );
           if (!canRegister) continue;
 
-          this.registerLawyer(
-            name, country, email,
-            this._name, this.emailsOfMonthPath
-          );
+          this.registerLawyer(lawyerToRegister, this.emailsOfMonthPath);
+
 
           if (this._lawyersRegistered === this._maxLawyersForSite) {
             console.log(`No more than ${ this._maxLawyersForSite } lawyer need for the firm ${ this._name }.`);

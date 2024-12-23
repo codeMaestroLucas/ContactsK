@@ -8,13 +8,12 @@ class Kennedys extends ByFilterNP {
   constructor(
     name = "Kennedys",
     link = "https://kennedyslaw.com/en/search/?q=&facet=6843&profileType=6723",
-    totalPages = 1,
+    totalPages = 27,
   ) {
-    super(name, link, totalPages, 400);
+    super(name, link, totalPages);
     
     this._filterOptions = {
-      "": "",
-      "": "",
+      "": ""
     };
   }
 
@@ -22,55 +21,61 @@ class Kennedys extends ByFilterNP {
   /**
    * @returns {boolean} true for SKIP the country and false to search in the contry
    */
-  #selectRandomCountry() {
-    const { randomCity, selectedCountry } = super.selectRandomCountry();
-    if (selectedCountry === "No more countries to search.") {
-      return true;
-    }
-
-
-    return true;
+  selectRandomCountry() {
+    return false;
   }
-  
-  
-  /**
-   * 
-   */
 
-  async accessPage(index) {
-    await super.accessPage(index);
-
-    const countries = await driver
-      .findElement(By.className("search-filters-section"))
-      // .findElement(By.css("details:nth-child(8)"))
-
+  async #clickOnCountries() {
+    const countries = await driver.wait(
+      until.elementLocated(By.xpath(`//*[@id="__layout"]/div/main/section/div[2]/section/div/aside/div/details[8]`)
+      ), 100000
+    );
+    
     await countries.click();
-    const c = await countries
-    .findElement(By.className("search-filters-item-nested-head"))
-    await c.click();
-
-    console.log(await countries.getAttribute("outerHTML"))
 
     const opts = await countries.findElements(By.className("search-details"));
-    for (let i = 0; i < opts.length; i++) {
-      await opts[i].click();
+    for (let i = 0; i < opts.length - 1; i++) {
+      await opts[i]
+        .findElement(By.css("label"))
+        .click();
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      // If i click before the search will be skipped
+    }
+  }
+  
+  async #clickOnNextPage() {
+    const pagination = await driver.findElement(By.className("kenn-paginate"));
+    await pagination.findElement(By.css("li:last-child")).click();
+  }
+
+  async accessPage(index) {
+    if (index === 0) {
+      await super.accessPage(index);
+    
+      await driver
+        .findElement(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"))
+        .click();
+    
+      await this.#clickOnCountries();
+
+    } else {
+      await this.#clickOnNextPage();
+      await new Promise(resolve => setTimeout(resolve, 3000));
     }
   }
 
 
   async getLawyersInPage() {
-    const lawyers = await driver.wait(
+    return await driver.wait(
       until.elementsLocated(
-        By.className("")
+        By.className("search-result people")
       ), 100000
     );
-    return lawyers;
   }
 
   
   async openNewTab(lawyer) {
     const link = await lawyer
-      .findElement(By.css(""))
       .getAttribute("href");
 
     await super.openNewTab(link);
@@ -78,50 +83,48 @@ class Kennedys extends ByFilterNP {
   
 
   async #getName(lawyer) {
-    const nameElement = await lawyer
-      .findElement(By.className(""))
+    return await lawyer
+      .findElement(By.css("h1"))
       .getText();
-
-    
-    return nameElement
   }
 
 
-  async #getEmail(lawyer) {
-    const emailElement = await lawyer
-      .findElement(By.className(""))
-      .getAttribute("href");
-
-
-    return emailElement
-  }
-
+  async #getSocials(lawyer) {
+    const socials = await lawyer
+      .findElements(By.className('person-link'));
   
-  async #getDDD(lawyer) {
-    const dddElement = await lawyer
-      .findElement(By.className(""))
-      .getAttribute("href");
-      
-    return dddElement
+    let email;
+    let ddd;
+  
+    for (let social of socials) {
+      const href = await social
+        .getAttribute('href');
+  
+      if (href.includes('mailto:')) email = href;
+      else if (href.includes('tel:')) ddd = href;
+  
+      if (email && ddd) break;
+    }
+  
+    return { email, ddd };
   }
 
 
   async getLawyer(lawyer) {
+    const details = await driver.wait(
+      until.elementLocated(By.className("person-card")
+      ), 5000
+    );
+
+    const { email, ddd } = await this.#getSocials(details);
+
     return {
-      name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      name: await this.#getName(details),
+      email: email,
+      country: getCountryByDDD(ddd),
     };
   }
 
 }
 
 module.exports = Kennedys;
-
-async function main() {
-  t = new Kennedys();
-  t.accessPage(0);
-  // t.searchForLawyers();
-}
-
-main();

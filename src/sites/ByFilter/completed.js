@@ -1,6 +1,6 @@
 const ByFilter = {
   XforIteraction: [    //
-    "MorganLewisAndBockiusLLP",
+    "MorganLewisAndBockiusLLP", "Kennedys",
     // "",
   ],
 

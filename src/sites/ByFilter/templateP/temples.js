@@ -18,6 +18,8 @@ class Template extends ByFilterP {
       "": "",
       "": "",
     };
+
+    // this._totalPages = new Set(Object.values(this._filterOptions)).size;
   }
 
 

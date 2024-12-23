@@ -23,7 +23,7 @@ class Sheet extends Excel {
     const availableRows = [];
   
     for (let i = MIN; i <= MAX; i++) {
-      if (!this._rowsFilled.has(i) && !workSheet[`B${i}`]?.v) {
+      if (!this._rowsFilled.has(i) && !workSheet[`B${ i }`]?.v) {
         availableRows.push(i);
       }
     }
@@ -90,10 +90,10 @@ class Sheet extends Excel {
 
   
 
-  addContact({ firstName, nameTreated, firmNameTreated, countryTreated, emailTreated }) {
-    if (this._lastCountry === countryTreated && this._lastFirm === firmNameTreated) {
+  addContact({ link, name, email, phone, firm, country }) {
+    if (this._lastCountry === country && this._lastFirm === firm) {
       console.log(
-        `The firm ${this._lastFirm} already has a lawyer in the country ${this._lastCountry} registered in the sheet.`
+        `The firm ${ this._lastFirm } already has a lawyer in the country ${ this._lastCountry } registered in the sheet.`
       );
       return;
     }
@@ -107,17 +107,19 @@ class Sheet extends Excel {
     try {
       const workSheet = this.workbook.Sheets[this.workbook.SheetNames[0]];
 
-      workSheet[ `A${i}` ] = { v: firstName };
-      workSheet[ `B${i}` ] = { v: nameTreated };
-      workSheet[ `C${i}` ] = { v: firmNameTreated };
-      workSheet[ `D${i}` ] = { v: countryTreated };
-      workSheet[ `G${i}` ] = { v: emailTreated };
+      workSheet[ `A${ i }` ] = { v: link };
+      workSheet[ `B${ i }` ] = { v: name };
+      workSheet[ `C${ i }` ] = { v: email };
+      workSheet[ `D${ i }` ] = { v: phone };
+      workSheet[ `E${ i }` ] = { v: firm };
+      // workSheet[ `F${ i }` ] = { v: practiceArea };
+      workSheet[ `G${ i }` ] = { v: country };
 
       this.saveSheet();
       console.log("Contact added successfully.");
 
-      this.lastCountry = countryTreated;
-      this.lastFirm = firmNameTreated;
+      this.lastCountry = country;
+      this.lastFirm = firm;
     } catch (err) {
       console.error("Error while adding contact:", err);
     }
@@ -138,18 +140,18 @@ class Sheet extends Excel {
       const workSheet = this.workbook.Sheets[this.workbook.SheetNames[0]];
 
       for (let row = 2; row <= this.rowsToFill + 2; row++) {
-        const colB = workSheet[`B${row}`]?.v;
+        const colB = workSheet[`B${ row }`]?.v;
 
         if (!colB) {
-          workSheet[`A${row}`] = {
+          workSheet[`A${ row }`] = {
             t: "s",
-            v: `=PROPER(IFERROR(LEFT(B${row},FIND(" ",B${row})-1),B${row}))`,
+            v: `=PROPER(IFERROR(LEFT(B${ row },FIND(" ",B${ row })-1),B${ row }))`,
           };
         }
 
-        workSheet[`E${row}`] = {
+        workSheet[`E${ row }`] = {
           t: "s",
-          v: `=IFERROR(VLOOKUP(D${row},P2:Q260,2,FALSE),"Not Found")`,
+          v: `=IFERROR(VLOOKUP(D${ row },P2:Q260,2,FALSE),"Not Found")`,
         };
       }
 

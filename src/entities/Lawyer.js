@@ -1,15 +1,34 @@
 const title = require('../utils/title');
 
+
+/**
+ * Class used to represent a Lawyer
+ */
 class Lawyer {
-  constructor(name, country, email) {
+  /**
+   * Constructor of the lawyer
+   * @param {string} link
+   * @param {string} name
+   * @param {string} email
+   * @param {string} phone
+   * @param {string} firm
+   * @param {string} country
+   */
+  constructor(link, name, email, phone = '', firm, country) {
+    this._link = link.trim().toLowerCase();
     this._name = this.#treatLawyerName(name);
+    this._email = this.#treatEmail(email);
+    this._phone = this.#treatPhone(phone);
+    this._firm = firm.trim();
     this._country = country;
-    this._email = email;
   }
 
-  get name() { return this._name }
-  get country() { return this._country }
-  get email() { return this._email }
+  get link() { return this._link; }
+  get name() { return this._name; }
+  get email() { return this._email; }
+  get phone() { return this._phone; }
+  get firm() { return this._firm; }
+  get country() { return this._country; }
 
 
   /**
@@ -19,10 +38,11 @@ class Lawyer {
    * @returns {string} name treated
    */
   #treatLawyerName(name) {
-    // Normalize accents and remove diacritics -> to deal with accents words
+    //TODO: Check the treat when accented words are present.
+    // Normalize accents and remove diacritics -> to deal with accents words.
     name = name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-    // Remove punctuation (.,) and convert name to lowercase
+    // Remove punctuation (.,) , quotes("') and convert name to lowercase
     name = name
       .replace(/\./g, " ")
       .replace(/,/g, " ")
@@ -44,37 +64,28 @@ class Lawyer {
   
     return title(fullName.trim());
   }
-  
-  
-  
-/**
- * Extracts the first name from a full name string, accounting for potential abbreviations.
- * If the first word of the name is an abbreviation (e.g., Mr., Ms., Dr.), it returns the second word as the first name.
- * @param {string} name - A full name string (first name, last name, and possibly a title).
- * @returns {string} The first name, which may be the second word if the first word is an abbreviation.
- */
-#getFirstName(name) {
-  const splitName = name.split(' ').filter(Boolean); // Split and remove empty strings;
-  let nameToReturn = splitName[0];
 
-  if (nameToReturn.length < 2) nameToReturn = splitName[1];
-
-  return nameToReturn;
-}
 
   /**
-   * Function used to return the treated data from the laywer class
-   * @param {str} firmName of the lawter
-   * @returns {promisse} data treated
+   * Function used to treat a lawyer email.
+   * @param {string} email
+   * @returns {string} email treated
    */
-  returnTreatData(firmName) {
-    return {
-      firstName: this.#getFirstName(this.name),
-      nameTreated: this.name,
-      firmNameTreated: firmName.trim(),
-      countryTreated: this.country,
-      emailTreated: this.email
-    };
+  #treatEmail(email) {
+    return email.toLowerCase().replace("mailto:", "")
+                              .replace("mailto", "")
+                              .trim();
+  }
+  
+
+  /**
+   * Functino used to treat a lawyer phone removing all the non numeric
+   * characters and leading zeros.
+   * @param {string} phone
+   * @returns {string} phone treated
+   */
+  #treatPhone(phone) {
+    return phone.replace(/\D/g, "").replace(/^0+/, "");
   }
 }
 

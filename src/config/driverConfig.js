@@ -9,7 +9,6 @@ options.addArguments('--disable-web-security');                             // D
 options.addArguments('--allow-insecure-localhost');                         // Allow insecure localhost connections
 options.addArguments('--no-proxy-server');                                  // Disable proxy if you're not using one
 options.addArguments('--disable-features=IsolateOrigins,site-per-process'); // Disable site isolation
-options.addArguments('--incognito');
 
 
 

@@ -41,22 +41,14 @@ class Site extends BaseSite {
   /**
    * Function used to register a lawyer in the Sheet and in the file.txt
    * emailsOfMonth. Also it add the country of the lawyer to the set os countries
-   * @param {string} name
-   * @param {string} country
-   * @param {string} email
-   * @param {string} firmName
+   * @param {Lawyer} lawyer to be registered
    */
-  registerLawyer(name, country, email, firmName, emailsOfMonthPath) {
+  registerLawyer(lawyer, emailsOfMonthPath) {
     const planilha = new Planilha();
 
-    email = email.toLowerCase()
-      .replace("mailto:", "")
-      .replace("mailto", "")
-      .trim();
+    const { link, name, email, phone, firm, country } = lawyer;
 
-    planilha.addContact(
-      new Lawyer(name, country, email).returnTreatData(firmName)
-    );
+    planilha.addContact(link, name, email, phone, firm, country);
 
     registerEmailOfMonth(email, emailsOfMonthPath);
     if (country !== "Not Found") {

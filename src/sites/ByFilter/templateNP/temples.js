@@ -18,6 +18,8 @@ class Template extends ByFilterNP {
       "": "",
       "": "",
     };
+
+    // this._totalPages = new Set(Object.values(this._filterOptions)).size;
   }
 
 
@@ -65,8 +67,8 @@ class Template extends ByFilterNP {
   }
   
 
-  async #getName(lawyer) {
-    const nameElement = await lawyer
+  async #getName() {
+    const nameElement = await driver
       .findElement(By.className(""))
       .getText();
 
@@ -75,8 +77,8 @@ class Template extends ByFilterNP {
   }
 
 
-  async #getEmail(lawyer) {
-    const emailElement = await lawyer
+  async #getEmail() {
+    const emailElement = await driver
       .findElement(By.className(""))
       .getAttribute("href");
 
@@ -85,8 +87,8 @@ class Template extends ByFilterNP {
   }
 
   
-  async #getDDD(lawyer) {
-    const dddElement = await lawyer
+  async #getDDD() {
+    const dddElement = await driver
       .findElement(By.className(""))
       .getAttribute("href");
       
@@ -96,9 +98,9 @@ class Template extends ByFilterNP {
 
   async getLawyer(lawyer) {
     return {
-      name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      name: await this.#getName(),
+      email: await this.#getEmail(),
+      country: getCountryByDDD(await this.#getDDD()),
     };
   }
 

@@ -21,9 +21,8 @@ class ByFilterNP extends ByNewPage {
     };
 
     this._currentCountry = "";
-    this._totalPages = new Set(Object.values(this._filterOptions)).size;
     this._usedCountries = new Set();
-    this._totalPages = new Set(Object.values(this._filterOptions)).size;
+    // this._totalPages = new Set(Object.values(this._filterOptions)).size;
     // The set avoid that a Contry that have more than one city registred to be
     // called again
   }
@@ -33,7 +32,7 @@ class ByFilterNP extends ByNewPage {
    *
    * Also sets the current country.
    */
-  async #selectRandomCountry() {
+  async selectRandomCountry() {
     const cityKeys = Object.keys(this._filterOptions);
     const availableCities = cityKeys.filter(
       city => !this._usedCountries.has(this._filterOptions[city])
@@ -58,7 +57,7 @@ class ByFilterNP extends ByNewPage {
 
       await this.accessPage(i);
 
-      const awnser = await this.#selectRandomCountry();
+      const awnser = await this.selectRandomCountry();
       if (awnser === "No more countries to search.") return;
 
       const lawyersInPage = await this.getLawyersInPage();
@@ -82,31 +81,36 @@ class ByFilterNP extends ByNewPage {
             console.log("Not Partner");
             continue;
           }
-
-          if ( !lawyerDetails || !lawyerDetails.country || !lawyerDetails.email ) {
-            console.log(`Error reading ${ index + 1 }th lawyer at the page ${ i + 1 } of the firm ${ this._name }.\nSkipping...`);
+      
+          if (!lawyerDetails || lawyerDetails.link || lawyerDetails.email) {
+            console.log(
+              `Error reading ${ index + 1 }th lawyer at the page ${ i + 1 } of the firm ${ this._name }.\nSkipping...`
+            );
+            console.log("  Link: " + lawyerDetails.link);
             console.log("  Name: " + lawyerDetails.name);
             console.log("  Email: " + lawyerDetails.email);
+            console.log("  Phone: " + lawyerDetails.phone);
             console.log("  Country: " + lawyerDetails.country);
             continue;
           }
 
-          let { name = "", country, email } = lawyerDetails;
+          let { link, name = "", email, phone, country } = lawyerDetails;
 
           if (email && !name) {
             name = this.getNameFromEmail(email);
           }
 
+          const lawyerToRegister = new Lawyer(link, name, email, phone, this._name, country);
+
           let canRegister = makeValidations(
-            name, country, email,
-            this._lastCountries, this.emailsOfMonthPath, this.emailsToAvoidPath
+            lawyerToRegister,
+            this._lastCountries,
+            this.emailsOfMonthPath, this.emailsToAvoidPath
           );
           if (!canRegister) continue;
 
-          this.registerLawyer(
-            name, country, email,
-            this._name, this.emailsOfMonthPath
-          );
+          this.registerLawyer(lawyerToRegister, this.emailsOfMonthPath);
+
 
           if (this._lawyersRegistered === this._maxLawyersForSite) {
             console.log(`No more than ${ this._maxLawyersForSite } lawyer need for the firm ${ this._name }.`);
