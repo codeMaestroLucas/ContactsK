@@ -10,7 +10,7 @@ class MorganLewisAndBockiusLLP extends ByFilterP {
     totalPages = 14,
   ) {
 
-    super(name, link, totalPages, 500);
+    super(name, link, totalPages);
 
     this._filterOptions = {
       "Abu Dhabi": "the UAE",    "Almaty":    "Kazakhstan",   "Astana":   "Kazakhstan",
