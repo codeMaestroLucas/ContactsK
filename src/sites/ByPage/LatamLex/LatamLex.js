@@ -13,9 +13,11 @@ class LatamLex extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -29,6 +31,14 @@ class LatamLex extends ByPage {
     return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.css("a"))
@@ -37,12 +47,14 @@ class LatamLex extends ByPage {
       .getText();
   }
 
+
   async #getEmail(lawyer) {
     const html = await lawyer
       .findElement(By.css("p:nth-child(3)"))
       .getAttribute("outerHTML");
     return this.getContentFromTag(html);
   }
+
 
   async #getCountry(lawyer) {
     const dddElement = await lawyer
@@ -56,8 +68,10 @@ class LatamLex extends ByPage {
     else if (dddElement.includes("nicaragua")) return "Nicaragua";
   }
 
+
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
       country: await this.#getCountry(lawyer),
@@ -66,3 +80,5 @@ class LatamLex extends ByPage {
 }
 
 module.exports = LatamLex;
+
+// todo: transform newPage

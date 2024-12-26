@@ -19,6 +19,7 @@ class Pedersoli extends ByPage {
     await super.accessPage(index, otherUrl);
   }
 
+
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(
@@ -26,6 +27,15 @@ class Pedersoli extends ByPage {
       ), 100000
     );
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+     .findElement(By.css("h2"))
+     .findElement(By.className("linkTitolo"))
+     .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     const html = await lawyer
@@ -37,26 +47,45 @@ class Pedersoli extends ByPage {
   }
 
 
-  async #getEmail(lawyer) {
+  async #getSocials(lawyer) {
     const socials = await lawyer
       .findElements(By.className("linkProfessionista"));
+
+    let email;
+    let phone;
 
     for (let social of socials) {
       const html = await social.getAttribute("outerHTML");
       const href = await super.getContentFromTag(html);
 
-      if (href.includes("pglex.it")) return href;
+      if (href.includes("pglex.it")) email = href;
+      else if (href.includes("+")) phone = href;
+
+      if (email && phone) break;
     }
+
+    return { email, phone };
   }
 
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
-      country: "Italy",
+      email: email,
+      phone: phone,
+      country: "Italy"
     };
   }
 }
 
 module.exports = Pedersoli;
+
+async function main() {
+  t = new Pedersoli();
+  t.searchForLawyers();
+}
+
+main();

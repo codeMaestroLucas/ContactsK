@@ -14,51 +14,65 @@ class HankunLaw extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     const otherUrl = `https://www.hankunlaw.com/en/portal/list/index/id/2.html?city=&zw=9%2C10%2C11&ly=&page=${ index + 1}`;
     await super.accessPage(index, otherUrl);
   }
 
+
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(
-        By.className("info")
+        By.css("div.law-list > a")
       ), 100000
     );
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .getAttribute("href");
+  }
+
+
+
   async #getName(lawyer) {
     return await lawyer
+      .findElement(By.className("info"))
       .findElement(By.className("t"))
       .getText();
   }
 
   async #getSocials(lawyer) {
     const socials = await lawyer
+      .findElement(By.className("info"))
       .findElement(By.className("ds"))
       .findElements(By.css("dd"))
     
     let email;
-    let ddd;
+    let phone;
 
     for (let social of socials) {
       const href = await social.getText();
       if (href.includes("@hankunlaw.com")) email = href;
-      else if (href.includes("+")) ddd = href;
+      else if (href.includes("+")) phone = href;
 
-      if (email && ddd) break;
+      if (email && phone) break;
     }
 
-    return { email, ddd };
+    return { email, phone };
   }
 
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials(lawyer);
+    const { email, phone } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

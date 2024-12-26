@@ -30,14 +30,17 @@ class JonesDay extends ByPage {
     new Promise(resolve => setTimeout(resolve, 5000));
   }
 
+
   async getLawyersInPage() {
     const lawyers = await driver.wait(
       until.elementsLocated(
-        By.className("professional__column--right")
+        By.className("professional__container CoveoResultLink")
       )
     );
     
     const webRole = [
+      By.className("professional__row--horizontal"),
+      By.className("professional__column--right"),
       By.css("div.person__row:first-child"),
       By.css("p.person__row:last-child"),
       By.className("person__title")
@@ -45,16 +48,26 @@ class JonesDay extends ByPage {
     return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+     .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     const html = await lawyer
+      .findElement(By.className("professional__column--right"))
       .findElement(By.className("person__name"))
-      .getText()
       .getAttribute("outerHTML")
     return await super.getContentFromTag(html);
   }
 
+
   async #getEmail(lawyer) {
-    const emailDivs = await lawyer.findElements(By.css(".person__row--over-inline"));
+    const emailDivs = await lawyer
+      .findElement(By.className("professional__column--right"))
+      .findElements(By.css(".person__row--over-inline"));
     
     for (const div of emailDivs) {
       const html = await div
@@ -66,8 +79,10 @@ class JonesDay extends ByPage {
     }
   }
 
-  async #getDDD(lawyer) {
+
+  async #getPhone(lawyer) {
     const html = await lawyer
+      .findElement(By.className("professional__column--right"))
       .findElement(By.css("div.person__row > span.person__meta > span.person__phone-listing"))
       .getAttribute("outerHTML");
 
@@ -76,13 +91,15 @@ class JonesDay extends ByPage {
 
 
   async getLawyer(lawyer) {
+    const phone = await this.#getPhone(lawyer);
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
-
 }
 
 module.exports = JonesDay;

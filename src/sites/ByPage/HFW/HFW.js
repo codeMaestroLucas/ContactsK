@@ -13,10 +13,12 @@ class HFW extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     const otherUrl = `https://www.hfw.com/people/?_people_type_archive=partner&_paged=${ index + 1 }`;
     await super.accessPage(index, otherUrl);
   }
+
 
   async getLawyersInPage() {
     return await driver.wait(
@@ -25,6 +27,14 @@ class HFW extends ByPage {
       )
     );
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("flex flex-row no-underline max-md:items-center md:flex-col"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     return await lawyer
@@ -35,6 +45,7 @@ class HFW extends ByPage {
       .getText();
   }
 
+
   async #getSocials(lawyer) {
     const socials = await lawyer.findElements(
       By.className(
@@ -43,27 +54,30 @@ class HFW extends ByPage {
     );
 
     let email;
-    let ddd;
+    let phone;
 
     for (let social of socials) {
       const href = await social.getAttribute("href");
 
       if (href.includes("mailto:")) email = href;
-      else if (href.includes("tel:")) ddd = href;
+      else if (href.includes("tel:")) phone = href;
 
-      if (email && ddd) break;
+      if (email && phone) break;
     }
 
-    return { email, ddd };
+    return { email, phone };
   }
 
+
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials(lawyer);
+    const { email, phone } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

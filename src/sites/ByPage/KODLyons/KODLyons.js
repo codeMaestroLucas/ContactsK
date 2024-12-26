@@ -13,9 +13,11 @@ class KODLyons extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -29,6 +31,14 @@ class KODLyons extends ByPage {
       By.css("a")
     ];
     return await super.filterPartnersInPage(lawyers, webRole, true);
+  }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("entry-title fusion-post-title"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
   }
 
 
@@ -54,13 +64,15 @@ class KODLyons extends ByPage {
 
       if (href.includes("mailto:")) return href;
     }
-
   }
+
   
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
+      phone: "+353 1 679 0780", // Default phone
       country: "Ireland"
     };
   }

@@ -24,7 +24,7 @@ class SpencerWest extends ByPage {
  
   async getLawyersInPage() {
     const lawyers = await driver.wait(
-      until.elementsLocated(By.className("person-card__wrapper")),
+      until.elementsLocated(By.className("person-card__content")),
       20000
     );
     
@@ -35,9 +35,16 @@ class SpencerWest extends ByPage {
   }
 
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("person-card__name"))
+      .getAttribute("href");
+  }
+
+
   async #getSocials(lawyer) {
     let email;
-    let ddd;
+    let phone;
 
     const socials = await lawyer.findElements(By.className("social-link"));
 
@@ -45,23 +52,23 @@ class SpencerWest extends ByPage {
         const href = (await social.getAttribute('href')).toLowerCase().trim();
 
         if (href.includes("mailto:")) email = href;
-        else if (href.includes("tel:")) ddd = href;
+        else if (href.includes("tel:")) phone = href;
 
-        if (email && ddd) break;
+        if (email && phone) break;
     }
 
-    return { email, ddd };
+    return { email, phone };
   }
 
   async getLawyer(lawyer) {
-    const { ddd, email } = await this.#getSocials(lawyer);
+    const { email, phone } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await lawyer.findElement(By.className("person-card__name")).getText(),
       email: email,
-      country: getCountryByDDD(ddd)
+      phone: phone,
+      country: getCountryByDDD(phone)
     };
   }
 }
-
-module.exports = SpencerWest;

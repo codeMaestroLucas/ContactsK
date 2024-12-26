@@ -13,34 +13,46 @@ class KRBLawFirm extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     await driver.wait(until.elementsLocated(By.className("row")));
 
     const lawyers = await driver
       .findElement(By.id("staff-div"))
-      .findElement(By.className("container max-width-none"))
-      .findElements(By.className("text-center"));
-
+      .findElements(By.css("div.col-20-c.col-12.p-0.p-fix-mobile > a"))
+      
     const wbeRole = [
+      By.className("text-center"),
       By.css("div:nth-of-type(2)"),
       By.className("font-size-22px")
     ];
     return await super.filterPartnersInPage(lawyers, wbeRole, true);
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
+      .findElement(By.className("text-center"))
       .findElement(By.css("div:nth-of-type(1)"))
       .findElement(By.className("font-weight-bold font-size-28px"))
       .getText();
   }
 
+
   async #getEmail(lawyer) {
     return await lawyer
+      .findElement(By.className("text-center"))
       .findElement(By.css("div:nth-of-type(3)"))
       .findElement(By.className("font-size-22px"))
       .getText();
@@ -48,6 +60,7 @@ class KRBLawFirm extends ByPage {
 
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
       country: "Israel",
@@ -56,3 +69,4 @@ class KRBLawFirm extends ByPage {
 }
 
 module.exports = KRBLawFirm;
+// TODO: TRANSFOR INTO NEWPAGE

@@ -13,10 +13,12 @@ class MeitarLawOffices extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
     this.rollDown(6, 1.5)
   }
+
 
   async getLawyersInPage() {
     return await driver.wait(
@@ -26,6 +28,14 @@ class MeitarLawOffices extends ByPage {
     );
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("people-post-content-title"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("people-post-content-title"))
@@ -33,18 +43,36 @@ class MeitarLawOffices extends ByPage {
       .getText();
   }
 
-  async #getEmail(lawyer) {
-    return await lawyer
+
+  async #getSocials(lawyer) {
+    const socials = await lawyer
       .findElement(By.className("people-post-content-contact"))
-      .findElement(By.css("li:nth-of-type(2) > a"))
-      .getText();
+      .findElements(By.css("li > a"));
+
+      let email;
+      let phone;
+
+      for (let social of socials) {
+        const href = await social
+          .getAttribute('href');
+    
+        if (href.includes('mailto:')) email = href;
+        else if (href.includes('tel:')) phone = href;
+    
+        if (email && phone) break;
+      }
+    
+      return { email, phone };
   }
 
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
+      email: email,
+      phone: phone,
       country: "Israel"
     };
   }

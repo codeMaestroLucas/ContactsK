@@ -12,6 +12,7 @@ class Pulegal extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
     await super.rollDown(1, 2);
@@ -26,6 +27,12 @@ class Pulegal extends ByPage {
     );
     return lawyers.slice(3, 64);  // This site is terrible
   }
+
+
+  async #getLink(lawyer) {
+
+  }
+
 
   async #getName(lawyer) {
     const nameElement = await lawyer
@@ -71,3 +78,11 @@ class Pulegal extends ByPage {
 }
 
 module.exports = Pulegal;
+// todo: transform newpage
+
+async function main() {
+  t = new Pulegal();
+  t.searchForLawyers();
+}
+
+main();

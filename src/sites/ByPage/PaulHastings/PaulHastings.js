@@ -19,6 +19,7 @@ class PaulHastings extends ByPage {
     await super.accessPage(index, otherUrl);
   }
 
+
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(
@@ -26,6 +27,7 @@ class PaulHastings extends ByPage {
       ), 100000
     );
   }
+
 
   async #getName(lawyer) {
     const html = await lawyer
@@ -41,18 +43,18 @@ class PaulHastings extends ByPage {
       )
 
     let email;
-    let ddd;
+    let phone;
 
     for (let social of socials) {
       const href = await social.getAttribute("href");
 
       if (href.includes("mailto:")) email = href;
-      else if (href.includes("tel:")) ddd = href;
+      else if (href.includes("tel:")) phone = href;
 
-      if (email && ddd) break;
+      if (email && phone) break;
     }
 
-    return { email, ddd };
+    return { email, phone };
   }
 
   async getLawyer(lawyer) {
@@ -62,14 +64,24 @@ class PaulHastings extends ByPage {
     const nameDiv = data[0];
     const contactDiv = data[2];
 
-    const { email, ddd } = await this.#getSocials(contactDiv);
+    const name = await this.#getName(nameDiv);
+    const { email, phone } = await this.#getSocials(contactDiv);
 
     return {
       name: await this.#getName(nameDiv),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }
 
 module.exports = PaulHastings;
+//TODO: Transform into NewPage
+
+async function main() {
+  t = new PaulHastings();
+  t.searchForLawyers();
+}
+
+main();

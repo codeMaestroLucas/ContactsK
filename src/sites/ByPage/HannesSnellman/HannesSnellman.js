@@ -21,6 +21,7 @@ class HannesSnellman extends ByPage {
       await driver.sleep(1500); // Wait for the new content to load
     }
   }
+  
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -31,6 +32,14 @@ class HannesSnellman extends ByPage {
     return lawyers.slice(1);  // The first element is invalid
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     const html = await lawyer
       .findElement(By.css("a"))
@@ -39,6 +48,7 @@ class HannesSnellman extends ByPage {
     return this.getContentFromTag(html);
   }
 
+
   async #getEmail(lawyer) {
     const html = await lawyer
       .findElement(By.className("extra-info"))
@@ -46,12 +56,22 @@ class HannesSnellman extends ByPage {
       .getAttribute("outerHTML");
       return `${ (await this.getContentFromTag(html)).trim() }@hannessnellman.com`;
   }
-
+  
+  
+  async #getPhone(lawyer) {
+    const html = await lawyer
+      .findElement(By.className("extra-info"))
+      .findElement(By.className("p-rel u-z-2 m-black"))
+      .getAttribute("outerHTML");
+    return this.getContentFromTag(html);
+  }
 
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
+      phone: await this.#getPhone(lawyer),
       country: "Finland"
     };
   }

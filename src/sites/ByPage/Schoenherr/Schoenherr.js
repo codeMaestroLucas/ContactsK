@@ -19,6 +19,7 @@ class Schoenherr extends ByPage {
     await super.rollDown(1, 2);
   }
 
+
   async getLawyersInPage() {
     const lawyers =  await driver.wait(
       until.elementsLocated(
@@ -32,16 +33,25 @@ class Schoenherr extends ByPage {
     return await super.filterPartnersInPage(lawyers, webRole, false);
   }
   
+
+  async #getLink(lawyer) {
+    return await lawyer
+     .findElement(By.className("people-card-info"))
+     .findElement(By.className("btn btn--primary btn--bigger people-card-cta"))
+     .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
-    const nameTag = await lawyer
+    const html = await lawyer
       .findElement(By.className("people-card-name"))
       .getAttribute("outerHTML");
 
-    const regex = /<span>(.*?)<\/span>/g;
-    const matches = [...nameTag.matchAll(regex)].map(match => match[1].trim());
-
-    const fullName = matches.join(' ').toLowerCase().trim();
-    return fullName;
+      const pattern = /<span>(.*?)<\/span>.*?<span[^>]*>(.*?)<\/span>/s;
+      const match = html.match(pattern);
+      if (match) {
+          return match[1].trim() + " " + match[2].trim();
+      }
   }
 
 
@@ -51,28 +61,30 @@ class Schoenherr extends ByPage {
     );
 
     let email;
-    let ddd;
+    let phone;
 
     for (let social of socials) {
       const href = await social.getAttribute("outerHTML");
       const result = href.replace(/<a[^>]*>(.*?)<\/a>/, "$1");
 
       if (result.includes("@schoenherr")) email = result;
-      else if (result.includes("+")) ddd = result;
+      else if (result.includes("+")) phone = result;
 
-      if (email && ddd) break;
+      if (email && phone) break;
     }
 
-    return { email, ddd };
+    return { email, phone };
   }
 
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials(lawyer);
+    const { email, phone } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

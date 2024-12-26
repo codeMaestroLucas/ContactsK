@@ -13,6 +13,7 @@ class HSAAdvocates extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
 
@@ -27,12 +28,21 @@ class HSAAdvocates extends ByPage {
     return await driver.wait(until.elementsLocated(By.className("team-item")));
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+     .findElement(By.css("a"))
+     .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return (await lawyer
       .findElement(By.className("mb-0"))
       .getText())
       .trim();
   }
+
 
   async #getEmail(lawyer) {
     return await lawyer
@@ -43,6 +53,7 @@ class HSAAdvocates extends ByPage {
 
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
       country: "India",

@@ -13,6 +13,7 @@ class MZMLegal extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
 
@@ -24,6 +25,7 @@ class MZMLegal extends ByPage {
       await addBtn.click();
     } catch (e) {}
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -48,11 +50,11 @@ class MZMLegal extends ByPage {
       .findElement(By.css('a[href^="mailto:"]'))
       .getAttribute("href");
   }
-  
 
 
   async getLawyer(lawyer) {
     return {
+      link: "https://mzmlegal.com/team/",  // All lawyers in one link
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
       country: "India",

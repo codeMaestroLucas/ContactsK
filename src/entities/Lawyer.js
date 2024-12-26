@@ -14,11 +14,11 @@ class Lawyer {
    * @param {string} firm
    * @param {string} country
    */
-  constructor(link, name, email, phone = '', firm, country) {
+  constructor(link, name, email, phone = "", firm, country) {
     this._link = link.trim().toLowerCase();
     this._name = this.#treatLawyerName(name);
     this._email = this.#treatEmail(email);
-    this._phone = this.#treatPhone(phone);
+    this._phone = (phone) ? this.#treatPhone(phone) : "";
     this._firm = firm.trim();
     this._country = country;
   }

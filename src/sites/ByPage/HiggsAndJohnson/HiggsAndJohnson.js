@@ -13,9 +13,11 @@ class HiggsAndJohnson extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     let lawyers = await driver.wait(
@@ -30,14 +32,25 @@ class HiggsAndJohnson extends ByPage {
       partners.push(... await lawyer.findElements(By.className("prev-content__meta")))
     }
 
+
     return partners;
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("title"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("title"))
       .getText();
   }
+
 
   async #getEmail(lawyer) {
     return await lawyer
@@ -46,14 +59,15 @@ class HiggsAndJohnson extends ByPage {
       .getAttribute("href")
   }
 
+
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
       country: "Jamaica",
     };
   }
-
 }
 
 module.exports = HiggsAndJohnson;

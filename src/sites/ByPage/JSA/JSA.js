@@ -56,3 +56,11 @@ async #getEmail(lawyer) {
 }
 
 module.exports = JSA;
+
+// todo
+async function main() {
+  t = new JSA();
+  t.searchForLawyers();
+}
+
+main();

@@ -14,9 +14,11 @@ class NjordLaw extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     return await driver.wait(
@@ -26,12 +28,19 @@ class NjordLaw extends ByPage {
     );
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("employee-link"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     const html = await lawyer
       .findElement(By.className("employee-link"))
       .findElement(By.className("employee-name"))
       .getAttribute("outerHTML");
-
     return await this.getContentFromTag(html);
   }
 
@@ -41,27 +50,30 @@ class NjordLaw extends ByPage {
       .findElements(By.css("div > a"));
 
     let email;
-    let ddd;
+    let phone;
 
     for (let social of socials) {
       const href = await social.getAttribute("href");
 
       if (href.includes("mailto:")) email = href;
-      else if (href.includes("tel:")) ddd = href.replace("tel:%28%2B", "");
+      else if (href.includes("tel:")) phone = href.replace("tel:%28%2B", "").replace("%29", "");
 
-      if (email && ddd) break;
+      if (email && phone) break;
     }
 
-    return { email, ddd };
+    return { email, phone };
   }
 
+
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials(lawyer);
+    const { email, phone } = await this.#getSocials(lawyer);
     
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }
