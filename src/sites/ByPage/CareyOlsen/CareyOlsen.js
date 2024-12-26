@@ -13,6 +13,7 @@ class CareyOlsen extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
     try {
@@ -24,6 +25,7 @@ class CareyOlsen extends ByPage {
       await super.rollDown(1, 0.5);
     } catch (e) {}
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -38,11 +40,20 @@ class CareyOlsen extends ByPage {
     return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("image"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.css("h3 > a"))
       .getText();
   }
+
 
   async #getEmail(lawyer) {
     const email = await lawyer
@@ -55,17 +66,22 @@ class CareyOlsen extends ByPage {
     }
   }
 
-  async #getDDD(lawyer) {
+
+  async #getPhone(lawyer) {
     return await lawyer
       .findElement(By.css(".phone.direct-line a"))
       .getAttribute("href");
   }
 
+
   async getLawyer(lawyer) {
+    const phone = await this.#getPhone(lawyer);
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

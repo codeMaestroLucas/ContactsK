@@ -9,7 +9,7 @@ class GiambroneInternationalLawFirm extends ByPage {
     name = "Giambrone International Law Firm",
     link = "https://www.giambronelaw.com/site/people/senior-lawyers/",
     totalPages = 1,  // 3 Pages but all the lawyers are inserted in the 1st page, just have the display as `none`
-    maxLawyersForSite = 100
+    maxLawyersForSite = 1
   ) {
     super(name, link, totalPages, maxLawyersForSite);
   }
@@ -35,6 +35,15 @@ class GiambroneInternationalLawFirm extends ByPage {
   }
 
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("staff-details"))
+      .findElement(By.className("name h4"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     const html = await lawyer
       .findElement(By.className("staff-details"))
@@ -51,7 +60,7 @@ class GiambroneInternationalLawFirm extends ByPage {
       .findElements(By.css('a'));
   
     let email;
-    const ddd = await lawyer
+    const phone = await lawyer
       .findElement(By.className('staff-contact'))
       .findElement(By.className("phone has-icon"))
       .findElement(By.className("icon-link"))
@@ -66,16 +75,19 @@ class GiambroneInternationalLawFirm extends ByPage {
       if (email) break;
     }
   
-    return { email, ddd };
+    return { email, phone };
   }
 
 
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials(lawyer);
+    const { email, phone } = await this.#getSocials(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

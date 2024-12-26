@@ -13,9 +13,11 @@ class AronTadmorLevy extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -32,30 +34,50 @@ class AronTadmorLevy extends ByPage {
     return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("section-title"))
       .getText();
   }
 
-  async #getEmail(lawyer) {
-    return await lawyer
+
+  async #getSocials(lawyer) {
+    const email = await lawyer
         .findElement(By.className("person-contact align-self-end"))
         .findElement(By.className("email"))
         .findElement(By.className("val"))
         .findElement(By.className("fnt-bold"))
         .getText();
+    const phone = await lawyer
+        .findElement(By.className("person-contact align-self-end"))
+        .findElement(By.className("phone"))
+        .findElement(By.className("val"))
+        .findElement(By.className("nounder fnt-regular"))
+        .getText();
+
+    return { email, phone };
   }
 
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
+      email: email,
+      phone: phone,
       country: "Israel",
     };
   }
-
 }
 
 module.exports = AronTadmorLevy;

@@ -92,7 +92,7 @@ class ByNewPage extends Site {
             continue;
           }
       
-          if (!lawyerDetails || lawyerDetails.link || lawyerDetails.email) {
+          if (!lawyerDetails || !lawyerDetails.link || !lawyerDetails.email) {
             console.log(
               `Error reading ${ index + 1 }th lawyer at the page ${ i + 1 } of the firm ${ this._name }.\nSkipping...`
             );

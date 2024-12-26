@@ -13,9 +13,11 @@ class AnandAndAnand extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -26,28 +28,49 @@ class AnandAndAnand extends ByPage {
     return lawyers.slice(1); // The fisrt doesnt have any contact information
   }
 
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.css("h4"))
       .getText();
   }
 
-  async #getEmail(lawyer) {
+
+  async #getLink(lawyer) {
+    return lawyer.findElement(By.css("a:first-child")).getAttribute("href");
+  }
+
+
+  async #getSocials(lawyer) {
     const socials = await lawyer
       .findElement(By.className("member_profile"))
       .findElements(By.css("div > a"))
 
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-      if (href.includes("mailto:")) return href;
-    }
+
+      let phone = null;
+      let email = null;
+  
+      for (let social of socials) {
+        const href = await social.getAttribute("href");
+    
+        if (href.includes("tel:")) phone = href;
+        else if (href.includes("mailto:")) email = href;
+  
+        if (email && phone) break;
+        
+      }
+      return { email, phone };
   }
 
+
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
-      country: "India",
+      email: email,
+      phone: phone,
+      country: "India"
     };
   }
 

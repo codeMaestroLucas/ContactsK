@@ -13,10 +13,12 @@ class GideLoyretteNouel extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     const otherUrl = `https://www.gide.com/en/avocats?search_api_aggregation_1=&field_expertise_tr_references=All&field_expertise_tr_references_sub=&field_region_tr_references=All&field_office_er_references=&search_api_views_fulltext=partner&page=${index}`;
     await super.accessPage(index, otherUrl);
   }
+
 
   async getLawyersInPage() {
     return await driver.wait(
@@ -25,6 +27,14 @@ class GideLoyretteNouel extends ByPage {
       ), 100000
     );
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.css("div.node-lawyer > a"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     return await lawyer
@@ -39,23 +49,26 @@ class GideLoyretteNouel extends ByPage {
       .findElement(By.css("a"))
       .getText();
 
-    let ddd = null;
+    let phone = null;
 
     for (let social of socials) {
       const href = await social.getText();
       if (href.includes("+")) {
-        ddd = href;
+        phone = href;
       }
     }
-    return { email, ddd };
+    return { email, phone };
   }
 
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocial(lawyer);
+    const { email, phone } = await this.#getSocial(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

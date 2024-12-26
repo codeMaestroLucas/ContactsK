@@ -26,23 +26,38 @@ class ALMTLegal extends ByPage {
     );
   }
 
+  async #getLink(lawyer) {
+    return lawyer.findElement(By.css("a")).getAttribute("href");
+  }
+
   async #getName(lawyer) {
     return await lawyer
         .findElement(By.css("h1"))
         .getText();
   }
 
-  async #getEmail(lawyer) {
-    return await lawyer
-        .findElement(By.css("h3 a[href*='mailto:']"))
-        .getText();
+  async #getSocials(lawyer) {
+    const socials = (await lawyer
+      .findElement(By.css('h3'))
+      .getAttribute("outerHTML"))
+      .split("<br>");
+
+    let phone = socials[0].replace("<h3>", "").replace(/\/.*/, '').trim();
+    let email = await super.getContentFromTag(socials[1]);
+    
+  
+    return { email, phone };
   }
 
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
+      email: email,
+      phone: phone,
       country: "India",
     };
   }

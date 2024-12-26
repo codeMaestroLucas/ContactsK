@@ -13,9 +13,11 @@ class ByrneWallace extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -30,28 +32,41 @@ class ByrneWallace extends ByPage {
     return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.css(".sollistname > a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.css(".sollistname > a"))
       .getText();
   }
 
-  async #getEmail(lawyer) {
-    const socials = await lawyer.findElements(
-      By.css(".sol-detail > a")
-    );
+
+  async #getSocials(lawyer) {
+    const socials = await lawyer.findElements(By.css("div.sol-detail"));
+
+    let email = await socials[0]
+      .findElement(By.css("a"))
+      .getAttribute("href");
+    let phone = await socials[1].getText();
     
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-      if (href.includes("mailto:")) return href;
-    }
+    return { email, phone };
   }
 
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
+      email: email,
+      phone: phone,
       country: "Ireland"
     };
   }

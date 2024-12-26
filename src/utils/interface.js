@@ -14,7 +14,6 @@ async function getRandomLawFirm() {
   const sheet = new Sheet();
   sheet.eraseLastSheet();
   const emptyRowsStart = sheet.rowsToFill;
-  sheet.fillEmptyColumns();
 
   const lawFirms = await Promise.all(constructFirms());
   const lawFirmsLen = lawFirms.length;

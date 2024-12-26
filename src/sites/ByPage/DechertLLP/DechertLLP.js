@@ -29,6 +29,14 @@ class DechertLLP extends ByPage {
   }
 
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("mt-2 mb-4 font-serif text-2xl duration-150 transition-opacity hover:opacity-75"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("mt-2 mb-4 font-serif text-2xl duration-150 transition-opacity hover:opacity-75"))
@@ -48,7 +56,7 @@ class DechertLLP extends ByPage {
   }
 
   
-  async #getDDD(lawyer) {
+  async #getPhone(lawyer) {
     const socials = await lawyer
       .findElements(By.css("div.mt-2.mb-2.leading-relaxed.text-gray-500.prose-xs > p > a"));
     
@@ -61,10 +69,13 @@ class DechertLLP extends ByPage {
 
 
   async getLawyer(lawyer) {
+    const phone = await this.#getPhone(lawyer);
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 

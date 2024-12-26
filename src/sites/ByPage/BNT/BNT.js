@@ -13,9 +13,11 @@ class BNT extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     const div = await driver.wait(
@@ -32,6 +34,16 @@ class BNT extends ByPage {
     return lawyers
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("item-block"))
+      .findElement(By.className("cbListFieldCont cbUserListFC_name list-title member-name"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("item-block"))
@@ -40,26 +52,32 @@ class BNT extends ByPage {
       .getText();
   }
 
+
   async #getEmail(lawyer) {
     return await lawyer
       .findElement(By.css('div[data-field-id="email"] > span > a'))
       .getAttribute("href");
   }
 
-  async #getDDD(lawyer) {
+
+  async #getPhone(lawyer) {
     return await lawyer
       .findElement(By.css('div[data-field-id="7"] > span > a'))
       .getAttribute("href");
   }
 
+
   async getLawyer(lawyer) {
+    const phone = await this.#getPhone(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
-
 }
 
 module.exports = BNT;

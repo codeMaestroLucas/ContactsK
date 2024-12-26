@@ -13,6 +13,7 @@ class GianniAndOrigoni extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
 
@@ -24,6 +25,7 @@ class GianniAndOrigoni extends ByPage {
       .click();
   }
 
+
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(
@@ -32,11 +34,20 @@ class GianniAndOrigoni extends ByPage {
     );
   }
 
+
+  async #getLink(Lawyer) {
+    return await Lawyer
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.css("a"))
       .getAttribute("title");
   }
+
 
   async #getEmail(lawyer) {
     return await lawyer
@@ -46,10 +57,18 @@ class GianniAndOrigoni extends ByPage {
   }
 
 
+  async #getPhone(lawyer) {
+    return await lawyer
+      .findElement(By.className("campotab4"))
+      .getText();
+  }
+
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
+      phone: await this.#getPhone(lawyer),
       country: "Italy",
     };
   }

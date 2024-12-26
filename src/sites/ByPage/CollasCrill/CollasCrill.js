@@ -3,7 +3,6 @@ const ByPage = require("../../../entities/BaseSites/ByPage");
 let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
-const { Name } = require("selenium-webdriver/lib/command");
 
 class CollasCrill extends ByPage {
   constructor(
@@ -14,27 +13,33 @@ class CollasCrill extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
 
+
   async getLawyersInPage() {
-    const t = await driver.wait(
+    return await driver.wait(
       until.elementsLocated(
         By.className("overlay-contents")
       ), 100000
     );
-    return t;
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer.findElement(By.css("a")).getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
-    const nameDivs = await lawyer
+    return await lawyer
       .findElement(By.css("a"))
       .findElement(By.className("name name-desktop"))
       .getText();
-
-    return nameDivs;
   }
+
 
   async #getSocials(lawyer) {
     const socials = await lawyer
@@ -42,7 +47,7 @@ class CollasCrill extends ByPage {
       .findElements(By.css("a"));
 
     let email;
-    let ddd;
+    let phone;
 
     for (let social of socials) {
       const href = await social.getAttribute("href");
@@ -51,29 +56,30 @@ class CollasCrill extends ByPage {
         email = href;
 
       } else if (href.includes("tel:")) {
-        ddd = href;
+        phone = href;
 
-        if (ddd.startsWith("00")) {
-          ddd = ddd.replace("00", "");
+        if (phone.startsWith("00")) {
+          phone = phone.replace("00", "");
         }
       }
 
-      if (email && ddd) break;
+      if (email && phone) break;
     }
 
-    return { email, ddd };
+    return { email, phone };
   }
 
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials(lawyer);
+    const { email, phone } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
-
 }
 
 module.exports = CollasCrill;

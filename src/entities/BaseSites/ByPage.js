@@ -41,7 +41,7 @@ class ByPage extends Site {
             continue;
           }
       
-          if (!lawyerDetails || lawyerDetails.link || lawyerDetails.email) {
+          if (!lawyerDetails || !lawyerDetails.link || !lawyerDetails.email) {
             console.log(
               `Error reading ${ index + 1 }th lawyer at the page ${ i + 1 } of the firm ${ this._name }.\nSkipping...`
             );
@@ -61,7 +61,7 @@ class ByPage extends Site {
 
           const lawyerToRegister = new Lawyer(link, name, email, phone, this._name, country);
 
-          let canRegister = makeValidations(
+          let canRegister =  makeValidations(
             lawyerToRegister,
             this._lastCountries,
             this.emailsOfMonthPath, this.emailsToAvoidPath

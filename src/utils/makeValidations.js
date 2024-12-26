@@ -98,7 +98,7 @@ function makeValidations(lawyer, setOfLastCountries, emailsOfMonthPath, emailsTo
   
   const emailToAvoid = isAEmailToAvoid(email, emailsToAvoidPath);
   if (emailToAvoid) {
-    console.log(`Email to avoid: ${ emailToAvoid }`);
+    // console.log(`Email to avoid: ${ emailToAvoid }`);
     return false;
   }
 

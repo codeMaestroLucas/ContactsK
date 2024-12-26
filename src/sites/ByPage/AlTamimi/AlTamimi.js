@@ -38,27 +38,29 @@ class AlTamimi extends ByPage {
     );
 
     let email;
-    let ddd;
+    let phone;
 
     for (let social of socials) {
       const href = await social.getAttribute("href");
 
       if (href.includes("mailto:")) email = href;
-      else if (href.includes("tel:+")) ddd = href;
+      else if (href.includes("tel:+")) phone = href;
 
-      if (email && ddd) break;
+      if (email && phone) break;
     }
 
-    return { email, ddd };
+    return { email, phone };
   }
 
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials(lawyer)
+    const { email, phone } = await this.#getSocials(lawyer)
 
     return {
+      link: await lawyer.findElement(By.css("a").getAttribute("href")),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

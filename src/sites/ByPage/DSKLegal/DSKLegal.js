@@ -13,6 +13,7 @@ class DSKLegal extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
 
@@ -24,6 +25,7 @@ class DSKLegal extends ByPage {
 
     await addBtn.click();
   }
+
 
   async getLawyersInPage() {
     const divResults = await driver.wait(
@@ -47,11 +49,20 @@ class DSKLegal extends ByPage {
     return partners;
   }
   
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.css("h2 a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.css("h2 a"))
       .getText();
   }
+  
 
   async #getEmail(lawyer) {
     const liElements = await lawyer.findElements(By.css("ul > li"));
@@ -68,6 +79,7 @@ class DSKLegal extends ByPage {
 
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
       country: "India",

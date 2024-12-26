@@ -13,12 +13,14 @@ class ApplebyGlobal extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     super.accessPage(index,
       `https://www.applebyglobal.com/people/page/${index + 1}/?position=13`
     );
     await new Promise(resolve => setTimeout(resolve, 2000));
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -34,6 +36,15 @@ class ApplebyGlobal extends ByPage {
     ];
     return await super.filterPartnersInPage(lawyers, webRole, true);
   }
+
+  
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("u-margin-bottom-5"))
+      .findElement(By.className("u-decoration-none u-font-weight-normal grid-item__title"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     let name;
@@ -52,11 +63,12 @@ class ApplebyGlobal extends ByPage {
     }
   }
   
+
   async #getSocials(lawyer) {
     await driver.wait(until.elementIsVisible(lawyer), 10000);
     const contacts = await lawyer.findElements(By.className("u-decoration-none u-nowrap"));
     let email = null;
-    let ddd = null;
+    let phone = null;
   
     for (let contact of contacts) {
       const href = (await contact.getAttribute("href")).trim();
@@ -65,23 +77,25 @@ class ApplebyGlobal extends ByPage {
         email = href.replace(/\?subject=.*$/, "");
 
       } else if (href.startsWith("tel:+")) {
-        ddd = href;
+        phone = href;
       }
 
-      if (email && ddd) break;
+      if (email && phone) break;
     }
   
-    return { email, ddd };
+    return { email, phone };
   }
   
 
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials(lawyer);
+    const { email, phone } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

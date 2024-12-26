@@ -12,12 +12,12 @@ class ConsortiumLegal extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     const otherUrl = `${ this._link }&fwp_paged=${ index + 1 }`;
     await super.accessPage(index, otherUrl);
-    try {
-    } catch (e) {}
   }
+
 
   async getLawyersInPage() {
     return await driver.wait(
@@ -27,12 +27,19 @@ class ConsortiumLegal extends ByPage {
     );
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer.findElement(By.css("a")).getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.css("a"))
       .findElement(By.className("title-abogado"))
       .getText();
   }
+
 
   async #getEmail(lawyer) {
     return await lawyer
@@ -41,6 +48,7 @@ class ConsortiumLegal extends ByPage {
       .getAttribute("href");
   }
 
+
   async #getCountry(lawyer) {
     return (await lawyer
     .findElement(By.css('div[style*="display:flex"]'))
@@ -48,8 +56,10 @@ class ConsortiumLegal extends ByPage {
     .replace("-", "").trim();
   }
 
+
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
       country: await this.#getCountry(lawyer),
