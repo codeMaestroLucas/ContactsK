@@ -54,24 +54,7 @@ class CFNLaw extends ByPage {
 
   async #getSocials(lawyer) {
     const socials = await lawyer.findElements(By.css("p > a"));
-    
-    let phone = null;
-    let email = null;
-
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-  
-      if (href.includes("tel:")) {
-        phone = href.replace("tel:%2B", "");
-
-      } else if (href.includes("mailto:")) {
-        email = href;
-      }
-
-      if (email && phone) break;
-      
-    }
-    return { email, phone };
+    return await super.getSocials(socials);
   }
 
 
@@ -82,7 +65,7 @@ class CFNLaw extends ByPage {
       link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      phone: phone,
+      phone: phone.replace("tel:%2B", ""),
       country: "Hong Kong",
     };
   }

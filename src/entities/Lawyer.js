@@ -20,7 +20,7 @@ class Lawyer {
     this._email = this.#treatEmail(email);
     this._phone = (phone) ? this.#treatPhone(phone) : "";
     this._firm = firm.trim();
-    this._country = country;
+    this._country = this.#treatCountry(country);
   }
 
   get link() { return this._link; }
@@ -86,6 +86,10 @@ class Lawyer {
    */
   #treatPhone(phone) {
     return phone.replace(/\D/g, "").replace(/^0+/, "");
+  }
+
+  #treatCountry(country) {
+    return title(country);
   }
 }
 

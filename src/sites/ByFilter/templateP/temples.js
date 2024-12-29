@@ -58,6 +58,12 @@ class Template extends ByFilterP {
   }
 
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className(""))
+  }
+
+
   async #getName(lawyer) {
     const nameElement = await lawyer
       .findElement(By.className(""))
@@ -68,34 +74,26 @@ class Template extends ByFilterP {
   }
 
 
-  async #getEmail(lawyer) {
-    const emailElement = await lawyer
-      .findElement(By.className(""))
-      .getAttribute("href");
-
-
-    return emailElement
+  async #getSocials() {
+    const socials = await driver
+      .findElement(By.className())
+    return await super.getSocials(socials);
   }
-
   
-  async #getDDD(lawyer) {
-    const dddElement = await lawyer
-      .findElement(By.className(""))
-      .getAttribute("href");
-      
-    return dddElement
-  }
-
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
+    
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      email: email,
+      phone: phone,
+      country: getCountryByDDD(phone)
     };
   }
-
 }
+
 
 module.exports = Template;
 

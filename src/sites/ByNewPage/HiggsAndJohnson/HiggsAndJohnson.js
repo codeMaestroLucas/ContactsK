@@ -1,9 +1,9 @@
-const ByPage = require("../../../entities/BaseSites/ByPage");
+const ByNewPage = require("../../../entities/BaseSites/ByNewPage");
 let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
 
-class HiggsAndJohnson extends ByPage {
+class HiggsAndJohnson extends ByNewPage {
   constructor(
     name = "Higgs And Johnson",
     link = "https://higgsjohnson.com/attorneys/",
@@ -29,42 +29,49 @@ class HiggsAndJohnson extends ByPage {
 
     let partners = [];
     for (let lawyer of lawyers) {
-      partners.push(... await lawyer.findElements(By.className("prev-content__meta")))
+      partners.push(... await lawyer.findElements(By.className("prev-content__image")))
     }
-
 
     return partners;
   }
 
 
-  async #getLink(lawyer) {
-    return await lawyer
-      .findElement(By.className("title"))
+  async openNewTab(lawyer) {
+    const link = await lawyer
       .findElement(By.css("a"))
       .getAttribute("href");
+
+    await super.openNewTab(link);
   }
 
 
   async #getName(lawyer) {
     return await lawyer
-      .findElement(By.className("title"))
+      .findElement(By.css("h1"))
       .getText();
   }
 
 
-  async #getEmail(lawyer) {
-    return await lawyer
-      .findElement(By.className("description"))
-      .findElement(By.css("a"))
-      .getAttribute("href")
+  async #getSocials(lawyer) {
+    const socials = await lawyer
+      .findElement(By.className("meta person-details display-flex-block-wrap "))
+      .findElements(By.css("div > a"));
+    return await super.getSocials(socials);
   }
 
 
   async getLawyer(lawyer) {
+    const details = await driver
+      .findElement(By.className("row banner-inner"))
+      .findElement(By.className("banner-inner__left-text"));
+
+    const { email, phone } = await this.#getSocials(details);
+
     return {
-      link: await this.#getLink(lawyer),
-      name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
+      link: await driver.getCurrentUrl(),
+      name: await this.#getName(details),
+      email: email,
+      phone: phone,
       country: "Jamaica",
     };
   }

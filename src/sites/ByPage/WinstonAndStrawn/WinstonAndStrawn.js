@@ -18,6 +18,7 @@ class WinstonAndStrawn extends ByPage {
     const otherUrl = `https://www.winston.com/en/professionals?f=${ index * 20 }&of=5103%2C278%2C1039905%2C286%2C282&po=1000001`;
     await super.accessPage(index, otherUrl);
   }
+  
 
   async getLawyersInPage() {
     return await driver.wait(
@@ -27,6 +28,15 @@ class WinstonAndStrawn extends ByPage {
     );
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("type__h3 py-2 pt-md-0 pb-md-1"))
+      .findElement(By.className("null color-hover-aegean"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("type__h3 py-2 pt-md-0 pb-md-1"))
@@ -35,6 +45,7 @@ class WinstonAndStrawn extends ByPage {
       .getText();
   }
 
+
   async #getEmail(lawyer) {
     return await lawyer
       .findElement(By.className("my-1 my-md-2 styles__childTypeLinkBlueGrayHover--f16c2240"))
@@ -42,7 +53,8 @@ class WinstonAndStrawn extends ByPage {
       .getAttribute("href");
   }
 
-  async #getDDD(lawyer) {
+
+  async #getPhone(lawyer) {
     return (await lawyer
       .findElement(By.css("dl > dd:nth-child(5)"))
       .findElement(By.css("a"))
@@ -50,11 +62,16 @@ class WinstonAndStrawn extends ByPage {
       .replace("tel:%2B", "");
   }
 
+
   async getLawyer(lawyer) {
+    const phone = await this.#getPhone(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

@@ -1,3 +1,5 @@
+const { getCountryByDDD } = require("../../../utils/getNationality");
+
 const ByNewPage = require("../../../entities/BaseSites/ByNewPage");
 let { driver } = require("../../../config/driverConfig");
 
@@ -57,15 +59,26 @@ class MeyerKöring extends ByNewPage {
       .getAttribute("href");
   }
 
+
+  async #getPhone(lawyer) {
+    return await lawyer
+      .findElement(By.xpath('/html/body/main/section/div[1]/div[2]/div/div[1]/address/span[4]/a'))
+      .getAttribute("href");
+  }
+
   
   async getLawyer(lawyer) {
     const details = await driver
       .findElement(By.className("col-md-6 d-flex col__cv"));
 
+    const phone = await this.#getPhone(details);
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: await this.#getEmail(details),
-      country: "Denmark",
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

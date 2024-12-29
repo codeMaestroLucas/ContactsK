@@ -101,7 +101,7 @@ class GuantaoLawFirm extends ByPage {
       link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      phone: '(86-10) 6657 8066',
+      phone: '861066578066',
       country: country,
     };
   }

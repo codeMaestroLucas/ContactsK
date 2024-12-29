@@ -46,24 +46,37 @@ class TCLawFirm extends ByNewPage {
   }
 
 
-  async #getEmail() {
+  async #getSocials() {
     const socials = await driver
       .findElement(By.className("member"))
       .findElement(By.className("member-left"))
       .findElement(By.className("pl-0"))
       .findElements(By.css("li"))
       
+
+    let email;
+    let phone;
+
     for (let social of socials) {
       const text = (await social.getText()).toLowerCase();
-      if (text.includes("@tclawfirm")) return text.replace("email:", "");
+      if (text.includes("@tclawfirm")) email = text.replace("email:", "");
+      else if (text.includes("tel: ")) phone = text;
+
+      if (email && phone) break;
     }
+
+    return { email, phone };
   }
 
   
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials();
+    
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
-      email: await this.#getEmail(),
+      email: email,
+      phone: phone,
       country: "Hong Kong"
     };
   }

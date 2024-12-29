@@ -45,7 +45,6 @@ class ALMTLegal extends ByPage {
     let phone = socials[0].replace("<h3>", "").replace(/\/.*/, '').trim();
     let email = await super.getContentFromTag(socials[1]);
     
-  
     return { email, phone };
   }
 

@@ -25,6 +25,7 @@ class Kennedys extends ByFilterNP {
     return false;
   }
 
+
   async #clickOnCountries() {
     const countries = await driver.wait(
       until.elementLocated(By.xpath(`//*[@id="__layout"]/div/main/section/div[2]/section/div/aside/div/details[8]`)
@@ -43,10 +44,12 @@ class Kennedys extends ByFilterNP {
     }
   }
   
+
   async #clickOnNextPage() {
     const pagination = await driver.findElement(By.className("kenn-paginate"));
     await pagination.findElement(By.css("li:last-child")).click();
   }
+  
 
   async accessPage(index) {
     if (index === 0) {
@@ -92,21 +95,7 @@ class Kennedys extends ByFilterNP {
   async #getSocials(lawyer) {
     const socials = await lawyer
       .findElements(By.className('person-link'));
-  
-    let email;
-    let ddd;
-  
-    for (let social of socials) {
-      const href = await social
-        .getAttribute('href');
-  
-      if (href.includes('mailto:')) email = href;
-      else if (href.includes('tel:')) ddd = href;
-  
-      if (email && ddd) break;
-    }
-  
-    return { email, ddd };
+    return await super.getSocials(socials);
   }
 
 
@@ -116,15 +105,16 @@ class Kennedys extends ByFilterNP {
       ), 5000
     );
 
-    const { email, ddd } = await this.#getSocials(details);
+    const { email, phone } = await this.#getSocials(details);
 
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone)
     };
   }
-
 }
 
 module.exports = Kennedys;

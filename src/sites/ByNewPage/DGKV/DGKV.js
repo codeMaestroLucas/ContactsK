@@ -45,25 +45,23 @@ class DGKV extends ByNewPage {
   }
 
 
-  async #getEmail() {
-    const contacts = await driver
+  async #getSocials() {
+    const socials = await driver
       .findElements(By.className("contact-info__link"))
-    
-    for (let contact of contacts) {
-      const href = await contact.getAttribute("href");
-      if (href.includes("mailto:")) return href;
-    }
+    return await super.getSocials(socials);
   }
 
   
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials();
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
-      email: await this.#getEmail(),
+      email: email,
+      phone: phone,
       country: "Bulgaria",
     };
   }
-
 }
 
 module.exports = DGKV;

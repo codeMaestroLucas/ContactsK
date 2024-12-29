@@ -23,10 +23,12 @@ class AsafoAndCo extends ByNewPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     const otherUrl = `https://www.asafoandco.com/people/?_sft_positions=partner&sf_paged=${ index + 1 }`;
     await super.accessPage(index, otherUrl);
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -44,11 +46,13 @@ class AsafoAndCo extends ByNewPage {
     return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
+
   async openNewTab(lawyer) {
     const link = await lawyer.findElement(By.css("a")).getAttribute("href");
 
     await super.openNewTab(link);
   }
+
 
   async #getName() {
     try {
@@ -59,6 +63,7 @@ class AsafoAndCo extends ByNewPage {
     } catch (error) {}
     // Some lawyers doesn't have the portrait div - the name will be catch further on
   }
+
 
   async #getEmail() {
     const html = await driver
@@ -79,6 +84,7 @@ class AsafoAndCo extends ByNewPage {
     }
   }
 
+
   async #getContry() {
     try {
       const html = await driver
@@ -97,8 +103,10 @@ class AsafoAndCo extends ByNewPage {
     } catch (error) {}
   }
 
+
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
       country: await this.#getContry(),

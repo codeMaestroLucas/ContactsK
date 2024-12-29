@@ -4,6 +4,8 @@ let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
 
+
+// todo: transform in filter
 class Akin extends ByPage {
   constructor(
     name = "Akin",
@@ -45,24 +47,7 @@ class Akin extends ByPage {
     const socials = await lawyer.findElements(
       By.className("type__button u-standard-hover")
     );
-
-    let phone = null;
-    let email = null;
-
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-  
-      if (href.includes("tel:")) {
-        phone = href.replace("tel:%2B", "");
-
-      } else if (href.includes("mailto:")) {
-        email = href;
-      }
-
-      if (email && phone) break;
-      
-    }
-    return { email, phone };
+    return await super.getSocials(socials);
   }
 
   async getLawyer(lawyer) {
@@ -72,7 +57,7 @@ class Akin extends ByPage {
       link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      phone: phone,
+      phone: phone.replace("tel:%2B", ""),
       country: getCountryByDDD(phone),
     };
   }

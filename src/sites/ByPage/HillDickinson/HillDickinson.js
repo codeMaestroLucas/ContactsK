@@ -51,28 +51,14 @@ class HillDickinson extends ByPage {
     const socials = await lawyer
       .findElement(By.className("u-justify-end"))
       .findElements(By.css("a"));
-
-    let email;
-    let phone;
-  
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-      if (href.includes("mailto:")) email = href;
-      else if (href.includes("tel:")) {
-        phone = href.replace("tel:%2B", "").replace("%280%29", "0");
-        // Remove so it doesn`t interfere in the phone
-      }
-
-      if (email && phone) break;
-    }
-
-    return { email, phone }
+    return await super.getSocials(socials);
   }
 
 
   async getLawyer(lawyer) {
-    const { email, phone } = await this.#getSocials(lawyer);
-
+    let { email, phone } = await this.#getSocials(lawyer);
+    phone = phone.replace("tel:%2B", "").replace("%280%29", "0");
+    
     return {
       link: await this.#getLik(lawyer),
       name: await this.#getName(lawyer),

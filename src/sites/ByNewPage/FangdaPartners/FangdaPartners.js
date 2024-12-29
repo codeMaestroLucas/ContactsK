@@ -13,26 +13,24 @@ class FangdaPartners extends ByNewPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
-
+  
   async accessPage(index) {
-    await super.accessPage(index);
-
-    await driver
-      .findElement(By.xpath('//*[@id="category_list"]/div[2]/select/option[4]'))
-      .click();
-
-    //TODO: Couldn't click in the Button
-    //   await new Promise(resolve => setTimeout(resolve, 200));
+    if (index === 0) {
+      await super.accessPage(index);
+  
+      await driver
+        .findElement(By.xpath('//*[@id="category_list"]/div[2]/select/option[4]'))
+        .click();
+    } else {
+      const loadMoreBtn = await driver.findElement(By.xpath('//*[@id="app"]/div/div[4]/div/span'));
       
-    // const loadMoreBtn = await driver
-    //   .findElement(By.xpath('//*[@id="app"]/div/div[4]/div'));
-
-    // for (let c = 0 ; c < 19 ; c++) {
-    //   const actions = driver.actions();
-    //   await loadMoreBtn.click();
-
-    // }
-    try {} catch (e) {}
+      for (let c = 0; c < 4; c++) {
+        // Each iteration loads more 10 partners
+        // Total of 19 iterations
+        await driver.executeScript("arguments[0].click();", loadMoreBtn);
+          await new Promise(resolve => setTimeout(resolve, 200));
+      }
+    }
   }
 
 
@@ -68,6 +66,14 @@ class FangdaPartners extends ByNewPage {
   }
 
 
+  async #getPhone(lawyer) {
+    return (await lawyer
+      .findElement(By.css("div:nth-child(4)"))
+      .getText()
+    ).split(" / ")[0];
+  }
+
+
   async #getCountry(lawyer) {
     const country = (await lawyer
       .findElement(By.className("location"))
@@ -79,11 +85,13 @@ class FangdaPartners extends ByNewPage {
 
   
   async getLawyer(lawyer) {
-    const details = await driver
-      .findElement(By.className("profile_info"));
+    const details = await driver.findElement(By.className("profile_info"));
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: await this.#getEmail(details),
+      phone: await this.#getPhone(details),
       country: await this.#getCountry(details)
     };
   }

@@ -86,6 +86,7 @@ class Ashurst extends ByPage {
 
   async getLawyer(lawyer) {
     const data = await lawyer.findElement(By.className("profile-contact"));
+    
     const phone = await this.#getPhone(data);
     return {
       link: await this.#getLink(lawyer),

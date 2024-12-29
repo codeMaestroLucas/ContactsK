@@ -65,7 +65,7 @@ class Ellex extends ByNewPage {
   }
 
 
-  async #getDDD() {
+  async #getPhone() {
     return await driver
       .findElement(By.className("expert-hero__contact-info"))
       .findElement(By.css("a"))
@@ -74,10 +74,14 @@ class Ellex extends ByNewPage {
 
   
   async getLawyer(lawyer) {
+    const phone = await this.#getPhone();
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
-      country: getCountryByDDD(await this.#getDDD()),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

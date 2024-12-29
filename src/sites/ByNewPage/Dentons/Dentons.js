@@ -12,7 +12,6 @@ class Dentons extends ByNewPage {
     // totalPages = 18, // Total of 18 pages but the access just for clicking
     // in the button
     totalPages = 1,
-    
   ) {
     super(name, link, totalPages);
   }
@@ -24,7 +23,6 @@ class Dentons extends ByNewPage {
     await driver.findElement(By.id("onetrust-accept-btn-handler")).click();
 
     await new Promise(resolve => setTimeout(resolve, 1000));
-
     
     for (let i = 0; i < 3; i++) {
       // Each loads +20 Lawyers
@@ -77,7 +75,7 @@ class Dentons extends ByNewPage {
   }
 
 
-  async #getDDD(lawyer) {
+  async #getPhone(lawyer) {
     return await lawyer
       .findElement(By.className("mobile"))
       .findElement(By.className("landscape"))
@@ -94,10 +92,14 @@ class Dentons extends ByNewPage {
       ), 5000
     );
 
+    const phone = await this.#getPhone(details);
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: await this.#getEmail(details),
-      country: getCountryByDDD(await this.#getDDD(details)),
+      phone: phone,
+      country: getCountryByDDD(phone)
     };
   }
 }

@@ -78,7 +78,6 @@ class DechertLLP extends ByPage {
       country: getCountryByDDD(phone),
     };
   }
-
 }
 
 module.exports = DechertLLP;

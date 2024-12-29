@@ -66,24 +66,8 @@ class ApplebyGlobal extends ByPage {
 
   async #getSocials(lawyer) {
     await driver.wait(until.elementIsVisible(lawyer), 10000);
-    const contacts = await lawyer.findElements(By.className("u-decoration-none u-nowrap"));
-    let email = null;
-    let phone = null;
-  
-    for (let contact of contacts) {
-      const href = (await contact.getAttribute("href")).trim();
-
-      if (href.startsWith("mailto:")) {
-        email = href.replace(/\?subject=.*$/, "");
-
-      } else if (href.startsWith("tel:+")) {
-        phone = href;
-      }
-
-      if (email && phone) break;
-    }
-  
-    return { email, phone };
+    const socials = await lawyer.findElements(By.className("u-decoration-none u-nowrap"));
+    return await super.getSocials(socials);
   }
   
 
@@ -93,7 +77,7 @@ class ApplebyGlobal extends ByPage {
     return {
       link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: email,
+      email: email.replace(/\?subject=.*$/, ""),
       phone: phone,
       country: getCountryByDDD(phone),
     };

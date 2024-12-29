@@ -24,6 +24,7 @@ class MorganLewisAndBockiusLLP extends ByFilterP {
     this._totalPages = new Set(Object.values(this._filterOptions)).size;
   }
 
+
   async #clickPartnerOpt() {
     const roleOpt = await driver.wait(
       until.elementLocated(By.className("c-es__show-more-people")
@@ -113,6 +114,14 @@ class MorganLewisAndBockiusLLP extends ByFilterP {
   }
 
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("c-content_team__card-info"))
+      .findElement(By.className("c-content_team__link"))
+      .getAttribute('href');
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
     .findElement(By.className("c-content_team__card-info"))
@@ -131,13 +140,30 @@ class MorganLewisAndBockiusLLP extends ByFilterP {
   }
 
 
+  async #getPhone(lawyer) {
+    return await lawyer
+    .findElement(By.className("c-content_team__card-info"))
+    .findElement(By.className("c-content-team__number"))
+    .getText();
+  }
+
+
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: this._currentCountry,
+      phone: await this.#getPhone(lawyer),
+      country: this._currentCountry
     };
   }
 }
 
 module.exports = MorganLewisAndBockiusLLP;
+
+async function main() {
+  t = new MorganLewisAndBockiusLLP();
+  t.searchForLawyers();
+}
+
+main();

@@ -1,7 +1,7 @@
 const ByNewPage = {
   XforIteraction: [    // 5
     "SimmonsAndSimmons", "Ecija", "AsafoAndCo", "CobaltLegal", "Mourant",
-    "ArthurCox", "BirdAndBird", "Dentons",
+    "ArthurCox", "BirdAndBird", "Dentons", "Pulegal",
     // "",
   ],
 
@@ -13,7 +13,8 @@ const ByNewPage = {
     "BrigrardUrrutia", "Horten", "Ellex", "Poulschmith", "PearlCohen",
     "FangdaPartners", "MeyerKöring", "TannerDeWitt", "Szecskay", "RemfryAndSagar",
     "Beauchamps", "BarneaAndCo", "SamvadPartners", "Noerr", "CarneluttiLawFirm",
-    "DBHLawyers", "DWFoxTuckerLawyers",
+    "DBHLawyers", "DWFoxTuckerLawyers", "DSKLegal", "HiggsAndJohnson", "HSAAdvocates",
+    "JSA", "LatamLex", "KRBLawFirm"
     // "",
   ],
 };

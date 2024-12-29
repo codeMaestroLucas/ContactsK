@@ -36,20 +36,7 @@ class AlTamimi extends ByPage {
     const socials = await lawyer.findElements(
       By.css(".key-contact-info a")
     );
-
-    let email;
-    let phone;
-
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-
-      if (href.includes("mailto:")) email = href;
-      else if (href.includes("tel:+")) phone = href;
-
-      if (email && phone) break;
-    }
-
-    return { email, phone };
+    return await super.getSocials(socials);
   }
 
   async getLawyer(lawyer) {

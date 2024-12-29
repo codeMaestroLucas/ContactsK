@@ -9,7 +9,7 @@ apcsilla.andreko@kinstellar.com                                       12/2024
 luiza.bedros@kinstellar.com                                           12/2024
 victor.constantinescu@kinstellar.com                                  12/2024
 zsuzsa.csiki@kinstellar.com                                           12/2024
-.dimova@kinstellar.com                                           12/2024
+dimova@kinstellar.com                                                 12/2024
 sinan.diniz@kinstellar.com                                            12/2024
 kristof.ferenczi@kinstellar.com                                       12/2024
 gabor.gelencser@kinstellar.com                                        12/2024
@@ -19,3 +19,6 @@ diana.dimova@kinstellar.com                                           12/2024
 levente.hegedus@kinstellar.com                                        12/2024
 petr.hrncir@kinstellar.com                                            12/2024
 ardak.idayatova@kinstellar.com                                        12/2024
+edin.karakas@kinstellar.com                                           12/2024
+petar.kojdic@kinstellar.com                                           12/2024
+barbara.kusak@kinstellar.com                                          12/2024

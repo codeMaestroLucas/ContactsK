@@ -52,12 +52,22 @@ class DWFoxTuckerLawyers extends ByNewPage {
       .getAttribute("href");
   }
 
+
+  async #getPhone() {
+    return await driver
+      .findElement(By.className("related staff-related"))
+      .findElement(By.className("tel"))
+      .getAttribute("href");
+  }
+
   
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
-      country: "Australia",
+      phone: await this.#getPhone(),
+      country: "Australia"
     };
   }
 }

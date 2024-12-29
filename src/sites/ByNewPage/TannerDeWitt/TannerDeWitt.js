@@ -55,12 +55,19 @@ class TannerDeWitt extends ByNewPage {
       .getAttribute("href");
   }
 
+
+  async #getPhone() {
+    return await driver.findElement(By.className("section-lawyer")).getText()
+  }
+
   
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
-      country: "Hong Kong",
+      phone: await this.#getPhone(),
+      country: "Hong Kong"
     };
   }
 }

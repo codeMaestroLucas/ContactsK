@@ -63,6 +63,7 @@ class GianniAndOrigoni extends ByPage {
       .getText();
   }
 
+  
   async getLawyer(lawyer) {
     return {
       link: await this.#getLink(lawyer),

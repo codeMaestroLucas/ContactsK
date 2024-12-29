@@ -58,13 +58,26 @@ class Horten extends ByNewPage {
     return email.split('').reverse().join('');
   }
 
+
+  async #getPhone(lawyer) {
+    const phone =  await lawyer
+      .findElement(By.className("tel tel--phone"))
+      .findElement(By.css("a"))
+      .getText();
+      
+    // Invert string
+    return phone.split('').reverse().join('');
+  }
+
   
   async getLawyer(lawyer) {
-    const details = await driver
-      .findElement(By.className("hero__content contact-hero__content"));
+    const details = await driver.findElement(By.className("hero__content contact-hero__content"));
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: await this.#getEmail(details),
+      phone: await this.#getPhone(details),
       country: "Denmark",
     };
   }

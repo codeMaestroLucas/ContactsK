@@ -14,6 +14,7 @@ class VeritasLegal extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
     try {
@@ -25,6 +26,7 @@ class VeritasLegal extends ByPage {
     } catch (e) {}
   }
   
+
   async getLawyersInPage() {
     const lawyers = await driver.wait(
       until.elementsLocated(By.className("staff-entry-details entry-details wpex-first-mt-0 wpex-last-mb-0 wpex-clr")
@@ -38,12 +40,21 @@ class VeritasLegal extends ByPage {
   }
   
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("staff-entry-title entry-title wpex-mb-5"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("staff-entry-title entry-title wpex-mb-5"))
       .findElement(By.css("a"))
       .getText();
   }
+
 
   async #getEmail(lawyer) {
     return await lawyer
@@ -56,12 +67,13 @@ class VeritasLegal extends ByPage {
 
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
+      phone: "+91-22-43686700",  // Firm Phone
       country: "India",
     };
   }
-
 }
 
 module.exports = VeritasLegal;

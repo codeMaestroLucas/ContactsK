@@ -56,14 +56,14 @@ class RemfryAndSagar extends ByNewPage {
       .getAttribute("href");
   }
 
-
-
   
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
-      country: "India",
+      phone: '911242806100',
+      country: "India"
     };
   }
 }

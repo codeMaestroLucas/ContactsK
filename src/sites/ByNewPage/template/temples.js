@@ -55,30 +55,22 @@ class Template extends ByNewPage {
   }
 
 
-  async #getEmail() {
-    const emailElement = await driver
-      .findElement(By.className(""))
-      .getAttribute("href");
-
-
-    return emailElement
+  async #getSocials() {
+    const socials = await driver
+      .findElement(By.className())
+    return await super.getSocials(socials);
   }
-
-
-  async #getDDD() {
-    const dddElement = await driver
-      .findElement(By.className(""))
-      .getAttribute("href");
-      
-    return dddElement
-  }
-
+  
   
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials();
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
-      email: await this.#getEmail(),
-      country: getCountryByDDD(await this.#getDDD()),
+      email: email,
+      phone: phone,
+      country: getCountryByDDD(phone)
     };
   }
 }

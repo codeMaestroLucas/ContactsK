@@ -51,19 +51,7 @@ class HowseWilliams extends ByPage {
       .findElement(By.className("staff_info"))
       .findElement(By.className("staff_data"))
       .findElements(By.css("a"))
-
-    let email;
-    let phone;
-
-    for (let social of socialis) {
-      const href = await social.getAttribute("href");
-      if (href.includes("mailto:")) email = href;
-      else if (href.includes("tel:")) phone = href;
-
-      if (email && phone) break;
-    }
-
-    return { email, phone };
+    return await super.getSocials(socialis);
   }
 
 

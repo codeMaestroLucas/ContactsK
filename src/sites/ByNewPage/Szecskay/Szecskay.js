@@ -59,11 +59,19 @@ class Szecskay extends ByNewPage {
   }
 
 
+  async #getPhone() {
+    return await driver
+      .findElement(By.xpath('//*[@id="content"]/div/div/div[1]/div/div[2]/div/div/div/div/div/div[2]/div/div/ul/li[2]/span[2]'))
+      .getText();
+  }
+
   
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
+      phone: await this.#getPhone(),
       country: "Hungary",
     };
   }

@@ -20,18 +20,30 @@ class BNT extends ByPage {
 
 
   async getLawyersInPage() {
-    const div = await driver.wait(
+    let partners = [];
+
+    const partnersDiv = await driver.wait(
       until.elementsLocated(
         By.css('li.item-entry[data-status="Partner"]')
       ), 100000
     );
-    let lawyers = [];
-    for (let element of div) {
+
+    for (let element of partnersDiv) {
       const items = await element.findElements(By.className("item"));
-      lawyers = lawyers.concat(items);  // This flattens the array
+      partners = partners.concat(items);
     }
-    //TODO Question: Does Associate Partner counts? P = 46 & P + Ap = 64
-    return lawyers
+
+    const associatePartnersDiv = await driver.wait(
+      until.elementsLocated(
+        By.css('li.item-entry[data-status="Associated Partner"]')
+      ), 100000
+    );
+
+    for (let element of associatePartnersDiv) {
+      const items = await element.findElements(By.className("item"));
+      partners = partners.concat(items);
+    }
+    return partners
   }
 
 

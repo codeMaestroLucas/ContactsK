@@ -35,7 +35,6 @@ class Borenius extends ByNewPage {
     for (let c = 0; c < 3; c++) {
       await opts[c].click();
     }
-      
 
     // Role option
     const selectRole = await driver
@@ -75,28 +74,25 @@ class Borenius extends ByNewPage {
   }
 
 
-  async #getEmail() {
+  async #getSocials() {
     const socials = await driver
       .findElement(By.className("font-light text-base mt-25"))
-      .findElements(By.className("my-8"))
-
-    for (let social of socials) {
-      const href = await social
-        .findElement(By.css("a"))
-        .getAttribute("href");
-      if (href.includes("mailto:")) return href;
-    }
+      .findElements(By.css(".my-8 > a"))
+    return await super.getSocials(socials);
   }
 
   
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials();
+    
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
-      email: await this.#getEmail(),
+      email: email,
+      phone: phone,
       country: "Finland",
     };
   }
-
 }
 
 module.exports = Borenius;

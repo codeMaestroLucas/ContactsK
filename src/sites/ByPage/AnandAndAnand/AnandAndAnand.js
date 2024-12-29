@@ -45,21 +45,7 @@ class AnandAndAnand extends ByPage {
     const socials = await lawyer
       .findElement(By.className("member_profile"))
       .findElements(By.css("div > a"))
-
-
-      let phone = null;
-      let email = null;
-  
-      for (let social of socials) {
-        const href = await social.getAttribute("href");
-    
-        if (href.includes("tel:")) phone = href;
-        else if (href.includes("mailto:")) email = href;
-  
-        if (email && phone) break;
-        
-      }
-      return { email, phone };
+      return await super.getSocials(socials);
   }
 
 

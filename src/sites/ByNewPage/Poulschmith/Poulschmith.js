@@ -25,8 +25,7 @@ class Poulschmith extends ByNewPage {
       .click();
       
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    const loadMoreBtn = await driver
-      .findElement(By.className('button button--block mb-3 mx-auto d-block'));
+    const loadMoreBtn = await driver.findElement(By.className('button button--block mb-3 mx-auto d-block'));
 
     for (let i = 0; i < 4; i++) {
       const actions = driver.actions();
@@ -43,8 +42,8 @@ class Poulschmith extends ByNewPage {
 
   async getLawyersInPage() {
     return await driver.wait(
-      until.elementsLocated(By.className("employee-card__link")),
-      100000
+      until.elementsLocated(By.className("employee-card__link")
+      ), 100000
     );
   }
 
@@ -61,21 +60,21 @@ class Poulschmith extends ByNewPage {
       .getText();
   }
 
-  async #getEmail() {
+  async #getSocials() {
     const socials = await driver
       .findElement(By.className("contact-info"))
       .findElements(By.className("contact-info__link"))
-
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-      if (href.includes("mailto:")) return href;
-    }
+    return await super.getSocials(socials);
   }
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials();
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
-      email: await this.#getEmail(),
+      email: email,
+      phone: phone,
       country: "Denmark"
     };
   }

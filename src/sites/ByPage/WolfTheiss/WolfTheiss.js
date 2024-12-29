@@ -31,6 +31,12 @@ class WolfTheiss extends ByPage {
     return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer.findElement(By.className("card card--people")).getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("card__title"))
@@ -43,7 +49,7 @@ class WolfTheiss extends ByPage {
     );
 
     let email;
-    let ddd;
+    let phone;
 
     for (let social of socials) {
       let span = await social
@@ -51,22 +57,24 @@ class WolfTheiss extends ByPage {
         .getText();
 
       if (span.includes("@wolftheiss.com")) email = span;
-      else if (span.includes("+")) ddd = span;
+      else if (span.includes("+")) phone = span;
 
-      if (email && ddd) break;
+      if (email && phone) break;
     }
 
-    return { email, ddd }
+    return { email, phone }
   }
 
 
   async getLawyer(lawyer) {
-   const { email, ddd } = await this.#getSocials(lawyer);
+   const { email, phone } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone)
     };
   }
 }

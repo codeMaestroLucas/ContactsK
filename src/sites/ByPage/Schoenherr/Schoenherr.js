@@ -75,6 +75,7 @@ class Schoenherr extends ByPage {
 
     return { email, phone };
   }
+  
 
   async getLawyer(lawyer) {
     const { email, phone } = await this.#getSocials(lawyer);

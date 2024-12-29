@@ -82,8 +82,8 @@ class ByNewPage extends Site {
       for (let [index, lawyer] of lawyersInPage.entries()) {
         try {
           await this.openNewTab(lawyer);
-          const windows = await driver.getAllWindowHandles();
-          if (windows.length < 2) continue ;
+          // const windows = await driver.getAllWindowHandles();
+          // if (windows.length < 2) continue ;
 
           
           const lawyerDetails = await this.getLawyer();

@@ -18,6 +18,29 @@ class Site extends BaseSite {
 
 
   /**
+   * Function used to get the email and phone.
+   * @param {WebElement[]} socials elements to be searched
+   * @returns {string} email and phone
+   */
+  async getSocials(socials) {
+    let email;
+    let phone;
+  
+    for (let social of socials) {
+      const href = (await social
+        .getAttribute('href')
+      ).toLowerCase().trim();
+  
+      if (href.includes('mailto')) email = href;
+      else if (href.includes('tel')) phone = href;
+  
+      if (email && phone) break;
+    }
+  
+    return { email, phone };
+  }
+
+  /**
    * Function used to get the Lawyer information from the site
    * @param {WebElement}
    */

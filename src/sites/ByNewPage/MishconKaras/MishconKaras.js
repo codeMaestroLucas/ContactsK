@@ -50,20 +50,24 @@ class MishconKaras extends ByNewPage {
   }
 
 
-  async #getEmail() {
-    return await driver
+  async #getSocials() {
+    const socials = await driver
       .findElement(By.id("ctl00_ctl00_MainPlaceHolder_AsidePlaceHolder_ctl00_dvContactInfo"))
       .findElement(By.className("col-12 col-xs-12"))
-      .findElement(By.css("ul > li:last-child > a"))
-      .getAttribute("href");
+      .findElements(By.css("ul > li > a"));
+    return await super.getSocials(socials);
   }
 
 
   
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials();
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
-      email: await this.#getEmail(),
+      email: email.replace("?cc=marketing@gornitzky.com", ""),
+      phone: phone,
       country: "Hong Kong",
     };
   }

@@ -2,7 +2,6 @@ const { getCountryByDDD } = require("../../../utils/getNationality");
 const ByPage = require("../../../entities/BaseSites/ByPage");
 let { driver } = require("../../../config/driverConfig");
 
-
 const { By, until } = require('selenium-webdriver');
 
 
@@ -43,22 +42,10 @@ class SpencerWest extends ByPage {
 
 
   async #getSocials(lawyer) {
-    let email;
-    let phone;
-
     const socials = await lawyer.findElements(By.className("social-link"));
-
-    for (let social of socials) {
-        const href = (await social.getAttribute('href')).toLowerCase().trim();
-
-        if (href.includes("mailto:")) email = href;
-        else if (href.includes("tel:")) phone = href;
-
-        if (email && phone) break;
-    }
-
-    return { email, phone };
+    return await super.getSocials(socials);
   }
+
 
   async getLawyer(lawyer) {
     const { email, phone } = await this.#getSocials(lawyer);
@@ -72,3 +59,5 @@ class SpencerWest extends ByPage {
     };
   }
 }
+
+module.exports = SpencerWest;

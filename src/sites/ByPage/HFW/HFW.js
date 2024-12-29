@@ -52,20 +52,7 @@ class HFW extends ByPage {
         "text-base decoration-transparent transition-colors ease-in hover:decoration-current"
       )
     );
-
-    let email;
-    let phone;
-
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-
-      if (href.includes("mailto:")) email = href;
-      else if (href.includes("tel:")) phone = href;
-
-      if (email && phone) break;
-    }
-
-    return { email, phone };
+    return await super.getSocials(socials);
   }
 
 

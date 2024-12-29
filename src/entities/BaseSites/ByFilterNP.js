@@ -2,7 +2,7 @@ const ensureFileExists = require("../../utils/ensureFileExists");
 const makeValidations = require("../../utils/makeValidations");
 const ByNewPage = require("../../entities/BaseSites/ByNewPage");
 let { driver } = require("../../config/driverConfig");
-
+const Lawyer = require("../Lawyer");
 
 class ByFilterNP extends ByNewPage {
   constructor(name, link, totalPages, maxLawyersForSite) {

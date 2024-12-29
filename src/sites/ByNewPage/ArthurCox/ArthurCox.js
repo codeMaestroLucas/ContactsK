@@ -1,5 +1,4 @@
 const { getCountryByDDD } = require("../../../utils/getNationality");
-
 const ByNewPage = require("../../../entities/BaseSites/ByNewPage");
 let { driver } = require("../../../config/driverConfig");
 
@@ -50,33 +49,21 @@ class ArthurCox extends ByNewPage {
     const socials = await lawyer
       .findElement(By.className('o-content background-white '))
       .findElements(By.css('p > a'));
-
-    let email;
-    let ddd;
-
-    for (let social of socials) {
-      const href = await social
-        .getAttribute('href');
-
-      if (href.includes('mailto:')) email = href;
-      else if (href.includes('tel:')) ddd = href;
-
-      if (email && ddd) break;
-    }
-
-    return { email, ddd };
+    return await super.getSocials(socials);
   }
   
   async getLawyer(lawyer) {
     const details = await driver
       .findElement(By.className("m-header--person__content m-12-12 tp-6-12 u-7-12"));
 
-    const { email, ddd } = await this.#getSocials(details);
+    const { email, phone } = await this.#getSocials(details);
 
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

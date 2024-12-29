@@ -49,20 +49,7 @@ class SprusonAndFerguson extends ByPage {
     const socials = await lawyer
       .findElement(By.className("post-contact"))
       .findElements(By.css("a"))
-
-    let email;
-    let phone;
-
-    for(let social of socials) {
-      const href = await social.getAttribute("href");
-
-      if (href.includes("mailto:")) email = href;
-      else if (href.includes("tel:")) phone = href;
-
-      if (email && phone) break;
-    }
-
-    return { email, phone };
+    return await super.getSocials(socials);
   }
 
 
@@ -80,10 +67,3 @@ class SprusonAndFerguson extends ByPage {
 }
 
 module.exports = SprusonAndFerguson;
-
-async function main() {
-  t = new SprusonAndFerguson();
-  t.searchForLawyers();
-}
-
-main();

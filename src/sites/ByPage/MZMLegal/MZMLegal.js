@@ -57,6 +57,7 @@ class MZMLegal extends ByPage {
       link: "https://mzmlegal.com/team/",  // All lawyers in one link
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
+      phone: '912222643333',
       country: "India",
     };
   }

@@ -3,7 +3,7 @@ const { getCountryByDDD } = require("../../../utils/getNationality");
 const ByNewPage = require("../../../entities/BaseSites/ByNewPage");
 let { driver } = require("../../../config/driverConfig");
 
-const { until, By } = require("selenium-webdriver");
+const { By } = require("selenium-webdriver");
 
 class Sorainen extends ByNewPage {
   constructor(
@@ -59,31 +59,21 @@ class Sorainen extends ByNewPage {
     const socials = await lawyer
       .findElement(By.className("personHeader__field personHeader__field--l"))
       .findElements(By.css("a"));
-
-    let email;
-    let ddd;
-    
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-      if (href.includes("tel:+")) ddd = href;
-      else if (href.includes("mailto:")) email = href;
-
-      if (email && ddd) break;
-    }
-
-    return { email, ddd };
+    return await super.getSocials(socials);
   }
 
   
   async getLawyer(lawyer) {
     const details = await driver.findElement(By.className("personHeader__main"));
 
-    const { email, ddd } = await this.#getSocials(details);
+    const { email, phone } = await this.#getSocials(details);
 
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

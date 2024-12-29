@@ -66,6 +66,7 @@ class DillonEustace extends ByPage {
       .getText();
   }
 
+  
   async getLawyer(lawyer) {
     const phone = await this.#getPhone(lawyer);
 

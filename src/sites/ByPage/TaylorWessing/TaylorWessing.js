@@ -13,10 +13,12 @@ class TaylorWessing extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     const otherUrl = `https://www.taylorwessing.com/en/people?role=84587aa0-6bf5-4213-9543-57ad20a63c2c&page=${ index + 1 }#people-listing`;
     await super.accessPage(index, otherUrl);
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -31,11 +33,18 @@ class TaylorWessing extends ByPage {
     return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer.findElement(By.css("a")).getAttribute('href');
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("team-members__item--name person__description-name"))
       .getText();
   }
+
 
   async #getEmail(lawyer) {
     const onclickContent = await lawyer
@@ -58,7 +67,7 @@ class TaylorWessing extends ByPage {
   }
 
 
-  async #getDDD(lawyer) {
+  async #getPhone(lawyer) {
     return await lawyer
       .findElement(
         By.className("item telephone team-members__contact-item person__description-contact-item")
@@ -67,14 +76,18 @@ class TaylorWessing extends ByPage {
       .getText();
   }
 
+
   async getLawyer(lawyer) {
+    const phone = await this.#getPhone(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }
 
 module.exports = TaylorWessing;
-// TODO: Test this 

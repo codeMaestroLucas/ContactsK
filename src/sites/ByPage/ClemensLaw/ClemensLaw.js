@@ -63,6 +63,7 @@ class ClemensLaw extends ByPage {
 
   async getLawyer(lawyer) {
     const { email, phone } = await this.#getSocials(lawyer);
+
     return {
       link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
@@ -71,7 +72,6 @@ class ClemensLaw extends ByPage {
       country: "Poland",
     };
   }
-
 }
 
 module.exports = ClemensLaw;

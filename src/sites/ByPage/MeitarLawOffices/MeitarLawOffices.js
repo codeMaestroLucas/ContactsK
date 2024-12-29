@@ -48,26 +48,13 @@ class MeitarLawOffices extends ByPage {
     const socials = await lawyer
       .findElement(By.className("people-post-content-contact"))
       .findElements(By.css("li > a"));
-
-      let email;
-      let phone;
-
-      for (let social of socials) {
-        const href = await social
-          .getAttribute('href');
-    
-        if (href.includes('mailto:')) email = href;
-        else if (href.includes('tel:')) phone = href;
-    
-        if (email && phone) break;
-      }
-    
-      return { email, phone };
+    return await super.getSocials(socials);
   }
 
 
   async getLawyer(lawyer) {
     const { email, phone } = await this.#getSocials(lawyer);
+    
     return {
       link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),

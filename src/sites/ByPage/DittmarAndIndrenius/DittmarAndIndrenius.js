@@ -70,7 +70,6 @@ class DittmarAndIndrenius extends ByPage {
       country: "Finland"
     };
   }
-
 }
 
 module.exports = DittmarAndIndrenius;

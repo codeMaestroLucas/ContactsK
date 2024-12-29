@@ -45,24 +45,25 @@ class GornitzkyAndCo extends ByNewPage {
   }
 
 
-  async #getEmail(lawyer) {
+  async #getSocials(lawyer) {
     const socials = await lawyer
       .findElement(By.className("member-information-list list-unstyled m-b-5-xs m-b-0-sm"))
       .findElements(By.css("li > span > a"));
-
-    for (let social of socials) {
-      const href = (await social.getAttribute("href")).toLowerCase();
-      if (href.includes("mailto:")) return href.replace("?cc=marketing@gornitzky.com", "");
-    }
+    return await super.getSocials(socials);
   }
 
 
   async getLawyer(lawyer) {
     const details = await driver.findElement(By.className("member-content-wrap"));
+
+    const { email, phone } = await this.#getSocials(details);
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
-      email: await this.#getEmail(details),
-      country: "Israel",
+      email: email.replace("?cc=marketing@gornitzky.com", ""),
+      phone: phone,
+      country: "Israel"
     };
   }
 }

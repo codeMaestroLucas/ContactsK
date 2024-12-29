@@ -57,6 +57,7 @@ class GideLoyretteNouel extends ByPage {
         phone = href;
       }
     }
+    
     return { email, phone };
   }
 

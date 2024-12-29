@@ -48,20 +48,7 @@ class NjordLaw extends ByPage {
     const socials = await lawyer
       .findElement(By.className("employee-link employee-link-wrapper"))
       .findElements(By.css("div > a"));
-
-    let email;
-    let phone;
-
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-
-      if (href.includes("mailto:")) email = href;
-      else if (href.includes("tel:")) phone = href.replace("tel:%28%2B", "").replace("%29", "");
-
-      if (email && phone) break;
-    }
-
-    return { email, phone };
+    return await super.getSocials(socials);
   }
 
 
@@ -72,7 +59,7 @@ class NjordLaw extends ByPage {
       link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      phone: phone,
+      phone: phone.replace("tel:%28%2B", "").replace("%29", ""),
       country: getCountryByDDD(phone),
     };
   }

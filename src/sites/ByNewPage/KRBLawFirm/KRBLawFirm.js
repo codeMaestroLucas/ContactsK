@@ -1,9 +1,9 @@
-const ByPage = require("../../../entities/BaseSites/ByPage");
+const ByNewPage = require("../../../entities/BaseSites/ByNewPage");
 let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
 
-class KRBLawFirm extends ByPage {
+class KRBLawFirm extends ByNewPage {
   constructor(
     name = "KRB Law Firm",
     link = "https://www.krblawfirm.com/?todo=staff&lang=en",
@@ -35,38 +35,44 @@ class KRBLawFirm extends ByPage {
   }
 
 
-  async #getLink(lawyer) {
-    return await lawyer
+  async openNewTab(lawyer) {
+    const link = await lawyer
       .getAttribute("href");
+
+    await super.openNewTab(link);
   }
 
 
   async #getName(lawyer) {
     return await lawyer
-      .findElement(By.className("text-center"))
-      .findElement(By.css("div:nth-of-type(1)"))
-      .findElement(By.className("font-weight-bold font-size-28px"))
+      .findElement(By.className("mb-4"))
+      .findElement(By.className("green-text font-size-48px mb-0"))
       .getText();
   }
 
 
-  async #getEmail(lawyer) {
-    return await lawyer
-      .findElement(By.className("text-center"))
-      .findElement(By.css("div:nth-of-type(3)"))
-      .findElement(By.className("font-size-22px"))
-      .getText();
+  async #getSocials(lawyer) {
+    const socials = await lawyer
+      .findElement(By.className("green-aqua-bg staff-details-info mb-4"))
+      .findElement(By.className("row"))
+      .findElements(By.css("div > a"));
+    return await super.getSocials(socials);
   }
+  
 
   async getLawyer(lawyer) {
+    const details = await driver.findElement(By.className("max-width-576px mt-4"));
+
+    const { email, phone } = await this.#getSocials(details);
+
     return {
-      link: await this.#getLink(lawyer),
-      name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
-      country: "Israel",
+      link: await driver.getCurrentUrl(),
+      name: await this.#getName(details),
+      email: email,
+      phone: phone,
+      country: "Israel"
     };
   }
 }
 
 module.exports = KRBLawFirm;
-// TODO: TRANSFOR INTO NEWPAGE

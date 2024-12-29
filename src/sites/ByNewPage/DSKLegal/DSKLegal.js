@@ -1,9 +1,9 @@
-const ByPage = require("../../../entities/BaseSites/ByPage");
+const ByNewPage = require("../../../entities/BaseSites/ByNewPage");
 let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
 
-class DSKLegal extends ByPage {
+class DSKLegal extends ByNewPage {
   constructor(
     name = "DSK Legal",
     link = "https://dsklegal.com/our-team/",
@@ -48,40 +48,39 @@ class DSKLegal extends ByPage {
   
     return partners;
   }
-  
 
-  async #getLink(lawyer) {
-    return await lawyer
-      .findElement(By.css("h2 a"))
+  
+  async openNewTab(lawyer) {
+    const link = await lawyer
+      .findElement(By.css("h2 > a"))
       .getAttribute("href");
+
+    await super.openNewTab(link);
   }
 
 
-  async #getName(lawyer) {
-    return await lawyer
-      .findElement(By.css("h2 a"))
-      .getText();
-  }
-  
-
-  async #getEmail(lawyer) {
-    const liElements = await lawyer.findElements(By.css("ul > li"));
-    
-    for (let li of liElements) {
-      const href = await li
-        .findElement(By.css("a[href^='mailto:']"))
-        .getAttribute("href");
-      
-      if (href) return href;
-    }
+  async #getName() {
+    return (await driver
+      .findElement(By.className("space-left-60 person-name"))
+      .getText()
+    ).split("<small>")[0];
   }
   
+  async #getSocials() {
+    const socials = await driver
+      .findElement(By.className("contact"))
+      .findElements(By.css("li > a"));
+    return await super.getSocials(socials);
+  }
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials();
+    
     return {
-      link: await this.#getLink(lawyer),
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
+      email: email,
+      phone: phone,
       country: "India",
     };
   }

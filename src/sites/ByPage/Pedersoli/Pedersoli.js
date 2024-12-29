@@ -82,10 +82,3 @@ class Pedersoli extends ByPage {
 }
 
 module.exports = Pedersoli;
-
-async function main() {
-  t = new Pedersoli();
-  t.searchForLawyers();
-}
-
-main();

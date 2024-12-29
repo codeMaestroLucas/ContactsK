@@ -59,15 +59,24 @@ class ZeposAndYannopoulos extends ByNewPage {
       .getAttribute("href");
   }
 
+
+  async #getPhone() {
+    return await driver
+      .findElement(By.className("card person-card match-height"))
+      .findElement(By.className("telephone"))
+      .getAttribute("href");
+  }
+
   
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
+      phone: await this.#getPhone(),
       country: "Greece",
     };
   }
-
 }
 
 module.exports = ZeposAndYannopoulos;

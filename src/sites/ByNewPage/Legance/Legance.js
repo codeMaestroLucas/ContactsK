@@ -60,10 +60,13 @@ class Legance extends ByNewPage {
     const details = await driver.wait(
       until.elementLocated(By.className("col-md-6 col-lg-5 offset-lg-1 col-12 d-flex flex-column flex-wrap pr-4")
       ), 5000
-    )
+    );
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: await this.#getEmail(details),
+      // phone: // Phone on CV
       country: "Italy"
     };
   }

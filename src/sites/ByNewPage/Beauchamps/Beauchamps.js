@@ -61,6 +61,14 @@ class Beauchamps extends ByNewPage {
       .getAttribute("href");
   }
 
+
+  async #getPhone(lawyer) {
+    return await lawyer
+      .findElement(By.className("green-card__contact"))
+      .findElement(By.css("li:first-child > a"))
+      .getAttribute("href");
+  }
+
   
   async getLawyer(lawyer) {
     const details = await driver.wait(
@@ -68,8 +76,10 @@ class Beauchamps extends ByNewPage {
     );
 
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: await this.#getEmail(details),
+      phone: await this.#getPhone(details),
       country: "Ireland",
     };
   }

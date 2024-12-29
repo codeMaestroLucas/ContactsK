@@ -12,6 +12,7 @@ class LonganLaw extends ByNewPage {
   ) {
     super(name, link, totalPages, maxLawyersForSite);
   }
+  
 
   async accessPage(index) {
     const otherUrl = `https://www.longanlaw.com/en/professionals/page/${ index + 1 }/?vs&vr=0&vp=4&vf=0&vx=0`;
@@ -59,8 +60,10 @@ class LonganLaw extends ByNewPage {
   
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
+      phone: "01085328000",
       country: "China",
     };
   }
