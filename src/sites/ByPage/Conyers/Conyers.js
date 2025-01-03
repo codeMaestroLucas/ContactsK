@@ -28,13 +28,27 @@ class Conyers extends ByPage {
   }
 
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("title h8"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async getLawyer(lawyer) {
     return {
-      name: await lawyer.findElement({ className: "title h8" }).getText(),
-      country: await lawyer.findElement({ className: "light h14" }).getText(),
+      link: await this.#getLink(lawyer),
+      name: await lawyer.findElement(By.className("title h8")).getText(),
       email: await lawyer
-        .findElement({ className: "email light-weight" })
+        .findElement(By.className("person-contact-details"))
+        .findElement(By.className("email light-weight"))
         .getText(),
+      phone: await lawyer
+        .findElement(By.className("person-contact-details"))
+        .findElement(By.className("phone light-weight"))
+        .getAttribute("href"),
+      country: await lawyer.findElement(By.className("light h14")).getText(),
     };
   }
 }

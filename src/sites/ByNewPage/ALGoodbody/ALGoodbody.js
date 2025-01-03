@@ -1,5 +1,4 @@
 const { getCountryByDDD } = require("../../../utils/getNationality");
-
 const ByNewPage = require("../../../entities/BaseSites/ByNewPage");
 let { driver } = require("../../../config/driverConfig");
 
@@ -57,21 +56,9 @@ class ALGoodbody extends ByNewPage {
 
 
   async #getSocials(lawyer) {
-    const socials = await lawyer.findElements(By.className("list-symbol color-white"));
-    let email;
-    let ddd;
-
-    for (let social of socials) {
-      const href = await social
-        .findElement(By.css("dd > a"))
-        .getAttribute("href");
-      if (href.includes("tel:+")) ddd = href;
-      else if (href.includes("mailto:")) email = href;
-
-      if (email && ddd) break;
-    }
-
-    return { email, ddd };
+    const socials = await lawyer
+      .findElements(By.css(".list-symbol.color-white > dd > a"));
+    return await super.getSocials(socials);
   }
 
   
@@ -81,15 +68,16 @@ class ALGoodbody extends ByNewPage {
       ), 6000
     );
 
-    const { email, ddd } = await this.#getSocials(details);
+    const { email, phone } = await this.#getSocials(details);
 
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
-
 }
 
 module.exports = ALGoodbody;

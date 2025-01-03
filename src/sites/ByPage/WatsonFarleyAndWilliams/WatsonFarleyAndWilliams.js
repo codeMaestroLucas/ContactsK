@@ -13,12 +13,12 @@ class WatsonFarleyAndWilliams extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     const otherUrl = `${ this._link }&sf_paged=${ index + 1 }`;
     await super.accessPage(index, otherUrl);
-    try {
-    } catch (e) {}
   }
+
 
   async getLawyersInPage() {
     return await driver.wait(
@@ -28,13 +28,23 @@ class WatsonFarleyAndWilliams extends ByPage {
     );
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("h3_styler"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     const html = await lawyer
       .findElement(By.className("h3_styler"))
       .findElement(By.css("a"))
       .getAttribute("outerHTML");
-    return this.getContentFromTag(html);
+    return await super.getContentFromTag(html);
   }
+
 
   async #getEmail(lawyer) {
     return await lawyer
@@ -43,7 +53,8 @@ class WatsonFarleyAndWilliams extends ByPage {
       .getAttribute("href");
   }
 
-  async #getDDD(lawyer) {
+
+  async #getPhone(lawyer) {
     return await lawyer
       .findElement(By.className("people_left_stats_phone"))
       .findElement(By.css("span"))
@@ -51,11 +62,16 @@ class WatsonFarleyAndWilliams extends ByPage {
       .getAttribute("href");
   }
 
+
   async getLawyer(lawyer) {
+    const phone = await this.#getPhone(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

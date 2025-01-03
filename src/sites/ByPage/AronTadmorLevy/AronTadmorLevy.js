@@ -13,10 +13,11 @@ class AronTadmorLevy extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
-    try {} catch (e) {}
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -25,19 +26,21 @@ class AronTadmorLevy extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = await lawyer
-          .findElement(By.css("a"))
-          .findElement(By.className("person-info"))
-          .findElement(By.className("thm-title position-title"))
-          .getText();
-
-      if (role.toLowerCase().includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.css("a"),
+      By.className("person-info"),
+      By.className("thm-title position-title")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     return await lawyer
@@ -45,24 +48,36 @@ class AronTadmorLevy extends ByPage {
       .getText();
   }
 
-  async #getEmail(lawyer) {
-    return await lawyer
+
+  async #getSocials(lawyer) {
+    const email = await lawyer
         .findElement(By.className("person-contact align-self-end"))
         .findElement(By.className("email"))
         .findElement(By.className("val"))
         .findElement(By.className("fnt-bold"))
         .getText();
+    const phone = await lawyer
+        .findElement(By.className("person-contact align-self-end"))
+        .findElement(By.className("phone"))
+        .findElement(By.className("val"))
+        .findElement(By.className("nounder fnt-regular"))
+        .getText();
+
+    return { email, phone };
   }
 
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
+      email: email,
+      phone: phone,
       country: "Israel",
     };
   }
-
 }
 
 module.exports = AronTadmorLevy;

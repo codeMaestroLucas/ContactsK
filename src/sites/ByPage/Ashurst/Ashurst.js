@@ -13,11 +13,13 @@ class Ashurst extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     const otherUrl = `https://www.ashurst.com/en/people/#e=${ index * 10 }`;
     await super.accessPage(index, otherUrl);
     await new Promise(resolve => setTimeout(resolve, 1500));
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -51,6 +53,15 @@ class Ashurst extends ByPage {
     return partners;
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("people-info"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.css("div:nth-child(1)"))
@@ -58,24 +69,31 @@ class Ashurst extends ByPage {
       .getText();
   }
 
+
   async #getEmail(lawyer) {
     return await lawyer
       .findElement(By.css("a:nth-child(3)"))
       .getAttribute("href");
   }
 
-  async #getDDD(lawyer) {
+
+  async #getPhone(lawyer) {
     return await lawyer
       .findElement(By.css("a:nth-child(2)"))
       .getAttribute("href");
   }
+  
 
   async getLawyer(lawyer) {
     const data = await lawyer.findElement(By.className("profile-contact"));
+    
+    const phone = await this.#getPhone(data);
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(data),
-      country: getCountryByDDD(await this.#getDDD(data)),
+      phone: phone,
+      country: getCountryByDDD(phone)
     };
   }
 }

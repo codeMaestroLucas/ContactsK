@@ -13,9 +13,11 @@ class Krogerus extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     return await driver.wait(
@@ -24,6 +26,14 @@ class Krogerus extends ByPage {
       ), 100000
     );
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     return await lawyer
@@ -41,10 +51,19 @@ class Krogerus extends ByPage {
   }
 
 
+  async #getPhone(lawyer) {
+    return await lawyer
+      .findElement(By.css(".mb-2:last-child > a"))
+      .getAttribute("href");
+  }
+
+
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
+      phone: await this.#getPhone(lawyer),
       country: "Finland"
     };
   }

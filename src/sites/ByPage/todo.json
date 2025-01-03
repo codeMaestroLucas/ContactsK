@@ -4,12 +4,54 @@
         "link": ""
     },
     {
-        "name": "Dechert LLP",
-        "link": "https://www.dechert.com/people-search.html?cq=29#position=Partner"
+        "name": "YOON & YANG",
+        "link": "https://yoonyang.co.kr/eng/professionals/members?lang=en",
+        "Notes": "Send keys for the name to load the lawyers"
     },
     {
-        "name": "Morgan, Lewis & Bockius LLP",
-        "link": "https://www.morganlewis.com/our-people"
+        "name": "Codex",
+        "link": "https://codex.no/en/people"
+    },
+    {
+        "name": "RB Law",
+        "link": "https://rblaw.no/en/employees/"
+    },
+    {
+        "name": "Selmer",
+        "link": "https://selmer.no/en/people",
+        "Notes": "click on partner option"
+    },
+    {
+        "name": "Schjodt",
+        "link": "https://schjodt.com/people"
+    },
+    {
+        "name": "BAHR",
+        "link": "https://bahr.no/people"
+    },
+    {
+        "name": "Thomson Geer",
+        "link": "https://www.tglaw.com.au/our-people"
+    },
+    {
+        "name": "Butler McIntyre & Butler",
+        "link": "https://bmbtas.com/our-team"
+    },
+    {
+        "name": "Moray & Agnew Lawyers",
+        "link": "https://www.moray.com.au/people?RefineModule=620&StartTax=104&StartDate=&Keywords=&RefineParent=1"
+    },
+    {
+        "name": "https://www.carternewell.com/team/?_td_title=60",
+        "link": "Carter Newell Lawyers"
+    },
+    {
+        "name": "Thomson Geer",
+        "link": "https://www.tglaw.com.au/role/partner"
+    },
+    {
+        "name": "Doogue + George",
+        "link": "https://www.criminal-lawyers.com.au/meet-our-lawyers"
     },
     {
         "name": "Holland & Knight",
@@ -18,6 +60,10 @@
     {
         "name": "Rimon",
         "link": "https://www.rimonlaw.com/team/",
-        "Notes" : "Study if is a valid - a lot of US lawyers"
+        "Notes": "Study if is a valid - a lot of US lawyers"
+    },
+    {
+        "name": "",
+        "link": ""
     }
 ]

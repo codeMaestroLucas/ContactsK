@@ -52,6 +52,17 @@ class SamvadPartners extends ByNewPage {
     throw new Error("Failed to retrieve a valid email after retries.");
   }
 
+  async #getPhone() {
+    const H1tags = await driver.findElements(By.css("h1"));
+
+    for (let h1 of H1tags) {
+      const html = (await h1.getAttribute("outerHTML")).toLowerCase();
+      const cleandText = html.replace(/<[^>]*>/g, "").trim();
+      if (cleandText.includes("t: +")) return cleandText.replace(/\/.*/, "");
+    }
+  }
+  
+
   #validateEmail(email) {
     // Basic validation for email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -61,9 +72,11 @@ class SamvadPartners extends ByNewPage {
   async getLawyer(lawyer) {
     try {
       return {
-        //! This site is terrible, let the name be catch later then
+        link: await driver.getCurrentUrl(),
+        //! This site is terrible, let the name be catch later
         email: await this.#getEmail(),
-        country: "India",
+        phone: await this.#getPhone(),
+        country: "India"
       };
     } catch (e) {
       console.error("Error retrieving lawyer details:", e);

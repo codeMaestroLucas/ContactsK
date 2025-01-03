@@ -13,6 +13,7 @@ class Grandall extends ByNewPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     if (index === 0) {
       await super.accessPage(index);
@@ -56,9 +57,16 @@ class Grandall extends ByNewPage {
     const html = await lawyer
       .findElement(By.className("email"))
       .getAttribute("outerHTML");
-    return super.getContentFromTag(html)
+    return super.getContentFromTag(html);
   }
 
+
+  async #getPhone(lawyer) {
+    const html = await lawyer
+      .findElement(By.className("phone"))
+      .getAttribute("outerHTML");
+    return super.getContentFromTag(html);
+  }
 
   
   async getLawyer(lawyer) {
@@ -66,9 +74,12 @@ class Grandall extends ByNewPage {
       until.elementLocated(By.xpath('/html/body/div[3]/div/div/div/div[2]')
       ), 5000
     );
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: await this.#getEmail(details),
+      phone: await this.#getPhone(details),
       country: "China",
     };
   }

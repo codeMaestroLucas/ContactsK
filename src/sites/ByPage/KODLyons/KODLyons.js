@@ -13,9 +13,11 @@ class KODLyons extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -24,15 +26,19 @@ class KODLyons extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("entry-title fusion-post-title"))
-        .findElement(By.css("a"))
-        .getText()).toLowerCase().trim();
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return partners
+    const webRole = [
+      By.className("entry-title fusion-post-title"),
+      By.css("a")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
+  }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("entry-title fusion-post-title"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
   }
 
 
@@ -41,19 +47,8 @@ class KODLyons extends ByPage {
       .findElement(By.className("entry-title fusion-post-title"))
       .findElement(By.css("a"))
       .getAttribute("outerHTML");
-    
-    const regex = /<a[^>]*>([^,]+),\s*([^<]+)<\/a>/i;
-    const match = html.match(regex);
-
-    let name;
-    let role;
-
-    if (match) {
-      name = match[1].toLowerCase().trim();
-      role = match[2].toLowerCase().trim();
-    }
   
-    return { name, role };
+    return await super.getContentFromTag(html).split(",")[0];
   }
  
 
@@ -69,17 +64,15 @@ class KODLyons extends ByPage {
 
       if (href.includes("mailto:")) return href;
     }
-
   }
+
   
   async getLawyer(lawyer) {
-    const { name, role } = await this.#getName(lawyer);
-  
-    if (!role.includes("partner")) return "Not Partner";
-  
     return {
-      name: name,
+      link: await this.#getLink(lawyer),
+      name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
+      phone: "+353 1 679 0780", // Default phone
       country: "Ireland"
     };
   }

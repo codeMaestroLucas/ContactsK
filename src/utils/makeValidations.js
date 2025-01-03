@@ -1,5 +1,7 @@
 const { getRegisteredEmailOfMonth } = require("./emailsOfTheMonth");
 const Contacts = require("../entities/Excel/Contacts");
+const Lawyer = require("../entities/Lawyer");
+
 const path = require("path");
 const fs = require("fs");
 
@@ -72,25 +74,19 @@ function isAEmailToAvoid(email, emailsToAvoidPath) {
 
 /**
  * Function used to validate if the operation of register a lawter can proceed
- * @param {string} name
- * @param {string} country
- * @param {string} email
- * @param {set} setOfLastCountries registered
+ * @param {Lawyer} lawyer to be validated
+ * @param {set} setOfLastCountries validated
  * @returns {bool} true if can continue else false
  */
-function makeValidations(name, country, email, setOfLastCountries, emailsOfMonthPath, emailsToAvoidPath) {
-  if (!name || !email) {
+function makeValidations(lawyer, setOfLastCountries, emailsOfMonthPath, emailsToAvoidPath) {
+  if (!lawyer.name || !lawyer.email) {
     // The country is easiest to search for
     console.log("Incomplete lawyer data, skipping...\n");
     return false;
   }
+
+  const { email, country } = lawyer;
   
-  email = email.toLowerCase()
-               .replace("mailto:", "")
-               .replace("mailto", "")
-               .trim();
-
-
   if (country) {
     let countryToAvoid = isACountryToAvoid(country);
     if (countryToAvoid) {
@@ -102,7 +98,7 @@ function makeValidations(name, country, email, setOfLastCountries, emailsOfMonth
   
   const emailToAvoid = isAEmailToAvoid(email, emailsToAvoidPath);
   if (emailToAvoid) {
-    console.log(`Email to avoid: ${ emailToAvoid }`);
+    // console.log(`Email to avoid: ${ emailToAvoid }`);
     return false;
   }
 

@@ -61,12 +61,27 @@ class Beauchamps extends ByNewPage {
       .getAttribute("href");
   }
 
+
+  async #getPhone(lawyer) {
+    return await lawyer
+      .findElement(By.className("green-card__contact"))
+      .findElement(By.css("li:first-child > a"))
+      .getAttribute("href");
+  }
+
   
   async getLawyer(lawyer) {
-    const details = await driver.findElement(By.className("green-card__inner"));
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    const details = await driver.wait(
+      until.elementLocated(By.className("green-card__inner"))
+    );
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: await this.#getEmail(details),
+      phone: await this.#getPhone(details),
       country: "Ireland",
     };
   }

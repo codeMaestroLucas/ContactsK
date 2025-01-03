@@ -15,6 +15,7 @@ class MagnussonLaw extends ByPage {
     // Just 2 countries in the firm
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
     for (let c = 0; c < 2; c++) {
@@ -29,24 +30,29 @@ class MagnussonLaw extends ByPage {
     }
   }
 
+
   async getLawyersInPage() {
     const lawyers = await driver.wait(
       until.elementsLocated(
-        By.className("entry-content people-list-post-body")
+        By.className("d-flex flex-column h-100 people-list-post-content")
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("text-small font-weight-normal mb-1"))
-        .getText())
-        .toLowerCase();
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.className("entry-content people-list-post-body"),
+      By.className("text-small font-weight-normal mb-1")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("mt-auto people-list-post-footer"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     return await lawyer.findElement(By.css("h6")).getText();
@@ -56,27 +62,20 @@ class MagnussonLaw extends ByPage {
     const socials = await lawyer.findElements(
       By.className("d-block mb-2 meta-small")
     );
-
-    let email;
-    let ddd;
-
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-
-      if (href.includes("mailto:")) email = href;
-      else if (href.includes("tel:")) ddd = href;
-    }
-
-    return { email, ddd };
+    return await super.getSocials(socials);
   }
+  
 
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials(lawyer);
+    const details = await lawyer.findElement(By.className("entry-content people-list-post-body"));
+    const { email, phone } = await this.#getSocials(details);
     
     return {
-      name: await this.#getName(lawyer),
+      link: await this.#getLink(lawyer),
+      name: await this.#getName(details),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

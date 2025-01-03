@@ -16,8 +16,8 @@ class ArnoldAndPorter extends ByPage {
 
   async accessPage(index) {
     await super.accessPage(index);
-    try {} catch (e) {}
   }
+
 
   async getLawyersInPage() {
     return await driver.wait(
@@ -27,6 +27,15 @@ class ArnoldAndPorter extends ByPage {
     );
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("person-item-info col col2-5"))
+      .findElement(By.className("person-item-name search-result-item"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("person-item-info col col2-5"))
@@ -34,42 +43,44 @@ class ArnoldAndPorter extends ByPage {
       .getText();
   }
 
-  async #getEmail(lawyer) {
-    const ancors =  await lawyer
+
+  async #getSocials(lawyer) {
+    const socials = await lawyer
       .findElement(By.className("person-item-contact-info col col2-5"))
-      .findElements(By.css("a"))
-
-    for (let a of ancors) {
-      const href = await a.getAttribute("href");
-
-      if (href.includes("mailto:")) return href;
-    }
-  }
-
-  async #getDDD(lawyer) {
-    const phones = await lawyer
-      .findElement(By.className("person-item-contact-info col col2-5"))
-      .findElements(By.className("phone"))
-
-    for (let phone of phones) {
-      const ddd = await phone.findElement(By.css("a")).getAttribute("href");
-
-      if (ddd.startsWith("tel:++1")) {
-        continue; // Skip US ddd
+      .findElements(By.css("a"));
+  
+    let email = null;
+    let phone = null;
+  
+    for (let social of socials) {
+      const href = await social.getAttribute("href");
+  
+      if (href.includes("mailto:")) email = href;
+      
+      else if (href.includes("tel:")) {
+        if (!href.startsWith("tel:++1")) { // Skip US ddd
+          phone = href;
+        }
       }
-
-      return ddd;
+  
+      if (email && phone) break;
     }
+  
+    return { email, phone };
   }
+  
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      email: email,
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
-
 }
 
 module.exports = ArnoldAndPorter;

@@ -26,17 +26,11 @@ class PortolanoCavallo extends ByNewPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("app-text"))
-        .findElement(By.className("app-role"))
-        .getText()
-      ).toLowerCase();
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.className("app-text"),
+      By.className("app-role")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
   
@@ -56,13 +50,11 @@ class PortolanoCavallo extends ByNewPage {
   }
 
 
-  async #getEmail(lawyer) {
-    return (await lawyer
+  async #getSocials(lawyer) {
+    const socials = await lawyer
       .findElement(By.className("app-contacts"))
-      .findElement(By.className("app-email"))
-      .findElement(By.css("a"))
-      .getAttribute("href")
-    ).replace("//", "");
+      .findElements(By.css("a"));
+    return await super.getSocials(socials);
   }
 
   
@@ -70,10 +62,15 @@ class PortolanoCavallo extends ByNewPage {
     const details = await driver
       .findElement(By.css(".app-main-wrapper-cont:nth-child(3)"))
       .findElement(By.className("app-main-wrapper"));
+
+    const { email, phone } = await this.#getSocials(details);
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
-      email: await this.#getEmail(details),
-      country: "Italy",
+      email: email.replace("//", ""),
+      phone: phone,
+      country: "Italy"
     };
   }
 }

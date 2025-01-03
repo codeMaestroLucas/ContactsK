@@ -14,6 +14,7 @@ class SimmonsAndSimmons extends ByNewPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
     try {
@@ -26,6 +27,7 @@ class SimmonsAndSimmons extends ByNewPage {
     // Each roll add 3 lawyers
   }
 
+
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(
@@ -34,10 +36,12 @@ class SimmonsAndSimmons extends ByNewPage {
     );
   }
 
+
   async openNewTab(lawyer) {
     const link = await lawyer.getAttribute("href");
     await super.openNewTab(link);
   }
+
 
   async #getName() {
     try {
@@ -61,6 +65,7 @@ class SimmonsAndSimmons extends ByNewPage {
     } catch (error) {}
   }
 
+
   async #getEmail() {
     try {
       const emailElement = await driver.wait(
@@ -75,7 +80,8 @@ class SimmonsAndSimmons extends ByNewPage {
     } catch (error) {}
   }
 
-  async #getDDD() {
+
+  async #getPhone() {
     try {
       const dddElement = await driver.wait(
         until.elementLocated(
@@ -88,13 +94,18 @@ class SimmonsAndSimmons extends ByNewPage {
     } catch (error) {}
   }
 
+
   async getLawyer() {
-      return {
-        name: await this.#getName(),
-        email: await this.#getEmail(),
-        country: getCountryByDDD(await this.#getDDD()),
-      };
-    }
+    const phone = await this.#getPhone();
+
+    return {
+      link: await driver.getCurrentUrl(),
+      name: await this.#getName(),
+      email: await this.#getEmail(),
+      phone: phone,
+      country: getCountryByDDD(phone),
+    };
   }
+}
 
 module.exports = SimmonsAndSimmons;

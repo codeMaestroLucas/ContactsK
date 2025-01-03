@@ -14,9 +14,11 @@ class DillonEustace extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     await driver
@@ -34,6 +36,15 @@ class DillonEustace extends ByPage {
     );
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("styles_name___cJ34"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("styles_name___cJ34"))
@@ -41,23 +52,30 @@ class DillonEustace extends ByPage {
       .getText();
   }
 
+
   async #getEmail(lawyer) {
     return await lawyer
       .findElement(By.className("styles_email__wf6TI"))
       .getAttribute("href");
   }
 
-  async #getDDD(lawyer) {
+
+  async #getPhone(lawyer) {
     return await lawyer
       .findElement(By.className("styles_phoneNumber__Dt9t5"))
       .getText();
   }
 
+  
   async getLawyer(lawyer) {
+    const phone = await this.#getPhone(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

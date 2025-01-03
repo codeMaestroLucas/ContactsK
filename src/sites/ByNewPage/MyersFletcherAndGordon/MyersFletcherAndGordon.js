@@ -18,12 +18,15 @@ class MyersFletcherAndGordon extends ByNewPage {
     await super.accessPage(index);
   }
 
+
   async getLawyersInPage() {
-    return await driver.wait(
+    return (await driver.wait(
       until.elementsLocated(
-        By.className("custom-link")
-      ), 100000
-    );
+          By.className("custom-link")
+        ), 100000
+      )
+    ).splice(1);
+    // This is remove just the first element?
   }
 
   
@@ -56,12 +59,13 @@ class MyersFletcherAndGordon extends ByNewPage {
 
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
+      phone: '8769225860', // Always the same phone number
       country: "Jamaica",
     };
   }
-
 }
 
 module.exports = MyersFletcherAndGordon;

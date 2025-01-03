@@ -1,23 +1,22 @@
 const { processFirm, constructFirms } = require("./constructLawFirms");
-const { makeReport} = require('./makeReport')
-const Sheet = require("../entities/Excel/Sheet");
 const { getRandomNumber } = require("./interfaceUt");
 const { driver } = require("../config/driverConfig");
 const Reports = require("../entities/Excel/Reports");
+const Sheet = require("../entities/Excel/Sheet");
+const { makeReport } = require('./makeReport');
 
 async function getRandomLawFirm() {
   const timeInit = performance.now();
-
-  const reportsFile = new Reports();
-  reportsFile.eraseLastReport();
-
+  
   const sheet = new Sheet();
   sheet.eraseLastSheet();
   const emptyRowsStart = sheet.rowsToFill;
-  sheet.fillEmptyColumns();
-
+  
   const lawFirms = await Promise.all(constructFirms());
   const lawFirmsLen = lawFirms.length;
+
+  const reportsFile = new Reports({ reportsRow : lawFirmsLen});
+  reportsFile.eraseLastReport();
 
   if (!lawFirms || lawFirms.length === 0) {
     console.log("No law firms found. Please verify the input or configuration.");

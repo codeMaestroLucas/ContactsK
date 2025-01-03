@@ -11,6 +11,7 @@ class Sheet extends Excel {
     this._rowsFilled = new Set();
   }
 
+
   /**
    * Function used to Set & Get a random number in the range of [ 2 - 52 ]
    * @returns {number} random number
@@ -23,7 +24,7 @@ class Sheet extends Excel {
     const availableRows = [];
   
     for (let i = MIN; i <= MAX; i++) {
-      if (!this._rowsFilled.has(i) && !workSheet[`B${i}`]?.v) {
+      if (!this._rowsFilled.has(i) && !workSheet[`B${ i }`]?.v) {
         availableRows.push(i);
       }
     }
@@ -41,7 +42,6 @@ class Sheet extends Excel {
   }
   
   
-
   /**
    * @param {str} newCountry to be setted
    */
@@ -55,6 +55,7 @@ class Sheet extends Excel {
   set lastFirm(newFirm) {
     this._lastFirm = newFirm;
   }
+
 
   saveSheet() {
     xlsx.writeFile(this.workbook, this.filePath);
@@ -74,26 +75,25 @@ class Sheet extends Excel {
   eraseLastSheet() {
     const workSheet = this.workbook.Sheets[this.workbook.SheetNames[0]];
 
-    for (let row = 2; row <= this.rowsToFill + 2; row++) {
-
-      workSheet[`A${ row }`] = { v: "" };
-      workSheet[`B${ row }`] = { v: "" };
-      workSheet[`C${ row }`] = { v: "" };
-      workSheet[`D${ row }`] = { v: "" };
-      workSheet[`E${ row }`] = { v: "" };
-      workSheet[`F${ row }`] = { v: "" };
-      workSheet[`G${ row }`] = { v: "" };
-
-      this.saveSheet();
+    for (let i = 2; i <= this.rowsToFill + 2; i++) {
+      workSheet[ `A${ i }` ] = { v: undefined };
+      workSheet[ `B${ i }` ] = { v: undefined };
+      workSheet[ `C${ i }` ] = { v: undefined };
+      workSheet[ `D${ i }` ] = { v: undefined };
+      workSheet[ `E${ i }` ] = { v: undefined };
+      workSheet[ `F${ i }` ] = { v: undefined };
+      workSheet[ `G${ i }` ] = { v: undefined };
     }
+
+    this.saveSheet();
   }
-
   
-
-  addContact({ firstName, nameTreated, firmNameTreated, countryTreated, emailTreated }) {
-    if (this._lastCountry === countryTreated && this._lastFirm === firmNameTreated) {
+  
+  
+  addContact(link, name, email, phone, firm, country) {
+    if (this._lastCountry === country && this._lastFirm === firm) {
       console.log(
-        `The firm ${this._lastFirm} already has a lawyer in the country ${this._lastCountry} registered in the sheet.`
+        `The firm ${ this._lastFirm } already has a lawyer in the country ${ this._lastCountry } registered in the sheet.`
       );
       return;
     }
@@ -107,17 +107,19 @@ class Sheet extends Excel {
     try {
       const workSheet = this.workbook.Sheets[this.workbook.SheetNames[0]];
 
-      workSheet[ `A${i}` ] = { v: firstName };
-      workSheet[ `B${i}` ] = { v: nameTreated };
-      workSheet[ `C${i}` ] = { v: firmNameTreated };
-      workSheet[ `D${i}` ] = { v: countryTreated };
-      workSheet[ `G${i}` ] = { v: emailTreated };
+      workSheet[ `A${ i }` ] = { v: link };
+      workSheet[ `B${ i }` ] = { v: name };
+      workSheet[ `C${ i }` ] = { v: email };
+      workSheet[ `D${ i }` ] = { v: phone };
+      workSheet[ `E${ i }` ] = { v: firm };
+      // workSheet[ `F${ i }` ] = { v: practiceArea };
+      workSheet[ `G${ i }` ] = { v: country };
 
       this.saveSheet();
       console.log("Contact added successfully.");
 
-      this.lastCountry = countryTreated;
-      this.lastFirm = firmNameTreated;
+      this.lastCountry = country;
+      this.lastFirm = firm;
     } catch (err) {
       console.error("Error while adding contact:", err);
     }
@@ -125,39 +127,40 @@ class Sheet extends Excel {
 
 
   /**
-   * Function used to fill the Empty rows of the columns A and E of the Sheet.
+   * Counts the number of empty rows in the Excel sheet.
    *
-   * - The Column A will be filled with: =PROPER(IFERROR(LEFT(BX,FIND(" ",BX)-1),BX))
+   * This function iterates through the rows of an Excel sheet, starting from
+   * the second row (skipping the header row). It checks if all cells in a row
+   * are empty (i.e., undefined, null, or empty string) and decrements the count
+   * of empty rows if a row is not empty.
    *
-   * - The Column E will be filled with: =IFERROR(VLOOKUP(DX, P5:Q260, 2, FALSE), "Not Found")
-   *
-   * The X is refering to the actual row.
+   * @param {number} rowsToFill - The total number of rows to check.
+   * Defaults is this._rowsToFill value.
+   * @returns {number} - The number of empty rows remaining after checking the
+   * specified number of rows.
    */
-  fillEmptyColumns() {
-    try {
-      const workSheet = this.workbook.Sheets[this.workbook.SheetNames[0]];
-
-      for (let row = 2; row <= this.rowsToFill + 2; row++) {
-        const colB = workSheet[`B${row}`]?.v;
-
-        if (!colB) {
-          workSheet[`A${row}`] = {
-            t: "s",
-            v: `=PROPER(IFERROR(LEFT(B${row},FIND(" ",B${row})-1),B${row}))`,
-          };
-        }
-
-        workSheet[`E${row}`] = {
-          t: "s",
-          v: `=IFERROR(VLOOKUP(D${row},P2:Q260,2,FALSE),"Not Found")`,
-        };
+  countEmptyRows() {
+    let emptyRowsLeft = this.rowsToFill;
+  
+    // Iterate from row 2 to rowsToFill + 2 (accounting for header row)
+    for (let row = 2; row <= this.rowsToFill + 2; row++) {
+      const currentRow = this.ws[`B${row}`];
+  
+      // Check if column B (index 1) is empty
+      const isEmpty =
+        !currentRow || // Cell doesn't exist
+        !currentRow.v || // Cell value is undefined/null
+        currentRow.v === ""; // Cell is an empty string
+  
+      if (!isEmpty) {
+        emptyRowsLeft--;
       }
-
-      this.saveSheet();
-    } catch (err) {
-      console.error("Error while filling empty columns:", err);
     }
+  
+    return emptyRowsLeft;
   }
+  
+
 }
 
 module.exports = Sheet;

@@ -11,7 +11,7 @@ class BirdAndBird extends ByNewPage {
     link = "https://www.twobirds.com/en/people#f:@countrynames=[Australia,Belgium,China,Czech%20Republic,Denmark,Finland,France,Germany,Hungary,Ireland,Italy,Japan,Morocco,Netherlands,Poland,Singapore,Slovak%20Republic,Spain,Sweden,UAE,United%20Kingdom]",
     totalPages = 1,
   ) {
-    super(name, link, totalPages, 100);
+    super(name, link, totalPages);
   }
 
   //* Loads on click
@@ -74,7 +74,7 @@ class BirdAndBird extends ByNewPage {
   }
 
 
-  async #getDDD() {
+  async #getPhone() {
     return await driver
       .findElement(By.className("icon--group"))
       .findElement(By.className("icon social phone"))
@@ -95,10 +95,14 @@ class BirdAndBird extends ByNewPage {
 
     if (!role.includes("partner")) return "Not Partner";
 
+    const phone = await this.#getPhone();
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
-      country: getCountryByDDD(await this.#getDDD()),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

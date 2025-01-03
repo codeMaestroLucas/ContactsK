@@ -38,4 +38,17 @@ project, such as data processing, file handling, or web scraping.
 ---
 
 ---
-# fix
+# Ideas
+1. Create an Details.txt - the name can change - file for each Site to display
+the last page that a lawyer was found - just for the sites that have more than
+one page.
+
+    This has a problem because some lawyer could be skipped without registration
+
+2. Get the total of firms registred and pass this quantity for the REPORTS.XLSX
+
+# Working on
+
+
+# Fix
+TOMMP - PARTNER CHECKING

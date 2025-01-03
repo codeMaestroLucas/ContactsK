@@ -13,12 +13,14 @@ class ApplebyGlobal extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     super.accessPage(index,
       `https://www.applebyglobal.com/people/page/${index + 1}/?position=13`
     );
     await new Promise(resolve => setTimeout(resolve, 2000));
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -27,21 +29,22 @@ class ApplebyGlobal extends ByPage {
       ), 60000 // This site loads Slowly
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(
-          By.className(
-            "u-font-size-12 u-font-weight-normal u-uppercase u-letter-spacing-supersmall u-margin-bottom-10"
-          )
-        )
-        .getText()
-      ).toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return partners;
+    const webRole = [
+      By.className(
+        "u-font-size-12 u-font-weight-normal u-uppercase u-letter-spacing-supersmall u-margin-bottom-10"
+      )
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
+
+  
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("u-margin-bottom-5"))
+      .findElement(By.className("u-decoration-none u-font-weight-normal grid-item__title"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     let name;
@@ -60,34 +63,23 @@ class ApplebyGlobal extends ByPage {
     }
   }
   
+
   async #getSocials(lawyer) {
     await driver.wait(until.elementIsVisible(lawyer), 10000);
-    const contacts = await lawyer.findElements(By.className("u-decoration-none u-nowrap"));
-    let email = null;
-    let ddd = null;
-  
-    for (let contact of contacts) {
-      const href = (await contact.getAttribute("href")).trim();
-
-      if (href.startsWith("mailto:")) {
-        email = href.replace(/\?subject=.*$/, "");
-
-      } else if (href.startsWith("tel:+")) {
-        ddd = href;
-      }
-    }
-  
-    return { email, ddd };
+    const socials = await lawyer.findElements(By.className("u-decoration-none u-nowrap"));
+    return await super.getSocials(socials);
   }
   
 
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials(lawyer);
+    const { email, phone } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: email,
-      country: getCountryByDDD(ddd),
+      email: email.replace(/\?subject=.*$/, ""),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

@@ -27,16 +27,10 @@ class RemfryAndSagar extends ByNewPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-          .findElement(By.css("p:nth-child(3)"))
-          .getText()
-        ).toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return lawyers;
+    const webRole = [
+      By.css("p:nth-child(3)")
+    ];
+    return super.filterPartnersInPage(lawyers, webRole, true);
   }
 
   
@@ -62,14 +56,14 @@ class RemfryAndSagar extends ByNewPage {
       .getAttribute("href");
   }
 
-
-
   
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
-      country: "India",
+      phone: '911242806100',
+      country: "India"
     };
   }
 }

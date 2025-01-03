@@ -18,7 +18,6 @@ class Noerr extends ByNewPage {
 
   async accessPage(index) {
     await super.accessPage(index);
-    try {} catch (e) {}
   }
 
 
@@ -50,32 +49,19 @@ class Noerr extends ByNewPage {
     const socials = await lawyer
       .findElement(By.className('MuiBox-root css-vgsl4f'))
       .findElements(By.css('div.MuiBox-root.css-axw7ok > a'));
-  
-    let email;
-    let ddd;
-  
-    for (let social of socials) {
-      const href = await social
-        .getAttribute('href');
-  
-      if (href.includes('mailto:')) email = href;
-      else if (href.includes('tel:')) ddd = href;
-  
-      if (email && ddd) break;
-    }
-  
-    return { email, ddd };
+    return await super.getSocials(socials);
   }
   
   async getLawyer(lawyer) {
     const details = await driver.findElement(By.className("MuiContainer-root MuiContainer-maxWidthXl css-vvmory"));
-
-    const { email, ddd } = await this.#getSocials(details)
+    const { email, phone } = await this.#getSocials(details);
 
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

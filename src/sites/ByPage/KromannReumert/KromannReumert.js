@@ -19,6 +19,7 @@ class KromannReumert extends ByPage {
     await super.accessPage(index, otherUrl);
   }
 
+
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(
@@ -26,6 +27,16 @@ class KromannReumert extends ByPage {
       ), 100000
     );
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("field node-title"))
+      .findElement(By.css("h2"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     return await lawyer
@@ -35,6 +46,7 @@ class KromannReumert extends ByPage {
       .getText();
   }
 
+
   async #getEmail(lawyer) {
     return await lawyer
       .findElement(By.className("field field-email"))
@@ -43,10 +55,19 @@ class KromannReumert extends ByPage {
   }
 
 
+  async #getPhone(lawyer) {
+    return await lawyer
+      .findElement(By.className("field field-phone"))
+      .getText();
+  }
+
+
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
+      phone: await this.#getPhone(lawyer),
       country: "Denmark",
     };
   }

@@ -24,20 +24,12 @@ class PaviaAndAnsaldo extends ByNewPage {
       until.elementsLocated(By.className("exp-arrow  extp-exlink")),
       100000
     );
-    let partners = [];
 
-    for (let lawyer of lawyers) {
-      const role = (
-        await lawyer
-          .findElement(By.className("tpstyle-6-info"))
-          .findElement(By.css("h5"))
-          .getText()
-          ).toLowerCase().trim();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.className("tpstyle-6-info"),
+      By.css("h5")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
 
@@ -58,7 +50,7 @@ class PaviaAndAnsaldo extends ByNewPage {
       .getAttribute("alt");
     return alt.replace("Pea_585_", "").replace(/_/g, " ");
   }
-
+  
 
   async #getEmail() {
     const divElements = await driver
@@ -70,13 +62,27 @@ class PaviaAndAnsaldo extends ByNewPage {
       if (href.includes("@pavia-ansaldo.it")) return href;
     }
   }
-  
+
+
+  async #getPhone() {
+    const divElements = await driver
+      .findElement(By.className("mega-info-desc"))
+      .findElements(By.css("a"));
+
+    for (let div of divElements) {
+      const href = await div.getText();
+
+      if (href.includes("+39")) return href;
+    }
+  }
 
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
-      country: "Italy",
+      phone: await this.#getPhone(),
+      country: "Italy"
     };
   }
 }

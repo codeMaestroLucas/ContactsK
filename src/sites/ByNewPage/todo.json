@@ -4,9 +4,40 @@
     "link": ""
   },
   {
-    "name": "TillekeAndGibbins",
-    "link": "https://www.tilleke.com/professionals/",
-    "Note": "Driver outdated, dont kown how to fix this, standing by"
+    "name": "Bishops Barristers & Solicitors",
+    "link": "https://bishops.com.au/team",
+    "Note": "Just 3"
+  },
+  {
+    "name": "Mazzeo Lawyers",
+    "link": "https://www.mazzeolawyers.com.au/our-people/",
+    "Note": "Just 3"
+  },
+  {
+    "name": "Connolly Suthers",
+    "link": "https://www.connollysuthers.com.au/our-people/"
+  },
+  {
+    "name": "A J Law & Co",
+    "link": "https://ajandco.com.au/our-people/#partners"
+  },
+  {
+    "name": "DW Fox Tucker Lawyers",
+    "link": "https://www.dwfoxtucker.com.au/our-people"
+  },
+  {
+    "name": "Mellor Olsson",
+    "link": "https://www.molawyers.com.au/team?service=all&position=partner&office=all"
+  },
+  {
+    "name": "Finlaysons",
+    "link": "https://www.finlaysons.com.au/people/",
+    "Note": "The last partner acctually is a counsel, check in new page for more erros like this"
+  },
+  {
+    "name": "Hicksons",
+    "link": "https://www.hicksons.com.au/our-team",
+    "Note": "Send key partner"
   },
   {
     "name": "Kennedys",
@@ -16,6 +47,11 @@
   {
     "name": "IndusLaw",
     "link": "https://induslaw.com/people/"
+  },
+  {
+    "name": "TillekeAndGibbins",
+    "link": "https://www.tilleke.com/professionals/",
+    "Note": "Driver outdated, dont kown how to fix this, standing by"
   },
   {
     "name": "",

@@ -13,9 +13,11 @@ class Deacons extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     return await driver.wait(
@@ -25,33 +27,42 @@ class Deacons extends ByPage {
     );
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("name"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("name"))
       .findElement(By.css("a"))
       .getText();
   }
+  
 
-  async #getEmail(lawyer) {
+  async #getSocials(lawyer) {
     const socials = await lawyer
-      .findElement(By.className("contact"))
-      .findElements(By.css("a"))
-
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-      if (href.toLowerCase().includes("mailto:")) return href
-    }
+      .findElement(By.className('contact'))
+      .findElements(By.css('a'));
+    return await super.getSocials(socials);
   }
 
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
+      email: email,
+      phone: phone,
       country: "Hong Kong"
     };
   }
-
 }
 
 module.exports = Deacons;

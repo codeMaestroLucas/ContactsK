@@ -13,6 +13,7 @@ class CareyOlsen extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
     try {
@@ -25,6 +26,7 @@ class CareyOlsen extends ByPage {
     } catch (e) {}
   }
 
+
   async getLawyersInPage() {
     const lawyers = await driver.wait(
       until.elementsLocated(
@@ -32,23 +34,26 @@ class CareyOlsen extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("position-location"))
-        .getText()
-      ).toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer)
-    }
-    return partners
+    const webRole = [
+      By.className("position-location")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, false);
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("image"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.css("h3 > a"))
       .getText();
   }
+
 
   async #getEmail(lawyer) {
     const email = await lawyer
@@ -61,17 +66,22 @@ class CareyOlsen extends ByPage {
     }
   }
 
-  async #getDDD(lawyer) {
+
+  async #getPhone(lawyer) {
     return await lawyer
       .findElement(By.css(".phone.direct-line a"))
       .getAttribute("href");
   }
 
+
   async getLawyer(lawyer) {
+    const phone = await this.#getPhone(lawyer);
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

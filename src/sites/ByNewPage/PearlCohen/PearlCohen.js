@@ -45,26 +45,24 @@ class PearlCohen extends ByNewPage {
   }
 
 
-  async #getEmail(lawyer) {
+  async #getSocials(lawyer) {
     const socials = await lawyer
       .findElement(By.className('masthead__contact-list'))
-      .findElements(By.css('li'))
-  
-    for (let social of socials) {
-      const href = await social
-        .findElement(By.css('a'))
-        .getAttribute('href');
-  
-      if (href.includes('mailto:')) return href;
-    }
+      .findElements(By.css('li > a'))
+    return await super.getSocials(socials);
   }
   
+
   async getLawyer(lawyer) {
     const details = await driver.findElement(By.className("masthead__caption"));
 
+    const { email, phone } = await this.#getSocials(details);
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
-      email: await this.#getEmail(details),
+      email: email,
+      phone: phone,
       country: "Israel"
     };
   }

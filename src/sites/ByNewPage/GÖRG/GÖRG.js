@@ -54,15 +54,24 @@ class GÖRG extends ByNewPage {
       .getAttribute("href");
   }
 
+
+  async #getPhone() {
+    return await driver
+      .findElement(By.className("field-phone"))
+      .findElement(By.className("phone-link"))
+      .getAttribute('href');
+  }
+
   
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
+      phone: await this.#getPhone(),
       country: "Germany",
     };
   }
-
 }
 
 module.exports = GÖRG;
