@@ -16,8 +16,8 @@ class ByPage extends Site {
     ensureFileExists(this.emailsOfMonthPath);
     ensureFileExists(this.emailsToAvoidPath);
   }
-  
 
+  
   async searchForLawyers() {
     for (let i = 0 ; i < this._totalPages ; i++) {
       console.log(`Page ${ i + 1 } - - - - - - - - - - ( ${ this._totalPages } )`);
@@ -81,8 +81,8 @@ class ByPage extends Site {
           console.log(
             `Error reading ${ index  + 1 }th lawyer at the page ${ i + 1 } of the firm ${ this._name }.\nError: ${ e }...`
           );
+          throw e;
           continue;
-          // throw e;
         }
       }
     }

@@ -60,10 +60,9 @@ class DSKLegal extends ByNewPage {
 
 
   async #getName() {
-    return (await driver
+    return await driver
       .findElement(By.className("space-left-60 person-name"))
-      .getText()
-    ).split("<small>")[0];
+      .getText();
   }
   
   async #getSocials() {

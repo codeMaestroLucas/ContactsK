@@ -9,7 +9,7 @@ class LatamLex extends ByNewPage {
     name = "Latam Lex",
     link = "https://latamlex.com/en/equipo/",
     totalPages = 1,
-    maxLawyersForSite = 100
+    maxLawyersForSite = 1
   ) {
     super(name, link, totalPages, maxLawyersForSite);
   }

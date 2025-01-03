@@ -40,6 +40,7 @@ function registerEmailOfMonth(email, emailFilePath) {
   );
 }
 
+
 /**
  * Function used to GET the emails that were registered in the file for the
  * current month.

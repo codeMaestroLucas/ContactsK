@@ -129,7 +129,7 @@ class ByNewPage extends Site {
         } catch (e) {
           console.log(`Error reading ${ index + 1 }th lawyer at the page ${ i + 1 } of the firm ${ this._name }\nError: ${ e }...`);
           continue;
-          // throw e;
+          throw e;
         } finally {
           const windows = await driver.getAllWindowHandles();
           if (windows.length > 1) await this.closeTab();

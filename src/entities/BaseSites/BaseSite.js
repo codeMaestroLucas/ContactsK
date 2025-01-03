@@ -1,3 +1,4 @@
+const ensureFileExists = require("../../utils/ensureFileExists");
 const { driver } = require("../../config/driverConfig");
 
 const { By, Key } = require("selenium-webdriver");

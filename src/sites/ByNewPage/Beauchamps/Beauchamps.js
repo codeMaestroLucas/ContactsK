@@ -71,6 +71,8 @@ class Beauchamps extends ByNewPage {
 
   
   async getLawyer(lawyer) {
+    await new Promise(resolve => setTimeout(resolve, 500));
+
     const details = await driver.wait(
       until.elementLocated(By.className("green-card__inner"))
     );

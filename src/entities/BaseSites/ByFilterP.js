@@ -1,10 +1,10 @@
 const ensureFileExists = require("../../utils/ensureFileExists");
 const makeValidations = require("../../utils/makeValidations");
-const ByPage = require("../../entities/BaseSites/ByPage");
 const Lawyer = require("../Lawyer");
+const Site = require("./Site");
 
 
-class ByFilterP extends ByPage {
+class ByFilterP extends Site {
   constructor(name, link, totalPages, maxLawyersForSite) {
     super(name, link, totalPages, maxLawyersForSite);
 
@@ -14,7 +14,7 @@ class ByFilterP extends ByPage {
 
     ensureFileExists(this.emailsOfMonthPath);
     ensureFileExists(this.emailsToAvoidPath);
-    
+
     this._filterOptions = {
       "": "",
       "": "",

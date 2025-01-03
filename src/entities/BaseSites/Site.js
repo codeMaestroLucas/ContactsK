@@ -1,5 +1,5 @@
 const { registerEmailOfMonth } = require("../../utils/emailsOfTheMonth");
-const Planilha = require("../Excel/Sheet");
+const Sheet = require("../Excel/Sheet");
 const BaseSite = require("./BaseSite");
 const Lawyer = require("../Lawyer");
 
@@ -67,7 +67,7 @@ class Site extends BaseSite {
    * @param {Lawyer} lawyer to be registered
    */
   registerLawyer(lawyer, emailsOfMonthPath) {
-    const planilha = new Planilha();
+    const planilha = new Sheet();
 
     const { link, name, email, phone, firm, country } = lawyer;
 

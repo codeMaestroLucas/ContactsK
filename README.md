@@ -51,5 +51,4 @@ one page.
 
 
 # Fix
-Changes in the Data that will be collected
-Source (link), Name, Email, Phone, Firm, Practice Area, Country
+TOMMP - PARTNER CHECKING

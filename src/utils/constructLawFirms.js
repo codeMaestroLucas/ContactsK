@@ -38,7 +38,7 @@ async function loadLawFirm(firmName, folderName) {
  * @throws {Error} The last error encountered if the operation fails after all
  * retry attempts.
  */
-async function withRetry(operation, retries = 2) {
+async function withRetry(operation, retries = 1) {
   let attempts = 0;
 
   while (attempts <= retries) {

@@ -1,6 +1,3 @@
-const title = require('../utils/title');
-
-
 /**
  * Class used to represent a Lawyer
  */
@@ -20,7 +17,7 @@ class Lawyer {
     this._email = this.#treatEmail(email);
     this._phone = (phone) ? this.#treatPhone(phone) : "";
     this._firm = firm.trim();
-    this._country = this.#treatCountry(country);
+    this._country = country
   }
 
   get link() { return this._link; }
@@ -38,31 +35,32 @@ class Lawyer {
    * @returns {string} name treated
    */
   #treatLawyerName(name) {
-    //TODO: Check the treat when accented words are present.
-    // Normalize accents and remove diacritics -> to deal with accents words.
-    name = name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
     // Remove punctuation (.,) , quotes("') and convert name to lowercase
     name = name
-      .replace(/\./g, " ")
-      .replace(/,/g, " ")
+      .replace("\n", " ")
+      .replace(/[.,]/g, " ")
+      .replace(/["']/g, " ")
       // .replace(/\*/g, " ")  //! To identify the GetNameByEmail function
-      .replace(/\"/g, " ")
-      .replace(/\'/g, " ")
       .toLowerCase();
+
+    name = name
+      .replace("partner", "")
+      .replace("managing", "")
+      .replace("senior", "")
   
     const abbreviations = [
       "mr", "ms", "mx", "dr", "prof", "mrs", "miss",
       "master", "sir", "esq", "rev", "att", "llm", "kc",
-      "managing", "partner"
     ];
   
     // Split name into words and filter out abbreviations
     const words = name.split(' ').filter(word => word.trim() && !abbreviations.includes(word));
   
-    const fullName = words.join(" ");
+    const fullName = words
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
   
-    return title(fullName.trim());
+    return fullName.trim();
   }
 
 
@@ -85,12 +83,10 @@ class Lawyer {
    * @returns {string} phone treated
    */
   #treatPhone(phone) {
-    return phone.replace(/\D/g, "").replace(/^0+/, "");
+    const newPhone = phone.replace(/\D/g, "").replace(/^0+/, "");
+    return newPhone.replace(/\D/g, "").replace(/^0+/, "");
   }
 
-  #treatCountry(country) {
-    return title(country);
-  }
 }
 
 module.exports = Lawyer;

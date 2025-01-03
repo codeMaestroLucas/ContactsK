@@ -15,7 +15,7 @@ class Template extends ByFilterP {
     super(name, link, totalPages, maxLawyersForSite);
     
     this._filterOptions = {
-      "": "",
+      // "OPTION": "COUNTRY",
       "": "",
     };
 
@@ -26,7 +26,7 @@ class Template extends ByFilterP {
   /**
    * @returns {boolean} true for SKIP the country and false to search in the contry
    */
-  #selectRandomCountry() {
+  selectRandomCountry() {
     const { randomCity, selectedCountry } = super.selectRandomCountry();
     if (selectedCountry === "No more countries to search.") {
       return true;
@@ -61,21 +61,20 @@ class Template extends ByFilterP {
   async #getLink(lawyer) {
     return await lawyer
       .findElement(By.className(""))
+      .findElement(By.css("a"))
+      .getAttribute("href");
   }
 
 
   async #getName(lawyer) {
-    const nameElement = await lawyer
+    return await lawyer
       .findElement(By.className(""))
       .getText();
-
-    
-    return nameElement
   }
 
 
-  async #getSocials() {
-    const socials = await driver
+  async #getSocials(lawyer) {
+    const socials = await lawyer
       .findElement(By.className())
     return await super.getSocials(socials);
   }

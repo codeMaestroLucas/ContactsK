@@ -1,20 +1,20 @@
 const ensureFileExists = require("../../utils/ensureFileExists");
 const makeValidations = require("../../utils/makeValidations");
-const ByNewPage = require("../../entities/BaseSites/ByNewPage");
 let { driver } = require("../../config/driverConfig");
 const Lawyer = require("../Lawyer");
+const Site = require("./Site");
 
-class ByFilterNP extends ByNewPage {
+class ByFilterNP extends Site {
   constructor(name, link, totalPages, maxLawyersForSite) {
     super(name, link, totalPages, maxLawyersForSite);
 
     const sanitizedPath = name.trim().replace(/\s+/g, "");
     this.emailsOfMonthPath = `./src/sites/ByFilter/${ sanitizedPath }/${ sanitizedPath }.txt`;
     this.emailsToAvoidPath = `./src/sites/ByFilter/${ sanitizedPath }/emailsToAvoid.txt`;
-
+    
     ensureFileExists(this.emailsOfMonthPath);
     ensureFileExists(this.emailsToAvoidPath);
-    
+
     this._filterOptions = {
       "": "",
       "": "",
@@ -49,6 +49,51 @@ class ByFilterNP extends ByNewPage {
 
     this._currentCountry = selectedCountry;
   }
+
+  
+  /**
+   * Function used to open a new page and switch to it for getting the lawyer data
+   *
+   * If the link is an empty string that lawyer will be ignored
+   * @param {string} link - The URL to be opened in a new tab
+   */
+  async openNewTab(link) {
+    if (link.trim() === "" || !link) {
+      return;
+    };
+
+    // Open a new tab and navigate to the link
+    await driver.switchTo().newWindow('tab');
+    await driver.get(link);
+  
+    await this.waitForPageToLoad();
+  
+    // Switch to the newly opened tab
+    //* This make possible for the driver interact with the new window
+    const windows = await driver.getAllWindowHandles();
+    await driver.switchTo().window(windows[windows.length - 1]);
+    await driver.wait(until.elementLocated(By.css("body")), 5000);
+  }
+
+
+  /**
+   * Function used to close the current tab
+   */
+  async closeTab() {
+    // Get all window handles before closing the tab
+    const windows = await driver.getAllWindowHandles();
+    try {
+      // Close the current tab
+      await driver.close();
+
+      // After closing, switch to the last opened tab (or any other tab you need)
+      await driver.switchTo().window(windows[windows.length - 2]);
+      
+    } catch (error) {
+      await driver.switchTo().window(windows[windows.length - 1]);
+    }
+  }
+
 
 
   async searchForLawyers() {

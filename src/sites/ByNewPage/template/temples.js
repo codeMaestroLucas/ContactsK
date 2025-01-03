@@ -58,6 +58,7 @@ class Template extends ByNewPage {
   async #getSocials() {
     const socials = await driver
       .findElement(By.className())
+      .findElements(By.className())
     return await super.getSocials(socials);
   }
   
@@ -79,8 +80,8 @@ module.exports = Template;
 
 async function main() {
   t = new Template();
-  await t.accessPage(0);
-  // await t.searchForLawyers();
+  // await t.accessPage(0);
+  await t.searchForLawyers();
 }
 
 main();

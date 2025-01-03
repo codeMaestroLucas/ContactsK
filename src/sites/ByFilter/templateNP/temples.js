@@ -15,7 +15,7 @@ class Template extends ByFilterNP {
     super(name, link, totalPages, maxLawyersForSite);
     
     this._filterOptions = {
-      "": "",
+      // "OPTION": "COUNTRY",
       "": "",
     };
 
@@ -26,7 +26,7 @@ class Template extends ByFilterNP {
   /**
    * @returns {boolean} true for SKIP the country and false to search in the contry
    */
-  #selectRandomCountry() {
+  selectRandomCountry() {
     const { randomCity, selectedCountry } = super.selectRandomCountry();
     if (selectedCountry === "No more countries to search.") {
       return true;

@@ -39,22 +39,22 @@ class Template extends ByPage {
   async #getLink(lawyer) {
     return await lawyer
       .findElement(By.className(""))
+      .findElement(By.css("a"))
+      .getAttribute("href");
   }
 
 
   async #getName(lawyer) {
-    const nameElement = await lawyer
+    return await lawyer
       .findElement(By.className(""))
       .getText();
-
-    
-    return nameElement
   }
 
 
-  async #getSocials() {
-    const socials = await driver
+  async #getSocials(lawyer) {
+    const socials = await lawyer
       .findElement(By.className())
+      .findElements(By.className())
     return await super.getSocials(socials);
   }
   

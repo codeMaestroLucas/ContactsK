@@ -160,10 +160,3 @@ class MorganLewisAndBockiusLLP extends ByFilterP {
 }
 
 module.exports = MorganLewisAndBockiusLLP;
-
-async function main() {
-  t = new MorganLewisAndBockiusLLP();
-  t.searchForLawyers();
-}
-
-main();

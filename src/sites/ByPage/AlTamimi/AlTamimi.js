@@ -43,7 +43,7 @@ class AlTamimi extends ByPage {
     const { email, phone } = await this.#getSocials(lawyer)
 
     return {
-      link: await lawyer.findElement(By.css("a").getAttribute("href")),
+      link: await lawyer.findElement(By.css("a")).getAttribute("href"),
       name: await this.#getName(lawyer),
       email: email,
       phone: phone,

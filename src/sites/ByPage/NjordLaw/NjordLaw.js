@@ -59,7 +59,7 @@ class NjordLaw extends ByPage {
       link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      phone: phone.replace("tel:%28%2B", "").replace("%29", ""),
+      phone: phone.replace("tel:%28%2B", "").replace("%29", "").replace("282", ""),
       country: getCountryByDDD(phone),
     };
   }
