@@ -15,8 +15,8 @@ async function getRandomLawFirm() {
   const lawFirms = await Promise.all(constructFirms());
   const lawFirmsLen = lawFirms.length;
 
-  const reportsFile = new Reports({ reportsRow : lawFirmsLen});
-  reportsFile.eraseLastReport();
+  const reportsFile = new Reports();
+  reportsFile.eraseLastReport(lawFirmsLen);
 
   if (!lawFirms || lawFirms.length === 0) {
     console.log("No law firms found. Please verify the input or configuration.");
@@ -63,7 +63,7 @@ async function getRandomLawFirm() {
   } finally {
     driver.quit();
 
-    const emptyRowsFinal = sheet.rowsToFill - iteration;
+    const emptyRowsFinal = sheet.rowsToFill - sheet.countEmptyRows();
 
     const timeEnd = performance.now();
 

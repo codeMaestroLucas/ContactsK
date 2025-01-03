@@ -144,7 +144,7 @@ class Sheet extends Excel {
   
     // Iterate from row 2 to rowsToFill + 2 (accounting for header row)
     for (let row = 2; row <= this.rowsToFill + 2; row++) {
-      const currentRow = this.ws[`B${row}`];
+      const currentRow = this.ws[`C${row}`];
   
       // Check if column B (index 1) is empty
       const isEmpty =

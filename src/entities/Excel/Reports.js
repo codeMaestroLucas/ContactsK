@@ -2,14 +2,18 @@ const Excel = require("./Excel");
 const xlsx = require("xlsx");
 
 class Reports extends Excel {
-  constructor(filePath = "src/baseFiles/excel/Reports.xlsx", reportRows = 50) {
+  constructor(filePath = "src/baseFiles/excel/Reports.xlsx") {
     super(filePath);
     this._lastRow = 2;
-    this.reportRows = reportRows;
   }
 
-  eraseLastReport() {
-    for (let row = 1; row < this.reportRows + 2; row++) {
+
+  /**
+   * Erease the last report
+   * @param {number} rowsToErease
+   */
+  eraseLastReport(rowsToErease) {
+    for (let row = 1; row < rowsToErease + 2; row++) {
       for (let col = 0; col < 3; col++) {
         const cellAddress = xlsx.utils.encode_cell({ r: row, c: col });
         const cell = this.ws[cellAddress];
