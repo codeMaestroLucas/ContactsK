@@ -1,6 +1,18 @@
-In the Filter option i think we might need to create a function that gets a random value for the filter.
+# Welcome
+Press `Ctrl+Shift+V` or `CMD+Shift+V`
 
-# Project Folder Structure Documentation
+---
+<aside>
+📎  Index:
+
+- [Project Folder Structure Documentation](#project-folder-structure-documentation)
+- [How to Use?](#how-to-use)
+</aside>
+
+---
+
+
+## Project Folder Structure Documentation
 
 ### `src`
 This is the main source directory containing all the code and resources for the project.
@@ -8,9 +20,6 @@ This is the main source directory containing all the code and resources for the 
 #### `baseFiles`
 Contains base resources and data files for the project, categorized by type.
 - **`excel`**: Files related to Excel data.
-  - **`RawXL`**: Raw Excel files intended for backup purposes, allowing easy
-  restoration by copying and pasting into the Excel folder in case any file is
-  accidentally deleted.
 - **`json`**: JSON files.
 
 #### `config`
@@ -36,19 +45,35 @@ Contains utility scripts and functions that aid in different tasks within the
 project, such as data processing, file handling, or web scraping.
 
 ---
+## How to use?
+1. Locate the file "app.js";
 
+![app.js](public/imgs/app.png)
+
+2. Click on app.js to open it, then execute the file;
+
+![runApp](public/imgs/runApp.png)
+
+Once the file runs, a browser window will open.
+
+3. Select the operation that will be performed;
+
+![webWindow](public/imgs/webWindow.png)
+
+- **Search:** Starts a new search for lawyers.
+
+*Note:* Starting a new search will erase the previous sheet and all contacts.
+
+- **Check for updates:** Verifies if there is an available update for the
+application.
+
+4. To add an email to the emailsToAvoid.txt file:
+- Press `Ctrl+P` or `CMD+P`.
+- Start a search by typing `/` followed by the name of the firm.
+- *Note:* the search isn't case sensitive.
+![searchInFolder](public/imgs/searchInFolder.png)
+
+- *Note:* All three files related to the operation, including emailsToAvoid.txt,
+are located in the folder of the firm you searched for.
 ---
-# Ideas
-1. Create an Details.txt - the name can change - file for each Site to display
-the last page that a lawyer was found - just for the sites that have more than
-one page.
-
-    This has a problem because some lawyer could be skipped without registration
-
-2. Get the total of firms registred and pass this quantity for the REPORTS.XLSX
-
-# Working on
-
-
 # Fix
-TOMMP - PARTNER CHECKING
