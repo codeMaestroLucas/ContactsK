@@ -4,6 +4,39 @@
         "link": ""
     },
     {
+        "name": "LRI Law",
+        "link": "https://lrilaw.com.br/profissionais/?todos=sim&nome=&cargo=socio&atuacao="
+    },
+    {
+        "name": "LPA Law Firm",
+        "link": "https://www.lpalaw.com/en/team/#associe"
+    },
+    {
+        "name": "Demarest",
+        "link": "https://www.demarest.com.br/en/search-professionals/?nome&cargo=partner&area=Areas%20of%20expertise&escritorio=Offices#professionals"
+    },
+    {
+        "name": "Haynes and Boone",
+        "link": "https://haynesboone.com/people#sort=%40peoplez95xprimaryjobtitleorder%20ascending&numberOfResults=9&f:PeopleJobTitle=[Partner]&f:RelatedLocations=[London,Mexico%20City,Shanghai,%E4%B8%8A%E6%B5%B7%E4%BB%A3%E8%A1%A8%E5%A4%84]"
+    },
+    {
+        "name": "BGBG",
+        "link": "https://bgbg.mx/our-team/our-team-2/?lang=en",
+        "Notes": "Some have the info, other doesnt -> try-catch"
+    },
+    {
+        "name": "EC Legal Rubio",
+        "link": "https://ecrubio.com/?sfid=25966&lang=en&_sft_titles=partner"
+    },
+    {
+        "name": "Uhthoff",
+        "link": "https://uhthoff.com.mx/nuestro-equipo/"
+    },
+    {
+        "name": "Zampa Partners",
+        "link": "https://zampapartners.com/about/#leadership"
+    },
+    {
         "name": "NautaDutilh",
         "link": "https://www.nautadutilh.com/en/our-people/?cnt=12&office=1&office=3&office=6&office=4&office=2&function=3&function=5&function=6&function=7&function=9"
     },
@@ -97,6 +130,11 @@
         "link": "https://www.rimonlaw.com/team/",
         "Notes": "Study if is a valid - a lot of US lawyers"
     },
+    {
+        "name": "Díazigareda",
+        "link": "https://diazigareda.com/equipo/",
+        "Notes": "tem potencial, ver se ja consertaram o Lorem ipsum"
+      },
     {
         "name": "",
         "link": ""
