@@ -4,6 +4,28 @@
         "link": ""
     },
     {
+        "name": "NautaDutilh",
+        "link": "https://www.nautadutilh.com/en/our-people/?cnt=12&office=1&office=3&office=6&office=4&office=2&function=3&function=5&function=6&function=7&function=9"
+    },
+    {
+        "name": "Bonn & Schmitt",
+        "link": "https://bonnschmitt.lu/team/"
+    },
+    {
+        "name": "Seeger, Frick & Partner AG",
+        "link": "https://www.sfp.law/team",
+        "Notes": "Country == Liechtenstein"
+    },
+    {
+        "name": "Schurti Partners Attorneys at Law",
+        "link": "https://www.schurtipartners.com/en/team-en",
+        "Notes": "Country == Liechtenstein"
+    },
+    {
+        "name": "DSP Law Firm",
+        "link": "https://www.dsplawfirm.co.id/en/Tim-Kami.htm"
+    },
+    {
         "name": "KCG Partners Law Firm",
         "link": "https://kcgpartners.com/staff"
     },
