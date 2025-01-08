@@ -20,11 +20,11 @@ class Lawyer {
     this._country = country
   }
 
-  get link() { return this._link; }
-  get name() { return this._name; }
-  get email() { return this._email; }
-  get phone() { return this._phone; }
-  get firm() { return this._firm; }
+  get link()    { return this._link; }
+  get name()    { return this._name; }
+  get email()   { return this._email; }
+  get phone()   { return this._phone; }
+  get firm()    { return this._firm; }
   get country() { return this._country; }
 
 

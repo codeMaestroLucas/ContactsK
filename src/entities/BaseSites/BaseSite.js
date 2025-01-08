@@ -93,7 +93,8 @@ class BaseSite {
 
 
   /**
-   * Filters lawyers from the provided list based on their role, returning only partners.
+   * Filters lawyers from the provided list based on their role, returning only
+   * partners and directors.
    *
    * @param {WebElement[]} lawyersInPage - Array of WebElements representing all lawyers on the page.
    * @param {By[]} webRole - Array of locators for the role element within a lawyer element.
@@ -116,7 +117,7 @@ class BaseSite {
           ? (await element.getText()).toLowerCase().trim()
           : (await element.getAttribute("outerHTML")).replace(/[\n\t]/g, "").toLowerCase().trim();
   
-        if (role.includes("partner")) partners.push(lawyer);
+        if (role.includes("partner") || role.includes("director")) partners.push(lawyer);
 
       } catch (error) {
         continue;
