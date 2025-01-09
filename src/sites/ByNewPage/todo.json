@@ -4,6 +4,94 @@
     "link": ""
   },
   {
+    "name": "Russin & Vecchi",
+    "link": ""
+  },
+  {
+    "name": "Yang & Co",
+    "link": "http://www.yangandco.com/"
+  },
+  {
+    "name": "Chuo Sogo LPC",
+    "link": "https://www.clo.jp/english/lawyers/",
+    "Note": "email formatt == (secondName)_(firstNameLetter)@clo.gr.jp",
+    "Ex.:": "Masahiro NAKATSUKASA - nakatsukasa_m@clo.gr.jp"
+  },
+  {
+    "name": "Adnan Sundra & Low",
+    "link": "https://www.asl.com.my/people/?_role_facet=partners"
+  },
+  {
+    "name": "Mboya Wangongu & Waiyaki Advocates",
+    "link": "https://lexgroupafrica.com/our-partners/"
+  },
+  {
+    "name": "Eldib & Co",
+    "link": "https://eldib.com/team/"
+  },
+  {
+    "name": "Cox Yeats",
+    "link": "https://www.coxyeats.co.za/Partners",
+    "Note": "email formatt == (firstNameLetter)(secondName)@coxyeats.co.za",
+    "Ex.:": "Andrew Clark - aclark@coxyeats.co.za"
+  },
+  {
+    "name": "H&G Chambers",
+    "link": "https://www.handgadvocates.com/people"
+  },
+  {
+    "name": "Erdem & Erdem",
+    "link": "https://www.erdem-erdem.av.tr/en/our-team/lawyers"
+  },
+  {
+    "name": "Agmon with Tulchinsky",
+    "link": "https://www.agmon-law.co.il/en/our-team/?role=40"
+  },
+  {
+    "name": "VSV",
+    "link": "https://vsvlegal.com/en/julio-valdes-r/"
+  },
+  {
+    "name": "Surridge & Beecheno",
+    "link": "https://www.surridgeandbeecheno.com/our-people/"
+  },
+  {
+    "name": "Obeid & Partners",
+    "link": "https://obeidpartners.com/meet-the-team/"
+  },
+  {
+    "name": "Axis Law Chambers",
+    "link": "https://axislaw.pk/team"
+  },
+  {
+    "name": "Cornelius, Lane & Mufti (CLM)",
+    "link": "https://clm.com.pk/CLM-Partners.html"
+  },
+  {
+    "name": "Haidermota & Co",
+    "link": "https://www.hmco.com.pk/people/"
+  },
+  {
+    "name": "RIAA Barker Gillette",
+    "link": "https://riaabarkergillette.com/pk/our-team/"
+  },
+  {
+    "name": "ABL Partners LP",
+    "link": "https://ablpartnerslp.com/about/"
+  },
+  {
+    "name": "The Mediterranean Practice",
+    "link": "https://www.themediterraneanpractice.com/who-we-are/our-team-grid/"
+  },
+  {
+    "name": "J-K Gadzama LLP",
+    "link": "https://j-kgadzamallp.com/index.php/our-people/partners"
+  },
+  {
+    "name": "Pac Solicitors",
+    "link": "https://pacsolicitors.com/our-people/"
+  },
+  {
     "name": "Detail Commercial Solicitors",
     "link": "https://www.detailsolicitors.com/our-team/"
   },
