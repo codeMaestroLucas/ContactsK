@@ -4,6 +4,97 @@
     "link": ""
   },
   {
+    "name": "Del Rosario & Del Rosario",
+    "link": "https://www.delrosariolaw.com/en/the-firm/attorneys"
+  },
+  {
+    "name": "Cruz Marcelo & Tenefrancia",
+    "link": "https://cruzmarcelo.com/our-lawyers/",
+    "Note": "All seniors already registred. Might test this latter, to check if is true"
+  },
+  {
+    "name": "SyCip",
+    "link": "https://www.syciplaw.com/lawyers/partners"
+  },
+  {
+    "name": "Arceo & Tandoc",
+    "link": "https://tandoclawfirm.com/about-us/"
+  },
+  {
+    "name": "Siguion-Reyna Montecillo & Ongsiako",
+    "link": "https://srmo-law.com/our-lawyers/"
+  },
+  {
+    "name": "LORD LAW",
+    "link": "https://www.lordlaw.ph/our-team"
+  },
+  {
+    "name": "Chanis",
+    "link": "https://chanis.pa/?gad_source=1&gclid=CjwKCAiAp4O8BhAkEiwAqv2UqDHaxXHw71W_yI-RaJVKyBBxSN6wGBh7zchc31f2JCbEesDkxxj4fRoC3wAQAvD_BwE"
+  },
+  {
+    "name": "Elliott Duffy Garrett",
+    "link": "https://www.edglegal.com/our-people/"
+  },
+  {
+    "name": "Vidigal Neto Advogados",
+    "link": "https://en.vidigalneto.com.br/professionals"
+  },
+  {
+    "name": "Travieso Evans Arria Rengel & Paz",
+    "link": "https://www.traviesoevans.com/travieso/en/dt_team/"
+  },
+  {
+    "name": "Kuri Breña, Sanchez Ugarte and Aznar",
+    "link": "https://www.ksa.mx/en/team/team"
+  },
+  {
+    "name": "Guerrero Olivos",
+    "link": "https://guerrero.cl/en/lawyers/?category_position=socio-en&page=1"
+  },
+  {
+    "name": "DHC",
+    "link": "https://dhclaw.pe/equipo/"
+  },
+  {
+    "name": "CorralRosales",
+    "link": "https://corralrosales.com/en/partners-2/"
+  },
+  {
+    "name": "Brons & Salas",
+    "link": "https://brons.com.ar/abogados/"
+  },
+  {
+    "name": "Cancio, Nadal & Rivera",
+    "link": "https://www.cnr.law/attorneys",
+    "Note": "email formatt == (firstName).(lastName)@cnr.law",
+    "Ex.:": "Carlos A. González Soler === cgonzales@cnr.law"
+  },
+  {
+    "name": "Vesco Giaretta",
+    "link": "https://www.vescogiaretta.com/professionisti/",
+    "Note": "email formatt == (firstName).(thirdName)@cnr.law",
+    "Ex.:": "Lisa Zausa === lisa.zausa@vescogiaretta.com"
+  },
+  {
+    "name": "Tassos Papadopoulos & Associates LLC",
+    "link": "https://www.tplawJersey.com.cy/people",
+    "Note": "email formatt == (firstNameLetter)(lastName)@tplaw.com.cy",
+    "Ex.:": "Alexia Kountouri === akountouri@tplaw.com.cy"
+  },
+  {
+    "name": "Studio Rock",
+    "link": "https://studiorock.net/en/professionals/"
+  },
+  {
+    "name": "SSW",
+    "link": "https://ssw.solutions/en/team/?_team_pos=partner"
+  },
+  {
+    "name": "Rowedder Zimmermann Hass",
+    "link": "https://www.rowedder.de/de/rechtsanwaelte"
+  },
+  {
     "name": "Zdolsek",
     "link": "https://zdolsek.com/lawyers/"
   },
@@ -35,10 +126,6 @@
   {
     "name": "SSW Pragmatic Solutions",
     "link": "https://ssw.solutions/zespol/?_grupa_zepou=partner"
-  },
-  {
-    "name": "Schurti Partners Attorneys at Law Ltd",
-    "link": "https://www.schurtipartners.com/en/team-en"
   },
   {
     "name": "RWP Rechtsanwälte",

@@ -1,7 +1,35 @@
 [
     {
-        "name": "",
-        "link": ""
+      "name": "",
+      "link": ""
+    },
+    {
+      "name": "Follosco Morallos & Herce",
+      "link": "https://fmh.ph/the-team/#top"
+    },
+    {
+      "name": "",
+      "link": "https://www.avaslaw.com/jose-luis-v-agcaoili/"
+    },
+    {
+      "name": "V&A Law",
+      "link": "https://www.thefirmva.com/partners.do?p=partners"
+    },
+    {
+        "name": "Ocampo and Suralvo",
+        "link": "https://www.ocamposuralvo.com/category/our-team/"
+    },
+    {
+        "name": "Puno Law ",
+        "link": "https://punolaw.com/lawyers-cat/partners/"
+    },
+    {
+        "name": "GNB Law",
+        "link": "https://www.gnblaw.com.br/en/people/"
+    },
+    {
+        "name": "SOLIDIS",
+        "link": "https://www.solidis.ch/en/our-team/team/partners.html"
     },
     {
         "name": "Nysingh advocaten-notarissen N.V.",
@@ -270,9 +298,9 @@
         "name": "Díazigareda",
         "link": "https://diazigareda.com/equipo/",
         "Notes": "tem potencial, ver se ja consertaram o Lorem ipsum"
-      },
+    },
     {
-        "name": "",
-        "link": ""
+      "name": "",
+      "link": ""
     }
 ]
