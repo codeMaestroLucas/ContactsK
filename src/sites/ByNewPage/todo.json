@@ -4,8 +4,162 @@
     "link": ""
   },
   {
-    "name": "Russin & Vecchi",
-    "link": ""
+    "name": "Zdolsek",
+    "link": "https://zdolsek.com/lawyers/"
+  },
+  {
+    "name": "Z/C/H Legal v.o.s",
+    "link": "https://www.nirris.cz/en/team/"
+  },
+  {
+    "name": "YARDS",
+    "link": "https://yards-avocats.com/en/team/"
+  },
+  {
+    "name": "Voisin",
+    "link": "https://www.voisinlaw.com/people",
+    "Note": "Jersey"
+  },
+  {
+    "name": "Vainanidis, Economou & Associates Law Firm",
+    "link": "https://ve-legal.gr/en/people"
+  },
+  {
+    "name": "Trägårdh Advokatbyrå AB",
+    "link": "https://www.tragardh.se/en/employee/"
+  },
+  {
+    "name": "Tassos Papadopoulos & Associates LLC",
+    "link": "https://www.tplaw.com.cy/people"
+  },
+  {
+    "name": "SSW Pragmatic Solutions",
+    "link": "https://ssw.solutions/zespol/?_grupa_zepou=partner"
+  },
+  {
+    "name": "Schurti Partners Attorneys at Law Ltd",
+    "link": "https://www.schurtipartners.com/en/team-en"
+  },
+  {
+    "name": "RWP Rechtsanwälte",
+    "link": "https://rwp.de/berater/duesseldorf/?lang=en",
+    "Note": "more pages in locations"
+  },
+  {
+    "name": "Rassers Advocaten",
+    "link": "https://rassers.nl/team/"
+  },
+  {
+    "name": "POROBIJA & ŠPOLJARIĆ",
+    "link": "https://www.psod.hr/en/team-members",
+    "Note": "aks for Juniors Part"
+  },
+  {
+    "name": "Popov, Arnaudov & Partners",
+    "link": "https://popovarnaudov.bg/en/our-team/"
+  },
+  {
+    "name": "Paul Q",
+    "link": "https://www.paulqlaw.com/en/our-lawyers"
+  },
+  {
+    "name": "MVVP",
+    "link": "https://www.mvvp.be/lawyers/"
+  },
+  {
+    "name": "LEADELL",
+    "link": "https://www.leadell.com/"
+  },
+  {
+    "name": "Kuit Steinart Levy",
+    "link": "https://www.kuits.com/meet-the-team/"
+  },
+  {
+    "name": "Kellerhals Carrard",
+    "link": "https://kellerhals-carrard.ch/en/team?position=161"
+  },
+  {
+    "name": "HH Partners",
+    "link": "https://www.hhpartners.fi/en/staff/"
+  },
+  {
+    "name": "Germus and Partners",
+    "link": "https://germus.hu/en/",
+    "Note": "email formatt == (firstName)(lastName)@germus.hu"
+  },
+  {
+    "name": "Gecic Law",
+    "link": "https://www.geciclaw.com/people/"
+  },
+  {
+    "name": "Fenech Farrugia Fiott",
+    "link": "https://www.fff-legal.com/our-people/",
+    "Note": "email formatt === (firstNameLetter)(lastName)@fff-legal.com. Check for partners",
+    "Ex.:": "Christian Farrugia === cfarrugia@fff-legal.com"
+  },
+  {
+    "name": "Espanha e Associados",
+    "link": "https://espanhaassociados.pt/team-2/?lang=en"
+  },
+  {
+    "name": "Ellul & Cruz",
+    "link": "https://www.ellulcruz.com/our-people"
+  },
+  {
+    "name": "Elliott Duffy Garrett",
+    "link": "https://www.edglegal.com/our-people/?pg=2"
+  },
+  {
+    "name": "DQ Advocates",
+    "link": "https://dq.im/legal-advisory/"
+  },
+  {
+    "name": "",
+    "link": "https://www.dialog.am/en/staff"
+  },
+  {
+    "name": "Burness Paull",
+    "link": "https://www.burnesspaull.com/people/?contentTags=2292%2C2053%2C1906%2C1928%2C2567"
+  },
+  {
+    "name": "Babbé",
+    "link": "https://www.babbelegal.com/people/"
+  },
+  {
+    "name": "B. Cremades y Asociados",
+    "link": "https://www.cremades.com/en/lawyers/"
+  },
+  {
+    "name": "Adam & Bleser",
+    "link": "https://www.adam-bleser.lu/our-people/ "
+  },
+  {
+    "name": "Henlin Gibson Henlin",
+    "link": "https://www.henlin.pro/team",
+    "Note": "email formatt == (firstName)(lastName)@henlin.pro"
+  },
+  {
+    "name": "GALA",
+    "link": "https://gala.com.pa/abogados/?_tipo_asociado=socio"
+  },
+  {
+    "name": "Delaney Partners",
+    "link": "https://delaneypartners.com/"
+  },
+  {
+    "name": "Cancio, Nadal & Rivera",
+    "link": "https://www.cnr.law/attorneys",
+    "Note": "email formatt === (firstNameLetter)(lastName)@cnr.law"
+  },
+  {
+    "name": "VSV",
+    "link": "https://vsvlegal.com/en/",
+    "Note": "all partners in the main page. email formatt === (firstNameLetter)(lastName)@altalegal.com",
+    "Ex.:": "Julio Valdés === jvaldes@altalegal.com"
+  },
+  {
+    "name": "Vivien Chan & Co",
+    "link": "https://www.vcclawservices.com/#menu2"
   },
   {
     "name": "Yang & Co",
@@ -14,7 +168,7 @@
   {
     "name": "Chuo Sogo LPC",
     "link": "https://www.clo.jp/english/lawyers/",
-    "Note": "email formatt == (secondName)_(firstNameLetter)@clo.gr.jp",
+    "Note": "email formatt == (lastName)_(firstNameLetter)@clo.gr.jp",
     "Ex.:": "Masahiro NAKATSUKASA - nakatsukasa_m@clo.gr.jp"
   },
   {
@@ -32,7 +186,7 @@
   {
     "name": "Cox Yeats",
     "link": "https://www.coxyeats.co.za/Partners",
-    "Note": "email formatt == (firstNameLetter)(secondName)@coxyeats.co.za",
+    "Note": "email formatt == (firstNameLetter)(lastName)@coxyeats.co.za",
     "Ex.:": "Andrew Clark - aclark@coxyeats.co.za"
   },
   {
