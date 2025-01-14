@@ -76,4 +76,9 @@ application.
 - *Note:* All three files related to the operation, including emailsToAvoid.txt,
 are located in the folder of the firm you searched for.
 ---
+
 # Fix
+
+# Ideas
+Could check the email format in CMS and BakerMac and try to see a pattern. The
+phone would be impossible to catch in this way.

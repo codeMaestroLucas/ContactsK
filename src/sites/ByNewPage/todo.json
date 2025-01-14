@@ -4,6 +4,217 @@
     "link": ""
   },
   {
+    "name": "FerradaNehme",
+    "link": "https://fn.cl/en/people"
+  },
+  {
+    "name": "Clyde",
+    "link": "https://www.clydeco.com/en/people/listing?persons=on&persons[63704]=on&search=&page=3"
+  },
+  {
+    "name": "Alessandri",
+    "link": "https://alessandri.legal/en/our-team/"
+  },
+  {
+    "name": "Morales & Besa",
+    "link": "https://www.moralesybesa.cl/en/our-firm/lawyers/"
+  },
+  {
+    "name": "Claro & Cía",
+    "link": "https://www.claro.cl/en/abogados/"
+  },
+  {
+    "name": "Cariola, Díez, Pérez-Cotapos",
+    "link": "https://www.cariola.cl/en/equipo/"
+  },
+  {
+    "name": "Carey",
+    "link": "https://www.carey.cl/en/our-team/"
+  },
+  {
+    "name": "Vieira Rezende Advogados",
+    "link": "https://www.vieirarezende.com.br/en/team"
+  },
+  {
+    "name": "Trench Rossi Watanabe",
+    "link": "https://www.trenchrossi.com/en/advogados/?nome=&cidade-advogado=&atuacao=&tipo-advogado=partner"
+  },
+  {
+    "name": "SiqueiraCastro",
+    "link": "https://siqueiracastro.com.br/nossa-equipe/socios/?lang=en"
+  },
+  {
+    "name": "Rolim Goulart",
+    "link": "https://www.rolim.com/en/professionals/"
+  },
+  {
+    "name": "Motta Fernandes",
+    "link": "https://mottafernandes.com.br/equipe/#socios"
+  },
+  {
+    "name": "Mello Torres",
+    "link": "https://mellotorres.com.br/lawyers/?letra-post=&cargo-post=partner&search="
+  },
+  {
+    "name": "Machado Associados",
+    "link": "https://www.machadoassociados.com.br/en/professionals/",
+    "Note": "New page to check if is an partner"
+  },
+  {
+    "name": "Lobo de Rizzo",
+    "link": "https://www.ldr.com.br/en/people/",
+    "Note": "Check if the filter of the site is valid, otherwise, discart this. Click to load more"
+  },
+  {
+    "name": "Levy & Salomão",
+    "link": "https://www.levysalomao.com.br/professionals"
+  },
+  {
+    "name": "L O Baptista",
+    "link": "https://www.baptista.com.br/our-professionals/?lang=en"
+  },
+  {
+    "name": "KLA",
+    "link": "https://klalaw.com.br/en/team/"
+  },
+  {
+    "name": "Gusmão & Labrunie",
+    "link": "https://www.glpi.com.br/equipe"
+  },
+  {
+    "name": "FreitasLeite",
+    "link": "https://www.freitasleite.com.br/en/our-team"
+  },
+  {
+    "name": "FCGD",
+    "link": "https://www.fcdg.com.br/lawyers/"
+  },
+  {
+    "name": "Dias Carneiro",
+    "link": "https://www.diascarneiro.com.br/en/lawyers/"
+  },
+  {
+    "name": "Dannemann Siemsen",
+    "link": "https://www.dannemann.com.br/time.html?&lang=en"
+  },
+  {
+    "name": "Azevedo Sette",
+    "link": "https://www.azevedosette.com.br/equipe/en"
+  },
+  {
+    "name": "Araújo e Policastro",
+    "link": "https://araujopolicastro.com.br/en/equipe/?cargo=partners"
+  },
+  {
+    "name": "TozziniFreire",
+    "link": "https://tozzinifreire.com.br/en/advogados"
+  },
+  {
+    "name": "Stocche Forbes",
+    "link": "https://www.stoccheforbes.com.br/en/s%C3%B3cio"
+  },
+  {
+    "name": "Ferrere",
+    "link": "https://www.ferrere.com/en/professionals/"
+  },
+  {
+    "name": "Moreno Baldivieso",
+    "link": "https://emba.com.bo/equipo/"
+  },
+  {
+    "name": "CRF Rojas",
+    "link": "https://rojas-lawfirm.com/abogados/"
+  },
+  {
+    "name": "BAQSN",
+    "link": "https://baqsn.bo/en/home/"
+  },
+  {
+    "name": "Santivanez",
+    "link": "https://santivanez.com.pe/en/equipo/"
+  },
+  {
+    "name": "Cascione",
+    "link": "https://www.cascione.com.br/en/profissionais/?letter=A"
+  },
+  {
+    "name": "Severgnini, Robiola, Grinberg & Tombeur",
+    "link": "https://www.severgnini.com.ar/en/professionals"
+  },
+  {
+    "name": "Rosso Alba & Rougès",
+    "link": "https://www.rossoalba.com/professionals/"
+  },
+  {
+    "name": "Edwin Coe",
+    "link": "https://www.edwincoe.com/our-people/"
+  },
+  {
+    "name": "RCTZZ",
+    "link": "https://rctzz.com.ar/en/our-people/socios"
+  },
+  {
+    "name": "Noetinger & Armando",
+    "link": "https://noetingeryarmando.com/en/staff/"
+  },
+  {
+    "name": "HDS",
+    "link": "https://www.hds.com.ar/busqueda-alfa/?wpv_view_count=82&wpv-letra=0&wpv_filter_submit=See"
+  },
+  {
+    "name": "G Breuer",
+    "link": "https://www.gbreuer.com.ar/index.php/equipo/"
+  },
+  {
+    "name": "Estudio Bunge",
+    "link": "https://www.estudiobunge.com/nuestros-abogados/?lang=en"
+  },
+  {
+    "name": "EGFA",
+    "link": "http://www.egfa.com.ar/en/nuestra-firma/socios/"
+  },
+  {
+    "name": "Tanoira Cassagne",
+    "link": "https://www.tanoiracassagne.com/en/perfil/"
+  },
+  {
+    "name": "O'Farrell",
+    "link": "https://www.estudio-ofarrell.com/en/team/"
+  },
+  {
+    "name": "Brons & Salas",
+    "link": "https://brons.com.ar/en/our-team/"
+  },
+  {
+    "name": "Bomchil",
+    "link": "https://bomchil.com/en/equipo/",
+    "Note": "click partner opt"
+  },
+  {
+    "name": "Beretta Godoy",
+    "link": "https://www.berettagodoy.com/#Equipo"
+  },
+  {
+    "name": "Alfaro",
+    "link": "http://www.alfaromergers.com/members.php?len=en"
+  },
+  {
+    "name": "Marval",
+    "link": "https://www.marval.com/profesionales?lang=en"
+  },
+  {
+    "name": "https://bruchoufunes.com/en/profesionales/",
+    "link": "Bruchou & Funes de Rioja"
+  },
+  {
+    "name": "Nicholson & Cano",
+    "link": "https://nicholsonycano.com.ar/socios/"
+  },
+  {
+    "name": "PGLaw",
+    "link": "https://pg.law/equipe/"
+  },
+  {
     "name": "Adriaanse van der Weel",
     "link": "https://avdw.nl/ons-team"
   },
