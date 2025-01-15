@@ -4,6 +4,206 @@
     "link": ""
   },
   {
+    "name": "Spingarn",
+    "link": "https://en.spingarn.ec/equipo"
+  },
+  {
+    "name": "Pino Elizalde",
+    "link": "https://pinoelizalde.com/equipo"
+  },
+  {
+    "name": "Noboa, Peña & Torres",
+    "link": "https://www.legalecuador.com/en/team/"
+  },
+  {
+    "name": "López Ribadeneira Mora",
+    "link": "https://www.lopezribadeneira.com/es/equipo"
+  },
+  {
+    "name": "Falconi Puig",
+    "link": "https://en.falconipuig.com/falconi-puig-team/"
+  },
+  {
+    "name": "Lexvalor",
+    "link": "https://www.lexvalor.com/equipo-profesional"
+  },
+  {
+    "name": "FBPH Law",
+    "link": "https://fbphlaw.com/nuestro-equipo/"
+  },
+  {
+    "name": "Coronel & Pérez",
+    "link": "https://coronelyperez.com/en/the-team-coronel-perez-ecuador/"
+  },
+  {
+    "name": "PBP",
+    "link": "https://www.pbplaw.com/en/team/"
+  },
+  {
+    "name": "Pellerano Nadal",
+    "link": "https://www.pellerano.com/en/team-v1"
+  },
+  {
+    "name": "Russin, Vecchi & Heredia Bonetti",
+    "link": "https://rvhb.com/our-team/"
+  },
+  {
+    "name": "Pellerano & Herrera",
+    "link": "https://phlaw.com/our-team/"
+  },
+  {
+    "name": "OMG",
+    "link": "https://www.omg.com.do/talentos?lang=en",
+    "Note": "click to change page"
+  },
+  {
+    "name": "Jiménez Peña",
+    "link": "https://jpadvisors.do/en/our-team/"
+  },
+  {
+    "name": "Headrick",
+    "link": "https://headrick.com.do/our-people/"
+  },
+  {
+    "name": "Lexincorp",
+    "link": "https://lexincorp.com/en/our-team/"
+  },
+  {
+    "name": "Hulbert Volio",
+    "link": "https://hulbertvolio.com/en/#socios"
+  },
+  {
+    "name": "",
+    "link": "https://central-law.com/en/our-team/"
+  },
+  {
+    "name": "Facio & Cañas",
+    "link": "https://fayca.com/en/partners/"
+  },
+  {
+    "name": "BDS Asesores",
+    "link": "https://www.bdsasesores.com/en/team/",
+    "Note": "each country has one phone"
+  },
+  {
+    "name": "Alta Batalla",
+    "link": "https://www.batalla.com/en/talent"
+  },
+  {
+    "name": "BLP",
+    "link": "https://blplegal.com/our-people/",
+    "Note": "check if the filter is working"
+  },
+  {
+    "name": "Aguilar Castillo Love",
+    "link": "https://www.aguilarcastillolove.com/our-people"
+  },
+  {
+    "name": "Zuleta",
+    "link": "https://zulegal.com/en/abogados/"
+  },
+  {
+    "name": "Uribe Henao",
+    "link": "https://www.uhabogados.com/socios"
+  },
+  {
+    "name": "Mendoza",
+    "link": "https://mendoza.com.co/people/"
+  },
+  {
+    "name": "Pusch Wahlig",
+    "link": "https://pwwl.de/en/koepfe/"
+  },
+  {
+    "name": "Durán & Osorio",
+    "link": "https://www.duranyosorio.com/en/team"
+  },
+  {
+    "name": "AMYA",
+    "link": "https://www.amya.com.co/en/our-team"
+  },
+  {
+    "name": "Lloreda Camacho & Co",
+    "link": "https://lloredacamacho.com/en/partners/"
+  },
+  {
+    "name": "Lewin & Wills",
+    "link": "https://lewinywills.com/en/miembros/"
+  },
+  {
+    "name": "Littler",
+    "link": "https://www.littler.com/location-global/colombia#people"
+  },
+  {
+    "name": "Castro Leiva Rendón",
+    "link": "https://castroleiva.com/en/nosotros/#equipo"
+  },
+  {
+    "name": "PHR Legal",
+    "link": "https://phrlegal.com/en/lawyers/?_sft_categoria-abogado=partners"
+  },
+  {
+    "name": "Uría Menéndez",
+    "link": "https://www.uria.com/en/abogados?page=4",
+    "Note": "page 4 - 51"
+  },
+  {
+    "name": "Bofill Mir",
+    "link": "https://www.bofillmir.cl/nuestro-equipo/?_sft_categoria-equipo=socios"
+  },
+  {
+    "name": "BBGS",
+    "link": "Genarate the link after the initialization",
+    "links": [
+      "https://www.bbgslegal.com/chile",
+      "https://www.bbgslegal.com/equipo-col",
+      "https://www.bbgslegal.com/mexico",
+      "https://www.bbgslegal.com/peru"
+    ]
+  },
+  {
+    "name": "Balmaceda, Cox & Piña",
+    "link": "https://bcp.cl/",
+    "Note": "navigate throw the menu sidebar"
+  },
+  {
+    "name": "Aninat",
+    "link": "https://aninat.cl/en/team/"
+  },
+  {
+    "name": "Albagli Zaliasnik",
+    "link": "https://www.az.cl/en/team/lawyers/"
+  },
+  {
+    "name": "Urenda Rencoret Orrego y Dörr",
+    "link": "https://www.urod.cl/nuestro-equipo/"
+  },
+  {
+    "name": "Silva",
+    "link": "https://silva.cl/en/nuestro_equipo"
+  },
+  {
+    "name": "Prieto",
+    "link": "https://www.prieto.cl/en/team/"
+  },
+  {
+    "name": "Larrain y Asociados",
+    "link": "https://larrain.cl/nuestro-equipo/socios/"
+  },
+  {
+    "name": "HD Legal",
+    "link": "https://www.hdgroup.cl/legal/en/our-team/"
+  },
+  {
+    "name": "Guerrero Olivos",
+    "link": "https://guerrero.cl/en/team/?",
+    "Note": "TRY find the position"
+  },
+  {
+    "name": "Garrigues",
+    "link": "https://www.garrigues.com/en_GB/team-office/1347?field_practice_area=All&field_position_target_id=135"
+  },
+  {
     "name": "FerradaNehme",
     "link": "https://fn.cl/en/people"
   },

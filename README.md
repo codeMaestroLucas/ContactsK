@@ -82,3 +82,8 @@ are located in the folder of the firm you searched for.
 # Ideas
 Could check the email format in CMS and BakerMac and try to see a pattern. The
 phone would be impossible to catch in this way.
+
+# TODOS
+1. Check if the new functionFilterLawyersInPage function is working correctly
+2. Improve the phone registration to avoid excel formula view - bigger numbers
+have an "E" showing. Add an empty space between the DDD and Phone.

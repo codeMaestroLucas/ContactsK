@@ -99,9 +99,10 @@ class BaseSite {
    * @param {WebElement[]} lawyersInPage - Array of WebElements representing all lawyers on the page.
    * @param {By[]} webRole - Array of locators for the role element within a lawyer element.
    * @param {boolean} byText - If true, uses `getText()`; otherwise, uses `getAttribute('outerHTML')`. Default is true.
+   * @param {string[]} wordsToCheck - words that will be used to filter the lawyers in page.
    * @returns {Promise<WebElement[]>} Array of WebElements representing partners.
    */
-  async filterPartnersInPage(lawyersInPage, webRole, byText = true) {
+  async filterPartnersInPage(lawyersInPage, webRole, byText = true, wordsToCheck = ["partner"]) {
     let partners = [];
 
     for (let lawyer of lawyersInPage) {
@@ -117,7 +118,13 @@ class BaseSite {
           ? (await element.getText()).toLowerCase().trim()
           : (await element.getAttribute("outerHTML")).replace(/[\n\t]/g, "").toLowerCase().trim();
   
-        if (role.includes("partner") || role.includes("director")) partners.push(lawyer);
+        for (let word of wordsToCheck) {
+          if (role.includes(word)) {
+            partners.push(lawyer);
+            break;
+          }
+        }
+
 
       } catch (error) {
         continue;

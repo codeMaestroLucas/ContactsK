@@ -83,8 +83,8 @@ class Lawyer {
    * @returns {string} phone treated
    */
   #treatPhone(phone) {
-    const newPhone = phone.replace(/\D/g, "").replace(/^0+/, "");
-    return newPhone.replace(/\D/g, "").replace(/^0+/, "");
+    return phone.replace(/\D/g, "").replace(/^0+/, "");
+    //TODO: Return a phone number with: +DDD number
   }
 
 }

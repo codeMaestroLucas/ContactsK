@@ -4,6 +4,82 @@
       "link": ""
     },
     {
+      "name": "García & Bodán",
+      "link": "https://garciabodan.com/en/our-team/",
+      "Notes": "check if the site filter is working"
+    },
+    {
+      "name": "Tobar ZVS",
+      "link": "https://www.tzvs.ec/team/?lang=en"
+    },
+    {
+      "name": "Apolo",
+      "link": "https://apolo.ec/nuestro-equipo/"
+    },
+    {
+      "name": "Bustamante Fabara",
+      "link": "https://bustamantefabara.com/en/our-team/?ftalp=y",
+      "Notes": "try-catch not every lawyer has the info"
+    },
+    {
+      "name": "Ulises Cabrera",
+      "link": "https://www.ulisescabrera.com/nuestro-equipo/"
+    },
+    {
+      "name": "Raful Sicard Fernández",
+      "link": "https://legalrspf.com/staff/?l=eng"
+    },
+    {
+      "name": "Serrano Martinez CMA",
+      "link": "https://serranomartinezcma.com/en/team/",
+      "Notes": "phone: (+57) 601 7466072"
+    },
+    {
+      "name": "SFA",
+      "link": "https://www.sfa.com.co/sociosymiembros"
+    },
+    {
+      "name": "Palacios Lleras",
+      "link": "https://www.palacioslleras.com/nuestroequipo/"
+    },
+    {
+      "name": "OlarteMoure",
+      "link": "https://olartemoure.com/en/nuestro-equipo-2/"
+    },
+    {
+      "name": "Tumnet",
+      "link": "https://tumnet.com/en/law-firm-partners/",
+      "Notes": "Check if the last 2 are valid options"
+    },
+    {
+      "name": "Esguerra JHR",
+      "link": "https://esguerrajhr.com/en/profesionales/"
+    },
+    {
+      "name": "Escandón",
+      "link": "https://escandonabogados.com/equipo/"
+    },
+    {
+      "name": "MQMGLD",
+      "link": "https://www.mqmgld.com/en/team"
+    },
+    {
+      "name": "BES",
+      "link": "https://besabogados.cl/en/equipo/"
+    },
+    {
+      "name": "BSVV",
+      "link": "https://www.bsvv.cl/en/people/"
+    },
+    {
+      "name": "Alvarez Abogados",
+      "link": "https://alvareza.cl/equipo/"
+    },
+    {
+      "name": "VGC",
+      "link": "https://vgcabogados.cl/en/equipo/"
+    },
+    {
       "name": "Barros & Errázuriz",
       "link": "https://www.bye.cl/team/?lang=en&laywer&position=abogado_socio&practice-area&industry"
     },
