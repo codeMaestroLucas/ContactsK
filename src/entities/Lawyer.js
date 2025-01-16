@@ -1,3 +1,5 @@
+const { getFormattedPhone } = require("../utils/getNationality");
+
 /**
  * Class used to represent a Lawyer
  */
@@ -12,11 +14,11 @@ class Lawyer {
    * @param {string} country
    */
   constructor(link, name, email, phone = "", firm, country) {
-    this._link = link.trim().toLowerCase();
-    this._name = this.#treatLawyerName(name);
-    this._email = this.#treatEmail(email);
-    this._phone = (phone) ? this.#treatPhone(phone) : "";
-    this._firm = firm.trim();
+    this._link    = link.trim().toLowerCase();
+    this._name    = this.#treatLawyerName(name);
+    this._email   = this.#treatEmail(email);
+    this._phone   = (phone) ? this.#treatPhone(phone) : "";
+    this._firm    = firm.trim();
     this._country = country
   }
 
@@ -43,10 +45,9 @@ class Lawyer {
       // .replace(/\*/g, " ")  //! To identify the GetNameByEmail function
       .toLowerCase();
 
-    name = name
-      .replace("partner", "")
-      .replace("managing", "")
-      .replace("senior", "")
+    name = name.replace("partner", "")
+               .replace("managing", "")
+               .replace("senior", "")
   
     const abbreviations = [
       "mr", "ms", "mx", "dr", "prof", "mrs", "miss",
@@ -83,8 +84,7 @@ class Lawyer {
    * @returns {string} phone treated
    */
   #treatPhone(phone) {
-    return phone.replace(/\D/g, "").replace(/^0+/, "");
-    //TODO: Return a phone number with: +DDD number
+    return getFormattedPhone(phone);
   }
 
 }
