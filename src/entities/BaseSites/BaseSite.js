@@ -99,7 +99,7 @@ class BaseSite {
    * @param {WebElement[]} lawyersInPage - Array of WebElements representing all lawyers on the page.
    * @param {By[]} webRole - Array of locators for the role element within a lawyer element.
    * @param {boolean} byText - If true, uses `getText()`; otherwise, uses `getAttribute('outerHTML')`. Default is true.
-   * @param {string[]} wordsToCheck - words that will be used to filter the lawyers in page.
+   * @param {string[]} wordsToCheck - words that will be used to filter the lawyers in page. Default is ["partner"]
    * @returns {Promise<WebElement[]>} Array of WebElements representing partners.
    */
   async filterPartnersInPage(lawyersInPage, webRole, byText = true, wordsToCheck = ["partner"]) {
@@ -186,6 +186,14 @@ class BaseSite {
     // To identify that the name was generated from this function
     return name + " *****";
   }
+
+
+  /**
+   * Function used to generate an lawyer email based in the founded law of emails.
+   * @param {str} name
+   * @returns {str}
+   */
+  generateEmail(name) {}
 }
 
 module.exports = BaseSite;

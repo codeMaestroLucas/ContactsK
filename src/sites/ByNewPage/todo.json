@@ -4,6 +4,228 @@
     "link": ""
   },
   {
+    "name": "Fernández Secco",
+    "link": "https://fernandezsecco.com/en/equipo/"
+  },
+  {
+    "name": "Cervieri Monsuarez",
+    "link": "https://cervierimonsuarez.com/quienes-somos/"
+  },
+  {
+    "name": "Bragard",
+    "link": "https://www.bragard.com.uy/our-team"
+  },
+  {
+    "name": "Guyer & Regules",
+    "link": "https://www.guyer.com.uy/our-team"
+  },
+  {
+    "name": "Rodríguez Angobaldo",
+    "link": "https://er.com.pe/en/partners/"
+  },
+  {
+    "name": "Damma",
+    "link": "https://www.damma.com.pe/en/team/"
+  },
+  {
+    "name": "CPB",
+    "link": "https://www.cpb-abogados.com.pe/en/equipo/"
+  },
+  {
+    "name": "Arbe",
+    "link": "https://arbe.com.pe/en/team/"
+  },
+  {
+    "name": "Amprimo",
+    "link": "https://amprimoabogados.com/directorio/?taxonomy=team_department&term=socios"
+  },
+  {
+    "name": "Zuzunaga & Assereto Abogados",
+    "link": "https://zyaabogados.com/en/abogados/"
+  },
+  {
+    "name": "Vinatea & Toyama",
+    "link": "https://vinateatoyama.com/en/our-team/",
+    "Note": "email formatt == (firstNameLetter)(lastName)@vinateatoyama.com",
+    "Ex.:": "Alexia Kountouri === akountouri@vinateatoyama.com"
+  },
+  {
+    "name": "Santivanez",
+    "link": "https://santivanez.com.pe/en/equipo/"
+  },
+  {
+    "name": "Rubio",
+    "link": "https://www.rubio.pe/en/socios/"
+  },
+  {
+    "name": "Rebaza, Alcázar & De Las Casas",
+    "link": "https://rebaza-alcazar.com/en/the-team/partners/"
+  },
+  {
+    "name": "Estudio Olaechea",
+    "link": "https://www.esola.com.pe/en/search/?search=&category=2",
+    "Note": "email formatt == (fullName)@esola.com.pe",
+    "Ex.:": "María Eugenia Yábar === mariaeugeniayabar@esola.com.pe"
+  },
+  {
+    "name": "Bullard, Falla, Ezcurra",
+    "link": "https://bullardfallaezcurra.com/en/our-team/",
+    "Note": "click on cv to see email"
+  },
+  {
+    "name": "Benites, Vargas & Ugaz",
+    "link": "https://bvu.pe/en/nuestro-equipo/?filter=true&tipo-de-equipo=socios"
+  },
+  {
+    "name": "BARLAW",
+    "link": "https://www.barlaw.com.pe/our_team_grid.html"
+  },
+  {
+    "name": "Rodrigo, Elías & Medrano Abogados",
+    "link": "https://www.estudiorodrigo.com/en/lawyers/"
+  },
+  {
+    "name": "Miranda & Amado",
+    "link": "https://mafirma.pe/en/abogados"
+  },
+  {
+    "name": "PSTBN",
+    "link": "https://www.pstbn.com.py/en/"
+  },
+  {
+    "name": "Gross Brown",
+    "link": "https://grossbrown.com.py/sobre-nosotros"
+  },
+  {
+    "name": "Patton, Moreno & Asvat",
+    "link": "https://www.pmalawyers.com/attorneys"
+  },
+  {
+    "name": "Benedetti CL",
+    "link": "https://benedettilaw.com.pa/en/attorneys/"
+  },
+  {
+    "name": "Galindo, Arias & López",
+    "link": "https://gala.com.pa/en/lawyers/?_tipo_asociado_en=partner"
+  },
+  {
+    "name": "AFRA",
+    "link": "https://www.afra.com/abogados-panama-afra-alfaro-ferrer-ramirez-abogados/"
+  },
+  {
+    "name": "ARIFA",
+    "link": "https://www.arifa.com/lawyers.html"
+  },
+  {
+    "name": "Santos-Elizondo",
+    "link": "https://www.santoselizondo.com/en/team/"
+  },
+  {
+    "name": "Sainz",
+    "link": "https://www.sainzmx.com/socios"
+  },
+  {
+    "name": "RGRH",
+    "link": "https://rgrhmx.com.mx/"
+  },
+  {
+    "name": "Perez Correa Gonzalez",
+    "link": "https://pcga.mx/en/our-firm/"
+  },
+  {
+    "name": "MGGL",
+    "link": "https://www.mggl.com.mx/eng/equipo/"
+  },
+  {
+    "name": "Malpica, Iturbe, Buj & Paredes",
+    "link": "https://mibp.com.mx/our-team/"
+  },
+  {
+    "name": "Goodrich Riquelme",
+    "link": "https://goodrichriquelme.com/our-people/"
+  },
+  {
+    "link": "Baker Tilly",
+    "name": "https://www.bakertilly.mx/english/team/",
+    "Note": "email formatt == (firstNameLetter)(lastName)@bakertilly.mx",
+    "Ex.:": "Ramiro Avalos - ravalos@bakertilly.mx"
+  },
+  {
+    "name": "Cuesta Campos",
+    "link": "https://www.cuestacampos.com/en/nosotros-secciones#equipo"
+  },
+  {
+    "name": "Cacheaux, Cavazos & Newton",
+    "link": "https://ccn-law.com/en/our-team/",
+    "Note": "Click to change pages"
+  },
+  {
+    "name": "BCB",
+    "link": "https://bcb.com.mx/en/directory/",
+    "Note": "skip first"
+  },
+  {
+    "name": "Anaya Diaz Ibanez",
+    "link": "https://anaya.law/en/nuestro-equipo/"
+  },
+  {
+    "name": "Acedo Santamarin",
+    "link": "https://www.acsan.mx/en/lawyers/"
+  },
+  {
+    "name": "Sierra Lawyers",
+    "link": "https://www.alegreysierra.com.mx/firm-profile"
+  },
+  {
+    "name": "Sierra Latam",
+    "link": "https://asyv.com/firm-profile/"
+  },
+  {
+    "name": "Von Wobeser",
+    "link": "https://vonwobeser.com/index.php/attorneys/partners"
+  },
+  {
+    "name": "SMPS Legal",
+    "link": "https://smpslegal.com/en/lawyers/",
+    "Note": "Check for the country of each lawyer"
+  },
+  {
+    "name": "Santamarina and Steta",
+    "link": "https://santamarinasteta.mx/en/equipo-sys/?_puesto_rol=socio"
+  },
+  {
+    "name": "Robles Miaja",
+    "link": "https://bufeteroblesmiaja.com.mx/english/abogados/abogados.html"
+  },
+  {
+    "name": "Kuri Breña Sanchez Ugarte and Aznar",
+    "link": "https://ksa.mx/en/team/team"
+  },
+  {
+    "name": "Jauregui and Del Valle",
+    "link": "https://jaureguiydelvalle.com/en/attorneys/"
+  },
+  {
+    "name": "De La Vega & Martínez Rojas",
+    "link": "https://dlvmr.com.mx/en/our-team/"
+  },
+  {
+    "name": "BASHAM",
+    "link": "https://basham.com.mx/en/our-team/"
+  },
+  {
+    "name": "Pérez-Llorca",
+    "link": "https://www.perezllorca.com/en-mx/?s=&post_type%5B%5D=abogado&tiposhiddenEquipo=partner&tipos=partner"
+  },
+  {
+    "name": "Galicia",
+    "link": "https://www.galicia.com.mx/links/en_nuestro-equipo?que=socios"
+  },
+  {
+    "name": "Abe",
+    "link": "https://abeadvogados.com.br/pessoas/"
+  },
+  {
     "name": "Alegalis",
     "link": "https://alegalis.com/en/team/"
   },
