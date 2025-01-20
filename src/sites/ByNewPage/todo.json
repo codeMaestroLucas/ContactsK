@@ -4,6 +4,125 @@
     "link": ""
   },
   {
+    "name": "Brodies",
+    "link": "https://brodies.com/people/?position=partner&page=1"
+  },
+  {
+    "name": "MLL Legal",
+    "link": "https://mll-legal.com/people/?lang=en&mll-function=partner"
+  },
+  {
+    "name": "Doklestic Repic & Gajin",
+    "link": "https://doklestic.law/our-team/"
+  },
+  {
+    "name": "Miller Canfield",
+    "link": "https://millercanfield.pl/en/attorneys/"
+  },
+  {
+    "name": "Boontje",
+    "link": "https://boontje.nl/en/ons-team/"
+  },
+  {
+    "name": "CAINS",
+    "link": "https://cains.com/people/"
+  },
+  {
+    "name": "Kyriakides Georgopoulos",
+    "link": "https://kglawfirm.gr/people/?pos=2"
+  },
+  {
+    "name": "ADVANT Beiten",
+    "link": "https://www.advant-beiten.com/en/experts?tx_codersprofessional_list%5BsearchName%5D=&tx_codersprofessional_list%5BcurrentPage%5D=1&tx_codersprofessional_list%5Broles%5D%5B%5D=1&tx_codersprofessional_list%5Broles%5D%5B%5D=4&tx_codersprofessional_list%5Broles%5D%5B%5D=2&tx_codersprofessional_list%5Broles%5D%5B%5D=3"
+  },
+  {
+    "name": "Ellex",
+    "link": "https://ellex.legal/lawyers/?position=92%2C154"
+  },
+  {
+    "name": "Plesner",
+    "link": "https://plesner.com/en/our-people?term_node_tid_depth_1=18&term_node_tid_depth=All"
+  },
+  {
+    "name": "KŠB",
+    "link": "https://www.ksb.cz/en/lide"
+  },
+  {
+    "name": "Cerha Hempel",
+    "link": "https://www.cerhahempel.com/lawyers?role=1"
+  },
+  {
+    "name": "Lee, Tsai & Partners",
+    "link": "https://www.leetsai.com/professionals"
+  },
+  {
+    "name": "WongPartnership",
+    "link": "https://www.wongpartnership.com/people/search"
+  },
+  {
+    "name": "August Debouzy",
+    "link": "https://www.august-debouzy.com/en/team",
+    "Note": "email formatt == (firstNameLetter)(lastName)@august-debouzy.com",
+    "Ex.:": "Laurent Cotret === lcotret@august-debouzy.com"
+  },
+  {
+    "name": "MdME",
+    "link": "https://www.mdme.com/en/our-people/?f_pos=SOC",
+    "Note": "email formatt == (firstName).(lastName)@mdme.com",
+    "Ex.:": "Osamu Inoue === osamu.inoue@mdme.com"
+  },
+  {
+    "name": "Ushijima & Partners",
+    "link": "https://www.ushijima-law.gr.jp/en/attorney/?t1=60&t2=&t3=",
+    "Note": "email formatt == (firstName).(lastName)@ushijima-law.gr.jp",
+    "Ex.:": "Osamu Inoue === osamu.inoue@ushijima-law.gr.jp"
+  },
+  {
+    "name": "JunHe",
+    "link": "https://www.junhe.com/professionals/search/result?initial=A"
+  },
+  {
+    "name": "Udo Udoma and Belo-Osagie",
+    "link": "https://uubo.org/people/"
+  },
+  {
+    "name": "NBA",
+    "link": "https://www.nblaw.com/lawyers"
+  },
+  {
+    "name": "Miranda",
+    "link": "https://www.mirandalawfirm.com/en/our-people/partner",
+    "Note": "5 Load More"
+  },
+  {
+    "name": "Ibrachy & Dermarkar",
+    "link": "https://id.com.eg/people/"
+  },
+  {
+    "name": "Miranda Alliance",
+    "link": "https://www.fatimafreitas.com/en/people"
+  },
+  {
+    "name": "PHR Legal",
+    "link": "https://phrlegal.com/en/lawyers/?_sf_s=partner&_sft_categoria-abogado=partners"
+  },
+  {
+    "name": "Moreno Baldivieso",
+    "link": "https://emba.com.bo/en/teams/"
+  },
+  {
+    "name": "Bichara e Motta",
+    "link": "https://www.bicharaemotta.com.br/en/our-team/"
+  },
+  {
+    "name": "Bicalho Navarro",
+    "link": "https://bicalhonavarro.com.br/en/team/"
+  },
+  {
+    "name": "Basch & Rameh",
+    "link": "https://baschrameh.com.br/en/partners-and-associates/"
+  },
+  {
     "name": "Jiménez & Lozano",
     "link": "https://www.jlabogados.es/abogados-madrid/"
   },
@@ -529,7 +648,7 @@
   },
   {
     "name": "Clyde",
-    "link": "https://www.clydeco.com/en/people/listing?persons=on&persons[63704]=on&search=&page=3"
+    "link": "https://www.clydeco.com/en/people/listing?persons=on&persons[63704]=on"
   },
   {
     "name": "Alessandri",
