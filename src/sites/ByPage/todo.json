@@ -4,12 +4,54 @@
       "link": ""
     },
     {
+      "name": "A.S & Associates",
+      "link": ""
+    },
+    {
+      "name": "D. L. & F. De Saram",
+      "link": "https://www.desaram.com/people/"
+    },
+    {
+      "name": "F. J. & G. De Saram",
+      "link": "https://www.fjgdesaram.com/our-people"
+    },
+    {
+      "name": "Montaury Pimenta, Machado & Vieira de Mello",
+      "link": "https://www.montaury.com.br/en/professionals"
+    },
+    {
+      "name": "Gruenbaum, Possinhas & Teixeira",
+      "link": "https://gruenbaum.com.br/en/professionals/"
+    },
+    {
+      "name": "JOHANSSON & LANGLOIS",
+      "link": "https://jl.cl/en/team/"
+    },
+    {
+      "name": "BERTON MORENO",
+      "link": "https://bertonmoreno.com.ar/team/"
+    },
+    {
+      "name": "Shield",
+      "link": "https://www.shieldadvocates.com/attorneys/"
+    },
+    {
+      "name": "KUHNEN & WACKER",
+      "link": "https://kuhnen-wacker.com/en/team/"
+    },
+    {
+      "name": "BOEHMERT & BOEHMERT",
+      "link": "https://www.boehmert.de/en/our-team/?_sf_s=partner",
+      "Notes": "Email formatt(lastName)@boehmert.de",
+      "Ex.:": "Tomas Demo === demo@boehmert.de"
+    },
+    {
       "name": "Price Sanond",
       "link": "https://www.pricesanond.com/partners/jonathan-uchima.php",
       "Notes": "Start from this"
     },
     {
-      "name": "",
+      "name": "TSEDAQAH",
       "link": "https://ta-ng.com/2/attorneys/",
       "Notes": "Email formatt (firstNameLetter).(lastName)@ta-ng.com",
       "Ex.:": "Tomas Demo === tomas.demo@ta-ng.com"
