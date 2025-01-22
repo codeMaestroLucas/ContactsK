@@ -4,8 +4,85 @@
       "link": ""
     },
     {
-      "name": "A.S & Associates",
-      "link": ""
+      "name": "Dhir & Dhir",
+      "link": "https://www.dhirassociates.com/the-team/",
+      "Notes": "Email formatt (firstName).(lastName)@dhirassociates.com",
+      "Ex.:": "Tomas Demo === tomas.demo@dhirassociates.com"
+    },
+    {
+      "name": "PSL",
+      "link": "https://www.pslchambers.com/our-team/"
+    },
+    {
+      "name": "Singhania & Partners",
+      "link": "https://singhania.in/our-people"
+    },
+    {
+      "name": "Dua Associates",
+      "link": "https://www.duaassociates.com/our-people/"
+    },
+    {
+      "name": "Karanjawala & Co",
+      "link": "https://karanjawala.in/about-us/#our-team"
+    },
+    {
+      "name": "Trust Legal",
+      "link": "https://trustlegal.in/about-us/"
+    },
+    {
+      "name": "Robertsons Solicitors",
+      "link": "https://robsols.co.uk/our-team/?tx_member_position=director"
+    },
+    {
+      "name": "Hugill & Ip",
+      "link": "https://www.hugillandip.com/solicitors/caroline-mcnally/",
+      "Notes": "Start from this"
+    },
+    {
+      "name": "Stevenson Wong & Co",
+      "link": "https://www.sw-hk.com/our-people/"
+    },
+    {
+      "name": "MinterEllison",
+      "link": "https://www.minterellison.com/people?q=partner",
+      "Notes": "Email formatt (firstName).(lastName)@minterellison.com",
+      "Ex.:": "Tomas Demo === tomas.demo@minterellison.com"
+    },
+    {
+      "name": "Grandway",
+      "link": "https://www.grandwaylaw.com/en/zhuanyetuandui/?kwd=&job=partner&t6=&t2="
+    },
+    {
+      "name": "King & Capital",
+      "link": "http://en.king-capital.com/en/team.html"
+    },
+    {
+      "name": "East & Concord",
+      "link": "http://en.east-concord.com/tuandui/index.html"
+    },
+    {
+      "name": "Jincheng Tongda & Neal",
+      "link": "https://www.jtn.com/EN/lawyers_more.aspx?Lan=EN&PageUrl=lawyers"
+    },
+    {
+      "name": "Zhenghan",
+      "link": "https://www.zhenghan.com/html_en/html/about/team.html"
+    },
+    {
+      "name": "Tian Yuan",
+      "link": "https://www.tylaw.com.cn/en/professionals/"
+    },
+    {
+      "name": "Llinks",
+      "link": "https://www.llinkslaw.com/index.php?a=lists&catid=9"
+    },
+    {
+      "name": "AllBright",
+      "link": "https://www.allbrightlaw.com/EN/0502.aspx?&zw=bcbbdf0d40bf7b0b"
+    },
+    {
+      "name": "CBS",
+      "link": "https://www.cbs.adv.br/en/people"
     },
     {
       "name": "D. L. & F. De Saram",
