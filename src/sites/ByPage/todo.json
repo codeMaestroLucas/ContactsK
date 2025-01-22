@@ -4,6 +4,149 @@
       "link": ""
     },
     {
+      "name": "Oh Ebashi",
+      "link": "https://www.ohebashi.com/en/lawyers/position.php#p01",
+      "Notes": "Email formatt (firstName).(lastName)@ohebashi.com",
+      "Ex.:": "Tomas Demo === tomas.demo@ohebashi.com"
+    },
+    {
+      "name": "Atsumi & Sakai",
+      "link": "https://www.aplawjapan.com/en/professionals?f=&p=34&o=",
+      "Notes": "Email formatt (firstName).(lastName)@aplaw.jp",
+      "Ex.:": "Tomas Demo === tomas.demo@aplaw.jp"
+    },
+    {
+      "name": "Daiichi Fuyo",
+      "link": "https://daiichi-law.jp/en/lawyers/",
+      "Notes": "Email formatt (lastName)@daiichi-law.jp",
+      "Ex.:": "Tomas Demo === demo@daiichi-law.jp"
+    },
+    {
+      "name": "TMI Associates",
+      "link": "https://www.tmi.gr.jp/people/?q=&job=partner-attorney&base=&field=&sector=",
+      "Notes": "Email formatt (firstName)_(lastName)@tmi.gr.jp",
+      "Ex.:": "Tomas Demo === tomas_demo@tmi.gr.jp"
+    },
+    {
+      "name": "City-Yuwa Partners",
+      "link": "https://www.city-yuwa.com/global/en/attorneys/",
+      "Notes": "Email formatt (firstName).(lastName)@city-yuwa.com",
+      "Ex.:": "Tomas Demo === tomas.demo@city-yuwa.com"
+    },
+    {
+      "name": "Nishimura & Asahi",
+      "link": "https://www.nishimura.com/en/people/list?search_keywords_all=&job_title_aggregated_field=971&field_member_office_all=All&field_member_job_language_all=All",
+      "Notes": "Email formatt (firstNameLetter).(lastName)@nishimura.com",
+      "Ex.:": "Tomas Demo === t.demo@nishimura.com"
+    },
+    {
+      "name": "Nagashima Ohno & Tsunematsu",
+      "link": "https://www.noandt.com/en/lawyers/",
+      "Notes": "Email formatt (firstName)_(lastName)@noandt.com",
+      "Ex.:": "Tomas Demo === tomas_demo@noandt.com"
+    },
+    {
+      "name": "Mori Hamada & Matsumoto",
+      "link": "https://www.morihamada.com/en/people?keywords=&sort=&jaorder=&practices=&location=&supportlang=&position=2411",
+      "Note": "Try-catch email"
+    },
+    {
+      "name": "AMT Law",
+      "link": "https://www.amt-law.com/en/professionals/",
+      "Notes": "Email formatt (firstName).(lastName)@amt-law.com",
+      "Ex.:": "Tomas Demo === tomas.demo@amt-law.com"
+    },
+    {
+      "name": "Bagus Enrico & Partners",
+      "link": "https://bagusenrico.com/member/"
+    },
+    {
+      "name": "TnP Law",
+      "link": "https://tjajolaw.id/partners/"
+    },
+    {
+      "name": "HHR Lawyers",
+      "link": "https://www.hhrlawyers.com/page/our-people",
+      "Notes": "Email formatt (firstName).(lastName)@hhrlawyers.com",
+      "Ex.:": "Tomas Demo === tomas.demo@hhrlawyers.com"
+    },
+    {
+      "name": "Capital Markets",
+      "link": "https://www.makeslaw.com/people",
+      "Notes": "Email formatt (firstNameLetter)(lastName)@makeslaw.com",
+      "Ex.:": "Tomas Demo === tdemo@makeslaw.com"
+    },
+    {
+      "name": "Ahmad Fikri Assegaf",
+      "link": "https://www.ahp.id/members/",
+      "Notes": "Email formatt (firstName).(lastName)@ahp.id",
+      "Ex.:": "Tomas Demo === tomas.demo@ahp.id"
+    },
+    {
+      "name": "Hiswara Bunjamin & Tandjung",
+      "link": "https://www.hbtlaw.com/our-people"
+    },
+    {
+      "name": "ABNR",
+      "link": "https://www.abnrlaw.com/profiles/partners"
+    },
+    {
+      "name": "Solomon & Co",
+      "link": "https://solomonco.in/lawyers-in-fort-mumbai/",
+      "Notes": "Email formatt (firstName).(lastName)@slmnco.in",
+      "Ex.:": "Tomas Demo === tomas.demo@slmnco.in"
+    },
+    {
+      "name": "Dhaval Vussonji & Associates",
+      "link": "https://dvassociates.co.in/partners/",
+      "Notes": "Email formatt (firstName).(lastName)@dvassociates.co.in",
+      "Ex.:": "Tomas Demo === tomas.demo@dvassociates.co.in"
+    },
+    {
+      "name": "Chadha & Co",
+      "link": "https://chadha-co.com/key-contacts/namita-chadha/",
+      "Note": "Start from this"
+    },
+    {
+      "name": "Anhad Law",
+      "link": "https://anhadlaw.com/team/##"
+    },
+    {
+      "name": "Amicus",
+      "link": "https://www.amicusservices.in/team"
+    },
+    {
+      "name": "AP & Partners",
+      "link": "https://appartners.in/team"
+    },
+    {
+      "name": "Sarthak",
+      "link": "https://sarthaklaw.com/team/"
+    },
+    {
+      "name": "Pioneer Legal",
+      "link": "https://pioneerlegal.com/our-team/"
+    },
+    {
+      "name": "Naik Naik",
+      "link": "https://naiknaik.com/malabika-boruah/",
+      "Notes": "Email formatt (firstName)(lastName)@nnico.com",
+      "Ex.:": "Tomas Demo === tomasdemo@nnico.com"
+    },
+    {
+      "name": "Legacy Law",
+      "link": "https://www.legacylawoffices.com/key-individuals/"
+    },
+    {
+      "name": "BRATAX",
+      "link": "https://bratax.com.br/en/home/#team"
+    },
+    {
+      "name": "Brasil Salomão e Matthes",
+      "link": "https://www.brasilsalomao.com.br/en/lawyers/",
+      "Note": "filter by role !== Civil"
+    },
+    {
       "name": "Dhir & Dhir",
       "link": "https://www.dhirassociates.com/the-team/",
       "Notes": "Email formatt (firstName).(lastName)@dhirassociates.com",
