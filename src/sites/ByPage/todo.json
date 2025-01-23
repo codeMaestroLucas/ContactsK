@@ -4,6 +4,113 @@
       "link": ""
     },
     {
+      "name": "WTL",
+      "link": "https://www.wtl.com.sg/directors"
+    },
+    {
+      "name": "JTJB International Lawyers",
+      "link": "https://jtjb.com/our-people/"
+    },
+    {
+      "name": "BTPLaw ",
+      "link": "https://btplaw.com.sg/our_team/brandon-tee-zhi-yi/",
+      "Note": "Head + Dir"
+    },
+    {
+      "name": "Aquinas Law Alliance",
+      "link": "https://www.aquinaslaw.sg/our-people/"
+    },
+    {
+      "name": "Asia Practice",
+      "link": "https://www.asiapractice.com.sg/about-us"
+    },
+    {
+      "name": "Virtus",
+      "link": "https://www.virtus-law.com/people/?_sfm_people_type=Partners"
+    },
+    {
+      "name": "Harry Elias",
+      "link": "https://www.harryelias.com/partners/philip-fong/"
+    },
+    {
+      "name": "Resource Law",
+      "link": "https://www.resourcelawasia.com/people/adrian-aw/"
+    },
+    {
+      "name": "Shook Lin & Bok",
+      "link": "https://www.shooklin.com/en/our-partners?start=0"
+    },
+    {
+      "name": "Drew & Napier",
+      "link": "https://www.drewnapier.com/Our-Lawyers?name=a&practice=",
+      "Note": "Send keys"
+    },
+    {
+      "name": "Rajah & Tann",
+      "link": "https://www.rajahtannasia.com/our-partners/"
+    },
+    {
+      "name": "Allen & Gledhill",
+      "link": "https://www.allenandgledhill.com/partners/"
+    },
+    {
+      "name": "SKY Law",
+      "link": "https://skylaw.com.ph/our-people/"
+    },
+    {
+      "name": "Gulapa Law",
+      "link": "https://gulapalaw.com/lawyers/"
+    },
+    {
+      "name": "Villaraza & Angangco",
+      "link": "https://www.thefirmva.com/partners.do"
+    },
+    {
+      "name": "Romulo Law Firm",
+      "link": "https://www.romulo.com/all/"
+    },
+    {
+      "name": "Bhandari Naqvi Riaz",
+      "link": "https://bnrlaw.net/our-people/"
+    },
+    {
+      "name": "ABS & Co",
+      "link": "https://absco.pk/lawyers/"
+    },
+    {
+      "name": "Liaquat Merchant Associates",
+      "link": "http://www.lma.com.pk/our-people.php"
+    },
+    {
+      "name": "Akhund Forbes",
+      "link": "https://akhundforbes.com/our-people/"
+    },
+    {
+      "name": "Chima & Ibrahim",
+      "link": "https://chima-ibrahim.com/team-leadership/"
+    },
+    {
+      "name": "Mohsin Tayebaly & Co",
+      "link": "https://mtclaw.com.pk/our-team/"
+    },
+    {
+      "name": "Vellani & Vellani",
+      "link": "https://www.vellani.com/search?name=&practice_area_id=+&designation=1&city=+&search=SEARCH"
+    },
+    {
+      "name": "WongPartnership",
+      "link": "https://www.wongpartnership.com/wpgnetwork-detail/china",
+      "Notes": "Try-catch find partners in the Countries sections"
+    },
+    {
+      "name": "Caminati Bueno Advogados",
+      "link": "https://caminatibueno.com.br/en/team/"
+    },
+    {
+      "name": "BVZ Advogados",
+      "link": "https://bvzadvogados.com.br/en/#our-team"
+    },
+    {
       "name": "Oh Ebashi",
       "link": "https://www.ohebashi.com/en/lawyers/position.php#p01",
       "Notes": "Email formatt (firstName).(lastName)@ohebashi.com",
