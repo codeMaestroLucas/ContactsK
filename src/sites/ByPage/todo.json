@@ -4,6 +4,94 @@
       "link": ""
     },
     {
+      "name": "AN Legal",
+      "link": "https://anlegal.vn/en/our-team/"
+    },
+    {
+      "name": "Bizlink",
+      "link": "http://bizlink.vn/partners/nguyen-duc-manh.html"
+    },
+    {
+      "name": "Vision & Associates",
+      "link": "https://vision-associates.com/our-people/our_people/partners/"
+    },
+    {
+      "name": "LNT",
+      "link": "https://www.lntpartners.com/our-people"
+    },
+    {
+      "name": "LEXEL",
+      "link": "https://lexel.co.th/professionals/"
+    },
+    {
+      "name": "ILCT Ltd",
+      "link": "https://www.ilct.co.th/lawyers/"
+    },
+    {
+      "name": "Taiwan Law",
+      "link": "https://www.taiwanlaw.com/en/team_list.php",
+      "Notes": "Email formatt (firstName).(lastName)@taiwanlaw.com",
+      "Ex.:": "Tomas Demo === tomas.demo@taiwanlaw.com"
+    },
+    {
+      "name": "Tsar & Tsai",
+      "link": "https://www.tsartsai.com.tw/team?lang=en",
+      "Notes": "Email formatt (firstName)(lastName)@tsartsai.com.tw",
+      "Ex.:": "Tomas Demo === tomasdemo@tsartsai.com.tw"
+    },
+    {
+      "name": "Lee and Li",
+      "link": "https://leglobal.law/about-l-e-global/people/?_filter_people_level=partner"
+    },
+    {
+      "name": "Orr, Dignam & Co.",
+      "link": "https://www.orrdignam.com/team-4-2/"
+    },
+    {
+      "name": "DR & AJU LLC",
+      "link": "https://www.draju.com/en/sub/people.html?sP=L01&d_t_tit=All&d_t_tit=All&sT=1?d_t_num=1"
+    },
+    {
+      "name": "FirstLaw PC",
+      "link": "https://www.firstlaw.co.kr/en/sub/professionals/professionals.asp?page=1&p_cate1=&p_cate2=&s_keyword=a#mem_list"
+    },
+    {
+      "name": "Yulchon",
+      "link": "https://www.yulchon.com/en/professionals/professionals-search.do"
+    },
+    {
+      "name": "Rajah & Tann",
+      "link": "https://mm.rajahtannasia.com/our-partners/"
+    },
+    {
+      "name": "MahWengKwai",
+      "link": "https://mahwengkwai.com/lawyers/"
+    },
+    {
+      "name": "Zaid Ibrahim & Co",
+      "link": "https://www.ziclegal.com/people"
+    },
+    {
+      "name": "Rahmat Lim & Partners",
+      "link": "https://www.rahmatlim.com/partners/"
+    },
+    {
+      "name": "Raja Darryl & Loh",
+      "link": "https://rajadarrylloh.com/our-people/"
+    },
+    {
+      "name": "MdME",
+      "link": "https://www.mdme.com/en/our-people/?f_pos=SOC",
+      "Notes": "Email formatt (firstName).(lastName)@mdme.com",
+      "Ex.:": "Tomas Demo === tomas.demo@mdme.com"
+    },
+    {
+      "name": "Jorge Neto Valente",
+      "link": "https://www.jnvlegal.com/our-team/",
+      "Notes": "Email formatt (firstName).(lastName)@jnvlegal.com",
+      "Ex.:": "Tomas Demo === tomas.demo@jnvlegal.com"
+    },
+    {
       "name": "WTL",
       "link": "https://www.wtl.com.sg/directors"
     },
@@ -827,10 +915,6 @@
     {
       "name": "Oller",
       "link": "https://www.ollerabogados.com/index-en.html#equipo"
-    },
-    {
-      "name": "Yoon & Yang LLC",
-      "link": "https://www.yoonyang.com/eng/professionals/members?lang=en"
     },
     {
       "name": "Nieto Lawyers",
