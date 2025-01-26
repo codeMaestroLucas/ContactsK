@@ -4,6 +4,99 @@
     "link": ""
   },
   {
+    "name": "Workx",
+    "link": "https://www.workxadvocaten.nl/en/team/"
+  },
+  {
+    "name": "CLEERDIN & HAMER",
+    "link": "https://cleerdin-hamer.nl/advocaten/"
+  },
+  {
+    "name": "Pot Jonker",
+    "link": "https://www.potjonker.nl/en/our-people/?FUNCTION=132&EXPERTISE="
+  },
+  {
+    "name": "CMS",
+    "link": "https://cms.law/en/int/people",
+    "Note": "Click on partner opt"
+  },
+  {
+    "name": "GMW lawyers",
+    "link": "https://www.gmw.nl/en/lawyers/"
+  },
+  {
+    "name": "",
+    "link": "https://www.poelmannvandenbroek.nl/en/people/advocaten#filters"
+  },
+  {
+    "name": "WILLEMSPARK",
+    "link": "https://willemsparkadvocaten.nl/advocaten/"
+  },
+  {
+    "name": "VDB Law",
+    "link": "https://vdb-law.nl/uw-adviseurs/notariaat"
+  },
+  {
+    "name": "Finnius",
+    "link": "https://finnius.com/en/team/"
+  },
+  {
+    "name": "Blenheim",
+    "link": "https://www.blenheim.nl/advocaten/"
+  },
+  {
+    "name": "Fruytier",
+    "link": "https://www.flib.nl/advocaten"
+  },
+  {
+    "name": "L&A",
+    "link": "https://www.lenaadvocaten.nl/ons-team/#onze-advocaten"
+  },
+  {
+    "name": "Wintertaling",
+    "link": "https://wintertaling.nl/team/"
+  },
+  {
+    "name": "LA GRO",
+    "link": "https://www.lagro.com/en/employees/"
+  },
+  {
+    "name": "HEKKELMAN",
+    "link": "https://www.hekkelman.nl/onze-mensen/"
+  },
+  {
+    "name": "Windt Le Grand Leeuwenburgh",
+    "link": "https://www.windtlegal.com/nl/team"
+  },
+  {
+    "name": "Lennox",
+    "link": "https://lennox.nl/en/team/"
+  },
+  {
+    "name": "Rutgers & Posch",
+    "link": "https://www.rutgersposch.com/team/"
+  },
+  {
+    "name": "LEGALTREE",
+    "link": "https://legaltree.nl/en/our-partners/"
+  },
+  {
+    "name": "ACT LEGAL",
+    "link": "https://actlegal.com/professionals/"
+  },
+  {
+    "name": "TRUST",
+    "link": "https://trustadvocaten.be/eng/team"
+  },
+  {
+    "name": "Straatman Koster",
+    "link": "https://en.straatmankoster.nl/team"
+  },
+  {
+    "name": "KENNEDY VAN DER LAAN",
+    "link": "https://kvdl.com/en/our-team@job-function:partner-1"
+  },
+  {
     "name": "LEXENCE",
     "link": "https://www.lexence.com/en/our-people/?query=&filter_function%5B%5D=partner-en"
   },
@@ -1843,17 +1936,13 @@
     "link": "https://www.denhollander.nl/ons-team"
   },
   {
-    "name": "Pels Rijcken",
-    "link": "https://pelsrijcken.nl/en/people"
-  },
-  {
     "name": "Hekkelman",
     "link": "https://www.hekkelman.nl/onze-mensen/?_gl=1*14sqxgw*_up*MQ..*_ga*MjA2MzI0Nzk4Ny4xNzM2MzQ3Nzgz*_ga_HYMGNW47FY*MTczNjM0Nzc4Mi4xLjAuMTczNjM0Nzc4Mi4wLjAuNTE0MDMyOTQ3",
     "Note": "Check if is an valid firm - Notary and Officer"
   },
   {
     "name": "Van Doorne",
-    "link": "https://www.vandoorne.com/onze-mensen/"
+    "link": "https://www.vandoorne.com/en/our-people/"
   },
   {
     "name": "Aantjes Zevenberg Advocaten",

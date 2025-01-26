@@ -4,6 +4,52 @@
       "link": ""
     },
     {
+      "name": "Citius",
+      "link": "https://www.citiusadvocaten.nl/en/team/"
+    },
+    {
+      "name": "Arnold & Siedsma",
+      "link": "https://www.arnold-siedsma.com/about-us/the-specialists/?search=specialist&establishment=&function=partner&department=&specialization=&text="
+    },
+    {
+      "name": "Osborne Clarke",
+      "link": "https://www.osborneclarke.com/lawyers?title=&location=All&field_job_role_target_id=31&sector=All&service=All&digital_transformation=All"
+    },
+    {
+      "name": "Hoyng Rokh Monegier",
+      "link": "https://www.hoyngrokhmonegier.com/team/",
+      "Notes": "Email formatt (firstName).(lastName)@hoyngrokh.com",
+      "Ex.:": "Tomas Demo === tomas.demo@hoyngrokh.com"
+    },
+    {
+      "name": "Ploum",
+      "link": "https://ploum.nl/en/specialists#Specialist"
+    },
+    {
+      "name": "De Clercq",
+      "link": "https://www.declercq.com/specialisten/?expertises=&function=partner&search="
+    },
+    {
+      "name": "BUREN",
+      "link": "https://www.burenlegal.com/en/team?specialisation=All&office=&function=23&search="
+    },
+    {
+      "name": "Pels Rijcken",
+      "link": "https://pelsrijcken.nl/en/people?employeeType=attorney-at-law-partner#c-openfilter__search"
+    },
+    {
+      "name": "BARENTSKRANS",
+      "link": "https://www.barentskrans.nl/en/our-people/?search=&expertise=&functie=partner"
+    },
+    {
+      "name": "Kemperink Maarschalkerweerd Wouters",
+      "link": "https://kmw-nv.com/team-4/"
+    },
+    {
+      "name": "NEWGROUND",
+      "link": "https://newgroundlaw.com/people/"
+    },
+    {
       "name": "Lemstra Van der Korst",
       "link": "https://lvdk.com/our-team/"
     },
@@ -1140,7 +1186,7 @@
     },
     {
         "name": "Stibbe",
-        "link": "https://www.stibbe.com/people"
+        "link": "https://www.stibbe.com/people?alphabetic-filter=All&role[27]=27"
     },
     {
         "name": "Rada & Partner",
