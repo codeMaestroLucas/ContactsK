@@ -4,6 +4,66 @@
       "link": ""
     },
     {
+      "name": "CEPD Abogados",
+      "link": "https://www.cepd.cl/#abogados"
+    },
+    {
+      "name": "Cibils Labougle Ibanez",
+      "link": "https://cibils.com.ar/en/us/"
+    },
+    {
+      "name": "Chevez Ruiz Zamarripa",
+      "link": "https://www.chevez.com/En/Search"
+    },
+    {
+      "name": "Aramo",
+      "link": "https://aramolaw.com/"
+    },
+    {
+      "name": "Ritch Mueller",
+      "link": "https://www.ritch.com.mx/en/team?filters=1&custom=&member_types%5B%5D=1"
+    },
+    {
+      "name": "LEGALSA",
+      "link": "https://en.legalsa.com/socios/page/1"
+    },
+    {
+      "name": "Chanis",
+      "link": "https://chanis.pa/lawyers/ricardo-chanis/"
+    },
+    {
+      "name": "Carlsson & Partners",
+      "link": "https://carlrev.se/medarbetare/"
+    },
+    {
+      "name": "MAQS",
+      "link": "https://maqs.com/en/people?f%5B0%5D=title%3A86"
+    },
+    {
+      "name": "Thomas Bodström Law Firm",
+      "link": "https://www.bodstrom.se/medarbetare/"
+    },
+    {
+      "name": "Groth & Co",
+      "link": "https://www.groth.eu/employees"
+    },
+    {
+      "name": "EZ Legal",
+      "link": "https://ezlegal.se/om-oss/medarbetare/"
+    },
+    {
+      "name": "Hammarskiöld & Co",
+      "link": "https://hammarskiold.se/team/?filter=gt_contact_department%3Dpartner"
+    },
+    {
+      "name": "Hansen",
+      "link": "https://wearehansen.se/"
+    },
+    {
+      "name": "CAR Advogados",
+      "link": "https://www.car-law.com.br/our-team/#partners"
+    },
+    {
       "name": "Citius",
       "link": "https://www.citiusadvocaten.nl/en/team/"
     },
@@ -1267,10 +1327,6 @@
         "name": "HansaLaw",
         "link": "https://hansalaw.ee/team/?lang=en",
         "Notes": "all the partners are from Estonia - DDD = 372 6603800"
-    },
-    {
-        "name": "Triana, Uribe & Michelsen",
-        "link": "https://tumnet.com/en/law-firm-partners/"
     },
     {
         "name": "YOON & YANG",
