@@ -4,6 +4,61 @@
       "link": ""
     },
     {
+      "name": "Aretha Legal",
+      "link": "http://arethalegal.com/index.php/about-us/"
+    },
+    {
+      "name": "FLH",
+      "link": "https://www.flha.com.br/socios/"
+    },
+    {
+      "name": "Finocchio & Ustra",
+      "link": "https://www.fius.com.br/en/team/",
+      "Note": "Check if is an Np or a P -> partner validation"
+    },
+    {
+      "name": "Ferraz Ivamoto e Furlan",
+      "link": "https://fifsa.com.br/en/professionals/"
+    },
+    {
+      "name": "Farroco Abreu Guarnieri Zotelli",
+      "link": "https://www.farrocoabreu.com.br/en/advogados/"
+    },
+    {
+      "name": "Araoz & Rueda",
+      "link": "https://www.araozyrueda.com/en/partners/"
+    },
+    {
+      "name": "Aquinas Law Alliance LLP",
+      "link": "https://www.aquinaslaw.sg/our-people/"
+    },
+    {
+      "name": "Apostolska Aleksandrovski & Partners",
+      "link": "https://aap.law/team"
+    },
+    {
+      "name": "Anthony Harper",
+      "link": "https://www.ah.co.nz/people"
+    },
+    {
+      "name": "Aequitas",
+      "link": "https://www.aequitas.kz/en/about/team"
+    },
+    {
+      "name": "ADWISE Consulting",
+      "link": "https://adwise.am/company/our-people/"
+    },
+    {
+      "name": "Adsero",
+      "link": "https://adsero.me/our-people/"
+    },
+    {
+      "name": "",
+      "link": "https://bentsienchill.com/people/?role=partner",
+      "Note": "email formatt (firstNameLetter)(lastName)@bentsienchill.com",
+      "Ex.:": "Tomas Demo === tdemo@bentsienchill.com"
+    },
+    {
       "name": "Anderson Lloyd",
       "link": "https://www.al.nz/our-people/"
     },
