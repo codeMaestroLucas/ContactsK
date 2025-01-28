@@ -4,6 +4,101 @@
     "link": ""
   },
   {
+    "name": "Corcoran",
+    "link": "https://cflaw.co.nz/our-people/?role=partner"
+  },
+  {
+    "name": "WWL",
+    "link": "https://www.wwl.co.nz/team"
+  },
+  {
+    "name": "AMERELLER",
+    "link": "https://amereller.com/lawyers/?category=Partners"
+  },
+  {
+    "name": "Al Yaqout and Al Fouzan Legal",
+    "link": "https://alyaqoutlg.com/our-team/"
+  },
+  {
+    "name": "Askews Legal LLP",
+    "link": "https://askewslegal.co/meet-our-team/?_gl=1*f0l2mr*_up*MQ..*_gs*MQ..&gclid=CjwKCAiAneK8BhAVEiwAoy2HYfzbzeYkCGtYfmqVknfCFwEDhVX8uUWxGsXcccmA7brB6qxNklCPOhoCtSgQAvD_BwE"
+  },
+  {
+    "name": "Al Markaz Law",
+    "link": "https://www.markazlaw.com/Litigation-Team.html"
+  },
+  {
+    "name": "Alliance Law",
+    "link": "https://alliancelaw.com.eg/people/"
+  },
+  {
+    "name": "Al-Hamad Legal",
+    "link": "https://www.alhamadlaw.com/peoples.html",
+    "Note": "email formatt == (firstName)@alhamadlaw.com",
+    "Ex.:": "Andrew Clark - andrew@alhamadlaw.com"
+  },
+  {
+    "name": "Alessandri Lawyers",
+    "link": "https://alessandri.legal/equipo/"
+  },
+  {
+    "name": "Alcogal",
+    "link": "https://alcogal.com/lawyers/"
+  },
+  {
+    "name": "ALC - Alieldean Weshahi & Partners",
+    "link": "https://www.alc.law/the-team/team/"
+  },
+  {
+    "name": "Amjoman",
+    "link": "https://www.amjoman.com/people/"
+  },
+  {
+    "name": "Alburquerque Abogados Consultores",
+    "link": "https://www.alburquerque.com.do/en/team/"
+  },
+  {
+    "name": "Al Alawi & Co",
+    "link": "https://www.alalawico.com/experts/"
+  },
+  {
+    "name": "AKL",
+    "link": "https://www.aklawfirm.gr/team"
+  },
+  {
+    "name": "HWL Ebsworth",
+    "link": "https://hwlebsworth.com.au/about-us/"
+  },
+  {
+    "name": "Zan Hub",
+    "link": "https://www.zanhub.com/en/team/"
+  },
+  {
+    "name": "Langseth",
+    "link": "https://langsethadvokat.no/om-oss/oversikt-partnere/?_gl=1*12njgmy*_up*MQ..*_gs*MQ..&gclid=CjwKCAiAneK8BhAVEiwAoy2HYWMa94C8f4qgFgGu6Q6Ow_Uj24mYn5I40qH3YEdEebE51ejtAnD8ehoC9c8QAvD_BwE"
+  },
+  {
+    "name": "Ernesto Borges",
+    "link": "https://www.ernestoborges.com.br/en/team/?cargo=partner&localizacao=&nome="
+  },
+  {
+    "name": "Duarte Garcia, Serra Netto e Terra",
+    "link": "https://www.duartegarcia.com.br/en/equipe/index?termo=socio"
+  },
+  {
+    "name": "Dias De Souza",
+    "link": "https://www.dsa.com.br/advogados/"
+  },
+  {
+    "name": "Di Blasi, Parente & Associados",
+    "link": "https://diblasiparente.com.br/en/our-team/",
+    "Notes": "Partner + Head"
+  },
+  {
+    "name": "Agmon with Tulchinsky",
+    "link": "https://www.agmon-law.co.il/en/our-team/?role=40"
+  },
+  {
     "name": "Contexto Legal",
     "link": "https://contextolegal.com/equipo/"
   },

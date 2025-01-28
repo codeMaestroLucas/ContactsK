@@ -4,6 +4,125 @@
       "link": ""
     },
     {
+      "name": "Anderson Lloyd",
+      "link": "https://www.al.nz/our-people/"
+    },
+    {
+      "name": "Andersen",
+      "link": "https://global.andersen.com/people"
+    },
+    {
+      "name": "Amorys",
+      "link": "https://amoryssolicitors.com/meet-our-team/?gad_source=1&gclid=CjwKCAiAneK8BhAVEiwAoy2HYeFDywxj8cxZ7zyGKG2m5nFVma_hH0CZ7UvCNbnZPiHFdxtziWzn4BoCkRwQAvD_BwE"
+    },
+    {
+      "name": "Amit, Pollak, Matalon & Co",
+      "link": "https://www.apm.law/team/"
+    },
+    {
+      "name": "Aman & Partners",
+      "link": "https://www.aaclo.com/about/#our_people"
+    },
+    {
+      "name": "Amadagana & Partners",
+      "link": "https://amadaganapartners.com/distinctions-1",
+      "Note": "Email format (firstName).(LastName)@aaclo.com",
+      "Ex.:": "Tomas Demo === tomas.demo@aaclo.com"
+    },
+    {
+      "name": "ALSTON & BIRD LLP",
+      "link": "https://www.alston.com/en/professionals?office=c8a737cf-f50c-403f-8afe-12ae745f9b9a&level=ca7cb4b4-b9fd-4f74-a2f8-632a2ced023e&skip=10&reload=false&scroll=3010"
+    },
+    {
+      "name": "Lewis Denley",
+      "link": "https://www.lewisdenley.com/our-team/?_gl=1*1lc52o6*_up*MQ..*_gs*MQ..&gclid=CjwKCAiAneK8BhAVEiwAoy2HYUJ-13WuSFdcoyH3qypxkCCCm9BbYrx3JoxyiF_q-FfVtLYEIfiudBoCVg8QAvD_BwE",
+      "Note": "Email format (firstName).(LastName)@lewisdenley.com.au or @lewisdenley.com.uk",
+      "Ex.:": "Tomas Demo === tomas.demo@lewisdenley.com.au or @lewisdenley.com.uk"
+    },
+    {
+      "name": "Harper James Solicitors",
+      "link": "https://harperjames.co.uk/our-people/",
+      "Note": "Email format (firstName).(LastName)@harperjames.co.uk",
+      "Ex.:": "Tomas Demo === tomas.demo@harperjames.co.uk"
+    },
+    {
+      "name": "BSA Law",
+      "link": "https://www.bsalaw.com/people/"
+    },
+    {
+      "name": "ALP NG & Co",
+      "link": "https://www.alp.company/our-people"
+    },
+    {
+      "name": "AllBright Law",
+      "link": "https://www.allbrightlaw.com/EN/0502.aspx?&zw=bcbbdf0d40bf7b0b"
+    },
+    {
+      "name": "Zubi Law",
+      "link": "https://zubilaw.com/team1.php"
+    },
+    {
+      "name": "Al-Hossam Legal",
+      "link": "https://hossamlegal.com/our-team"
+    },
+    {
+      "name": "Alexiou Knowles & Co",
+      "link": "https://bahamaslaw.com/our-team/"
+    },
+    {
+      "name": "Alem & Associates",
+      "link": "https://www.alemlaw.com/people"
+    },
+    {
+      "name": "Sharq Law Firm",
+      "link": "https://www.sharqlawfirm.com/our-legal-team/"
+    },
+    {
+      "name": "Al-Ansari & Associates",
+      "link": "https://www.alansarilaw.com/people-type/partners/"
+    },
+    {
+      "name": "Al Ammar Law",
+      "link": "https://alammarlaw.com/people/"
+    },
+    {
+      "name": "ASC hukuk",
+      "link": "https://www.aschukuk.com/tr/team",
+      "Note": "Email format (firstName)(LastName)@aschukuk.com",
+      "Ex.:": "Tomas Demo === tomas.demo@aschukuk.com"
+    },
+    {
+      "name": "Čakmakova",
+      "link": "https://mlca.com.mk/partners/",
+      "Note": "Macedonia"
+    },
+    {
+      "name": "Stone King",
+      "link": "https://www.stoneking.co.uk/sectors/individuals",
+      "Note": "Email format (firstName)(LastName)@stoneking.co.uk",
+      "Ex.:": "Tomas Demo === tomasdemo@stoneking.co.uk"
+    },
+    {
+      "name": "Kienhuis Legal",
+      "link": "https://www.kienhuislegal.nl/mensen?rolesArray=12651884&page=1"
+    },
+    {
+      "name": "AIP Law",
+      "link": "https://aiplawbn.com/our-lawyers/"
+    },
+    {
+      "name": "AGP Advokater",
+      "link": "https://www.agpadvokater.no/menneskene"
+    },
+    {
+      "name": "Reklamasjonsportalen",
+      "link": "https://reklamasjonsportalen.no/menneskene/"
+    },
+    {
+      "name": "Nova Law",
+      "link": "https://novalaw.no/menneskene/"
+    },
+    {
       "name": "CEPD Abogados",
       "link": "https://www.cepd.cl/#abogados"
     },
