@@ -4,6 +4,79 @@
       "link": ""
     },
     {
+      "name": "Bancila Diaconu si Asociatii",
+      "link": "https://bdattorneys.ro/en/team/"
+    },
+    {
+      "name": "Avance",
+      "link": "https://www.avance.com/meet-our-team/"
+    },
+    {
+      "name": "AvaConseil",
+      "link": "https://www.avaconseil.com/IndexEnTeam.htm",
+      "Note": "country === Mauritania"
+    },
+    {
+      "name": "Asia Practice",
+      "link": "https://www.asiapractice.com.sg/about-us"
+    },
+    {
+      "name": "Astrea",
+      "link": "https://www.astrealaw.be/en/about-astrea/",
+      "Note": "Email format (firstLetters)@astrealaw.be",
+      "Ex.:": "Tomas Demo Due === tdd@astrealaw.be"
+    },
+    {
+      "name": "Ashitiva",
+      "link": "https://ashitivaadvocates.com/people-ashitiva/?name=&title=partner&department1=",
+      "Note": "Email format (firstName)@ashitivaadvocates.com",
+      "Ex.:": "Tomas Demo === tomas@ashitivaadvocates.com"
+    },
+    {
+      "name": "Badri and Salim El Meouchi Law Firm",
+      "link": "https://www.savoric.com/en/lawyers/",
+      "Note": "Email format (firstName).(LastName)@elmeouchi.com",
+      "Ex.:": "Tomas Demo === tomas.demo@elmeouchi.com"
+    },
+    {
+      "name": "Šavorić & Partners",
+      "link": "https://www.elmeouchi.com/team",
+      "Note": "Email format (firstName).(LastName)@savoric.com",
+      "Ex.:": "Tomas Demo === tomas.demo@savoric.com"
+    },
+    {
+      "name": "AP Law",
+      "link": "https://www.aplawjapan.com/en/professionals?f=&p=34&o=",
+      "Note": "Email format (firstName).(LastName)@ashcliffordchance.com",
+      "Ex.:": "Tomas Demo === tomas.demo@ashcliffordchance.com"
+    },
+    {
+      "name": "Delcade",
+      "link": "https://www.delcade.com/equipe/",
+      "Note": "Email format (firstNameLetter).(LastName)@delcade.fr",
+      "Ex.:": "Tomas Demo === tdemo@delcade.fr"
+    },
+    {
+      "name": "AS&H Clifford Chance",
+      "link": "https://www.ashcliffordchance.com/en/lawyers/partners/dr-fahad-abuhimed.html",
+      "Note": "Email format (firstName).(LastName)@ashcliffordchance.com",
+      "Ex.:": "Tomas Demo === tomas.demo@ashcliffordchance.com"
+    },
+    {
+      "name": "Atai & Associates",
+      "link": "https://www.ataiassociates.com/our-people/",
+      "Note": "Email format (firstName).(LastName)@ataiassociates.com",
+      "Ex.:": "Tomas Demo === tomas.demo@ataiassociates.com"
+    },
+    {
+      "name": "Arsov Natchev Ganeva",
+      "link": "https://anglaw.com/en/lawyers"
+    },
+    {
+      "name": "Arnold Bloch Leibler",
+      "link": "https://www.abl.com.au/people/"
+    },
+    {
       "name": "Aretha Legal",
       "link": "http://arethalegal.com/index.php/about-us/"
     },

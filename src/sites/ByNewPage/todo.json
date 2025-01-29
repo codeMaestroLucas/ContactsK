@@ -4,6 +4,68 @@
     "link": ""
   },
   {
+    "name": "BARGER PREKOP",
+    "link": "https://www.bargerprekop.com/the-team/partners/adrian-barger/"
+  },
+  {
+    "name": "Babic&Partners",
+    "link": "https://www.babic-partners.hr/legal-team/marija-gregoric/"
+  },
+  {
+    "name": "AHRP Law",
+    "link": "https://www.ahrplaw.com/people"
+  },
+  {
+    "name": "Azman Davidson & Co",
+    "link": "https://azmandavidson.com.my/our-team/"
+  },
+  {
+    "name": "AYR",
+    "link": "https://www.ayr.co.il/professionals/",
+    "Note": "Click on partner opt"
+  },
+  {
+    "name": "AVS Legal",
+    "link": "https://avs.legal/our-team/"
+  },
+  {
+    "name": "AVM",
+    "link": "https://www.avm-advogados.com/en/equipa/"
+  },
+  {
+    "name": "SPVS",
+    "link": "https://spvs.ro/teodora-stoian-en/"
+  },
+  {
+    "name": "Ashong Benjamin",
+    "link": "https://ashongbenjamin.com/people/"
+  },
+  {
+    "name": "ASAR",
+    "link": "https://www.asarlegal.com/people/"
+  },
+  {
+    "name": "VISION Consulting",
+    "link": "https://visionconsultingalbania.com/about-us/"
+  },
+  {
+    "name": "ARS",
+    "link": "https://arslaw.co.tz/"
+  },
+  {
+    "name": "ARQUIS",
+    "link": "https://www.arqis.com/en/team/"
+  },
+  {
+    "name": "Arntzen de Besche",
+    "link": "https://www.adeb.no/en/employees?position=Partner"
+  },
+  {
+    "name": "Armstrongs",
+    "link": "https://armstrongs.bw/attorneys/",
+    "Note": "Country === Botswana"
+  },
+  {
     "name": "Argo",
     "link": "https://www.argo-law.be/people/"
   },
@@ -555,7 +617,8 @@
   },
   {
     "name": "AYMP",
-    "link": "https://www.aymp.law/partners"
+    "link": "https://www.aymp.law/partners",
+    "Note": "Check if there's any more lawyer to register"
   },
   {
     "name": "William Hendrik & Siregar Djojonegoro",
