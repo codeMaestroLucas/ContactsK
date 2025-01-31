@@ -1,7 +1,214 @@
 [
+  {
+    "name": "",
+    "link": ""
+  },
+  {
+    "name": "CEPD",
+    "link": "https://www.cepd.cl/en"
+  },
+  {
+    "name": "CLS CP",
+    "link": "https://www.clscp.sk/en.html"
+  },
+  {
+    "name": "CLP Law",
+    "link": "https://www.clp.no/en/people?jobPositions=5ee04d3e-a219-4cd2-84a7-7f7864b3340c&"
+  },
+  {
+    "name": "CLKA Law",
+    "link": "https://www.clkavocats.com/en/team/"
+  },
+  {
+    "name": "Clayton Utz",
+    "link": "https://www.claytonutz.com/search/people-search?keyword=&JobTitle=Director,Director%20-%20Brands%20&%20Trade%20Marks,Director%20-%20Strategic%20Corporate/M&A,Director%20%E2%80%93%20Knowledge%20Management,FTS%20Director,Partner,Tax%20Director&SortBy=T"
+  },
+  {
+    "name": "Cirio",
+    "link": "https://cirio.se/en/people?_position=partner"
+  },
+  {
+    "name": "Charles Russell Speechlys",
+    "link": "https://www.charlesrussellspeechlys.com/en/people/?query=partner&services=0&sectors=0&offices=0&sort=0",
+    "Note": "Email format (firstName).(LastName)@crsblaw.com",
+    "Ex.:": "Tomas Demo === tomas.demo@crsblaw.com"
+  },
+  {
+    "name": "Chapman Tripp",
+    "link": "https://stage.chapmantripp.com/our-people/?Name=&Team=Partner&Expertise=&Location="
+  },
+  {
+    "name": "Chandler MHM",
+    "link": "https://chandler.morihamada.com/en/people?keywords=&sort=&jaorder=&practices=&location=&supportlang=&position=2411"
+  },
+  {
+    "name": "Chancery Chambers",
+    "link": "https://chancerychambers.com/professionals/",
+    "Note": "Email format (firstNameLetter).(LastName)@chancerychambers.com",
+    "Ex.:": "Tomas Demo === tdemo@chancerychambers.com"
+  },
+  {
+    "name": "Chalela",
+    "link": "https://www.chalela-legal.com/en/equipo/"
+  },
+  {
+    "name": "CFL Legal",
+    "link": "https://cfllegal.com/members/roselyne-muyaga/"
+  },
+  {
+    "name": "Centil Law",
+    "link": "https://centil.law/#/team/"
+  },
+  {
+    "name": "Cederquist",
+    "link": "https://www.cederquist.se/en/employees/"
+  },
+  {
+    "name": "CCW",
+    "link": "https://ccwpartnership.com/our-people/",
+    "Note": "Email format (firstName)@ccwpartnership.com   country === Brunei",
+    "Ex.:": "Tomas Demo === tomas.demo@ccwpartnership.com"
+  },
+  {
+    "name": "CBA",
+    "link": "https://www.cbalex.com/en/professionals-search?title=&field_professional_position_tid_i18n=1&field_professional_office_value_i18n=All&field_professional_practice_tid_i18n=All&field_industry_tid_i18n=All",
+    "Note": "Email format (firstName).(LastName)@cbalex.com",
+    "Ex.:": "Tomas Demo === tomas.demo@cbalex.com"
+  },
+  {
+    "name": "Castrén & Snellman",
+    "link": "https://www.castren.fi/people/",
+    "Note": "click to show more"
+  },
+  {
+    "name": "Caspi & Co",
+    "link": "https://caspilaw.com/attorneys/?flr_search=&flr_title=35&flr_name=&flr_specialization="
+  },
+  {
+      "name": "Carrillo & Asociados",
+      "link": "https://carrillolaw.com/equipo/"
+    },
     {
-      "name": "",
-      "link": ""
+      "name": "CRCCD",
+      "link": "https://www.crccdlex.com/professionisti/"
+    },
+    {
+      "name": "Callenders & Co",
+      "link": "https://callenders-law.com/attorneys/"
+    },
+    {
+      "name": "C&A Law",
+      "link": "https://www.calaw.mu/our-people/"
+    },
+    {
+      "name": "Byenkya Kihika & Co",
+      "link": "https://byenkyakihika.co.ug/about-the-firm/"
+    },
+    {
+      "name": "Buterin & Partners",
+      "link": "https://buterin-partneri.hr/en/lawyers/"
+    },
+    {
+      "name": "Bustamante Fabara",
+      "link": "https://bustamantefabara.com/en/our-team/"
+    },
+    {
+      "name": "Burnet Duckworth & Palmer",
+      "link": "https://www.bdplaw.com/team?keyword=&industry=&practiceArea=&role=Partner"
+    },
+    {
+      "name": "Burges Salmon",
+      "link": "https://www.burges-salmon.com/our-people"
+    },
+    {
+      "name": "bureau Plattner",
+      "link": "https://www.bureauplattner.com/it/team"
+    },
+    {
+      "name": "i2a Advogados",
+      "link": "https://i2a.legal/en/socios/"
+    },
+    {
+      "name": "GBA Associados",
+      "link": "https://gbalaw.com.br/equipe/"
+    },
+    {
+      "name": "Buddle Findlay",
+      "link": "https://www.buddlefindlay.com/people#"
+    },
+    {
+      "name": "BTPLaw",
+      "link": "https://btplaw.com.sg/our_team/brandon-tee-zhi-yi/"
+    },
+    {
+      "name": "BSJP",
+      "link": "https://bsjp.pl/en/people/"
+    },
+    {
+      "name": "Brown Rudnick",
+      "link": "https://brownrudnick.com/all-people/"
+    },
+    {
+      "name": "Broseta",
+      "link": "https://www.broseta.com/en/our-team/"
+    },
+    {
+      "name": "Bär & Karrer",
+      "link": "https://www.baerkarrer.ch/en/lawyers?position=partner",
+      "Notes": "Email formatt (firstName).(lastName)@baerkarrer.ch",
+      "Ex.:": "Tomas Demo === tomas.demo@baerkarrer.ch"
+    },
+    {
+      "name": "Brinkmann & Partner",
+      "link": "https://www.brinkmann-partner.de/wir/partner/"
+    },
+    {
+      "name": "Bridge Legal Group",
+      "link": "https://bridgelg.com/team/"
+    },
+    {
+      "name": "Bredin Prat",
+      "link": "https://www.bredinprat.fr/en/lawyers/list-of-lawyers/"
+    },
+    {
+      "name": "Jádi Nemeth",
+      "link": "https://bpv-jadi.com/en/team"
+    },
+    {
+      "name": "Hügel",
+      "link": "https://www.bpv-huegel.com/en/juristen/"
+    },
+    {
+      "name": "Braun Partners",
+      "link": "https://www.bpv-bp.com/en/team/"
+    },
+    {
+      "name": "Boyanov",
+      "link": "https://www.boyanov.com/lawyers/"
+    },
+    {
+      "name": "Gruenbaum, Possinhas & Teixeira",
+      "link": "https://gruenbaum.com.br/en/professionals/"
+    },
+    {
+      "name": "Goulart Penteado",
+      "link": "https://goulartpenteado.com.br/en/team/"
+    },
+    {
+      "name": "Gaia Silva Gaede & Associados",
+      "link": "https://gsga.com.br/en/profissionais/?filtro=true&filter_name=&cargo=partner"
+    },
+    {
+      "name": "FCAR Advogados",
+      "link": "https://fcaradv.com.br/en/advogado/"
+    },
+    {
+      "name": "BeesMont Law",
+      "link": "https://beesmont.bm/about/our-team/"
+    },
+    {
+      "name": "Beech Veltman",
+      "link": "https://beechveltman.com/team/"
     },
     {
       "name": "Bizlink",
@@ -1106,7 +1313,7 @@
     },
     {
       "name": "Bustamante Fabara",
-      "link": "https://bustamantefabara.com/en/our-team/?ftalp=y",
+      "link": "https://bustamantefabara.com/en/our-team/",
       "Notes": "try-catch not every lawyer has the info"
     },
     {
