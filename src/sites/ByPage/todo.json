@@ -4,6 +4,47 @@
     "link": ""
   },
   {
+    "name": "Buss Murton Law",
+    "link": "https://www.bussmurton.co.uk/our-people/"
+  },
+  {
+    "name": "Cozen O’Connor",
+    "link": "https://www.cozen.com/people",
+    "Note": "Check for Canada Lawyers"
+  },
+  {
+    "name": "Corrs",
+    "link": "https://www.corrs.com.au/people"
+  },
+  {
+    "name": "FIDESTA LTD",
+    "link": "https://offshorebvi.com/about-us/"
+  },
+  {
+    "name": "Contrast",
+    "link": "https://www.contrast.law/en/team/"
+  },
+  {
+    "name": "Consulegis",
+    "link": "https://consulegisabogados.com/en/team/"
+  },
+  {
+    "name": "Lacaz Martins, Pereira Neto, Gurevich & Schoueri",
+    "link": "https://www.lacazmartins.com.br/en/equipe/"
+  },
+  {
+    "name": "Gordon Legal",
+    "link": "https://gordonlegal.com.au/people/",
+    "Note": "Email format (firstNameLetter)(LastName)@gordonlegal.com.au",
+    "Ex.:": "Tomas Demo === tdemo@gordonlegal.com.au"
+  },
+  {
+    "name": "RPC Legal",
+    "link": "https://www.rpclegal.com/people/?tag=Partner",
+    "Note": "Email format (firstName).(LastName)@rpclegal.com",
+    "Ex.:": "Tomas Demo === tomas.demo@rpclegal.com"
+  },
+  {
     "name": "CEPD",
     "link": "https://www.cepd.cl/en"
   },
@@ -1326,8 +1367,7 @@
     },
     {
       "name": "Serrano Martinez CMA",
-      "link": "https://serranomartinezcma.com/en/team/",
-      "Notes": "phone: (+57) 601 7466072"
+      "link": "https://serranomartinezcma.com/en/team/"
     },
     {
       "name": "SFA",
