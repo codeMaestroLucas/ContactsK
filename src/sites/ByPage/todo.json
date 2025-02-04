@@ -4,6 +4,63 @@
     "link": ""
   },
   {
+    "name": "Hoogenraad & Haak",
+    "link": "https://www.hoogenhaak.nl/en/bio-maarten-haak"
+  },
+  {
+    "name": "Mirandah Asia",
+    "link": "https://www.mirandah.com/team/",
+    "Note": "Email format (firstName)@mirandah.com",
+    "Ex.:": "Tomas Demo === tomas@mirandah.com"
+  },
+  {
+    "name": "Property Lawyers",
+    "link": "https://www.propertylawyers.ie/about-property-lawyers/?_gl=1*no7yby*_up*MQ..*_gs*MQ..&gclid=Cj0KCQiAkoe9BhDYARIsAH85cDOfPd_SbZ89yyj_ti4_481rJbfRUKZvX_denuZ7jC72G38F8wMb9bIaAjRnEALw_wcB",
+    "Note": "practice area === Property"
+  },
+  {
+    "name": "Norens",
+    "link": "https://norens.se/en/about-norens/people/"
+  },
+  {
+    "name": "IDEAS",
+    "link": "https://www.ideasips.com/about-us/?lang=en"
+  },
+  {
+    "name": "Miller Thomson LLP",
+    "link": "https://www.millerthomson.com/en/your-team/?page=1&job_title=53"
+  },
+  {
+    "name": "MVVP advocaten",
+    "link": "https://www.mvvp.be/lawyers/"
+  },
+  {
+    "name": "GPK",
+    "link": "https://www.lawfirm.at/en/team",
+    "Note": "Email format (firstName).(LastName)@lawfirm.at",
+    "Ex.:": "Tomas Demo === tomas.demo@lawfirm.at"
+  },
+  {
+    "name": "Dittmar & Indrenius",
+    "link": "https://www.dittmar.fi/people/?type=partners"
+  },
+  {
+    "name": "Dimitrov Petrov & Co",
+    "link": "https://www.dpc.bg/team"
+  },
+  {
+    "name": "Dimitrijević and Partners",
+    "link": "https://dimitrijevicpartners.com/team/"
+  },
+  {
+    "name": "Lippert",
+    "link": "https://www.lippert.com.br/pt-br/equipe"
+  },
+  {
+    "name": "DIMAC",
+    "link": "https://dimac-law.com/luat-su/luat-su-thanh-vien-37"
+  },
+  {
     "name": "DIGESTS",
     "link": "https://digests.uz/team/"
   },
@@ -366,12 +423,6 @@
       "link": "https://www.elmeouchi.com/team",
       "Note": "Email format (firstName).(LastName)@savoric.com",
       "Ex.:": "Tomas Demo === tomas.demo@savoric.com"
-    },
-    {
-      "name": "AP Law",
-      "link": "https://www.aplawjapan.com/en/professionals?f=&p=34&o=",
-      "Note": "Email format (firstName).(LastName)@ashcliffordchance.com",
-      "Ex.:": "Tomas Demo === tomas.demo@ashcliffordchance.com"
     },
     {
       "name": "Delcade",

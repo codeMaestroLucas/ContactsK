@@ -4,6 +4,46 @@
     "link": ""
   },
   {
+    "name": "Arochi & Lindner",
+    "links": [
+      "https://www.arochilindner.com/en/mexico-en/",
+      "https://www.arochilindner.com/en/spain-en/"
+    ]
+  },
+  {
+    "name": "MOLITOR",
+    "link": "https://molitorlegal.lu/our-team/#partners"
+  },
+  {
+    "name": "Kan and Krishme",
+    "link": "https://kankrishme.com/our-team/"
+  },
+  {
+    "name": "HEUKING",
+    "link": "https://www.heuking.de/en/lawyers.html"
+  },
+  {
+    "name": "GZG",
+    "link": "https://gzg.com.cy/people/?group=1"
+  },
+  {
+    "name": "Harris",
+    "link": "https://harrisco.com/lawyers/",
+    "Note": "Canada, check if is an valid firm"
+  },
+  {
+    "name": "Divjak Topić Bahtijarević & Krka Law",
+    "link": "https://dtb.hr/#our-professionals"
+  },
+  {
+    "name": "New Balkans Law",
+    "link": "https://www.newbalkanslawoffice.com/practice-areas/family-and-children/?gad_source=1&gclid=Cj0KCQiAkoe9BhDYARIsAH85cDOMo4Dk7XDd0FPTyWtdgDk5UxxteKeSOpTqBxDNH3BdCR34nL31HdAaAn3gEALw_wcB"
+  },
+  {
+    "name": "LDCM",
+    "link": "https://www.ldcm.com.br/en/home-en/#team"
+  },
+  {
     "name": "Deheheng Law",
     "link": "http://en.deheheng.com/plus/list.php?tid=50"
   },
@@ -797,10 +837,6 @@
   {
     "name": "CBLM",
     "link": "https://cblm.com.br/#advogados"
-  },
-  {
-    "name": "DIMAC",
-    "link": "https://dimac-law.com/luat-su/luat-su-thanh-vien-37"
   },
   {
     "name": "Frasers",
@@ -2100,8 +2136,8 @@
     "link": "https://www.marval.com/profesionales?lang=en"
   },
   {
-    "name": "https://bruchoufunes.com/en/profesionales/",
-    "link": "Bruchou & Funes de Rioja"
+    "name": "Bruchou & Funes de Rioja",
+    "link": "https://bruchoufunes.com/en/profesionales/"
   },
   {
     "name": "Nicholson & Cano",
@@ -2173,7 +2209,7 @@
     "link": "https://www.cbr-law.com/en/#Team"
   },
   {
-    "name": "Licks Attorneys",
+    "name": "Licks",
     "link": "https://www.lickslegal.com/our-team?position=Partner%2CFounding+Partner"
   },
   {
