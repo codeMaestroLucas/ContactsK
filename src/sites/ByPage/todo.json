@@ -4,6 +4,53 @@
     "link": ""
   },
   {
+    "name": "DIGESTS",
+    "link": "https://digests.uz/team/"
+  },
+  {
+    "name": "Desai & Diwanji",
+    "link": "https://www.desaidiwanji.com/partners"
+  },
+  {
+    "name": "Willkie",
+    "link": "https://www.willkie.com/professionals?position=09ab29d3-f410-40a8-ba9c-016194bab337&location=all&orderbyy=asc&ordername=office"
+  },
+  {
+    "name": "Delchev & Partners",
+    "link": "https://www.delchev-lawfirm.com/people/"
+  },
+  {
+    "name": "Del Castillo & Castro Abogados",
+    "link": "https://www.dc-ca.mx/nosotros"
+  },
+  {
+    "name": "Debevoise & Plimpton",
+    "link": "https://www.debevoise.com/professionals/?title=700527be-e6af-4013-a6ec-30e9fa6597f0"
+  },
+  {
+    "name": "DMS Legal",
+    "link": "https://dms-legal.com/en/team/"
+  },
+  {
+    "name": "DWPV",
+    "link": "https://www.dwpv.com/en/People?position%5B%5D=Partner&searchId=searchId-People#/search",
+    "Note": "Check if is an valid firm - Canada"
+  },
+  {
+    "name": "Dalgalarrando & Cía",
+    "link": "https://dryc.cl/en/team/"
+  },
+  {
+    "name": "CSMV Advogados",
+    "link": "https://csmv.com.br/profissionais/"
+  },
+  {
+    "name": "Cristal Advocates",
+    "link": "https://cristaladvocates.com/the-team/",
+    "Note": "Email format (firstNameLetter)(LastName)@cristaladvocates.com",
+    "Ex.:": "Tomas Demo === tdemo@cristaladvocates.com"
+  },
+  {
     "name": "Buss Murton Law",
     "link": "https://www.bussmurton.co.uk/our-people/"
   },
