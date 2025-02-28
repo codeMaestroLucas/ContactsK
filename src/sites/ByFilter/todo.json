@@ -4,6 +4,22 @@
       "link": ""
     },
     {
+      "name": "Proskauer Rose",
+      "link": "https://www.proskauer.com/professionals?general=no&prefix=&key_contact=&practice_group=&practices=&industries=&market_solutions=&offices=&languages=&titles=3&educations=&schools=&degrees=&sort=&search=&search-mobile="
+    },
+    {
+      "name": "Pillsbury Winthrop Shaw Pittman",
+      "link": "https://www.pillsburylaw.com/en/lawyers/?v=attorney&pg=1034559"
+    },
+    {
+      "name": "Paul Weiss Rifkind Wharton & Garrison",
+      "link": "https://www.paulweiss.com/professionalsearchresult?lname=&fname=&key=&pract=&pos=Partner&loc=&sch="
+    },
+    {
+      "name": "Morrison & Foerster",
+      "link": "https://www.mofo.com/people?office=Amsterdam"
+    },
+    {
       "name": "Baker Botts",
       "link": "https://www.bakerbotts.com/people/?offices=d5c77aa9-8129-4c29-a429-d436dbeb3dc6,16c76a92-e1a1-4e77-93b5-24c85d31edc8&sort=1&reload=false&scroll=0"
     },
@@ -161,7 +177,7 @@
     },
     {
         "name": "Noerr",
-        "link": "https://www.noerr.com/en/professionals?p-fc-roles=Partner"
+        "link": "https://www.noerr.com/en/professionals?p-fc-roles=Partner%2CAssociated+Partner%2CPartner+emeritus"
     },
     {
         "name": "Ashurst",
