@@ -4,6 +4,122 @@
     "link": ""
   },
   {
+    "name": "Stewart McKelvey",
+    "link": "https://stewartmckelvey.com/areas_of_law/maritime-transportation/"
+  },
+  {
+    "name": "Stephenson Harwood",
+    "link": "https://www.shlegal.com/people#searchtype=categories;type=Partners;"
+  },
+  {
+    "name": "Steinmetz Haring Gurman & Co",
+    "link": "https://shg-law.co/the-team/#filter=.team_iso_6"
+  },
+  {
+    "name": "SNC Incorporated",
+    "link": "https://snclawgroup.com/our-team/"
+  },
+  {
+    "name": "SIRIUS",
+    "link": "https://www.siriusadvokater.dk/en/personer"
+  },
+  {
+    "name": "Simpson Thacher & Bartlett",
+    "link": "https://www.stblaw.com/offices/beijing"
+  },
+  {
+    "name": "S Horowitz & Co",
+    "link": "https://s-horowitz.com/our-team/?sl=1&position=partner"
+  },
+  {
+    "name": "Shonubi Musoke & Co",
+    "link": "https://www.shonubimusoke.co.ug/Our-people/Partners/Noah-Mwesigwa"
+  },
+  {
+    "name": "Shin & Kim",
+    "link": "https://www.shinkim.com/eng/member/list?page=4&size=10&name=A&bizCode="
+  },
+  {
+    "name": "Shahid Law",
+    "link": "https://shahidlaw.com/our-people/"
+  },
+  {
+    "name": "Seyfarth Shaw",
+    "link": "https://www.seyfarth.com/people/index.html?of=9045&po=17969"
+  },
+  {
+    "name": "Selmer",
+    "link": "https://selmer.no/en/people#"
+  },
+  {
+    "name": "Schindler Attorneys",
+    "link": "https://schindlerattorneys.com/en/team/"
+  },
+  {
+    "name": "SAL & Caldeira Advogados",
+    "link": "https://salcaldeira.com/index.php/en/team"
+  },
+  {
+    "name": "Salaverri | Burgio | Wetzler Malbrán",
+    "link": "https://www.esalaverri.com/el-equipo/"
+  },
+  {
+    "name": "SyLS",
+    "link": "https://syls.law/"
+  },
+  {
+    "name": "Saga Legal",
+    "link": "https://sagalegal.in/pages/Team.html"
+  },
+  {
+    "name": "Russin & Vecchi",
+    "link": "https://russinvecchi.ru/team/"
+  },
+  {
+    "name": "Russi & Eguiguren | Quadrant",
+    "link": "https://www.relegal.cl/corporate-practice.html"
+  },
+  {
+    "name": "RPHS Law",
+    "link": "https://rphs.law/our-team/"
+  },
+  {
+    "name": "Ronan Daly Jermyn",
+    "link": "https://www.rdj.ie/our-people"
+  },
+  {
+    "name": "Romulo",
+    "link": "https://www.romulo.com/a/"
+  },
+  {
+    "name": "Romero Pineda",
+    "link": "https://www.romeropineda.com/en/nuestra-firma/#nuestro-equipo"
+  },
+  {
+    "name": "RocaJunyent",
+    "link": "https://www.rocajunyent.com/en/find-professional?nombre=&area=All&categoria=29&oficina=All&op=Search&honeypot_time=384m3U1GCNcMrw5tjI7LLC58XVhket2lb0Yszexg7P8&urlhomepage="
+  },
+  {
+    "name": "Resource Law",
+    "link": "https://www.resourcelawasia.com/people/adrian-aw/"
+  },
+  {
+    "name": "Reff & Asociaţii",
+    "link": "https://www.reff-associates.ro/re/en/team/partners.html?icid=top_partners"
+  },
+  {
+    "name": "Rădulescu & Mușoi",
+    "link": "http://radulescu-musoi.ro/who-we-are/"
+  },
+  {
+    "name": "Rödl & Partner",
+    "link": "https://www.roedl.lt/en/team/"
+  },
+  {
+    "name": "Quorus",
+    "link": "https://quorus.ch/team"
+  },
+  {
     "name": "Prica & Partners",
     "link": "https://pricapartners.com/people/"
   },
@@ -447,6 +563,12 @@
     "Ex.:": "Tomas Demo === tdemo@jjrocalaw.com"
   },
   {
+    "name": "Soteris Pittas & Co",
+    "link": "https://www.pittaslegal.com/en/firm-members",
+    "Note": "Email format (firstNameLetter)(LastName)@pittaslegal.com",
+    "Ex.:": "Tomas Demo === tdemo@pittaslegal.com"
+  },
+  {
     "name": "McDermott Will & Emery",
     "link": "https://www.mwe.com/people/?law=&loc=1153,1156,1157,811,1161,1162,332&tit=140,49762,176",
     "Note": "Email format (firstNameLetter)(LastName)@mwe.com",
@@ -671,6 +793,11 @@
   {
     "name": "Osler Hoskin & Harcourt",
     "link": "https://www.osler.com/en/people/?s=&role%5B%5D=Partner",
+    "Note": "Check if is an valid firm - Canada"
+  },
+  {
+    "name": "Stikeman Elliott",
+    "link": "https://stikeman.com/en-ca/people#sort=%40biosortfield%20ascending&numberOfResults=90&f:PositionFacet=[Lawyer]",
     "Note": "Check if is an valid firm - Canada"
   },
   {
@@ -1164,6 +1291,30 @@
     {
       "name": "Broseta",
       "link": "https://www.broseta.com/en/our-team/"
+    },
+    {
+      "name": "SAMADOV Law",
+      "link": "https://samadovlawaudit.com/en/team/24/",
+      "Notes": "Email formatt (firstName).(lastName)@samadovlaw.com",
+      "Ex.:": "Tomas Demo === tomas.demo@samadovlaw.com"
+    },
+    {
+      "name": "Sok Siphana & Associates",
+      "link": "https://www.soksiphana.com/people/",
+      "Notes": "Email formatt (firstName).(lastName)@soksiphana.com",
+      "Ex.:": "Tomas Demo === tomas.demo@soksiphana.com"
+    },
+    {
+      "name": "Siahaan Irdamis Andarumi & Rekan",
+      "link": "https://siarlegal.com/partners/",
+      "Notes": "Email formatt (firstName).(lastName)@siarlegal.com",
+      "Ex.:": "Tomas Demo === tomas.demo@siarlegal.com"
+    },
+    {
+      "name": "Russell McVeagh",
+      "link": "https://www.russellmcveagh.com/our-people/?Roles=Partner",
+      "Notes": "Email formatt (firstName).(lastName)@russellmcveagh.com",
+      "Ex.:": "Tomas Demo === tomas.demo@russellmcveagh.com"
     },
     {
       "name": "Miura & Partners",
@@ -2294,10 +2445,6 @@
     {
       "name": "Chevez, Ruiz, Zamarripa",
       "link": "https://www.chevez.com/En/Contacts"
-    },
-    {
-      "name": "Ritch Mueller and Nicolau",
-      "link": "https://www.ritch.com.mx/en/team?filters=1&custom=&member_types%5B%5D=1"
     },
     {
       "name": "Mijares, Angoitia, Cortés y Fuentes",

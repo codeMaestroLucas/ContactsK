@@ -4,6 +4,22 @@
       "link": ""
     },
     {
+      "name": "Simpson Thacher",
+      "link": "https://www.stblaw.com/our-team?searchId=896284e9-2181-4b38-bc0b-6d68bcf96cbf&directory=lawyers"
+    },
+    {
+      "name": "Debevoise & Plimpton",
+      "link": "https://www.debevoise.com/professionals/?keyword=partner"
+    },
+    {
+      "name": "Davis Polk & Wardwell",
+      "link": "https://www.davispolk.com/lawyers?lawyer_search_en%5Bpage%5D=2&lawyer_search_en%5BrefinementList%5D%5Bjob_title%5D%5B0%5D=Partner"
+    },
+    {
+      "name": "Ropes & Gray",
+      "link": "https://www.ropesgray.com/en/people?titles=3d2d8586-9b9f-4ffe-b068-a18c666337e6&page=0"
+    },
+    {
       "name": "Proskauer Rose",
       "link": "https://www.proskauer.com/professionals?general=no&prefix=&key_contact=&practice_group=&practices=&industries=&market_solutions=&offices=&languages=&titles=3&educations=&schools=&degrees=&sort=&search=&search-mobile="
     },
@@ -184,10 +200,6 @@
         "link": "https://www.ashurst.com/en/people/#e=0"
     },
     {
-        "name": "Sullivan & Cromwell",
-        "link": "https://www.sullcrom.com/LawyerListing?custom_i_type=25257"
-    },
-    {
         "name": "Herbert Smith Freehills",
         "link": "https://herbertsmithfreehills.com/our-people?position=partner"
     },
@@ -214,10 +226,6 @@
     {
         "name": "Cleary Gottlieb",
         "link": "https://www.clearygottlieb.com/professionals?name=&location=0&position=c34ba8454e8c4514bc0e30118bc532d4&experience=0&lawSchool=&keyword=&start=0&num=10"
-    },
-    {
-        "name": "Sullivan & Cromwell",
-        "link": "https://www.sullcrom.com/LawyerListing?custom_i_type=25257"
     },
     {
         "name": "Mayer Brown",
