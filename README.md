@@ -85,3 +85,5 @@ phone would be impossible to catch in this way.
 
 # TODOS
 1. Check if the new functionFilterLawyersInPage function is working correctly
+
+2. Fix the data to be collected

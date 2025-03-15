@@ -4,6 +4,91 @@
     "link": ""
   },
   {
+    "name": "",
+    "link": ""
+  },
+  {
+    "name": "ANANT Law",
+    "link": "https://www.anant-lawfirm.com/people/"
+  },
+  {
+    "name": "Abrahams Davidson & Co",
+    "link": "https://www.adcobrunei.com/partners-main/"
+  },
+  {
+    "name": "Emerald Law",
+    "link": "https://emeraldlaw.in/partners/"
+  },
+  {
+    "name": "Stellex",
+    "link": "https://stellexlaw.com/en/professionals.html"
+  },
+  {
+    "name": "K1 Chamber",
+    "link": "https://en.k1chamber.com/professionals"
+  },
+  {
+    "name": "KL Partners",
+    "link": "https://www.klpartners.com/attorneys-2/"
+  },
+  {
+    "name": "Choi & Kim",
+    "link": "https://www.choikim.com/bbs/board.php?bo_table=lawyer_en"
+  },
+  {
+    "name": "DR & AJU",
+    "link": "https://www.draju.com/en/sub/people.html?sT=1?d_t_num=1&d_t_tit=All"
+  },
+  {
+    "name": "Peter & Kim",
+    "link": "https://peterandkim.com/team/",
+    "Note": "Check if there's any more lawyer to register"
+  },
+  {
+    "name": "Shin & Kim",
+    "link": "https://www.shinkim.com/eng/member/list?bizCode=&name=a"
+  },
+  {
+    "name": "STA Lawyers",
+    "link": "https://sta-lawyers.com/en/ourteam/lawyer"
+  },
+  {
+    "name": "PC Woo & Co",
+    "link": "https://www.pcwoo.com.hk/people.html"
+  },
+  {
+    "name": "Cocking & Co",
+    "link": "https://www.cockingco.com/ian-cocking/"
+  },
+  {
+    "name": "Eric Chow & Co",
+    "link": "https://www.ericchow.com.hk/en/our_team"
+  },
+  {
+    "name": "Charltons Law",
+    "link": "https://www.charltonslaw.com/the-firm/people-culture/team-profile/"
+  },
+  {
+    "name": "East IP",
+    "link": "https://east-ip.com/"
+  },
+  {
+    "name": "Rita Ku & Ser",
+    "link": "https://rkslaws.com/solicitors/"
+  },
+  {
+    "name": "Zhongzi Law",
+    "link": "https://www.zhongzi.com.cn/EN/04.aspx"
+  },
+  {
+    "name": "Tahota Law",
+    "link": "https://www.tahota.com/EN/05.aspx?&zw=bcbbdf0d40bf7b0b"
+  },
+  {
+    "name": "Beijing Grandway Law",
+    "link": "https://www.grandwaylaw.com/en/zhuanyetuandui/?kwd=&job=partner&t6=&t2="
+  },
+  {
     "name": "Stewart McKelvey",
     "link": "https://stewartmckelvey.com/areas_of_law/maritime-transportation/"
   },
@@ -1293,6 +1378,18 @@
       "link": "https://www.broseta.com/en/our-team/"
     },
     {
+      "name": "Albar & Partners",
+      "link": "https://www.albar.com.my/partners.html",
+      "Notes": "Email formatt (firstName)@khaitanco.com",
+      "Ex.:": "Tomas Demo === tomas@khaitanco.com"
+    },
+    {
+      "name": "Khaitan & Co",
+      "link": "https://www.khaitanco.com/people",
+      "Notes": "Email formatt (firstName).(lastName)@khaitanco.com",
+      "Ex.:": "Tomas Demo === tomas.demo@khaitanco.com"
+    },
+    {
       "name": "SAMADOV Law",
       "link": "https://samadovlawaudit.com/en/team/24/",
       "Notes": "Email formatt (firstName).(lastName)@samadovlaw.com",
@@ -1329,10 +1426,10 @@
       "Ex.:": "Tomas Demo === tomas.demo@atyantolaw.com"
     },
     {
-      "name": "Bär & Karrer",
-      "link": "https://www.baerkarrer.ch/en/lawyers?position=partner",
-      "Notes": "Email formatt (firstName).(lastName)@baerkarrer.ch",
-      "Ex.:": "Tomas Demo === tomas.demo@baerkarrer.ch"
+      "name": "Lee and Li",
+      "link": "https://www.leeandli.com/EN/000000002.htm",
+      "Notes": "Email formatt (allNames - without dots or any other signs)@leeandli.com",
+      "Ex.:": "Tomas Demo Ben === tomasdemoben@leeandli.com"
     },
     {
       "name": "Brinkmann & Partner",
@@ -1505,10 +1602,6 @@
     {
       "name": "Araoz & Rueda",
       "link": "https://www.araozyrueda.com/en/partners/"
-    },
-    {
-      "name": "Aquinas Law Alliance LLP",
-      "link": "https://www.aquinaslaw.sg/our-people/"
     },
     {
       "name": "Apostolska Aleksandrovski & Partners",
@@ -1983,7 +2076,7 @@
       "link": "https://bvzadvogados.com.br/en/#our-team"
     },
     {
-      "name": "Oh Ebashi",
+      "name": "Oh-Ebashi LPC & Partners",
       "link": "https://www.ohebashi.com/en/lawyers/position.php#p01",
       "Notes": "Email formatt (firstName).(lastName)@ohebashi.com",
       "Ex.:": "Tomas Demo === tomas.demo@ohebashi.com"
@@ -2096,7 +2189,8 @@
     },
     {
       "name": "AP & Partners",
-      "link": "https://appartners.in/team"
+      "link": "https://appartners.in/team",
+      "Note": "The href email and the real email are !="
     },
     {
       "name": "Sarthak",
@@ -2197,10 +2291,6 @@
     {
       "name": "Llinks",
       "link": "https://www.llinkslaw.com/index.php?a=lists&catid=9"
-    },
-    {
-      "name": "AllBright",
-      "link": "https://www.allbrightlaw.com/EN/0502.aspx?&zw=bcbbdf0d40bf7b0b"
     },
     {
       "name": "CBS",
@@ -2966,7 +3056,7 @@
         "Notes": "all the partners are from Estonia - DDD = 372 6603800"
     },
     {
-        "name": "YOON & YANG",
+        "name": "Yoon & Yang",
         "link": "https://yoonyang.co.kr/eng/professionals/members?lang=en",
         "Notes": "Send keys for the name to load the lawyers"
     },

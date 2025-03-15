@@ -2,7 +2,7 @@ const { Builder } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 
 const options = new chrome.Options();
-options.addArguments('headless');                                           // Run Chrome in headless mode
+// options.addArguments('headless');                                           // Run Chrome in headless mode
 options.addArguments('--disable-gpu');                                      // Disable GPU acceleration for headless
 options.addArguments('--ignore-certificate-errors');                        // Ignore SSL certificate errors
 options.addArguments('--disable-web-security');                             // Disable web security
