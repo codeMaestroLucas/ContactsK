@@ -4,6 +4,129 @@
     "link": ""
   },
   {
+    "name": "Brantsandpatents",
+    "link": "https://brantsandpatents.com/en/about-us"
+  },
+  {
+    "name": "Lansky, Ganzger & Partner",
+    "link": "https://www.lansky.at/en/team-1/"
+  },
+  {
+    "name": "Kaan Cronenberg & Partners",
+    "link": "https://kcp.at/en/partners/"
+  },
+  {
+    "name": "Haffner und Keschmann",
+    "link": "https://www.sonn.at/en/team"
+  },
+  {
+    "name": "Frieders, Tassul & Partner",
+    "link": "https://www.friederstassul.at/#team"
+  },
+  {
+    "name": "bpv Hügel",
+    "link": "https://www.bpv-huegel.com/juristen/"
+  },
+  {
+    "name": "BRAUNEIS RECHTSANWÄLTE",
+    "link": "https://www.brauneis.law/en/team"
+  },
+  {
+    "name": "Almeida Advogados",
+    "link": "https://www.almeidalaw.com.br/en/team/",
+    "Note": "Check if is an valid firm"
+  },
+  {
+    "name": "MB Legal",
+    "link": "https://mblegal.am/our-team/"
+  },
+  {
+    "name": "RDM Lawyers",
+    "link": "https://rdmlawyers.com/team/",
+    "Note": "Avoid Retired partners"
+  },
+  {
+    "name": "Birdsell Grant LLP",
+    "link": "https://birdsell.ca/lawyers"
+  },
+  {
+    "name": "Sampson Coward LLP",
+    "link": "https://www.sampsoncoward.co.uk/our-people"
+  },
+  {
+    "name": "Pinney Talfourd Solicitors",
+    "link": "https://www.pinneytalfourd.co.uk/people/"
+  },
+  {
+    "name": "Osbornes Solicitors",
+    "link": "https://osborneslaw.com/teams/?_sft_department=family-law"
+  },
+  {
+    "name": "Mercer Solicitors",
+    "link": "https://mercerslaw.co.uk/our-team/"
+  },
+  {
+    "name": "Greene & Greene Solicitors",
+    "link": "https://greene-greene.com/our-people/"
+  },
+  {
+    "name": "Francis Wilks & Jones",
+    "link": "https://www.franciswilksandjones.co.uk/people/"
+  },
+  {
+    "name": "Aitken Partners",
+    "link": "https://www.aitken.com.au/our-people-list"
+  },
+  {
+    "name": "Al Sulaiti Law",
+    "link": "https://www.alsulaitilawfirm.com/our-team.html"
+  },
+  {
+    "name": "TTT & Partners",
+    "link": "https://tttandpartners.com/team/"
+  },
+  {
+    "name": "The Capital Law",
+    "link": "https://thecapitallaw.com/our-team/"
+  },
+  {
+    "name": "Weerawong C&P",
+    "link": "https://weerawongcp.com/people-list.php?key=c&type=surname",
+    "Note": "Start from  C "
+  },
+  {
+    "name": "Eldan Law",
+    "link": "https://www.eldanlaw.com/our-people/"
+  },
+  {
+    "name": "Christopher Chuah Law",
+    "link": "https://www.cclawchambers.com/our-team"
+  },
+  {
+    "name": "RevLaw",
+    "link": "https://revlawllc.com/our-people/"
+  },
+  {
+    "name": "RCL Chambers Law",
+    "link": "https://www.rclc.com.sg/our-team/"
+  },
+  {
+    "name": "Ascendant Legal",
+    "link": "https://www.ascendantlegal.com/our-people"
+  },
+  {
+    "name": "Drew & Napier",
+    "link": "https://www.drewnapier.com/Our-Lawyers/Our-Management-Committee"
+  },
+  {
+    "name": "Amica Law",
+    "link": "https://www.amicalaw.com/"
+  },
+  {
+    "name": "Allen & Gledhill",
+    "link": "https://www.allenandgledhill.com/sg/partners/"
+  },
+  {
     "name": "KMD Lee & Co",
     "link": "https://kmdlee.com/our-people/"
   },
@@ -2147,10 +2270,6 @@
   {
     "name": "BSP",
     "link": "https://www.bsp.lu/lu/people?expertise=All&job_title=33&name="
-  },
-  {
-    "name": "BSA LAW",
-    "link": "https://www.bsalaw.com/people/"
   },
   {
   "name": "Bruzzone & González",

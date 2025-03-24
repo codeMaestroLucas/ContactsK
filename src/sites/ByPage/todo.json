@@ -4,8 +4,80 @@
     "link": ""
   },
   {
-    "name": "",
-    "link": ""
+    "name": "Griss & Partners",
+    "link": "https://www.griss.at/en/team-2/"
+  },
+  {
+    "name": "Schwarz Schönherr",
+    "link": "https://schwarz-schoenherr.com/team"
+  },
+  {
+    "name": "DR & R Abogados",
+    "link": "https://drr-law.com/en/aboutus/"
+  },
+  {
+    "name": "Nanda & Associate",
+    "link": "https://nanda.ca/our-team/"
+  },
+  {
+    "name": "Mills & Mills LLP",
+    "link": "https://www.millsandmills.ca/our-lawyers/"
+  },
+  {
+    "name": "Levitt Di Lella Duggan & Chaplick LLP",
+    "link": "https://lddclawyers.com/team/"
+  },
+  {
+    "name": "Barriston Law",
+    "link": "https://www.barristonlaw.com/lawyers/"
+  },
+  {
+    "name": "Page Nelson Solicitors",
+    "link": "https://www.pagenelson.co.uk/about/"
+  },
+  {
+    "name": "Blandy & Blandy",
+    "link": "https://www.blandy.co.uk/about/find-a-solicitor/"
+  },
+  {
+    "name": "LindaWang Su & Boo",
+    "link": "https://www.zicoip.com/our-team"
+  },
+  {
+    "name": "East IP",
+    "link": "https://trademarks.east-ip.com/people/"
+  },
+  {
+    "name": "Bizlink Lawyers",
+    "link": "http://bizlink.vn/partners/ms.-tran-thi-ngan.html"
+  },
+  {
+    "name": "Allens",
+    "link": "https://www.allens.com.au/search/people/?q=&sort=&jtVals=168&jtVals=169&jtVals=12&jt=168%2C169%2C12&l=All&l=&s=All&s=&pr=All&pr=&i=All&i="
+  },
+  {
+    "name": "Thanathip & Partners",
+    "link": "https://www.thanathippartners.com/our-team#partners-t2"
+  },
+  {
+    "name": "SRPP",
+    "link": "https://www.srpplaw.com/people"
+  },
+  {
+    "name": "Axis Legal",
+    "link": "https://axis-legal.com/our-people/"
+  },
+  {
+    "name": "Advocatus Law",
+    "link": "https://www.advocatus.sg/Overview"
+  },
+  {
+    "name": "Prolegis",
+    "link": "https://www.pro-legis.com/people/"
+  },
+  {
+    "name": "Helmsman",
+    "link": "https://www.helmsmanlaw.com/people"
   },
   {
     "name": "ANANT Law",
@@ -1384,6 +1456,42 @@
       "Ex.:": "Tomas Demo === tomas@khaitanco.com"
     },
     {
+      "name": "Juslaws & Consult",
+      "link": "https://www.juslaws.com/our-people",
+      "Notes": "Email formatt (firstName)@juslaws.com",
+      "Ex.:": "Tomas Demo === tomas@juslaws.com"
+    },
+    {
+      "name": "SA Law",
+      "link": "https://salaw.com/team/",
+      "Notes": "Email formatt (firstName).(lastName)@salaw.com",
+      "Ex.:": "Tomas Demo === tomas.demo@salaw.com"
+    },
+    {
+      "name": "Greiter, Pegger, Kofler & Partners Law",
+      "link": "https://www.lawfirm.at/en/team#partners",
+      "Notes": "Email formatt (firstName).(lastName)@lawfirm.at",
+      "Ex.:": "Tomas Demo === tomas.demo@lawfirm.at"
+    },
+    {
+      "name": "HCR Legal",
+      "link": "https://www.hcrlaw.com/people/",
+      "Notes": "Email formatt (firstName).(lastName)@hcrlaw.com",
+      "Ex.:": "Tomas Demo === tomas.demo@hcrlaw.com"
+    },
+    {
+      "name": "MSB Solicitors",
+      "link": "https://www.msbsolicitors.co.uk/our-people/",
+      "Notes": "Email formatt (firstName)(lastName)@msbsolicitors.co.uk",
+      "Ex.:": "Tomas Demo === tomasdemo@msbsolicitors.co.uk"
+    },
+    {
+      "name": "Kew Law",
+      "link": "https://www.kewlaw.co.uk/our-lawyers/",
+      "Notes": "Email formatt (firstName).(lastName)@kewlaw.co.uk",
+      "Ex.:": "Tomas Demo === tomas.demo@kewlaw.co.uk"
+    },
+    {
       "name": "Khaitan & Co",
       "link": "https://www.khaitanco.com/people",
       "Notes": "Email formatt (firstName).(lastName)@khaitanco.com",
@@ -2104,6 +2212,12 @@
       "link": "https://www.city-yuwa.com/global/en/attorneys/",
       "Notes": "Email formatt (firstName).(lastName)@city-yuwa.com",
       "Ex.:": "Tomas Demo === tomas.demo@city-yuwa.com"
+    },
+    {
+      "name": "Momo-o Matsuo & Namba",
+      "link": "https://www.mmn-law.gr.jp/en/lawyers/index.html",
+      "Notes": "Email formatt (lastName)@mmn-law.gr.jp",
+      "Ex.:": "Tomas Demo === demo@mmn-law.gr.jp"
     },
     {
       "name": "Nishimura & Asahi",
