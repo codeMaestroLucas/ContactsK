@@ -87,3 +87,13 @@ phone would be impossible to catch in this way.
 1. Check if the new functionFilterLawyersInPage function is working correctly
 
 2. Fix the data to be collected
+
+11/04/25
+-------------------------
+- ByClick:        3
+- ByFilter:       63
+- ByPage:         852
+- ByNewPage:      1299
+- Uncategorized:  14
+-------------------------
+                  2231

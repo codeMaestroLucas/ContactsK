@@ -4,12 +4,131 @@
     "link": ""
   },
   {
+    "name": "Belgravia",
+    "link": "https://www.belgravia.law/team"
+  },
+  {
+    "name": "Holmes",
+    "link": "https://holmeslaw.ie/people"
+  },
+  {
+    "name": "Whitney Moore",
+    "link": "https://whitneymoore.ie/people/",
+    "Note": "Check if there's any more lawyer to register"
+  },
+  {
+    "name": "Wynn Williams",
+    "link": "https://wynnwilliams.co.nz/people/"
+  },
+  {
+    "name": "Wilson Harle",
+    "link": "https://www.wilsonharle.com/people"
+  },
+  {
+    "name": "Webb Henderson",
+    "link": "https://webbhenderson.com/people/"
+  },
+  {
+    "name": "Mills Oakley",
+    "link": "https://www.millsoakley.com.au/people/"
+  },
+  {
+    "name": "Pearce IP",
+    "link": "https://www.pearceip.law/our-people/"
+  },
+  {
+    "name": "Norman Waterhouse",
+    "link": "https://www.normans.com.au/people/"
+  },
+  {
+    "name": "McCullough Robertson",
+    "link": "https://mccullough.com.au/people/"
+  },
+  {
+    "name": "Wrays",
+    "link": "https://wrays.com.au/people/"
+  },
+  {
+    "name": "Madderns",
+    "link": "https://madderns.com.au/team/"
+  },
+  {
+    "name": "Chamberlains",
+    "link": "https://chamberlains.com.au/about/"
+  },
+  {
+    "name": "ABG IP",
+    "link": "https://abg-ip.com/our-people/"
+  },
+  {
+    "name": "Saba&Co",
+    "link": "https://www.sabaip.com/our-team-2/"
+  },
+  {
+    "name": "Ron Klagsbald",
+    "link": "https://aoilaw.co.il/our-team/"
+  },
+  {
+    "name": "Ben-Ami & Associates ",
+    "link": "https://benami.com/en/our-people/"
+  },
+  {
+    "name": "Luzzatto & Luzzatto",
+    "link": "https://www.luzzatto.co.il/%d7%94%d7%a6%d7%95%d7%95%d7%aa-%d7%a9%d7%9c%d7%a0%d7%95/?_expert_name=&_role_filter=349#search_results"
+  },
+  {
+    "name": "Daniel, Brantley & Associates",
+    "link": "https://www.danielbrantley.com/our-people/",
+    "Note": "Country: Nevis. Avoid the first partner"
+  },
+  {
+    "name": "Ferrere",
+    "link": "https://www.ferrere.com/es/profesionales/"
+  },
+  {
+    "name": "Estudio Delion",
+    "link": "https://www.estudiodelion.com.pe/our-team/"
+  },
+  {
+    "name": "Dumont Bergman Bider",
+    "link": "https://www.dumont.mx/our-team/"
+  },
+  {
+    "name": "Cameron & Shepherd",
+    "link": "https://cameronandshepherd.com/our-team"
+  },
+  {
+    "name": "Legalsa",
+    "link": "https://www.legalsa.com/socios/"
+  },
+  {
+    "name": "LatinAlliance",
+    "link": "https://latinalliance.co/en/expertoslegal/"
+  },
+  {
+    "name": "EProint",
+    "link": "https://eproint.com/what-we-do-best/#ourPeople"
+  },
+  {
+    "name": "Sargent & Krahn",
+    "link": "https://www.sargent.cl/en/our-team/?filter_tax_326=partner,partner-en"
+  },
+  {
+    "name": "Nieto Patents and Trademark",
+    "link": "https://nietonieto.com/en/our-partners/"
+  },
+  {
     "name": "MBM Intellectual Property Law",
     "link": "http://www.mbm.com/en/our-team"
   },
   {
     "name": "Cameron IP",
     "link": "https://cameronintellectualproperty.com/team/",
+    "Note": "Canada, check if is an valid firm"
+  },
+  {
+    "name": "Riches, McKenzie & Herbert",
+    "link": "https://www.patents-toronto.com/people/",
     "Note": "Canada, check if is an valid firm"
   },
   {
@@ -54,7 +173,7 @@
   },
   {
     "name": "FPA Patent",
-    "link": "https://www.fpapatents.com/our-attorneys/?_td_role=60"
+    "link": "https://www.fpapatents.com/our-attorneys/"
   },
   {
     "name": "Hastings & Co",
@@ -3391,10 +3510,6 @@
   {
     "name": "BRZ",
     "link": "https://brzadvogados.com.br/en/time-brz/"
-  },
-  {
-    "name": "Luiz Leonardos & Advogados",
-    "link": "https://llip.com/Profissionais"
   },
   {
     "name": "Chandhiok & Mahajan",
