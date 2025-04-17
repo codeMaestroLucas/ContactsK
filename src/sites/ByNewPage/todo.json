@@ -4,6 +4,139 @@
     "link": ""
   },
   {
+    "name": "Madrona",
+    "link": "https://madronaadvogados.com.br/en/our-lawyers/"
+  },
+  {
+    "name": "Gumucio & Abogados",
+    "link": "https://www.gumucioabogados.com.bo/en/team/"
+  },
+  {
+    "name": "Vazquez Tercero & Zepeda",
+    "link": "https://vtz.mx/team/"
+  },
+  {
+    "name": "Torres Legal",
+    "link": "https://torres.legal/team/"
+  },
+  {
+    "name": "Torras & Asociados",
+    "link": "https://www.torrasasociados.com/en/our-team/"
+  },
+  {
+    "name": "Sherrards",
+    "link": "https://sherrards.com/people/"
+  },
+  {
+    "name": "Ellisons Solicitors",
+    "link": "https://www.ellisonssolicitors.com/our-people/"
+  },
+  {
+    "name": "MIO Law",
+    "link": "https://miolawfirm.com/pages/meet-the-team",
+    "Note": "Try-catch email"
+  },
+  {
+    "name": "ASB Consulting Group",
+    "link": "https://asbconsulting.ru/en/about/team/"
+  },
+  {
+    "name": "Thielen & Associes",
+    "link": "https://www.lexthielen.com/en/team/"
+  },
+  {
+    "name": "FCM Limited",
+    "link": "https://fcmtrust.com/team/"
+  },
+  {
+    "name": "BĒS Associati",
+    "link": "https://www.besassociati.it/en/professionals/"
+  },
+  {
+    "name": "SPITZWEG",
+    "link": "https://www.spitzweg.com/en/consultants-2/"
+  },
+  {
+    "name": "Keiper & Co",
+    "link": "https://keiper-co.de/team/"
+  },
+  {
+    "name": "CS AVOCATS ASSOCIES",
+    "link": "https://www.csavocats.com/en/talents/"
+  },
+  {
+    "name": "GALST",
+    "link": "https://www.galst.dk/en/personer"
+  },
+  {
+    "name": "ADCO Law",
+    "link": "https://adcolaw.com/our-team"
+  },
+  {
+    "name": "H.Y. Leung & Co",
+    "link": "https://hyleung.com/our-team-members/"
+  },
+  {
+    "name": "Deutsch Miller",
+    "link": "https://www.deutschmiller.com/our-people/"
+  },
+  {
+    "name": "Allan Hall",
+    "link": "https://allanhall.com.au/our-directors/"
+  },
+  {
+    "name": "Baumgartners",
+    "link": "https://www.baumgartners.com.au/people"
+  },
+  {
+    "name": "Prasad & Company",
+    "link": "https://www.prasadcpa.com/our-team/"
+  },
+  {
+    "name": "ENS Africa",
+    "link": "https://www.ensafrica.com/people"
+  },
+  {
+    "name": "JMW",
+    "link": "https://www.jmw.co.uk/people"
+  },
+  {
+    "name": "Stach Rechtsanwälte",
+    "link": "https://stach.ch/en/team-2/"
+  },
+  {
+    "name": "Gilligan Sheppard",
+    "link": "https://gilligansheppard.co.nz/about-us/meet-the-team/"
+  },
+  {
+    "name": "Belluzzo",
+    "link": "https://belluzzo.net/en/company/professionals"
+  },
+  {
+    "name": "Eppinger & Kolarova Legal",
+    "link": "https://www.eak.legal/en/team/"
+  },
+  {
+    "name": "One Essex Court",
+    "link": "https://www.oeclaw.co.uk/mediators"
+  },
+  {
+    "name": "Greens List",
+    "link": "https://www.greenslist.com.au/s/mediators",
+    "Note": "Check if is an valid firm"
+  },
+  {
+    "name": "Young List",
+    "links": [
+      "https://www.youngslist.com.au/the-list/?_counsel=27",
+      "https://www.youngslist.com.au/the-list/?_counsel=28"
+      ]
+  },
+  {
+    "name": "35 West Chambers",
+    "link": "https://35westchambers.com/barristers/"
+  },
+  {
     "name": "Belgravia",
     "link": "https://www.belgravia.law/team"
   },
@@ -120,6 +253,11 @@
   {
     "name": "MBM Intellectual Property Law",
     "link": "http://www.mbm.com/en/our-team"
+  },
+  {
+    "name": "HSM Group",
+    "link": "https://hsmllpcas.com/profiles/",
+    "Note": "Canada, check if is an valid firm"
   },
   {
     "name": "Cameron IP",
@@ -758,7 +896,7 @@
     "link": "https://www.sullcrom.com/LawyerListing?custom_i_type=25257&custom_is_office=27561+27573+27562+27563+27564+27569+27570+27571"
   },
   {
-    "name": "Quinn Emanuel Urquhart & Sullivan",
+    "name": "Quinn Emanuel",
     "link": "https://www.quinnemanuel.com/attorneys#byCountry=1757&byChar=all&byProfileType=1766&bySearch=&byOffice=28613,28189,26851,1096,25454,1099,1100,1101,1103,1105,23207,1107,13319,25494,12782,35081,13698,1110,1111,12228&byPracticeArea=&byLawClerk=&byAdp=&currentPage=1"
   },
   {

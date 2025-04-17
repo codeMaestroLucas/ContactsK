@@ -4,6 +4,111 @@
     "link": ""
   },
   {
+    "name": "Proximo Auditores SPA",
+    "link": "https://www.proximoauditores.cl/"
+  },
+  {
+    "name": "PGS Attorneys",
+    "link": "https://www.pgs.legal/meetourlawyers"
+  },
+  {
+    "name": "Abbantia",
+    "link": "https://abbantia.com/en/professionals/"
+  },
+  {
+    "name": "SST Attorneys",
+    "link": "https://sstlaw.co.za/our-people/"
+  },
+  {
+    "name": "MST Partners",
+    "link": "https://mstpartners.eu/?page_id=701&lang=en"
+  },
+  {
+    "name": "Alliott Hadi Shahid Chartered Accountants",
+    "link": "https://www.alliottuae.com/Auditors/OurTeam"
+  },
+  {
+    "name": "Titov & Partners",
+    "link": "https://www.titovlaw.se/en/17/8/our-people/"
+  },
+  {
+    "name": "Alliott Mauritius",
+    "link": "https://www.alliott-mauritius.com/key-people/"
+  },
+  {
+    "name": "VB Advocates",
+    "link": "https://www.vba.mt/our-people/"
+  },
+  {
+    "name": "PSP Peintner, Seidner & Partners",
+    "link": "https://www.psp-bz.it/en/about-us/team.html"
+  },
+  {
+    "name": "NPP Legal",
+    "link": "https://npp.de/ceemes/en/personen/geschaeftsfuehrung.html"
+  },
+  {
+    "name": "ETH Consulting Group",
+    "link": "https://ethconsulting.com.my/our-team.html"
+  },
+  {
+    "name": "Wildeboer Dellelce",
+    "link": "https://wildlaw.ca/people"
+  },
+  {
+    "name": "Origin Law",
+    "link": "https://originlaw.ca/originteampage/"
+  },
+  {
+    "name": "HNA",
+    "link": "https://www.hna.ca/en/experts/"
+  },
+  {
+    "name": "Landmark Advocates",
+    "link": "https://landmarkadvocates.com/team/"
+  },
+  {
+    "name": "KTA Advocates",
+    "link": "https://www.ktaadvocates.com/our-people/"
+  },
+  {
+    "name": "Werksmans",
+    "link": "https://www.werksmans.com/our-people/"
+  },
+  {
+    "name": "VDT Attorneys",
+    "link": "https://vdt.co.za/our-team/"
+  },
+  {
+    "name": "Dufour Treuhand",
+    "link": "https://www.dufour-treuhand.ch/en/"
+  },
+  {
+    "name": "VIA Consultores",
+    "link": "https://via.es/nosotros/"
+  },
+  {
+    "name": "PSR",
+    "link": "https://www.psr.rs/personnel.html"
+  },
+  {
+    "name": "JGSA",
+    "link": "https://www.jgsa.pt/en/team/Pedro-Sena-Marcos/23/#!detail"
+  },
+  {
+    "name": "Keller Menz",
+    "link": "https://www.keller-menz.de/en/about-us/",
+    "Note": "Check if is an valid firm"
+  },
+  {
+    "name": "SPCM and Associates",
+    "link": "https://www.spcm.in/our-team"
+  },
+  {
+    "name": "Marque Lawyers",
+    "link": "https://www.marquelawyers.com.au/theteam/belle-jing"
+  },
+  {
     "name": "William Fry",
     "link": "https://www.williamfry.com/search-people/"
   },
@@ -1082,6 +1187,18 @@
     "Ex.:": "Tomas Demo === tdemo@jjrocalaw.com"
   },
   {
+    "name": "Nunes & Asociados",
+    "link": "https://estudionunes.com.ar/english/#team",
+    "Note": "Email format (firstNameLetter)(LastName)@estudionunes.com.ar",
+    "Ex.:": "Tomas Demo === tdemo@estudionunes.com.ar"
+  },
+  {
+    "name": "RBK",
+    "link": "https://www.rbk.ie/about/our-team",
+    "Note": "Email format (firstNameLetter)(LastName)@rbk.ie",
+    "Ex.:": "Tomas Demo === tdemo@rbk.ie"
+  },
+  {
     "name": "J.J. Roca & Asociados",
     "link": "https://jjrocalaw.com/english/",
     "Note": "Email format (firstNameLetter)(LastName)@jjrocalaw.com",
@@ -1855,6 +1972,30 @@
       "link": "https://www.eldibadvocates.com/team",
       "Notes": "Email formatt (firstName).(lastName)@eldib.com.eg",
       "Ex.:": "Tomas Demo === tomas.demo@eldib.com.eg"
+    },
+    {
+      "name": "audalis Kohler Punge",
+      "link": "https://www.alliottglobal.com/directory-search/firms/audalis-kohler-punge-partner",
+      "Notes": "Email formatt (firstName).(lastName)@audalis.de",
+      "Ex.:": "Tomas Demo === tomas.demo@audalis.de"
+    },
+    {
+      "name": "Alliotts",
+      "link": "https://www.alliotts.com/people/",
+      "Notes": "Email formatt (firstName).(lastName)@alliotts.com",
+      "Ex.:": "Tomas Demo === tomas.demo@alliotts.com"
+    },
+    {
+      "name": "SORA & ASSOCIATES",
+      "link": "https://www.sora.ro/team/",
+      "Notes": "Email formatt (firstName)(lastName)@radusora.ro",
+      "Ex.:": "Tomas Demo === tomasdemo@radusora.ro"
+    },
+    {
+      "name": "Borrie",
+      "link": "https://www.borrie.nl/en/partners/",
+      "Notes": "Email formatt (firstNameLetter)(lastName)@borrie.nl",
+      "Ex.:": "Tomas Demo === tdemo@borrie.nl"
     },
     {
       "name": "SA Law",
