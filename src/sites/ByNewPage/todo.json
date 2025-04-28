@@ -4,6 +4,40 @@
     "link": ""
   },
   {
+    "name": "Covenant Chambers",
+    "link": "https://www.covenantchambers.com/firm"
+  },
+  {
+    "name": "Pradhan & Associates",
+    "link": "https://www.pradhanlaw.com/team"
+  },
+  {
+    "name": "Lewiss Silkin",
+    "link": "https://www.lewissilkin.com/experts?role=Directors%253BPartners"
+  },
+  {
+    "name": "Control Risks",
+    "link": "https://www.controlrisks.com/who-we-are/our-experts"
+  },
+  {
+    "name": "Lee Tsai & Partners",
+    "link": "https://www.leetsai.com/people.php",
+    "Note": "Check if there's any more lawyer to register"
+  },
+  {
+    "name": "Winkler",
+    "link": "https://winklerpartners.com/people/"
+  },
+  {
+    "name": "TEMPLARS",
+    "link": "https://www.templars-law.com/our-people/?show_page=3#block_acf-6426ea0693100",
+    "Note": "Start from this page"
+  },
+  {
+    "name": "KAA Law",
+    "link": "https://www.kaa.co.ug/team/"
+  },
+  {
     "name": "Madrona",
     "link": "https://madronaadvogados.com.br/en/our-lawyers/"
   },
@@ -688,10 +722,6 @@
     "link": "https://www.ascendantlegal.com/our-people"
   },
   {
-    "name": "Drew & Napier",
-    "link": "https://www.drewnapier.com/Our-Lawyers/Our-Management-Committee"
-  },
-  {
     "name": "Amica Law",
     "link": "https://www.amicalaw.com/"
   },
@@ -726,10 +756,6 @@
   {
     "name": "Andersen",
     "link": "https://kh.andersen.com/our-people/?n=&ser=&title="
-  },
-  {
-    "name": "Rajah & Tann Sok & Heng Law",
-    "link": "https://kh.rajahtannasia.com/?s=a&post_type=partners&post_type=partners&wpse_type=people-search&wpse_action=search"
   },
   {
     "name": "Sudath Perera Associates",
@@ -1214,10 +1240,6 @@
   {
     "name": "Rajani Associates",
     "link": "https://www.rajaniassociates.net/team-overview.html"
-  },
-  {
-    "name": "Rajah & Tann",
-    "link": "https://la.rajahtannasia.com/our-partners/"
   },
   {
     "name": "RdHOO",
@@ -2542,10 +2564,6 @@
     "link": "https://www.dkco-law.com/en/our-people"
   },
   {
-    "name": "Lewis Silkin",
-    "link": "https://www.lewissilkin.com/experts"
-  },
-  {
     "name": "Gün + Partners",
     "link": "https://gun.av.tr/people?roles=partners"
   },
@@ -3109,6 +3127,11 @@
   {
     "name": "Advocaat Law Practice",
     "link": "https://advocaat-law.com/people/",
+    "Note": "Check if there's any more lawyer to register"
+  },
+  {
+    "name": "TripleOKLaw",
+    "link": "https://www.tripleoklaw.com/people/",
     "Note": "Check if there's any more lawyer to register"
   },
   {
@@ -5381,7 +5404,7 @@
   },
   {
     "name": "ALN",
-    "link": "https://aln.africa/about-us/people-and-culture/"
+    "link": "https://aln.africa/team/"
   },
   {
     "name": "Loyens & Loeff",

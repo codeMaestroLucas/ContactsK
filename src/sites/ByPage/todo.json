@@ -4,6 +4,29 @@
     "link": ""
   },
   {
+    "name": "Reliance Corporate Advisors",
+    "link": "https://reliancecs.co/our-people/"
+  },
+  {
+    "name": "Tiruchelvam Associates",
+    "link": "https://www.tiruchelvam.com/our_team/"
+  },
+  {
+    "name": "Kochhar and Co.",
+    "link": "https://kochhar.com/people/"
+  },
+  {
+    "name": "Crowell & Moring",
+    "link": "https://www.crowell.com/en/professionals?po=34489"
+  },
+  {
+    "name": "Cassidy Levy Kent",
+    "links": [
+      "https://www.cassidylevy.com/team/?_offices=brussels",
+      "https://www.cassidylevy.com/team/?_offices=ottawa"
+    ]
+  },
+  {
     "name": "Proximo Auditores SPA",
     "link": "https://www.proximoauditores.cl/"
   },
@@ -1187,6 +1210,12 @@
     "Ex.:": "Tomas Demo === tdemo@jjrocalaw.com"
   },
   {
+    "name": "Youssry Saleh & Partners",
+    "link": "https://youssrysaleh.com/en/attorneys/",
+    "Note": "Email format (firstNameLetter).(LastName)@youssrysaleh.com",
+    "Ex.:": "Tomas Demo === t.demo@youssrysaleh.com"
+  },
+  {
     "name": "Nunes & Asociados",
     "link": "https://estudionunes.com.ar/english/#team",
     "Note": "Email format (firstNameLetter)(LastName)@estudionunes.com.ar",
@@ -1974,6 +2003,24 @@
       "Ex.:": "Tomas Demo === tomas.demo@eldib.com.eg"
     },
     {
+      "name": "Dadimos and Partners",
+      "link": "https://dadimoshaile.com/about-us/",
+      "Notes": "Email formatt (firstName).(lastName)@dadimoshaile.com",
+      "Ex.:": "Tomas Demo === tomas.demo@dadimoshaile.com"
+    },
+    {
+      "name": "Ai Group",
+      "link": "https://www.aigroupworkplacelawyers.com.au/our-team/",
+      "Notes": "Email formatt (firstName).(lastName)@aigroup.com.au",
+      "Ex.:": "Tomas Demo === tomas.demo@aigroup.com.au"
+    },
+    {
+      "name": "TMI Associates",
+      "link": "https://www.tmi.gr.jp/people/?q=&job=&base=&field=&sector=",
+      "Notes": "Email formatt (firstName)_(lastName)@tmi.gr.jp",
+      "Ex.:": "Tomas Demo === tomas_demo@tmi.gr.jp"
+    },
+    {
       "name": "audalis Kohler Punge",
       "link": "https://www.alliottglobal.com/directory-search/firms/audalis-kohler-punge-partner",
       "Notes": "Email formatt (firstName).(lastName)@audalis.de",
@@ -2608,7 +2655,8 @@
     },
     {
       "name": "Yulchon",
-      "link": "https://www.yulchon.com/en/professionals/professionals-search.do"
+      "link": "https://www.yulchon.com/en/professionals/professionals-search.do",
+      "Notes": "Send keys for the name to load the lawyers"
     },
     {
       "name": "Rajah & Tann",
@@ -2672,11 +2720,7 @@
     {
       "name": "Drew & Napier",
       "link": "https://www.drewnapier.com/Our-Lawyers?name=a&practice=",
-      "Note": "Send keys"
-    },
-    {
-      "name": "Rajah & Tann",
-      "link": "https://www.rajahtannasia.com/our-partners/"
+      "Note": "Send keys or using the link of commitees"
     },
     {
       "name": "Allen & Gledhill",
