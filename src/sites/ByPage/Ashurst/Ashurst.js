@@ -43,22 +43,10 @@ class Ashurst extends ByPage {
           .getAttribute("outerHTML");
       }
 
-      const regex = /<div class="people-info">.*?<a[^>]*>.*?<\/a>\s*([^<]+)/;
-      const match = html.match(regex);
-      const role = match[1].trim();
-
-      if (role.toLowerCase().includes("partner")) partners.push(lawyer);
+      if (html.toLowerCase().includes("partner")) partners.push(lawyer);
     }
 
     return partners;
-  }
-
-
-  async #getLink(lawyer) {
-    return await lawyer
-      .findElement(By.className("people-info"))
-      .findElement(By.css("a"))
-      .getAttribute("href");
   }
 
 
@@ -89,10 +77,8 @@ class Ashurst extends ByPage {
     
     const phone = await this.#getPhone(data);
     return {
-      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(data),
-      phone: phone,
       country: getCountryByDDD(phone)
     };
   }

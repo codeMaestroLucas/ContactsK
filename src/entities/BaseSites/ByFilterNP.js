@@ -127,25 +127,23 @@ class ByFilterNP extends Site {
             continue;
           }
       
-          if (!lawyerDetails || !lawyerDetails.link || !lawyerDetails.email) {
+          if (!lawyerDetails || !lawyerDetails.email) {
             console.log(
               `Error reading ${ index + 1 }th lawyer at the page ${ i + 1 } of the firm ${ this._name }.\nSkipping...`
             );
-            console.log("  Link: " + lawyerDetails.link);
             console.log("  Name: " + lawyerDetails.name);
             console.log("  Email: " + lawyerDetails.email);
-            console.log("  Phone: " + lawyerDetails.phone);
             console.log("  Country: " + lawyerDetails.country);
             continue;
           }
 
-          let { link, name = "", email, phone, country } = lawyerDetails;
+          let { name = "", email, country } = lawyerDetails;
 
           if (email && !name) {
             name = this.getNameFromEmail(email);
           }
 
-          const lawyerToRegister = new Lawyer(link, name, email, phone, this._name, country);
+          const lawyerToRegister = new Lawyer(name, email, this._name, country);
 
           let canRegister = makeValidations(
             lawyerToRegister,

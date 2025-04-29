@@ -29,10 +29,7 @@ class BaeKimAndLee extends ByPage {
     const letter = this._getRandomLetter();
     const otherUrl = `https://www.bkl.co.kr/law/member/allList.do?isMain=&pageIndex=1&searchCondition=&url=all&job=&lang=en&memberNo=&searchYn=Y&logFunction=&searchKeyword=${ letter }#,5,1,1`;
     await super.accessPage(index, otherUrl);
-    try {} catch (e) {}
   }
-
-
 
 
   async getLawyersInPage() {
@@ -45,26 +42,11 @@ class BaeKimAndLee extends ByPage {
     return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
-  
-  async #getLink(lawyer) {
-    const lawyerID = await lawyer
-      .findElement(By.css("a"))
-      .getAttribute("onclick");
-  
-    let match = lawyerID.match(/goView\('(\d+)'\)/);
-    if (match) {
-      let number = match[1]; // Extracted number
-      return `https://www.bkl.co.kr/law/member/memberView.do?lang=en&memberNo=${number}&logFunction=goView`;
-    }
-  }
-  
 
   async getLawyer(lawyer) {
     return {
-      link: await this.#getLink(lawyer),
       name: await lawyer.findElement(By.className("txt1")).getText(),
       email: await lawyer.findElement(By.className("email")).getAttribute("href"),
-      phone: await lawyer.findElement(By.className("txt3")).getText(),
       country: 'Korea (South)'
     };
   }

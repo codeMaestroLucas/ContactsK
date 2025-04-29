@@ -13,57 +13,47 @@ class Foyen extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
-
   async accessPage(index) {
     await super.accessPage(index);
 
     await driver
-      .findElement(By.xpath('//*[@id="top"]/section[2]/div/div[1]/form[2]/span[1]/select/option[4]'))
+      .findElement(
+        By.xpath(
+          '//*[@id="top"]/section[2]/div/div[1]/form[2]/span[1]/select/option[4]'
+        )
+      )
       .click();
   }
 
-
   async getLawyersInPage() {
     return await driver.wait(
-      until.elementsLocated(
-        By.className("mix all grid rg-15 partner")
-      ), 100000
+      until.elementsLocated(By.className("mix all grid rg-15 partner")),
+      100000
     );
   }
 
-
   async #getLink(lawyer) {
-    return await lawyer
-      .findElement(By.css("a"))
-      .getAttribute("href");
+    return await lawyer.findElement(By.css("a")).getAttribute("href");
   }
-
 
   async #getName(lawyer) {
-    return await lawyer
-      .findElement(By.css("h2"))
-      .getText();
+    return await lawyer.findElement(By.css("h2")).getText();
   }
-
 
   async #getSocials(lawyer) {
-    const socials = await lawyer.findElements(By.css("a"))
+    const socials = await lawyer.findElements(By.css("a"));
     return await super.getSocials(socials);
   }
-  
 
   async getLawyer(lawyer) {
-    const { email, phone } = await this.#getSocials(lawyer);
-    
+    const { email } = await this.#getSocials(lawyer);
+
     return {
-      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      phone: phone,
-      country: "Norway"
+      country: "Norway",
     };
   }
 }
 
 module.exports = Foyen;
-

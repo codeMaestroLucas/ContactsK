@@ -29,14 +29,6 @@ class DechertLLP extends ByPage {
   }
 
 
-  async #getLink(lawyer) {
-    return await lawyer
-      .findElement(By.className("mt-2 mb-4 font-serif text-2xl duration-150 transition-opacity hover:opacity-75"))
-      .findElement(By.css("a"))
-      .getAttribute("href");
-  }
-
-
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("mt-2 mb-4 font-serif text-2xl duration-150 transition-opacity hover:opacity-75"))
@@ -45,36 +37,18 @@ class DechertLLP extends ByPage {
   }
 
 
-  async #getEmail(lawyer) {
-    const socials = await lawyer
-      .findElements(By.css("ul > li > a"))
-
-    for (let social of socials) {
-      let href = await social.getAttribute("href");
-      if (href.includes("mailto:")) return href;
-    }
-  }
-
-  
-  async #getPhone(lawyer) {
-    const socials = await lawyer
-      .findElements(By.css("div.mt-2.mb-2.leading-relaxed.text-gray-500.prose-xs > p > a"));
-    
-    for (let social of socials) {
-      let href = await social
-        .getAttribute("href");
-      if (href.includes("tel:+")) return href;
-    }
+  async #getSocials(lawyer) {
+    const socials = await lawyer.findElements(By.css("a"))
+    return await super.getSocials(socials, true);
   }
 
 
   async getLawyer(lawyer) {
-    const phone = await this.#getPhone(lawyer);
+    const { email, phone } = await this.#getSocials(lawyer);
+    
     return {
-      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
-      phone: phone,
+      email: email,
       country: getCountryByDDD(phone),
     };
   }

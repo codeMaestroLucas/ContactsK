@@ -56,7 +56,6 @@ class CliffordChance extends ByFilterP {
     await super.accessPage(index + 1, otherUrl);
     try {} catch (e) {}
     this._realCountry = this._currentCountry;
-
   }
 
 

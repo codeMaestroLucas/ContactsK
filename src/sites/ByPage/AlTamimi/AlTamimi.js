@@ -14,39 +14,36 @@ class AlTamimi extends ByPage {
   }
 
   async accessPage(index) {
-    const otherUrl = `https://www.tamimi.com/find-a-lawyer/?paged=${ index + 1 }&designation_id=Partner`;
+    const otherUrl = `https://www.tamimi.com/find-a-lawyer/?paged=${
+      index + 1
+    }&designation_id=Partner`;
     await super.accessPage(index, otherUrl);
   }
 
   async getLawyersInPage() {
     return await driver.wait(
-      until.elementsLocated(
-        By.className("key-contact-detail")
-      ), 100000
+      until.elementsLocated(By.className("key-contact-detail")),
+      100000
     );
   }
 
   async #getName(lawyer) {
     return await lawyer
-        .findElement(By.className("txt-magenta heading5 key-title"))
-        .getText();
+      .findElement(By.className("txt-magenta heading5 key-title"))
+      .getText();
   }
 
   async #getSocials(lawyer) {
-    const socials = await lawyer.findElements(
-      By.css(".key-contact-info a")
-    );
-    return await super.getSocials(socials);
+    const socials = await lawyer.findElements(By.css(".key-contact-info a"));
+    return await super.getSocials(socials, true);
   }
 
   async getLawyer(lawyer) {
-    const { email, phone } = await this.#getSocials(lawyer)
+    const { email, phone } = await this.#getSocials(lawyer);
 
     return {
-      link: await lawyer.findElement(By.css("a")).getAttribute("href"),
       name: await this.#getName(lawyer),
       email: email,
-      phone: phone,
       country: getCountryByDDD(phone),
     };
   }

@@ -43,16 +43,8 @@ class BNT extends ByPage {
       const items = await element.findElements(By.className("item"));
       partners = partners.concat(items);
     }
-    return partners
-  }
 
-
-  async #getLink(lawyer) {
-    return await lawyer
-      .findElement(By.className("item-block"))
-      .findElement(By.className("cbListFieldCont cbUserListFC_name list-title member-name"))
-      .findElement(By.css("a"))
-      .getAttribute("href");
+    return partners;
   }
 
 
@@ -80,14 +72,11 @@ class BNT extends ByPage {
 
 
   async getLawyer(lawyer) {
-    const phone = await this.#getPhone(lawyer);
 
     return {
-      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      phone: phone,
-      country: getCountryByDDD(phone),
+      country: getCountryByDDD(await this.#getPhone(lawyer)),
     };
   }
 }

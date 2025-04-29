@@ -29,13 +29,6 @@ class GideLoyretteNouel extends ByPage {
   }
 
 
-  async #getLink(lawyer) {
-    return await lawyer
-      .findElement(By.css("div.node-lawyer > a"))
-      .getAttribute("href");
-  }
-
-
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.css("div.node-lawyer > a > h1"))
@@ -65,13 +58,18 @@ class GideLoyretteNouel extends ByPage {
     const { email, phone } = await this.#getSocial(lawyer);
 
     return {
-      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      phone: phone,
       country: getCountryByDDD(phone),
     };
   }
 }
 
 module.exports = GideLoyretteNouel;
+
+async function main() {
+  t = new GideLoyretteNouel();
+  t.searchForLawyers();
+}
+
+main();

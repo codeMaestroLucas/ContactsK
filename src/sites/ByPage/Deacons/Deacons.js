@@ -28,14 +28,6 @@ class Deacons extends ByPage {
   }
 
 
-  async #getLink(lawyer) {
-    return await lawyer
-      .findElement(By.className("name"))
-      .findElement(By.css("a"))
-      .getAttribute("href");
-  }
-
-
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("name"))
@@ -53,13 +45,11 @@ class Deacons extends ByPage {
 
 
   async getLawyer(lawyer) {
-    const { email, phone } = await this.#getSocials(lawyer);
+    const { email } = await this.#getSocials(lawyer);
 
     return {
-      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      phone: phone,
       country: "Hong Kong"
     };
   }

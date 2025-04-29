@@ -8,46 +8,35 @@ class GianniAndOrigoni extends ByPage {
     name = "Gianni And Origoni",
     link = "https://www.gop.it/people.php?lang=eng",
     totalPages = 1,
-    maxLawyersForSite = 1
+    maxLawyersForSite = 100
   ) {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
-
   async accessPage(index) {
     await super.accessPage(index);
 
-    // Select partner option
-    await driver.findElement(By.xpath('//*[@id="apriadvanceded"]/div[3]/select/option[3]')).click();
+    // Click to load all the lawyers - it takes a while to load all the lawyers
     await driver
-      .findElement(By.className('campoform9'))
-      .findElement(By.className('bottone_people'))
+      .findElement(By.className("campoform9"))
+      .findElement(By.className("bottone_people"))
       .click();
   }
 
-
   async getLawyersInPage() {
-    return await driver.wait(
-      until.elementsLocated(
-        By.className("tabella_risu")
-      ), 100000
+    const lawyers = await driver.wait(
+      until.elementsLocated(By.className("tabella_risu")),
+      100000
     );
+    const webRole =[
+      By.className("campotab2"),
+    ]
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
-
-
-  async #getLink(Lawyer) {
-    return await Lawyer
-      .findElement(By.css("a"))
-      .getAttribute("href");
-  }
-
 
   async #getName(lawyer) {
-    return await lawyer
-      .findElement(By.css("a"))
-      .getAttribute("title");
+    return await lawyer.findElement(By.css("a")).getAttribute("title");
   }
-
 
   async #getEmail(lawyer) {
     return await lawyer
@@ -56,20 +45,10 @@ class GianniAndOrigoni extends ByPage {
       .getAttribute("href");
   }
 
-
-  async #getPhone(lawyer) {
-    return await lawyer
-      .findElement(By.className("campotab4"))
-      .getText();
-  }
-
-  
   async getLawyer(lawyer) {
     return {
-      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      phone: await this.#getPhone(lawyer),
       country: "Italy",
     };
   }

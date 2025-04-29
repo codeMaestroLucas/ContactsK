@@ -32,17 +32,8 @@ class DahlLaw extends ByPage {
       ), 100000
     );
 
-    const webRole = [
-      By.className("employeecard__jobtitle")
-    ];
+    const webRole = [ By.className("employeecard__jobtitle") ];
     return await super.filterPartnersInPage(lawyers, webRole, true);
-  }
-
-
-  async #getLink(lawyer) {
-    return await lawyer
-      .findElement(By.className("employeecard__name"))
-      .getAttribute("href");
   }
 
 
@@ -60,15 +51,14 @@ class DahlLaw extends ByPage {
       .findElements(By.className('employeecard__contact-link'))
     return await super.getSocials(socials);
   }
+  
 
   async getLawyer(lawyer) {
-    const { email, phone } = await this.#getSocials(lawyer);
+    const { email } = await this.#getSocials(lawyer);
 
     return {
-      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      phone: phone,
       country: "Denmark",
     };
   }

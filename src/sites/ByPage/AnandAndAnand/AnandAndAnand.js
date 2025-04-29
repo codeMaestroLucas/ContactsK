@@ -7,59 +7,46 @@ class AnandAndAnand extends ByPage {
   constructor(
     name = "Anand And Anand",
     link = "https://www.anandandanand.com/our-team/",
-    totalPages = 1,
+    totalPages = 2,
     maxLawyersForSite = 1
   ) {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
-
   async accessPage(index) {
-    await super.accessPage(index);
+    const otherUrl = `https://www.anandandanand.com/our-team/page/${index + 1}/`;
+    await super.accessPage(index, otherUrl);
   }
-
 
   async getLawyersInPage() {
-    const lawyers = await driver.wait(
-      until.elementsLocated(
-        By.className("member_discription")
-      ), 100000
+    return await driver.wait(
+      until.elementsLocated(By.className("attorney-info card-body card__background col-12")),
+      100000
     );
-    return lawyers.slice(1); // The fisrt doesnt have any contact information
   }
-
 
   async #getName(lawyer) {
     return await lawyer
-      .findElement(By.css("h4"))
+      .findElement(By.className("title"))
+      .findElement(By.className("h5"))
       .getText();
   }
 
-
-  async #getLink(lawyer) {
-    return lawyer.findElement(By.css("a:first-child")).getAttribute("href");
-  }
-
-
   async #getSocials(lawyer) {
     const socials = await lawyer
-      .findElement(By.className("member_profile"))
-      .findElements(By.css("div > a"))
-      return await super.getSocials(socials);
+      .findElement(By.className("contacts"))
+      .findElements(By.css("a"));
+    return await super.getSocials(socials);
   }
-
 
   async getLawyer(lawyer) {
-    const { email, phone } = await this.#getSocials(lawyer);
+    const { email } = await this.#getSocials(lawyer);
     return {
-      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      phone: phone,
-      country: "India"
+      country: "India",
     };
   }
-
 }
 
 module.exports = AnandAndAnand;

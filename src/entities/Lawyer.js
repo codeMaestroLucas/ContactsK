@@ -6,26 +6,20 @@ const { getFormattedPhone } = require("../utils/getNationality");
 class Lawyer {
   /**
    * Constructor of the lawyer
-   * @param {string} link
    * @param {string} name
    * @param {string} email
-   * @param {string} phone
    * @param {string} firm
    * @param {string} country
    */
-  constructor(link, name, email, phone = "", firm, country) {
-    this._link    = link.trim().toLowerCase();
+  constructor(name, email, firm, country) {
     this._name    = this.#treatLawyerName(name);
     this._email   = this.#treatEmail(email);
-    this._phone   = (phone) ? this.#treatPhone(phone) : "";
     this._firm    = firm.trim();
     this._country = country
   }
 
-  get link()    { return this._link; }
   get name()    { return this._name; }
   get email()   { return this._email; }
-  get phone()   { return this._phone; }
   get firm()    { return this._firm; }
   get country() { return this._country; }
 
@@ -74,17 +68,6 @@ class Lawyer {
     return email.toLowerCase().replace("mailto:", "")
                               .replace("mailto", "")
                               .trim();
-  }
-  
-
-  /**
-   * Functino used to treat a lawyer phone removing all the non numeric
-   * characters and leading zeros.
-   * @param {string} phone
-   * @returns {string} phone treated
-   */
-  #treatPhone(phone) {
-    return getFormattedPhone(phone);
   }
 
 }

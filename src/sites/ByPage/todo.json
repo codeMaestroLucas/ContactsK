@@ -4,6 +4,22 @@
     "link": ""
   },
   {
+    "name": "Tuca Zbarcea",
+    "link": "https://www.tuca.ro/attorneys/"
+  },
+  {
+    "name": "Panetta Consulting Group",
+    "link": "https://panetta.it/en/people/"
+  },
+  {
+    "name": "Finreg 360",
+    "link": "https://finreg360.com/quienes-somos/"
+  },
+  {
+    "name": "Malley & Co",
+    "link": "https://www.malley.co.nz/team"
+  },
+  {
     "name": "Reliance Corporate Advisors",
     "link": "https://reliancecs.co/our-people/"
   },
@@ -2015,12 +2031,6 @@
       "Ex.:": "Tomas Demo === tomas.demo@aigroup.com.au"
     },
     {
-      "name": "TMI Associates",
-      "link": "https://www.tmi.gr.jp/people/?q=&job=&base=&field=&sector=",
-      "Notes": "Email formatt (firstName)_(lastName)@tmi.gr.jp",
-      "Ex.:": "Tomas Demo === tomas_demo@tmi.gr.jp"
-    },
-    {
       "name": "audalis Kohler Punge",
       "link": "https://www.alliottglobal.com/directory-search/firms/audalis-kohler-punge-partner",
       "Notes": "Email formatt (firstName).(lastName)@audalis.de",
@@ -2031,6 +2041,12 @@
       "link": "https://www.alliotts.com/people/",
       "Notes": "Email formatt (firstName).(lastName)@alliotts.com",
       "Ex.:": "Tomas Demo === tomas.demo@alliotts.com"
+    },
+    {
+      "name": "Ramsay & Partners",
+      "link": "https://ramsayandpartners.com/team",
+      "Notes": "Email formatt (lastName)@ramsayandpartners.com  ",
+      "Ex.:": "Tomas Demo === demo@ramsayandpartners.com"
     },
     {
       "name": "SORA & ASSOCIATES",
@@ -2067,6 +2083,12 @@
       "link": "https://www.hcrlaw.com/people/",
       "Notes": "Email formatt (firstName).(lastName)@hcrlaw.com",
       "Ex.:": "Tomas Demo === tomas.demo@hcrlaw.com"
+    },
+    {
+      "name": "Kojima Law",
+      "link": "https://www.kojimalaw.jp/en/profile/profile_007/",
+      "Notes": "Check if has more lawyers to register. Email formatt (lastName)@kojimalaw.jp",
+      "Ex.:": "Tomas Demo === demo@kojimalaw.jp"
     },
     {
       "name": "MSB Solicitors",
@@ -2806,7 +2828,7 @@
     {
       "name": "City-Yuwa Partners",
       "link": "https://www.city-yuwa.com/global/en/attorneys/",
-      "Notes": "Email formatt (firstName).(lastName)@city-yuwa.com",
+      "Notes": "Click 3x on load more. Email formatt (firstName).(lastName)@city-yuwa.com",
       "Ex.:": "Tomas Demo === tomas.demo@city-yuwa.com"
     },
     {

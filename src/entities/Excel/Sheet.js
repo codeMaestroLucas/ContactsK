@@ -90,7 +90,7 @@ class Sheet extends Excel {
   
   
   
-  addContact(link, name, email, phone, firm, country) {
+  addContact(name, email, firm, country, practiceArea = '') {
     if (this._lastCountry === country && this._lastFirm === firm) {
       console.log(
         `The firm ${ this._lastFirm } already has a lawyer in the country ${ this._lastCountry } registered in the sheet.`
@@ -107,13 +107,11 @@ class Sheet extends Excel {
     try {
       const workSheet = this.workbook.Sheets[this.workbook.SheetNames[0]];
 
-      workSheet[ `A${ i }` ] = { v: link };
       workSheet[ `B${ i }` ] = { v: name };
-      workSheet[ `C${ i }` ] = { v: email };
-      workSheet[ `D${ i }` ] = { v: phone };
-      workSheet[ `E${ i }` ] = { v: firm };
-      // workSheet[ `F${ i }` ] = { v: practiceArea };
-      workSheet[ `G${ i }` ] = { v: country };
+      workSheet[ `C${ i }` ] = { v: firm };
+      workSheet[ `D${ i }` ] = { v: country };
+      workSheet[ `F${ i }` ] = { v: practiceArea };
+      workSheet[ `G${ i }` ] = { v: email };
 
       this.saveSheet();
       console.log("Contact added successfully.");

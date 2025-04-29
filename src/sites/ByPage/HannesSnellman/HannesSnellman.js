@@ -7,6 +7,7 @@ class HannesSnellman extends ByPage {
   constructor(
     name = "Hannes Snellman",
     link = "https://www.hannessnellman.com/people/?roles=Partners",
+    // link = "https://www.hannessnellman.com/people/?pagenum=1&role=19",
     totalPages = 1,
     maxLawyersForSite = 1
   ) {

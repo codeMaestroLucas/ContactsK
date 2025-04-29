@@ -26,14 +26,6 @@ class CampbellsLegal extends ByPage {
   }
 
 
-  async #getLink(lawyer) {
-    return await lawyer
-      .findElement(By.className("wp-post-image-wrap"))
-      .findElement(By.className("view_person"))
-      .getAttribute("href");
-  }
-
-
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("title"))
@@ -46,7 +38,7 @@ class CampbellsLegal extends ByPage {
     const socials = await lawyer
       .findElement(By.className('meta'))
       .findElements(By.css('a'));
-    return await super.getSocials(socials);
+    return await super.getSocials(socials, true);
   }
 
 
@@ -54,10 +46,8 @@ class CampbellsLegal extends ByPage {
     const { email, phone } = await this.#getSocials(lawyer);
 
     return {
-      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      phone: phone,
       country: getCountryByDDD(phone),
     };
   }
