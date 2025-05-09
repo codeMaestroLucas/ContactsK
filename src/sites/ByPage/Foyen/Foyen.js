@@ -32,18 +32,17 @@ class Foyen extends ByPage {
     );
   }
 
-  async #getLink(lawyer) {
-    return await lawyer.findElement(By.css("a")).getAttribute("href");
-  }
 
   async #getName(lawyer) {
     return await lawyer.findElement(By.css("h2")).getText();
   }
 
+
   async #getSocials(lawyer) {
     const socials = await lawyer.findElements(By.css("a"));
     return await super.getSocials(socials);
   }
+
 
   async getLawyer(lawyer) {
     const { email } = await this.#getSocials(lawyer);

@@ -4,6 +4,10 @@
     "link": ""
   },
   {
+    "name": "Melling, Voitishkin & Partners",
+    "link": "https://mv.legal/en/team/"
+  },
+  { 
     "name": "Tuca Zbarcea",
     "link": "https://www.tuca.ro/attorneys/"
   },
@@ -2260,7 +2264,7 @@
       "Ex.:": "Tomas Demo === tomas@ashitivaadvocates.com"
     },
     {
-      "name": "Badri and Salim El Meouchi Law Firm",
+      "name": "Badri and Salim El Meouchi Law",
       "link": "https://www.savoric.com/en/lawyers/",
       "Note": "Email format (firstName).(LastName)@elmeouchi.com",
       "Ex.:": "Tomas Demo === tomas.demo@elmeouchi.com"

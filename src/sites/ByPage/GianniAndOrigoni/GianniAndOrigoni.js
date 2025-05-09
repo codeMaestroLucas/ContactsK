@@ -8,7 +8,7 @@ class GianniAndOrigoni extends ByPage {
     name = "Gianni And Origoni",
     link = "https://www.gop.it/people.php?lang=eng",
     totalPages = 1,
-    maxLawyersForSite = 100
+    maxLawyersForSite = 1
   ) {
     super(name, link, totalPages, maxLawyersForSite);
   }

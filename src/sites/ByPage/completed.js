@@ -1,7 +1,8 @@
 const ByPage = {
   XforIteraction: [ // 28
     "Conyers", "SpencerWest", "Walkers", "ApplebyGlobal", "WhiteAndCase",
-    "GideLoyretteNouel", "CollasCrill", "WolfTheiss", "AlTamimi", "PaulHastings",
+    // "GideLoyretteNouel", -- Need to be fixed
+    "CollasCrill", "WolfTheiss", "AlTamimi", "PaulHastings",
     "LathamAndWatkins", "Harneys", "CareyOlsen", "BNT",  "Kinstellar",
     "Schoenherr", "HFW", "TaylorWessing", "WatsonFarleyAndWilliams", "BonelliErede",
     "WinstonAndStrawn", "Ashurst", "ArnoldAndPorter", "DechertLLP", "JonesDay",
@@ -15,7 +16,9 @@ const ByPage = {
     "ByrneWallace", "SprusonAndFerguson", "AronTadmorLevy", "Pedersoli", "HavelPartners",
     "DahlLaw", "HillDickinson", "HowseWilliams", "DillonEustace", "CFNLaw",
     "HannesSnellman", "Krogerus", "KromannReumert", "DittmarAndIndrenius", "Deacons",
-    "ConsortiumLegal", "CareyOlsen", "GuantaoLawFirm", "ClemensLaw", "MagnussonLaw",
+    "ConsortiumLegal", "CareyOlsen",
+    // "GuantaoLaw", -- Transform into ByNewPage
+    "ClemensLaw", "MagnussonLaw",
     "NjordLaw", "AnandAndAnand", "GianniAndOrigoni", "HankunLaw", "VeritasLegal",
     "SEUMLaw", "ShinAndKim", "BaeKimAndLee", "Foyen",
     // "",
