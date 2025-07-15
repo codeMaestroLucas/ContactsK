@@ -30,6 +30,13 @@ class HankunLaw extends ByPage {
   }
 
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .getAttribute("href");
+  }
+
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("info"))
@@ -37,7 +44,6 @@ class HankunLaw extends ByPage {
       .getText();
   }
 
-  
   async #getSocials(lawyer) {
     const socials = await lawyer
       .findElement(By.className("info"))
@@ -62,8 +68,10 @@ class HankunLaw extends ByPage {
     const { email, phone } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
+      phone: phone,
       country: getCountryByDDD(phone),
     };
   }

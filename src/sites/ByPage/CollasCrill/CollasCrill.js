@@ -28,6 +28,11 @@ class CollasCrill extends ByPage {
   }
 
 
+  async #getLink(lawyer) {
+    return await lawyer.findElement(By.css("a")).getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.css("a"))
@@ -40,15 +45,17 @@ class CollasCrill extends ByPage {
     const socials = await lawyer
       .findElement(By.className("icons"))
       .findElements(By.css("a"));
-    return await super.getSocials(socials, true);
+    return await super.getSocials(socials);
   }
 
   async getLawyer(lawyer) {
     const { email, phone } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
+      phone: phone,
       country: getCountryByDDD(phone),
     };
   }

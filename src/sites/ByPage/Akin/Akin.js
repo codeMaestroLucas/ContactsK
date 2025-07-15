@@ -15,12 +15,10 @@ class Akin extends ByPage {
     super(name, link, totalPages);
   }
 
-
   async accessPage(index) {
     const otherUrl = `https://www.akingump.com/en/lawyers-advisors?f=${ 12 * index }&po=1013125`;
     await super.accessPage(index, otherUrl);
   }
-
 
   async getLawyersInPage() {
     return await driver.wait(
@@ -30,6 +28,12 @@ class Akin extends ByPage {
     );
   }
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("d-flex styles__container--_db9c0b2"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
 
   async #getName(lawyer) {
    return await lawyer
@@ -46,13 +50,14 @@ class Akin extends ByPage {
     return await super.getSocials(socials);
   }
 
-
   async getLawyer(lawyer) {
     const { email, phone } = await this.#getSocial(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
+      phone: phone.replace("tel:%2B", ""),
       country: getCountryByDDD(phone),
     };
   }

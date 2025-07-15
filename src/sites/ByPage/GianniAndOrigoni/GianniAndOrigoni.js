@@ -13,30 +13,41 @@ class GianniAndOrigoni extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
 
-    // Click to load all the lawyers - it takes a while to load all the lawyers
+    // Select partner option
+    await driver.findElement(By.xpath('//*[@id="apriadvanceded"]/div[3]/select/option[3]')).click();
     await driver
-      .findElement(By.className("campoform9"))
-      .findElement(By.className("bottone_people"))
+      .findElement(By.className('campoform9'))
+      .findElement(By.className('bottone_people'))
       .click();
   }
 
+
   async getLawyersInPage() {
-    const lawyers = await driver.wait(
-      until.elementsLocated(By.className("tabella_risu")),
-      100000
+    return await driver.wait(
+      until.elementsLocated(
+        By.className("tabella_risu")
+      ), 100000
     );
-    const webRole =[
-      By.className("campotab2"),
-    ]
-    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
-  async #getName(lawyer) {
-    return await lawyer.findElement(By.css("a")).getAttribute("title");
+
+  async #getLink(Lawyer) {
+    return await Lawyer
+      .findElement(By.css("a"))
+      .getAttribute("href");
   }
+
+
+  async #getName(lawyer) {
+    return await lawyer
+      .findElement(By.css("a"))
+      .getAttribute("title");
+  }
+
 
   async #getEmail(lawyer) {
     return await lawyer
@@ -45,10 +56,20 @@ class GianniAndOrigoni extends ByPage {
       .getAttribute("href");
   }
 
+
+  async #getPhone(lawyer) {
+    return await lawyer
+      .findElement(By.className("campotab4"))
+      .getText();
+  }
+
+  
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
+      phone: await this.#getPhone(lawyer),
       country: "Italy",
     };
   }

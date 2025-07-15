@@ -88,12 +88,12 @@ phone would be impossible to catch in this way.
 
 2. Fix the data to be collected
 
-24/04/25
+17/04/25
 -------------------------
-- ByClick:        4
-- ByFilter:       62
-- ByPage:         892
-- ByNewPage:      1337
-- Uncategorized:  17
+- ByClick:        3
+- ByFilter:       63
+- ByPage:         884
+- ByNewPage:      1332
+- Uncategorized:  16
 -------------------------
-                  2312
+                  2298

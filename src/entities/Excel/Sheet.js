@@ -1,3 +1,4 @@
+const Lawyer = require("../Lawyer");
 const Excel = require("./Excel");
 
 const xlsx = require("xlsx");
@@ -89,8 +90,15 @@ class Sheet extends Excel {
   }
   
   
-  
-  addContact(name, email, firm, country, practiceArea = '') {
+  /**
+   * 
+   * @param {Lawyer} lawyer to be registered
+   */
+  addContact(lawyer) {
+    const firm = lawyer.firm;
+    const country = lawyer.country;
+
+
     if (this._lastCountry === country && this._lastFirm === firm) {
       console.log(
         `The firm ${ this._lastFirm } already has a lawyer in the country ${ this._lastCountry } registered in the sheet.`
@@ -107,11 +115,15 @@ class Sheet extends Excel {
     try {
       const workSheet = this.workbook.Sheets[this.workbook.SheetNames[0]];
 
-      workSheet[ `B${ i }` ] = { v: name };
-      workSheet[ `C${ i }` ] = { v: firm };
-      workSheet[ `D${ i }` ] = { v: country };
-      workSheet[ `F${ i }` ] = { v: practiceArea };
-      workSheet[ `G${ i }` ] = { v: email };
+      // workSheet[ `A${ i }` ] = { v: lawyer.link };         //* Now is FirstName
+      workSheet[ `B${ i }` ] = { v: lawyer.name };            // Name
+      workSheet[ `C${ i }` ] = { v: lawyer.role };            // Role
+      workSheet[ `D${ i }` ] = { v: firm };                   // Firm
+      workSheet[ `E${ i }` ] = { v: country };                // Country
+      // workSheet[ `F${ i }` ] = { v: nationality };         // Nationality
+      // workSheet[ `G${ i }` ] = { v: practiceArea };        // Practice Area
+      workSheet[ `H${ i }` ] = { v: lawyer.email };           // Email
+      workSheet[ `I${ i }` ] = { v: lawyer.phone };           // Phone
 
       this.saveSheet();
       console.log("Contact added successfully.");

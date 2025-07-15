@@ -13,6 +13,7 @@ if (require.main === module) {
     main().catch((error) => {
         console.error('Error in main:', error);
     });
+    
 }
 
 

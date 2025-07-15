@@ -1,27 +1,35 @@
-const { getFormattedPhone } = require("../utils/getNationality");
-
 /**
  * Class used to represent a Lawyer
  */
 class Lawyer {
   /**
    * Constructor of the lawyer
+   * @param {string} link
    * @param {string} name
    * @param {string} email
+   * @param {string} phone
    * @param {string} firm
    * @param {string} country
+   * @param {string} role
+   * 
    */
-  constructor(name, email, firm, country) {
+  constructor(link, name, email, phone = "", firm, country, role = "") {
+    this._link    = link.trim().toLowerCase();
     this._name    = this.#treatLawyerName(name);
     this._email   = this.#treatEmail(email);
+    this._phone   = (phone) ? this.#treatPhone(phone) : "";
     this._firm    = firm.trim();
     this._country = country
+    this._role    = role.trim();
   }
 
+  get link()    { return this._link; }
   get name()    { return this._name; }
   get email()   { return this._email; }
+  get phone()   { return this._phone; }
   get firm()    { return this._firm; }
   get country() { return this._country; }
+  get role()    { return this._role; }
 
 
   /**
@@ -68,6 +76,25 @@ class Lawyer {
     return email.toLowerCase().replace("mailto:", "")
                               .replace("mailto", "")
                               .trim();
+  }
+  
+  
+  /**
+   * Function used to treat a lawyer phone removing all the non numeric
+   * characters and leading zeros.
+   * @param {string} phone
+   * @returns {string} phone treated
+   */
+  #treatPhone(phone) {
+    if (typeof phone !== 'string') return '';
+
+    // Remove all non-digit characters
+    let cleaned = phone.replace(/\D/g, '');
+
+    // Remove leading zeros
+    cleaned = cleaned.replace(/^0+/, '');
+
+    return cleaned;
   }
 
 }

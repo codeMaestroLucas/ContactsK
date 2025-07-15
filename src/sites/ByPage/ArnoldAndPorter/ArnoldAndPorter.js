@@ -28,6 +28,14 @@ class ArnoldAndPorter extends ByPage {
   }
 
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("person-item-info col col2-5"))
+      .findElement(By.className("person-item-name search-result-item"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("person-item-info col col2-5"))
@@ -50,10 +58,9 @@ class ArnoldAndPorter extends ByPage {
       if (href.includes("mailto:")) email = href;
       
       else if (href.includes("tel:")) {
-        if (href.startsWith("tel:++1")) { // Skip US ddd
-          continue;
+        if (!href.startsWith("tel:++1")) { // Skip US ddd
+          phone = href;
         }
-        phone = href;
       }
   
       if (email && phone) break;
@@ -67,8 +74,10 @@ class ArnoldAndPorter extends ByPage {
     const { email, phone } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
+      phone: phone,
       country: getCountryByDDD(phone),
     };
   }

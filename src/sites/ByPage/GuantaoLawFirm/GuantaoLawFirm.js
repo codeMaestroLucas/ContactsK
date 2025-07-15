@@ -2,39 +2,65 @@ const ByPage = require("../../../entities/BaseSites/ByPage");
 let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
+const { RemoteReferenceType } = require("selenium-webdriver/bidi/protocolValue");
 
-// TODO: Transform into ByNewPage
-class GuantaoLaw extends ByPage {
+class GuantaoLawFirm extends ByPage {
   constructor(
-    name = "Guantao Law",
-    link = "https://www.guantao.com/en/column41",
-    totalPages = 29,
+    name = "Guantao Law Firm",
+    link = "http://en.guantao.com/pro.aspx?FId=n3:82:3",
+    totalPages = 15,
     maxLawyersForSite = 1
   ) {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
-
   async accessPage(index) {
-    const otherUrl = `https://www.guantao.com/en/column41?page26=${ index + 1 }&go=goto26`;
+    const otherUrl = `http://en.guantao.com/pro.aspx?FId=n3:82:3&TypeId=82&pageindex=${ index + 1 }`;
     await super.accessPage(index, otherUrl);
   }
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
-      until.elementsLocated(By.className("gt_jg_hhr_itemr"))
+      until.elementsLocated(By.className("xn_c_products_230_proli"))
     );
-    const webRole = [
-      By.className("gt_jg_hhr_itemr_ltitle"),
-    ];
-    const p = await super.filterPartnersInPage(lawyers, webRole, true);
-    return p;
+
+    let partners = [];
+    for (let lawyer of lawyers) {
+      const pTag = await lawyer
+        .findElement(By.className("EIMS_C_40100_Accessories"))
+        .findElements(By.css("p"));
+
+      for (let p of pTag) {
+        try {
+          const role = (await p
+            .findElement(By.css("span"))
+            .getText()
+          ).toLowerCase();
+
+          if (role.includes("partner")) {
+            partners.push(lawyer);
+            break;
+          }
+        } catch (error) {} // Tag doesn't have the <span> in it
+      }
+    }
+
+    return partners;
+  }
+
+  
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("EIMS_C_40100_proimg"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
   }
 
 
   async #getName(lawyer) {
     return await lawyer
-      .findElement(By.className("gt_jg_hhr_itemr_title"))
+      .findElement(By.className("EIMS_C_40100_proname"))
+      .findElement(By.css("a"))
       .getText();
   }
 
@@ -72,18 +98,13 @@ class GuantaoLaw extends ByPage {
     const { email, country } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
+      phone: '861066578066',
       country: country,
     };
   }
 }
 
-module.exports = GuantaoLaw;
-
-async function main() {
-  t = new GuantaoLawFirm();
-  t.searchForLawyers();
-}
-
-main();
+module.exports = GuantaoLawFirm;

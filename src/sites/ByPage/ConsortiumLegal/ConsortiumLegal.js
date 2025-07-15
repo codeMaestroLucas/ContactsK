@@ -28,6 +28,11 @@ class ConsortiumLegal extends ByPage {
   }
 
 
+  async #getLink(lawyer) {
+    return await lawyer.findElement(By.css("a")).getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.css("a"))
@@ -52,12 +57,27 @@ class ConsortiumLegal extends ByPage {
   }
 
 
+  async #getPhone(country) {
+    const phones = {
+        Guatemala:     "+50223243939504",
+        Nicaragua:     "+50522545454114",
+        Honduras:      "+50422211002102",
+        "El-Salvador": "+50322091600"
+    };
+
+    return phones[country] || "Country not found";
+}
+
+
   async getLawyer(lawyer) {
+    const country = await this.#getCountry(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: await this.#getCountry(lawyer)
+      phone: await this.#getPhone(country),
+      country: country
     };
   }
 }

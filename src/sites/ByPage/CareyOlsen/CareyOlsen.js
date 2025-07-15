@@ -13,47 +13,74 @@ class CareyOlsen extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
     try {
       const addBtn = await driver.wait(
-        until.elementLocated(By.id("ccc-recommended-settings")),
-        1500
+        until.elementLocated(By.id("ccc-recommended-settings")
+      ), 1500
       );
       await addBtn.click();
       await super.rollDown(1, 0.5);
     } catch (e) {}
   }
-  
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
-      until.elementsLocated(By.className("generic-content")),
-      100000
+      until.elementsLocated(
+        By.className("generic-content")
+      ), 100000
     );
 
-    const webRole = [By.className("position-location")];
+    const webRole = [
+      By.className("position-location")
+    ];
     return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
 
-  async #getName(lawyer) {
-    return await lawyer.findElement(By.css("h3 > a")).getText();
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("image"))
+      .getAttribute("href");
   }
 
 
-  async #getSocials(lawyer) {
-    const socials = await lawyer.findElements(By.css("a"));
-    return await super.getSocials(socials, true);
+  async #getName(lawyer) {
+    return await lawyer
+      .findElement(By.css("h3 > a"))
+      .getText();
+  }
+
+
+  async #getEmail(lawyer) {
+    const email = await lawyer
+      .findElement(By.className("button outline"))
+      .getAttribute("href");
+    
+    const match = email.match(/mailto:([^?]+)/);
+    if (match && match[1]) {
+      return match[1].trim();
+    }
+  }
+
+
+  async #getPhone(lawyer) {
+    return await lawyer
+      .findElement(By.css(".phone.direct-line a"))
+      .getAttribute("href");
   }
 
 
   async getLawyer(lawyer) {
-    const { email, phone } = await this.#getSocials(lawyer);
-
+    const phone = await this.#getPhone(lawyer);
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: email.replace("?subject=website%20enquiry:", ""),
+      email: await this.#getEmail(lawyer),
+      phone: phone,
       country: getCountryByDDD(phone),
     };
   }

@@ -3,10 +3,10 @@ let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
 
-class Deacons extends ByPage {
+class FoxAndMandal extends ByPage {
   constructor(
-    name = "Deacons",
-    link = "https://www.deacons.com/people/",
+    name = "Fox And Mandal",
+    link = "https://foxandmandal.co.in/our-team/?title=&designation=partner",
     totalPages = 1,
     maxLawyersForSite = 1
   ) {
@@ -22,7 +22,7 @@ class Deacons extends ByPage {
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(
-        By.className("details")
+        By.className("team-CardinfoQ")
       ), 100000
     );
   }
@@ -30,39 +30,33 @@ class Deacons extends ByPage {
 
   async #getLink(lawyer) {
     return await lawyer
-      .findElement(By.className("name"))
-      .findElement(By.css("a"))
+      .findElement(By.className("pbmit-btn pbmit-btn-inline pbmit-btn-sm"))
       .getAttribute("href");
   }
 
 
   async #getName(lawyer) {
     return await lawyer
-      .findElement(By.className("name"))
-      .findElement(By.css("a"))
+      .findElement(By.className("qDetails"))
+      .findElement(By.css("h5"))
       .getText();
   }
-  
 
-  async #getSocials(lawyer) {
-    const socials = await lawyer
-      .findElement(By.className('contact'))
-      .findElements(By.css('a'));
-    return await super.getSocials(socials);
+  async #getEmail(lawyer) {
+    return await lawyer
+      .findElement(By.css("a"))
+      .getAttribute("href");
   }
 
 
   async getLawyer(lawyer) {
-    const { email, phone } = await this.#getSocials(lawyer);
-
     return {
       link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: email,
-      phone: phone,
-      country: "Hong Kong"
+      email: await this.#getEmail(lawyer),
+      country: "India",
     };
   }
 }
 
-module.exports = Deacons;
+module.exports = FoxAndMandal;

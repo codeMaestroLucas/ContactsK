@@ -16,39 +16,27 @@ class Site extends BaseSite {
    */
   async getLawyersInPage() {}
 
+
   /**
-   * Retrieves email and phone information from social link elements.
-   * @param {WebElement[]} socialLinks - Array of web elements containing social links
-   * @param {boolean} [getPhone=false] - Flag to determine if phone should be collected
-   * @returns {Object} An object containing email and phone (if found and requested)
+   * Function used to get the email and phone.
+   * @param {WebElement[]} socials elements to be searched
+   * @returns {string} email and phone
    */
-  async getSocials(socialLinks, getPhone = false) {
-    let email = null;
-    let phone = null;
-
-
-    for (const link of socialLinks) {
-      try {
-        const href = await link.getAttribute('href');
-        if (!href) continue;
-
-        const normalizedHref = href.toLowerCase().trim();
-
-        if (normalizedHref.includes('mailto') && !email) {
-          email = normalizedHref;
-          if (!getPhone && email) break; // Exit early if we only need email
-          
-        } else if (getPhone && normalizedHref.includes('tel') && !phone) {
-          phone = normalizedHref;
-        }
-
-        // Exit early if we've found everything we need
-        if (email && (!getPhone || phone)) break;
-      } catch (error) {
-        console.error('Error processing social link:', error);
-      }
+  async getSocials(socials) {
+    let email;
+    let phone;
+  
+    for (let social of socials) {
+      const href = (await social
+        .getAttribute('href')
+      ).toLowerCase().trim();
+  
+      if (href.includes('mailto')) email = href;
+      else if (href.includes('tel')) phone = href;
+  
+      if (email && phone) break;
     }
-
+  
     return { email, phone };
   }
 
@@ -81,9 +69,7 @@ class Site extends BaseSite {
   registerLawyer(lawyer, emailsOfMonthPath) {
     const planilha = new Sheet();
 
-    const { name, email, firm, country } = lawyer;
-
-    planilha.addContact(name, email, firm, country);
+    planilha.addContact(lawyer);
 
     registerEmailOfMonth(email, emailsOfMonthPath);
     if (country !== "Not Found") {

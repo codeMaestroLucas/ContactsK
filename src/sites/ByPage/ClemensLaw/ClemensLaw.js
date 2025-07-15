@@ -33,6 +33,14 @@ class ClemensLaw extends ByPage {
   }
 
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("employee__name"))
+      .getAttribute("href");
+  }
+
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("employee__name"))
@@ -40,17 +48,27 @@ class ClemensLaw extends ByPage {
   }
 
 
-  async #getEmail(lawyer) {
-    return await lawyer
+  async #getSocials(lawyer) {
+    const email = await lawyer
       .findElement(By.className('employee__email'))
       .getAttribute("href");
+
+    const phone = await lawyer
+      .findElement(By.className('employee__phone'))
+      .getAttribute("href");
+  
+    return { email, phone };
   }
 
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
+      email: email,
+      phone: phone,
       country: "Poland",
     };
   }

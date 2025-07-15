@@ -31,33 +31,50 @@ class DillonEustace extends ByPage {
 
     return await driver.wait(
       until.elementsLocated(
-        By.className("styles_content___cPpV")
+        By.className("styles_content__o1D_g")
       ), 100000
     );
   }
 
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("styles_name___cJ34"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
-      .findElement(By.css("h2"))
+      .findElement(By.className("styles_name___cJ34"))
+      .findElement(By.css("a"))
       .getText();
   }
 
 
-  async #getSocials(lawyer) {
-    const socials = await lawyer
-      .findElement(By.className("styles_links__6LPJw"))
-      .findElements(By.css("a"));
-    return await super.getSocials(socials, true);
+  async #getEmail(lawyer) {
+    return await lawyer
+      .findElement(By.className("styles_email__wf6TI"))
+      .getAttribute("href");
   }
 
 
+  async #getPhone(lawyer) {
+    return await lawyer
+      .findElement(By.className("styles_phoneNumber__Dt9t5"))
+      .getText();
+  }
+
+  
   async getLawyer(lawyer) {
-    const { email, phone } = await this.#getSocials(lawyer);
+    const phone = await this.#getPhone(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: email,
+      email: await this.#getEmail(lawyer),
+      phone: phone,
       country: getCountryByDDD(phone),
     };
   }

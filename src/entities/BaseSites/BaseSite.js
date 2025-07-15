@@ -24,14 +24,8 @@ class BaseSite {
   }
 
 
-  get name() {
-    return this._name;
-  }
-
-
-  get lawyersRegistered() {
-    return this._lawyersRegistered;
-  }
+  get name()              { return this._name; }
+  get lawyersRegistered() { return this._lawyersRegistered; }
 
 
   /**

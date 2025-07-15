@@ -89,46 +89,4 @@ function isMatchingDDD(ddd, possibleDDD) {
 }
 
 
-/**
- * Function used to formatt an phone number based on the DDD code.
- * @param {str} phone - The DDD code of the country.
- * @returns {str} formatted phone number.
- */
-function getFormattedPhone(phone) {
-  let formattedPhoneNumber = phone.replace(/\D/g, "").replace(/^0+/, "");
-  
-  const filePath = path.join(__dirname, "..", "baseFiles", "json", "countries.json");
-
-  try {
-    const data = fs.readFileSync(filePath, "utf8");
-    const countries = JSON.parse(data);
-
-    for (let country of countries) {
-      if (Array.isArray(country.DDD)) {
-        // Iterate through each possible DDD in the array
-        for (let possibleDDD of country.DDD) {
-          if (isMatchingDDD(phone, possibleDDD)) {
-            formattedPhoneNumber = "+" + possibleDDD + phone.replace(possibleDDD, " ");
-            break;
-          }
-        }
-
-      } else {
-        // Handle single DDD value for backward compatibility
-        if (isMatchingDDD(phone, country.DDD)) {
-          formattedPhoneNumber = "+" + country.DDD + phone.replace(country.DDD, " ");
-          break;
-        }
-      }
-    }
-
-    return formattedPhoneNumber;
-
-  } catch (err) {
-    console.error("Error reading country data:", err);
-    return formattedPhoneNumber;
-  }
-}
-
-
-module.exports = { getNationality, getCountryByDDD, getFormattedPhone };
+module.exports = { getNationality, getCountryByDDD };

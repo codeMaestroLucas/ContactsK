@@ -6,7 +6,7 @@ const { until, By } = require("selenium-webdriver");
 class ALMTLegal extends ByPage {
   constructor(
     name = "ALMT Legal",
-    link = "https://almtlegal.com/mumbai-partner/",
+    link = "https://almtlegal.com/mumbai-partner.php",
     totalPages = 2,
     maxLawyersForSite = 1
   ) {
@@ -14,38 +14,53 @@ class ALMTLegal extends ByPage {
   }
 
   async accessPage(index) {
-    const otherUrl = 'https://almtlegal.com/bangalore-partner/';
+    const otherUrl = `https://almtlegal.com/bangalore-partner.php`;
     await super.accessPage(index, otherUrl);
   }
 
   async getLawyersInPage() {
-    return await driver
-      .findElement(By.xpath(`//*[@id="content"]/div/div/div[2]/div/div[2]/div/div/div`))
-      .findElements(By.className("e-con-inner"));
+    return await driver.wait(
+      until.elementsLocated(
+        By.className("profile_box")
+      ), 100000
+    );
   }
 
+  async #getLink(lawyer) {
+    return lawyer.findElement(By.css("a")).getAttribute("href");
+  }
+
+  async #getName(lawyer) {
+    return await lawyer
+        .findElement(By.css("h1"))
+        .getText();
+  }
 
   async #getSocials(lawyer) {
-    const socials = await lawyer.findElements(By.css('a'));
+    const socials = (await lawyer
+      .findElement(By.css('h3'))
+      .getAttribute("outerHTML"))
+      .split("<br>");
 
-    for (const social of socials) {
-      const href = await social.getAttribute('href');
-      if (href && href.toLowerCase().includes('mailto:')) {
-        return href;
-      }
-    }
+    let phone = socials[0].replace("<h3>", "").replace(/\/.*/, '').trim();
+    let email = await super.getContentFromTag(socials[1]);
+    
+    return { email, phone };
   }
-  
+
 
   async getLawyer(lawyer) {
-    const email = await this.#getSocials(lawyer);
+    const { email, phone } = await this.#getSocials(lawyer);
 
     return {
-      name: '', // Name is not available on the page
+      link: await this.#getLink(lawyer),
+      name: await this.#getName(lawyer),
       email: email,
+      phone: phone,
       country: "India",
     };
   }
+
 }
 
 module.exports = ALMTLegal;
