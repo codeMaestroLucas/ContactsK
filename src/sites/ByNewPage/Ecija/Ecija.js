@@ -1,5 +1,4 @@
 const { getCountryByDDD } = require("../../../utils/getNationality");
-
 const ByNewPage = require("../../../entities/BaseSites/ByNewPage");
 let { driver } = require("../../../config/driverConfig");
 
@@ -65,7 +64,7 @@ class Ecija extends ByNewPage {
 
   async #getSocials() {
     let email = null;
-    let ddd = null;
+    let phone = null;
 
     try {
         const html = await driver
@@ -82,14 +81,14 @@ class Ecija extends ByNewPage {
                 const match = regex.exec(value);
                 if (match) email = match[1]; // Extract the email
                 
-            } else if (!ddd) {
+            } else if (!phone) {
                 const phoneNumber = value.replace(/\D/g, '');
                 if (phoneNumber.length > 8) {
-                    ddd = phoneNumber;
+                    phone = phoneNumber;
                 }
             }
 
-            if (email && ddd) break;
+            if (email && phone) break;
         }
         // Fallback for cases where email is inside <a> tags
         if (!email) {
@@ -103,24 +102,26 @@ class Ecija extends ByNewPage {
                 console.error("Error in fallback email extraction:", error);
             }
         }
-        return { email, ddd };
+        return { email, phone };
 
     } catch (error) {
         console.error("Error in #getSocials:", error);
-        return { email, ddd };
+        return { email, phone };
     }
 }
 
 
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials();
+    const { email, phone } = await this.#getSocials();
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
-
 }
 
 module.exports = Ecija;

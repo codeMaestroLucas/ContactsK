@@ -65,13 +65,25 @@ class HuiyeLaw extends ByNewPage {
       return emailMatch ? emailMatch[0] : null;
   }
 
+
+  async #getPhone(lawyer) {
+    const html = (await lawyer
+      .findElement(By.css("p"))
+      .getAttribute("outerHTML")
+    ).split("<br>");
+
+    return html[1].trim();
+  }
+
   
   async getLawyer(lawyer) {
-    const details = await driver
-      .findElement(By.className("crew-info"));
+    const details = await driver.findElement(By.className("crew-info"));
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: await this.#getEmail(details),
+      phone: await this.#getPhone(details),
       country: "China",
     };
   }

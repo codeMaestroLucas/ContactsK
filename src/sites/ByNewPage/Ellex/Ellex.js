@@ -28,17 +28,11 @@ class Ellex extends ByNewPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("person-item__content"))
-        .findElement(By.className("person-item__info"))
-        .getText()
-      ).toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return partners;
+    const webRole = [
+      By.className("person-item__content"),
+      By.className("person-item__info")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
   
@@ -71,7 +65,7 @@ class Ellex extends ByNewPage {
   }
 
 
-  async #getDDD() {
+  async #getPhone() {
     return await driver
       .findElement(By.className("expert-hero__contact-info"))
       .findElement(By.css("a"))
@@ -80,10 +74,14 @@ class Ellex extends ByNewPage {
 
   
   async getLawyer(lawyer) {
+    const phone = await this.#getPhone();
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
-      country: getCountryByDDD(await this.#getDDD()),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

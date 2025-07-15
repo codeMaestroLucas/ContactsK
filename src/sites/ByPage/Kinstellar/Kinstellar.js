@@ -13,6 +13,7 @@ class Kinstellar extends ByPage {
     super(name, link, totalPages);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
     await this.rollDown(6, 3);
@@ -28,12 +29,23 @@ class Kinstellar extends ByPage {
     } catch (e) {}
   }
 
+
   async getLawyersInPage() {
-    const lawyers = await driver.wait(
+    return await driver.wait(
       until.elementsLocated(By.className("row table_row"))
     );
-    return lawyers;
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className(
+        "col-md-8 col-sm-8 col-xs-12 table_1stcol table_fiter_nameposition"
+      ))
+      .findElement(By.css("div > div > a"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     return await lawyer
@@ -44,6 +56,7 @@ class Kinstellar extends ByPage {
       .getText();
   }
 
+
   async #getSocials(lawyer) {
     const socials = await lawyer
       .findElement(By.css("div:nth-child(2)")) // It has a class, but not all the divs have it
@@ -51,25 +64,30 @@ class Kinstellar extends ByPage {
       .findElements(By.css("a"));
 
     let email;
-    let ddd;
+    let phone;
 
     for (let social of socials) {
       const href = await social.getAttribute("href");
 
-      if (href.includes("tel:")) ddd = href;
-      else if (href.includes("@kinstellar.com"))email = href;
+      if (href.includes("tel:")) phone = href.replace(/%20/g, "");
+      else if (href.includes("@kinstellar.com")) email = href;
 
+      if (email && phone) break;
     }
-    return { email, ddd };
+    
+    return { email, phone };
   }
 
+
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials(lawyer);
+    const { email, phone } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

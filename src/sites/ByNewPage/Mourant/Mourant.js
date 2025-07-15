@@ -52,33 +52,21 @@ class Mourant extends ByNewPage {
 
   async #getSocials() {
     const socials = await driver
-      .findElement(By.className('col-md-offset-2'))
-      .findElements(By.css('li > a'))
-  
-    let email;
-    let ddd;
-  
-    for (let social of socials) {
-      const href = await social
-        .getAttribute('href');
-  
-      if (href.includes('mailto:')) email = href;
-      else if (href.includes('tel:')) ddd = href;
-  
-      if (email && ddd) break;
-    }
-  
-    return { email, ddd };
+      .findElement(By.className('share hide_on_mobile'))
+      .findElements(By.css('ul > li > a'))
+    return await super.getSocials(socials);
   }
   
-
   
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials();
+    const { email, phone } = await this.#getSocials();
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

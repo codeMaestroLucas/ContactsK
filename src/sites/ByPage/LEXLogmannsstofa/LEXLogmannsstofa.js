@@ -13,23 +13,34 @@ class LEXLogmannsstofa extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
 
+
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(
-        By.className("team-item")
+        By.className("hold")
       ), 100000
     );
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+     .findElement(By.css("a"))
+     .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.css("h4 strong"))
       .getText();
   }
+
 
   async #getEmail(lawyer) {
     return await lawyer
@@ -38,14 +49,15 @@ class LEXLogmannsstofa extends ByPage {
   }
 
 
+
   async getLawyer(lawyer) {
-    const nameDiv = await lawyer.findElement(
-      By.className("descr")
-    );
+    const details = await lawyer.findElement(By.className("descr"));
 
     return {
-      name: await this.#getName(nameDiv),
-      email: await this.#getEmail(nameDiv),
+      link: await this.#getLink(lawyer),
+      name: await this.#getName(details),
+      email: await this.#getEmail(details),
+      phone: "354 590 2600",  // Firm phone
       country: "Iceland",
     };
   }

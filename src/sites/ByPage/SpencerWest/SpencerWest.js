@@ -2,7 +2,6 @@ const { getCountryByDDD } = require("../../../utils/getNationality");
 const ByPage = require("../../../entities/BaseSites/ByPage");
 let { driver } = require("../../../config/driverConfig");
 
-
 const { By, until } = require('selenium-webdriver');
 
 
@@ -17,54 +16,47 @@ class SpencerWest extends ByPage {
 
 
   async accessPage(index) {
-    await super.accessPage(index, `${ this._link }page/${ index + 1 }`);
+    const otherLink = `${ this._link }page/${ index + 1 }`
+    await super.accessPage(index, otherLink);
   }
 
  
   async getLawyersInPage() {
-    return await driver.wait(
-      until.elementsLocated(By.className("person-card__wrapper")),
+    const lawyers = await driver.wait(
+      until.elementsLocated(By.className("person-card__content")),
       20000
     );
+    
+    const webRole = [
+      By.className("person-card__job-description"),
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
 
-  /**
-   * Function used to get the Email & DDD from the socialLink HTML bar
-   * @param {*} socialLinks Element HTML
-   * @returns the valid values for email & ddd or null if they don't exist
-   */
-  async #getSocialMidia(socialLinks) {
-    let email;
-    let ddd;
 
-    for (let c = 0 ; c < socialLinks.length ; c++) {
-        const href = (await socialLinks[c].getAttribute('href')).toLowerCase().trim();
-
-        if (href.includes("mailto:")) {
-          email = href;
-
-        } else if (href.includes("tel:")) {
-          ddd = href;
-        }
-
-    }
-
-    return { email, ddd };
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("person-card__name"))
+      .getAttribute("href");
   }
+
+
+  async #getSocials(lawyer) {
+    const socials = await lawyer.findElements(By.className("social-link"));
+    return await super.getSocials(socials);
+  }
+
 
   async getLawyer(lawyer) {
-    const isPartner = this.isPartner(lawyer, "person-card__job-description");
-    if (!isPartner) return "Not Partner";
-
-    const socialLinks = await lawyer.findElements({ className: "social-link" });
-    const { ddd, email } = await this.#getSocialMidia(socialLinks);
+    const { email, phone } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await lawyer.findElement(By.className("person-card__name")).getText(),
       email: email,
-      country: getCountryByDDD(ddd)
+      phone: phone,
+      country: getCountryByDDD(phone)
     };
-
   }
 }
 

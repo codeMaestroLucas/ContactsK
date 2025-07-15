@@ -21,6 +21,7 @@ class HillDickinson extends ByPage {
     await super.accessPage(index, otherUrl);
   }
 
+
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(
@@ -29,6 +30,15 @@ class HillDickinson extends ByPage {
     );
   }
 
+
+  async #getLik(lawyer) {
+    return await lawyer
+      .findElement(By.className("card-heading u-text-normal u-mb-0 u-font-normal u-mb-1 u-leading-tight"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("card-heading u-text-normal u-mb-0 u-font-normal u-mb-1 u-leading-tight"))
@@ -36,33 +46,25 @@ class HillDickinson extends ByPage {
       .getText();
   }
 
+
   async #getSocials(lawyer) {
     const socials = await lawyer
       .findElement(By.className("u-justify-end"))
       .findElements(By.css("a"));
-
-    let email;
-    let ddd;
-  
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-      if (href.includes("mailto:")) email = href;
-      else if (href.includes("tel:")) {
-        ddd = href.replace("tel:%2B", "");  // Remove so it doesn`t interfere in the DDD
-      }
-    }
-
-    return { email, ddd }
+    return await super.getSocials(socials);
   }
 
 
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials(lawyer);
-
+    let { email, phone } = await this.#getSocials(lawyer);
+    phone = phone.replace("tel:%2B", "").replace("%280%29", "0");
+    
     return {
+      link: await this.#getLik(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

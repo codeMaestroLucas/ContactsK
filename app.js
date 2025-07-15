@@ -2,8 +2,7 @@ const getTimesUsed = require("./src/utils/count");
 const main = require("./src/main");
 
 const express = require("express");
-const path = require("path");
-
+const path = require('path');
 const { exec } = require("child_process");
 
 const app = express();
@@ -32,13 +31,15 @@ function runCommand(command) {
 
 
 app.post("/search", async (req, res) => {
+  await main();
+
   try {
     const commitMessage = await getTimesUsed();
 
     const commands = [
       "git add .",
       `git commit -m "${ commitMessage }"`,
-      "git push -u origin main --force"
+      "git push -u origin K --force"
     ];
 
     for (const command of commands) {
@@ -65,7 +66,7 @@ app.post("/search", async (req, res) => {
 
 app.post("/update", async (req, res) => {
   try {
-    const command = "git pull origin main";
+    const command = "git pull origin K";
 
     exec(command, (error, stdout, stderr) => {
       if (error) {

@@ -42,33 +42,31 @@ class EBN extends ByNewPage {
 
 
   async #getName(lawyer) {
-    const names = (await lawyer
+    return await lawyer
       .findElement(By.css("h1"))
-      .getText()).split(" ");
-
-    return names[1] + " " + names[0];
+      .getText();
   }
 
 
-  async #getEmail(lawyer) {
+  async #getSocials(lawyer) {
     const socials = await lawyer
       .findElement(By.className("personal-information"))
       .findElement(By.className("list-unstyled list-inline display-inline"))
       .findElements(By.css("li > a"));
-    
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-      if (href.includes("mailto:")) return href;
-    }
+    return await super.getSocials(socials);
   }
 
 
   async getLawyer(lawyer) {
     const details = await driver.findElement(By.className("title-parent"));
+    const { email, phone } = await this.#getSocials(details);
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
-      email: await this.#getEmail(details),
-      country: "Israel",
+      email: email,
+      phone: phone,
+      country: "Israel"
     };
   }
 }

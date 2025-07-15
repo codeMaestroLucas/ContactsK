@@ -7,8 +7,13 @@ class Reports extends Excel {
     this._lastRow = 2;
   }
 
-  eraseLastReport() {
-    for (let row = 1; row < this.rowsToFill + 2; row++) {
+
+  /**
+   * Erease the last report
+   * @param {number} rowsToErease
+   */
+  eraseLastReport(rowsToErease) {
+    for (let row = 1; row < rowsToErease + 2; row++) {
       for (let col = 0; col < 3; col++) {
         const cellAddress = xlsx.utils.encode_cell({ r: row, c: col });
         const cell = this.ws[cellAddress];

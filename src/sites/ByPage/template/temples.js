@@ -36,47 +36,47 @@ class Template extends ByPage {
   }
 
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className(""))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
-    const nameElement = await lawyer
+    return await lawyer
       .findElement(By.className(""))
-
-    
-    return nameElement
+      .getText();
   }
 
 
-  async #getEmail(lawyer) {
-    const emailElement = await lawyer
-      .findElement(By.className(""))
-
-
-    return emailElement
+  async #getSocials(lawyer) {
+    const socials = await lawyer
+      .findElement(By.className())
+      .findElements(By.className())
+    return await super.getSocials(socials);
   }
-
   
-  async #getDDD(lawyer) {
-    const dddElement = await lawyer
-      .findElement(By.className(""))
-      
-    return dddElement
-  }
-
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
+    
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      email: email,
+      phone: phone,
+      country: getCountryByDDD(phone)
     };
   }
-
 }
 
 module.exports = Template;
 
 async function main() {
   t = new Template();
-  t.accessPage(0);
+  // t.accessPage(0);
   t.searchForLawyers();
 }
 

@@ -32,6 +32,7 @@ class WhiteAndCase extends ByPage {
     this._currentPage = 0
   }
 
+
   async accessPage(index) {
     if (index === 0) {
       await super.accessPage(index);
@@ -51,6 +52,7 @@ class WhiteAndCase extends ByPage {
     }
   }
 
+
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(By.className("bio-body")),
@@ -58,12 +60,22 @@ class WhiteAndCase extends ByPage {
     );
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("lawyer-name"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("lawyer-name"))
       .getText();
   }
 
+  
   async #getEmail(lawyer) {
     return await lawyer
       .findElement(By.className(
@@ -74,11 +86,23 @@ class WhiteAndCase extends ByPage {
   }
 
 
+  async #getPhone(lawyer) {
+    return await lawyer
+      .findElement(By.className("lawyer-contact-info"))
+      .findElement(By.className("field field--name-field-phone field--type-entity-reference-revisions item-list contact-data__list contact-data__list--phones"))
+      .findElement(By.css("li > a"))
+      .getAttribute("href");
+  }
+
+
   async getLawyer(lawyer) {
     const country = countries[this._currentPage].country;
+    
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
+      phone: (await this.#getPhone(lawyer)).replace("%2B", ""),
       country: country
     };
   }

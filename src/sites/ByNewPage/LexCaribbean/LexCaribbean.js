@@ -13,9 +13,11 @@ class LexCaribbean extends ByNewPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+  
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -23,19 +25,13 @@ class LexCaribbean extends ByNewPage {
       100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (
-        await lawyer
-          .findElement(By.className("team-card__position"))
-          .findElement(By.className("retreattag"))
-          .getText()
-      ).toLowerCase();
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.className("team-card__position"),
+      By.className("retreattag")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
+
 
   async openNewTab(lawyer) {
     const link = await lawyer
@@ -45,6 +41,7 @@ class LexCaribbean extends ByNewPage {
     await super.openNewTab(link);
   }
 
+
   async #getName() {
     return await driver
       .findElement(By.className("w-col w-col-9"))
@@ -52,31 +49,29 @@ class LexCaribbean extends ByNewPage {
       .getText();
   }
 
-  async #getEmail(ancors) {
-    for (let a of ancors) {
-      const href = await a.getAttribute("href");
 
-      if (!href) continue;
-
-      if (href.includes("mailto:")) return href;
-    }
+  async #getSocials(lawyer) {
+    const socials = await lawyer
+      .findElement(By.className("team-details-card"))
+      .findElement(By.className("team-details-card__red-box"))
+      .findElement(By.className("team-details-card__red-box-text"))
+      .findElements(By.css("a"));
+    return await super.getSocials(socials);
   }
 
   async getLawyer() {
     const div = await driver.wait(
       until.elementLocated(By.className("w-col w-col-3"))
     );
-    const ancors = await div
-      .findElement(By.className("team-details-card"))
-      .findElement(By.className("team-details-card__red-box"))
-      .findElement(By.className("team-details-card__red-box-text"))
-      .findElements(By.css("a"));
 
+    const { email, phone } = await this.#getSocials(div);
 
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
-      email: await this.#getEmail(ancors),
-      country: "Caribe",
+      email: email,
+      phone: phone,
+      country: "Caribe"
     };
   }
 }

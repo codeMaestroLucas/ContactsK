@@ -4,6 +4,8 @@ let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
 
+
+// todo: transform in filter
 class Akin extends ByPage {
   constructor(
     name = "Akin",
@@ -26,6 +28,13 @@ class Akin extends ByPage {
     );
   }
 
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("d-flex styles__container--_db9c0b2"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
   async #getName(lawyer) {
    return await lawyer
       .findElement(By.className("type__body fw-semibold u-standard-hover"))
@@ -38,31 +47,18 @@ class Akin extends ByPage {
     const socials = await lawyer.findElements(
       By.className("type__button u-standard-hover")
     );
-
-    let ddd = null;
-    let email = null;
-
-    for (let social of socials) {
-      const href = await social.getAttribute("href");
-  
-      if (href.includes("tel:")) {
-        ddd = href.replace("tel:%2B", "");
-
-      } else if (href.includes("mailto:")) {
-        email = href;
-      }
-      
-    }
-    return { email, ddd };
+    return await super.getSocials(socials);
   }
 
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocial(lawyer);
+    const { email, phone } = await this.#getSocial(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone.replace("tel:%2B", ""),
+      country: getCountryByDDD(phone),
     };
   }
 

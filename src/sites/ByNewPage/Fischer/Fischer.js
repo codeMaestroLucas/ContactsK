@@ -50,7 +50,18 @@ class Fischer extends ByNewPage {
       .findElement(By.css("p > a"))
       .getAttribute("href");
   }
+  
 
+  async #getPhone(lawyer) {
+    const html = await lawyer
+      .findElement(By.className("blue-box"))
+      .findElement(By.className("col-xs-6 second"))
+      .findElement(By.css("p"))
+      .getAttribute("outerHTML");
+  
+    return (await super.getContentFromTag(html)).trim();
+  }
+  
   
   async getLawyer(lawyer) {
     const details = await driver
@@ -66,9 +77,11 @@ class Fischer extends ByNewPage {
     if (!role.includes("partner")) return "Not Partner";
 
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: await this.#getEmail(details),
-      country: "Israel",
+      phone: await this.#getPhone(details),
+      country: "Israel"
     };
   }
 }

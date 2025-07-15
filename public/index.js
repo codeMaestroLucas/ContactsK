@@ -29,7 +29,6 @@ updateBtn.addEventListener("click", async () => {
   try {
     alert("Checking for updates. Please don't close the window.");
 
-    // Send request to the server
     const response = await fetch("/update", { method: "POST" });
 
     if (response.ok) {

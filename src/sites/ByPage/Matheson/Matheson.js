@@ -18,6 +18,7 @@ class Matheson extends ByPage {
     await super.accessPage(index);
   }
 
+
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(
@@ -26,11 +27,22 @@ class Matheson extends ByPage {
     );
   }
 
+
+  async #getLink(lawyer) {
+    return lawyer
+     .findElement(By.className("highlighted-box"))
+     .findElement(By.css("a"))
+     .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
+      .findElement(By.className("highlighted-box"))
       .findElement(By.className("title"))
       .getText();
   }
+
 
   async #getEmail(lawyer) {
     return await lawyer
@@ -40,10 +52,19 @@ class Matheson extends ByPage {
   }
 
 
+  async #getPhone(lawyer) {
+    return await lawyer
+      .findElement(By.className("contact"))
+      .getText();
+  }
+
+
   async getLawyer(lawyer) {
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
+      phone: await this.#getPhone(lawyer),
       country: "Ireland"
     };
   }

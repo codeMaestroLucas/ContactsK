@@ -26,19 +26,6 @@ function getNationality(country) {
 
 
 /**
- * Removes all the leading zeros of a number
- * @param {number} DDD
- *
- * E.G.:
- * getCountryByDDD("00123");  // OutPut: 123
- * getCountryByDDD("37052");  // OutPut: 30752
- */
-function removeLeadingZeros(number) {
-  return number.replace(/^0+/, "");
-}
-
-
-/**
  * Function used to search for a country based on the DDD code.
  * @param {str} ddd - The DDD code of the country.
  * @returns {*} containing the Country or null if not found.
@@ -47,7 +34,7 @@ function getCountryByDDD(ddd) {
   if (!ddd) return "Not Found";
 
   // Remove non-numeric characters and leading zeros
-  ddd = removeLeadingZeros(ddd.replace(/\D/g, ""));
+  ddd = ddd.replace(/\D/g, "").replace(/^0+/, "");
 
   const filePath = path.join(__dirname, "..", "baseFiles", "json", "countries.json");
   try {
@@ -78,6 +65,7 @@ function getCountryByDDD(ddd) {
   }
 }
 
+
 /**
  * Helper function to match DDD codes, including ranges (e.g., "1-205").
  * @param {str} ddd - The input DDD to check.
@@ -98,7 +86,7 @@ function isMatchingDDD(ddd, possibleDDD) {
 
   // Default exact match for single DDD
   return ddd.slice(0, possibleDDD.length).startsWith(possibleDDD);
-
 }
+
 
 module.exports = { getNationality, getCountryByDDD };

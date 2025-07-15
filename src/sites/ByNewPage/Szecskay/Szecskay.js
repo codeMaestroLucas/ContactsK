@@ -25,19 +25,15 @@ class Szecskay extends ByNewPage {
         By.className("elementor-element elementor-element-1535d861 e-con-full e-flex e-con e-child")
       ), 100000
     );
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-          .findElement(By.className("elementor-element elementor-element-baa086d elementor-widget elementor-widget-post-info"))
-          .findElement(By.className("elementor-widget-container"))
-          .findElement(By.className("elementor-inline-items elementor-icon-list-items elementor-post-info"))
-          .findElement(By.className("elementor-icon-list-item elementor-repeater-item-8039d42 elementor-inline-item"))
-          .findElement(By.className("elementor-post-info__terms-list-item"))
-          .getAttribute("outerHTML")
-        ).toLowerCase();
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return lawyers;
+
+    const webRole = [
+      By.className("elementor-element elementor-element-baa086d elementor-widget elementor-widget-post-info"),
+      By.className("elementor-widget-container"),
+      By.className("elementor-inline-items elementor-icon-list-items elementor-post-info"),
+      By.className("elementor-icon-list-item elementor-repeater-item-8039d42 elementor-inline-item"),
+      By.className("elementor-post-info__terms-list-item")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
   
@@ -63,11 +59,19 @@ class Szecskay extends ByNewPage {
   }
 
 
+  async #getPhone() {
+    return await driver
+      .findElement(By.xpath('//*[@id="content"]/div/div/div[1]/div/div[2]/div/div/div/div/div/div[2]/div/div/ul/li[2]/span[2]'))
+      .getText();
+  }
+
   
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
+      phone: await this.#getPhone(),
       country: "Hungary",
     };
   }

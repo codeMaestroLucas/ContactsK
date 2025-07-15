@@ -13,6 +13,7 @@ class DahlLaw extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
     const addBtn = await driver.wait(
@@ -23,6 +24,7 @@ class DahlLaw extends ByPage {
     await this.rollDown(2, 1);
   }
 
+
   async getLawyersInPage() {
     const lawyers = await driver.wait(
       until.elementsLocated(
@@ -30,18 +32,19 @@ class DahlLaw extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("employeecard__jobtitle"))
-        .getText())
-        .toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.className("employeecard__jobtitle")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("employeecard__name"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     return await lawyer
@@ -50,18 +53,22 @@ class DahlLaw extends ByPage {
       .getText();
   }
 
-  async #getEmail(lawyer) {
-    return await lawyer
-      .findElement(By.className("employeecard__contact"))
-      .findElement(By.css("li:nth-child(3)"))
-      .findElement(By.className("employeecard__contact-link"))
-      .getAttribute("href");
+
+  async #getSocials(lawyer) {
+    const socials = await lawyer
+      .findElement(By.className('employeecard__contact'))
+      .findElements(By.className('employeecard__contact-link'))
+    return await super.getSocials(socials);
   }
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
+      email: email,
+      phone: phone,
       country: "Denmark",
     };
   }

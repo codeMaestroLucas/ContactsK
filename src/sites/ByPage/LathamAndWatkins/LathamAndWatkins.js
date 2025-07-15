@@ -27,6 +27,7 @@ class LathamAndWatkins extends ByPage {
     } catch (e) {}
   }
 
+
   async getLawyersInPage() {
     return await driver.wait(
       until.elementsLocated(
@@ -34,6 +35,14 @@ class LathamAndWatkins extends ByPage {
       ), 100000
     );
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("CoveoResultLink"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     return await lawyer
@@ -48,7 +57,7 @@ class LathamAndWatkins extends ByPage {
     );
 
     let email;
-    let ddd;
+    let phone;
 
     for (let social of socials) {
       const span = (await social
@@ -56,19 +65,23 @@ class LathamAndWatkins extends ByPage {
         .getText()).toLowerCase();
 
       if (span.includes("@lw.com")) email = span;
-      else if (span.includes("+")) ddd = span;
+      else if (span.includes("+")) phone = span;
+
+      if (email && phone) break;
     }
 
-    return { email, ddd }
+    return { email, phone }
   }
 
   async getLawyer(lawyer) {
-    const { email, ddd } = await this.#getSocials(lawyer);
+    const { email, phone } = await this.#getSocials(lawyer);
     
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
-      country: getCountryByDDD(ddd),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
 }

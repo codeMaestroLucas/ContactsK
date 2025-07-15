@@ -13,9 +13,11 @@ class ClemensLaw extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     await super.accessPage(index);
   }
+
 
   async getLawyersInPage() {
     const lawyers = await driver.wait(
@@ -24,18 +26,20 @@ class ClemensLaw extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.className("employee__title"))
-        .getText())
-        .toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-
-    return partners;
+    const webRole = [
+      By.className("employee__title")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, true);
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("employee__name"))
+      .getAttribute("href");
+  }
+
+
 
   async #getName(lawyer) {
     return await lawyer
@@ -43,21 +47,31 @@ class ClemensLaw extends ByPage {
       .getText();
   }
 
-  async #getEmail(lawyer) {
-    return await lawyer
-      .findElement(By.className("employee__email"))
+
+  async #getSocials(lawyer) {
+    const email = await lawyer
+      .findElement(By.className('employee__email'))
       .getAttribute("href");
+
+    const phone = await lawyer
+      .findElement(By.className('employee__phone'))
+      .getAttribute("href");
+  
+    return { email, phone };
   }
 
 
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials(lawyer);
+
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
-      email: await this.#getEmail(lawyer),
+      email: email,
+      phone: phone,
       country: "Poland",
     };
   }
-
 }
 
 module.exports = ClemensLaw;

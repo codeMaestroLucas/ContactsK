@@ -1,28 +1,29 @@
 const ByPage = {
-  XforIteraction: [    // 25
+  XforIteraction: [ // 28
     "Conyers", "SpencerWest", "Walkers", "ApplebyGlobal", "WhiteAndCase",
-    "GideLoyretteNouel", "CollasCrill", "WolfTheiss", "AlTamimi",
+    "GideLoyretteNouel", "CollasCrill", "WolfTheiss", "AlTamimi", "PaulHastings",
     "LathamAndWatkins", "Harneys", "CareyOlsen", "BNT",  "Kinstellar",
-    "Schoenherr", "HFW", "TaylorWessing", "PaulHastings", "WatsonFarleyAndWilliams",
-    "WinstonAndStrawn", "BonelliErede", "Ashurst", "ArnoldAndPorter", "Pulegal",
-    // "",
-    // "Akin" // - Pass this to Filter
+    "Schoenherr", "HFW", "TaylorWessing", "WatsonFarleyAndWilliams", "BonelliErede",
+    "WinstonAndStrawn", "Ashurst", "ArnoldAndPorter", "DechertLLP", "JonesDay",
+    "CampbellsLegal", "GiambroneInternationalLawFirm", "RopesAndGray",
+
+    // Akin - pass to filter
   ],
 
-  OneforIteraction: [  // 38
-    "LEXLogmannsstofa", "DSKLegal", "MeitarLawOffices", "ALMTLegal",
-    "FoxAndMandal", "Matheson", "ByrneWallace", "SprusonAndFerguson",
-    "AronTadmorLevy", "KRBLawFirm", "JSA", "Pedersoli",
-    "HavelPartners", "DahlLaw", "HillDickinson", "HowseWilliams", "DillonEustace",
-    "CFNLaw", "HannesSnellman", "Krogerus", "KromannReumert", "DittmarAndIndrenius",
-    "Deacons", "LatamLex", "ConsortiumLegal", "CareyOlsen", "GuantaoLawFirm",
-    "ClemensLaw", "MagnussonLaw", "NjordLaw", "AnandAndAnand", "GianniAndOrigoni",
-    "HankunLaw", "VeritasLegal", "HiggsAndJohnson",
+  OneforIteraction: [ // 30
+    "LEXLogmannsstofa", "MeitarLawOffices", "ALMTLegal", "FoxAndMandal", "Matheson",
+    "ByrneWallace", "SprusonAndFerguson", "AronTadmorLevy", "Pedersoli", "HavelPartners",
+    "DahlLaw", "HillDickinson", "HowseWilliams", "DillonEustace", "CFNLaw",
+    "HannesSnellman", "Krogerus", "KromannReumert", "DittmarAndIndrenius", "Deacons",
+    "ConsortiumLegal", "CareyOlsen", "GuantaoLawFirm", "ClemensLaw", "MagnussonLaw",
+    "NjordLaw", "AnandAndAnand", "GianniAndOrigoni", "HankunLaw", "VeritasLegal",
+    "SEUMLaw", "ShinAndKim", "BaeKimAndLee", "Foyen",
     // "",
-    // "KODLyons" // Doesn't have more lawyers
+
+    // Doesn't have more lawyers
+    // "KODLyons"
     // "MZMLegal",
-    // "HSAAdvocates",
   ],
 };
 
-module.exports = ByPage
+module.exports = ByPage;

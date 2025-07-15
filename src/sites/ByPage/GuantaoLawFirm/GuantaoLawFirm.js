@@ -2,6 +2,7 @@ const ByPage = require("../../../entities/BaseSites/ByPage");
 let { driver } = require("../../../config/driverConfig");
 
 const { until, By } = require("selenium-webdriver");
+const { RemoteReferenceType } = require("selenium-webdriver/bidi/protocolValue");
 
 class GuantaoLawFirm extends ByPage {
   constructor(
@@ -47,12 +48,22 @@ class GuantaoLawFirm extends ByPage {
     return partners;
   }
 
+  
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("EIMS_C_40100_proimg"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("EIMS_C_40100_proname"))
       .findElement(By.css("a"))
       .getText();
   }
+
 
   async #getSocials(lawyer) {
     const socials = await lawyer
@@ -82,12 +93,15 @@ class GuantaoLawFirm extends ByPage {
     return { email, country };
   }
 
+
   async getLawyer(lawyer) {
     const { email, country } = await this.#getSocials(lawyer);
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: email,
+      phone: '861066578066',
       country: country,
     };
   }

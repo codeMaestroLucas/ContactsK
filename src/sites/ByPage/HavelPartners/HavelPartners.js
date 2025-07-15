@@ -13,10 +13,12 @@ class HavelPartners extends ByPage {
     super(name, link, totalPages, maxLawyersForSite);
   }
 
+
   async accessPage(index) {
     const otherUrl = `https://www.havelpartners.com/team/?_position=partners&_page=${ index + 1 }`;
     await super.accessPage(index, otherUrl);
   }
+
 
   async getLawyersInPage() {
     return await driver.wait(
@@ -26,6 +28,14 @@ class HavelPartners extends ByPage {
     );
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+    .findElement(By.className("ct-link-text btn--primary btn--m margin-bottom--m"))
+    .getAttribute("href");
+  }
+
+
   async #getName(lawyer) {
     return await lawyer
       .findElement(By.className("ct-code-block width--full center--all"))
@@ -33,6 +43,7 @@ class HavelPartners extends ByPage {
       .getText();
   }
 
+  
   async #getEmail(lawyer) {
     const contactsElement = await lawyer
       .findElement(By.className("ct-div-block"))
@@ -44,6 +55,7 @@ class HavelPartners extends ByPage {
     }
   }
 
+  
   async getLawyer(lawyer) {
     const divName = await lawyer.findElement(
       By.className("ct-div-block flipbox__front bg--white")
@@ -53,6 +65,7 @@ class HavelPartners extends ByPage {
     );
 
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(divName),
       email: await this.#getEmail(dataName),
       country: "Czech Republic"

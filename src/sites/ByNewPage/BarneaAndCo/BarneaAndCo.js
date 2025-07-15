@@ -52,11 +52,20 @@ class BarneaAndCo extends ByNewPage {
       .getAttribute("href");
   }
 
+  async #getPhone() {
+    return await driver
+      .findElement(By.className("about_phone blockText"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
   
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
+      phone: await this.#getPhone(),
       country: "Israel",
     };
   }

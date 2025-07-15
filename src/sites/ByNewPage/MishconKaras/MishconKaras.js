@@ -26,17 +26,11 @@ class MishconKaras extends ByNewPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.css("a"))
-        .findElement(By.className("card-person__subheading"))
-        .getAttribute("outerHTML")
-      ).toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return partners;
+    const webRole = [
+      By.css("a"),
+      By.className("card-person__subheading")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
   
@@ -56,24 +50,27 @@ class MishconKaras extends ByNewPage {
   }
 
 
-  async #getEmail() {
-    return await driver
+  async #getSocials() {
+    const socials = await driver
       .findElement(By.id("ctl00_ctl00_MainPlaceHolder_AsidePlaceHolder_ctl00_dvContactInfo"))
       .findElement(By.className("col-12 col-xs-12"))
-      .findElement(By.css("ul > li:last-child > a"))
-      .getAttribute("href");
+      .findElements(By.css("ul > li > a"));
+    return await super.getSocials(socials);
   }
 
 
   
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials();
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
-      email: await this.#getEmail(),
+      email: email.replace("?cc=marketing@gornitzky.com", ""),
+      phone: phone,
       country: "Hong Kong",
     };
   }
 }
 
 module.exports = MishconKaras;
-

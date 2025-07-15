@@ -19,6 +19,7 @@ class CFNLaw extends ByPage {
     await super.accessPage(index, otherUrl);
   }
 
+
   async getLawyersInPage() {
     const lawyers = await driver.wait(
       until.elementsLocated(
@@ -26,22 +27,23 @@ class CFNLaw extends ByPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = await lawyer
-        .findElement(By.className("col-lg-4 col-md-6"))
-        .findElement(By.css("h4"))
-        .getText();
-
-      if (role.toLowerCase().includes("partner")) {
-        const lawyerInfo = await lawyer.findElements(By.className("col-lg-4"))
-        partners.push(lawyerInfo);
-      }
-      
-    }
+    const webRole = [
+      By.className("col-lg-4 col-md-6"),
+      By.css("h4")
+    ];
     
-    return partners;
+    return super.filterPartnersInPage(lawyers, webRole, true);
   }
+
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("col-lg-2 mb-lg-0 mb-4"))
+      .findElement(By.className("member-photo"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
 
   async #getName(lawyer) {
     return await lawyer
@@ -49,20 +51,21 @@ class CFNLaw extends ByPage {
       .getText();
   }
 
-  async #getEmail(lawyer) {
-    return await lawyer
-      .findElement(By.css("p:nth-child(2)"))
-      .findElement(By.css("a"))
-      .getAttribute("href");
+
+  async #getSocials(lawyer) {
+    const socials = await lawyer.findElements(By.css("p > a"));
+    return await super.getSocials(socials);
   }
 
 
   async getLawyer(lawyer) {
-    const divOne = lawyer[0];
-    const divTwo = lawyer[1];
+    const { email, phone } = await this.#getSocials(lawyer);
+
     return {
-      name: await this.#getName(divOne),
-      email: await this.#getEmail(divTwo),
+      link: await this.#getLink(lawyer),
+      name: await this.#getName(lawyer),
+      email: email,
+      phone: phone.replace("tel:%2B", ""),
       country: "Hong Kong",
     };
   }

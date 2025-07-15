@@ -48,24 +48,22 @@ class CarneluttiLawFirm extends ByNewPage {
       .getText();
   }
 
-  async #getEmail() {
+  async #getSocials() {
     const socials = await driver
       .findElement(By.className('modal-body'))
       .findElements(By.css('a'));
-  
-    for (let social of socials) {
-      const href = await social
-        .getAttribute('href');
-  
-      if (href.includes('mailto:')) return href;
-    }
+    return await super.getSocials(socials);
   }
 
   
   async getLawyer(lawyer) {
+    const { email, phone } = await this.#getSocials();
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
-      email: await this.#getEmail(),
+      email: email,
+      phone: phone,
       country: "Italy",
     };
   }

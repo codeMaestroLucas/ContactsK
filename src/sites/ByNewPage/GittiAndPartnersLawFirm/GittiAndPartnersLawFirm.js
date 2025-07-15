@@ -54,8 +54,10 @@ class GittiAndPartnersLawFirm extends ByNewPage {
 
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
+      phone: "+39 02 7217091",
       country: "Italy"
     };
   }

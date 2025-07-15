@@ -27,16 +27,10 @@ class ZeposAndYannopoulos extends ByNewPage {
       ), 100000
     );
 
-    let partners = [];
-    for (let lawyer of lawyers) {
-      const role = (await lawyer
-        .findElement(By.css("p.person-position"))
-        .getAttribute("outerHTML")
-        ).toLowerCase();
-
-      if (role.includes("partner")) partners.push(lawyer);
-    }
-    return partners;
+    const webRole = [
+      By.css("p.person-position")
+    ];
+    return await super.filterPartnersInPage(lawyers, webRole, false);
   }
 
   
@@ -65,15 +59,24 @@ class ZeposAndYannopoulos extends ByNewPage {
       .getAttribute("href");
   }
 
+
+  async #getPhone() {
+    return await driver
+      .findElement(By.className("card person-card match-height"))
+      .findElement(By.className("telephone"))
+      .getAttribute("href");
+  }
+
   
   async getLawyer(lawyer) {
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
+      phone: await this.#getPhone(),
       country: "Greece",
     };
   }
-
 }
 
 module.exports = ZeposAndYannopoulos;

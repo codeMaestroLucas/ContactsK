@@ -3,7 +3,7 @@ const { getCountryByDDD } = require("../../../utils/getNationality");
 const ByNewPage = require("../../../entities/BaseSites/ByNewPage");
 let { driver } = require("../../../config/driverConfig");
 
-const { until, By } = require("selenium-webdriver");
+const { By } = require("selenium-webdriver");
 
 class CobaltLegal extends ByNewPage {
   constructor(
@@ -22,8 +22,14 @@ class CobaltLegal extends ByNewPage {
 
   async getLawyersInPage() {
     const lawyersDiv = await driver.findElements(By.className("expert-list"));
+    const managingPartDiv = lawyersDiv[0];
     const partnersDiv = lawyersDiv[1];
-    return await partnersDiv.findElements(By.className("expert-item"))
+
+    let partners = [];
+    partners.push(... await managingPartDiv.findElements(By.className("expert-item")));
+    partners.push(... await partnersDiv.findElements(By.className("expert-item")));
+
+    return partners;
   }
 
   
@@ -53,7 +59,7 @@ class CobaltLegal extends ByNewPage {
   }
 
 
-  async #getDDD() {
+  async #getPhone() {
     return await driver
       .findElement(By.className("block-body"))
       .findElement(By.className("expertinfo-phone"))
@@ -63,13 +69,16 @@ class CobaltLegal extends ByNewPage {
 
   
   async getLawyer(lawyer) {
+    const phone = await this.#getPhone();
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(),
       email: await this.#getEmail(),
-      country: getCountryByDDD(await this.#getDDD()),
+      phone: phone,
+      country: getCountryByDDD(phone)
     };
   }
-
 }
 
 module.exports = CobaltLegal;

@@ -19,6 +19,7 @@ class BonelliErede extends ByPage {
     await this.rollDown(3, 1);
   }
 
+
   async getLawyersInPage() {
     const partDiv = await driver.wait(
       until.elementsLocated(
@@ -53,6 +54,15 @@ class BonelliErede extends ByPage {
     return selectedPartners;
   }
 
+
+  async #getLink(lawyer) {
+    return await lawyer
+      .findElement(By.className("anag"))
+      .findElement(By.className("name"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
+
   
   async #getName(lawyer) {
     const names = await lawyer
@@ -84,22 +94,26 @@ class BonelliErede extends ByPage {
       .getAttribute("href");
   }
 
-  async #getDDD(lawyer) {
+
+  async #getPhone(lawyer) {
     return await lawyer
       .findElement(By.className("addresses"))
       .findElement(By.css("p:nth-child(1)"))
       .findElement(By.css("span > a"))
       .getAttribute("href");
   }
+  
 
   async getLawyer(lawyer) {
+    const phone = await this.#getPhone(lawyer);
     return {
+      link: await this.#getLink(lawyer),
       name: await this.#getName(lawyer),
       email: await this.#getEmail(lawyer),
-      country: getCountryByDDD(await this.#getDDD(lawyer)),
+      phone: phone,
+      country: getCountryByDDD(phone),
     };
   }
-
 }
 
 module.exports = BonelliErede;

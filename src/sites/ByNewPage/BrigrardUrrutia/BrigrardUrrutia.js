@@ -54,6 +54,14 @@ class BrigrardUrrutia extends ByNewPage {
   }
 
 
+  async #getPhone(lawyer) {
+    return await lawyer
+      .findElement(By.className("lawyer-card-info--telephone p-tel icon-phone"))
+      .findElement(By.css("div > div > a"))
+      .getAttribute("href");
+  }
+
+
   async #getCountry(lawyer) {
     const city = (await lawyer
       .findElement(By.className("p-locality"))
@@ -75,12 +83,13 @@ class BrigrardUrrutia extends ByNewPage {
 
   
   async getLawyer(lawyer) {
-    const details = await driver
-      .findElement(By.className("lawyer-card-info"));
+    const details = await driver.findElement(By.className("lawyer-card-info"));
 
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: await this.#getEmail(details),
+      phone: await this.#getPhone(details),
       country: await this.#getCountry(details),
     };
   }

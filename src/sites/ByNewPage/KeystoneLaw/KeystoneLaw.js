@@ -51,9 +51,16 @@ class KeystoneLaw extends ByNewPage {
       .findElement(By.className("email staff-contact"))
       .findElement(By.css("a"))
       .getAttribute("href")
-    ).replace("?subject=Enquiry%20from%20website", "")
+    ).replace("?subject=Enquiry%20from%20website", "");
   }
 
+
+  async #getPhone(lawyer) {
+    return await lawyer
+      .findElement(By.className("telephone staff-contact"))
+      .findElement(By.css("a"))
+      .getAttribute("href");
+  }
 
   
   async getLawyer(lawyer) {
@@ -61,13 +68,15 @@ class KeystoneLaw extends ByNewPage {
       until.elementLocated(By.className("staff-header")
       ), 6000
     );
+
     return {
+      link: await driver.getCurrentUrl(),
       name: await this.#getName(details),
       email: await this.#getEmail(details),
+      phone: await this.#getPhone(details),
       country: "England",
     };
   }
-
 }
 
 module.exports = KeystoneLaw;
